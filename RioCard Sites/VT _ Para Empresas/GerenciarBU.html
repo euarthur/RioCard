@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+        <title>Riocard Mais Vale-Transporte / Usuários / Pesquisar</title>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+        <link href="GerenciarBU_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciarBU_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciarBU_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciarBU_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="GerenciarBU_arquivos/comum.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="GerenciarBU_arquivos/home.css" media="all">
+        <link rel="stylesheet" type="text/css" href="GerenciarBU_arquivos/pesquisa_usuarios.css" media="all">
+        <style type="text/css">
+            .button {
+                background-color: #0074e4;
+                border: none;
+                color: white;
+                padding: 5px 19px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                width: 100px;
+                cursor: pointer;
+            }
+        </style>
+        
+        <script type="text/javascript" src="GerenciarBU_arquivos/lightboxAjuda.js"></script>
+        <script type="text/javascript" src="GerenciarBU_arquivos/script_usuario.js"></script>
+        <script type="text/javascript" language="JavaScript" src="GerenciarBU_arquivos/jquery-1.8.0.min.js"></script>
+        
+    </head>
+    <body class="usuarios" onload="carregaTela();">
+        
+        
+        <div id="site" class="clearfix">
+            
+	<a name="topo"></a>
+
+
+
+
+            <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+            <div class="conteudo_interna">
+                <div id="titulo_pag" class="titulo_pag">
+                    <div class="borda_esq">
+                        <div class="borda_dir">
+                            <h1>Gerenciar Bilhete Único Intermunicipal</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="aviso aviso_erro">
+                    <div style="margin-bottom: 5px; color: #6d4747;">Atenção:</div>
+                    <p>Somente os cartões Vale-Transporte Convencional 
+(antigo) e Vale-Transporte Riocard Mais poderão ser habilitados e 
+desabilitados para o benefício do Bilhete Único Intermunicipal.</p>
+                    <p>Para saber mais sobre as regras dos benefícios tarifários, clique
+                        <a href="https://www.riobilheteunico.com.br/" target="_blank">aqui</a>
+                    </p>
+                </div>
+                <br>
+                <br>
+                 <form name="gerenciarBUForm" id="formBusca" method="post" action="/vt2/comprador/usuarios/ListarUsuariosBU.do">
+                <input type="hidden" name="limpaErros" value="1">
+                <fieldset class="nivel_01 matricula">
+                    <legend>Busca</legend>
+                    <table class="formulario_pesquisa" cellspacing="0" border="0">
+                        <tbody><tr>
+                            <td>
+                                <label>Campo para filtragem</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150">
+                                <select name="tpFiltroUsuario" onchange="desbilitaCampos(this.value);" id="tpFiltroUsuario" class="tpFiltroUsuario"><option value="1" selected="selected">Matrícula</option> <option value="2">Nome</option> <option value="3">CPF</option> <option value="4">Cartão</option> <option value="5">Todos</option></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Palavra-Chave</label>
+                            </td>
+                            <td>
+                                <label>De</label>
+                            </td>
+                            <td>
+                                <label>Até</label>
+                            </td>
+                            <td>
+                                <label>Bilhete Único</label>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="200">
+                                <input type="text" name="palavraChave" onkeyup="isNumericField( this, event, 'tpFiltroUsuario', 3 );isNumericField( this, event, 'tpFiltroUsuario', 4 );" onkeypress="return isNumericField( this, event, 'tpFiltroUsuario', 3 ) || isNumericField( this, event, 'tpFiltroUsuario', 4 );" onblur="isNumericField( this, event, 'tpFiltroUsuario', 3 );isNumericField( this, event, 'tpFiltroUsuario', 4 );" id="campoPalavraChave" class="palavraChave" style="background-color: rgb(255, 255, 255);">
+                            </td>
+                            <td width="200">
+                                <input type="text" name="palavraDe" onkeyup="isNumericField( this, event, 'tpFiltroUsuario', 3 );" onkeypress="return isNumericField( this, event, 'tpFiltroUsuario', 3 );" onblur="isNumericField( this, event, 'tpFiltroUsuario', 3 );" id="campoPalavraDe" class="palavraDe" style="background-color: rgb(255, 255, 255);">
+                            </td>
+                            <td width="200">
+                                <input type="text" name="palavraAte" onkeyup="isNumericField( this, event, 'tpFiltroUsuario', 3 );" onkeypress="return isNumericField( this, event, 'tpFiltroUsuario', 3 );" onblur="isNumericField( this, event, 'tpFiltroUsuario', 3 );" id="campoPalavraAte" class="palavraAte" style="background-color: rgb(255, 255, 255);">
+                            </td>
+                            <td width="150">
+                                <select name="tpFiltroBilheteUnico" style="width: 150px;" class="status"><option value="1" selected="selected">Todos</option> <option value="2">Ativados</option> <option value="3">Desativados</option> <option value="4">Ativação Solicitada</option> <option value="5">Desativação Solicitada</option> <option value="6">Suspenso Setrans</option></select>
+                            </td>
+                            <td>
+                                <a href="javascript:ajuda('u04c05t01');" class="btn_ajuda">
+                                    <img src="GerenciarBU_arquivos/btn_ajuda.gif" alt="Ajuda">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody></table>
+                    <div class="bt_master btm_normal">
+                        <div class="btm_dir">
+                            <p class="btm_meio">
+                                <a href="#" onclick="javascript: isNumericField( document.getElementById('campoPalavraChave'), event, 'tpFiltroUsuario', 3); submit('formBusca');">Consultar</a>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+<script type="text/javascript" language="JavaScript">
+ 
+  var focusControl = document.forms["gerenciarBUForm"].elements["palavraChave"];
+
+  if (focusControl != null && focusControl.type != "hidden" && !focusControl.disabled && focusControl.style.display != "none") {
+     focusControl.focus();
+  }
+  // -->
+</script>
+  
+                
+                            
+                            <div class="menu_rodape clearfix">
+  <h3><span>Usuários</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+    <li id="menuRodapeItem02"><a href="./PesquisarUsuario.html">Pesquisar </a> </li>
+	<li id="menuRodapeItem03">
+		<a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a> 
+	</li>
+	<li id="menuRodapeItem04">
+		<a href="./ImportarUsuarios.html">Importação de Usuários</a>  
+	</li>
+	<li id="menuRodapeItem05">
+		<a href="./GerenciarBU.html">Gerenciar Bilhete Único</a>
+	</li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('AlterarUsuario') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('pesquisar') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('alterar') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('importacao') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	}
+</script>
+            </div>
+        </div>
+        <div id="dark" style="position: absolute; z-index: 900; width: 100%; height: 150%; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0.8; display: none; top: 0px; left: 0px;"></div>
+        <div id="avisoAdministrador" onclick="escondeBannerUsuario(this.id)" style="display: none; width: 454px; height: 321px; position: absolute; top: 60%; left: 60%; margin-top: -203px; margin-left: -318px; z-index: 999; background: rgba(0, 0, 0, 0) url(&quot;../bu/imagens/gerenciar_bu_vt.png&quot;) repeat scroll 0% 0%;"></div>
+        <div id="avisoBilheteUnico" onclick="escondeBannerUsuario(this.id)" style="display: none;width: 754px;height: 600px;position: fixed;top: 0px;bottom: 0px;left: 0px;right: 0px;margin: auto;z-index: 999;background: white;">
+            <iframe id="iframeTermo" style="border-style: groove;" marginheight="2" marginwidth="2" title="Termo de uso" scrolling="auto" src="GerenciarBU_arquivos/termo_adesao_BUIVT.html" width="750" height="550" frameborder="1"></iframe>
+            <div id="buttons" style="background: white;text-align: center;height: 45px;vertical-align: middle;">
+                <input id="cancelar" type="button" class="button " value="Não Aceito" style="margin-right: 40px;margin-top: 6px;">
+                <input id="enviar" type="button" class="button " value="Aceito">
+            </div>
+        </div>
+        
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="GerenciarBU_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+    
+    <script language="javascript" src="GerenciarBU_arquivos/scripts.js"></script>
+</body></html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+	<title>Riocard Mais Vale-Transporte</title>
+	<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+	<link href="DesbloqueioPedidos_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="DesbloqueioPedidos_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="DesbloqueioPedidos_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="DesbloqueioPedidos_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="DesbloqueioPedidos_arquivos/comum.js"></script>
+	
+    <link href="DesbloqueioPedidos_arquivos/desbloquear.css" rel="stylesheet" type="text/css" media="all">
+    
+    <script language="JavaScript" src="DesbloqueioPedidos_arquivos/lightboxAjuda.js"></script>
+    
+    <script type="text/javascript">
+    	function handleSelectButtons() {
+    		var table = document.getElementById('listTable');
+    		var inputs = table.getElementsByTagName('input');
+
+			var allMarked = true;
+    		for (var i = 0; i < inputs.length; i++)
+    			if ( inputs[i].type == 'checkbox' && inputs[i].checked != true ) 
+    				allMarked = false;
+    		
+    		if ( allMarked ) {
+    			document.getElementById('deselecionarTop').style.display = 'inline';
+    			document.getElementById('selecionarTop').style.display = 'none';
+    			document.getElementById('deselecionarBottom').style.display = 'inline';
+    			document.getElementById('selecionarBottom').style.display = 'none';
+    		} else {
+    			document.getElementById('deselecionarTop').style.display = 'none';
+    			document.getElementById('selecionarTop').style.display = 'inline';
+    			document.getElementById('deselecionarBottom').style.display = 'none';
+    			document.getElementById('selecionarBottom').style.display = 'inline';
+    		}
+    	}
+    
+    	function selecionarTodas() {
+    		var table = document.getElementById('listTable');
+    		if (table == null) return;
+    		var inputs = table.getElementsByTagName('input');
+    		for (var i = 0; i < inputs.length; i++)
+    			if (inputs[i].type == 'checkbox') 
+    				inputs[i].checked = 'checked';
+    				
+    		handleSelectButtons();
+    	}
+    	
+    	function deselecionarTodas() {
+    		var table = document.getElementById('listTable');
+    		if (table == null) return;
+    		var inputs = table.getElementsByTagName('input');
+    		for (var i = 0; i < inputs.length; i++)
+    			if (inputs[i].type == 'checkbox') 
+    				inputs[i].checked = false;
+    		
+    		handleSelectButtons();
+    	}
+    	
+    	function checkIfAllUncheckedAndSubmit() {
+    		var table = document.getElementById('listTable');
+    		var inputs = table.getElementsByTagName('input');
+    		var submitPedidos = '';
+    		
+    		var flag = false;
+			for (var i = 0; i < inputs.length; i++) {
+    			if ( inputs[i].type == 'checkbox' && (inputs[i].checked == true || inputs[i].checked == 'checked') ) {
+    				if ( flag ) {
+    					submitPedidos += ', ' + inputs[i].value;
+    				} else {
+    					submitPedidos += inputs[i].value;
+    					flag = true;
+    				}
+    			} 
+    		}
+    		if ( submitPedidos.length < 1 ) {
+    			alert( 'Selecione ao menos um pedido para desbloquear seus cart\u00F5es.' );
+    		} else {
+    			submitForm( submitPedidos );
+    		}
+    	}
+    	
+    	function submitForm( submitPedidos ) {
+    		// document.getElementById('nrPedidos').value = submitPedidos;
+    		document.getElementById('form').submit();
+    	}
+    	
+    	function unlockAll() {
+    		var confirmacao = confirm('Deseja realmente desbloquear todos os cart\u00F5es de todos os seus pedidos?');
+    		if ( !confirmacao ) return;
+    		var todosOsPedidos = document.getElementById('todosOsPedidos');
+    		todosOsPedidos.value = 'true';
+    		document.getElementById('form').submit();
+    	}
+    	
+    	function submitDetailForm( nrPedidoValue, dtPedidoValue, qtdCartoesValue ) {
+    		var form = document.getElementById( 'formDetail' );
+    		
+    		var nrPedido = document.getElementById('nrPedido');
+    		var dtPedido = document.getElementById('dtPedido');
+    		var qtdCartoes = document.getElementById('qtdCartoes');
+    		
+    		form.action = '/vt2/comprador/cartoes/DesbloqueioCartoes.do';
+    		
+    		nrPedido.value = nrPedidoValue;
+    		dtPedido.value = dtPedidoValue;
+    		qtdCartoes.value = qtdCartoesValue;
+    		
+    		form.submit();
+    	}
+    </script>
+</head>
+<body class="cartoes">
+
+
+
+	
+	<div id="site" class="clearfix">
+		
+	<a name="topo"></a>
+
+
+
+
+		<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');">Comprador <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');" style="background-position: 0px 32px;">pedidos <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');">relatórios <img src="DesbloqueioPedidos_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="https://www.cartaoriocard.com.br/vt2/home/Logout.do">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="DesbloqueioPedidos_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    
+		<div class="dropdown" id="dropdown_comprador">
+			<ul>
+				<li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+			  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+			  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+			  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+			  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+			  
+				   
+				 
+			  
+				<li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+			</ul>
+		</div>
+		<div class="dropdown" id="dropdown_administrador"> 
+		  <ul>
+			  <li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+			<li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_usuarios"> 
+		  <ul>
+			<li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+			<li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+			<li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+			<li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+			<li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_cartoes">
+		  <ul>
+			<li><a href="./ConsultaCartoes.html">Consulta</a></li>
+			<li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+			<li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+			<li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+			<li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+			<li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_pedidos">
+			<ul>
+				 <li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+				<li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+			 </ul>
+		</div>    	
+		<div class="dropdown" id="dropdown_relatorios">
+		  <ul>
+			<li>
+				<a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+			</li>
+			<li>
+				<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+			</li>
+			<li>
+				<a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+			</li>        
+			<li>
+				<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+			</li>
+			<li>
+				<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+			</li>
+				
+		  </ul>
+		</div>
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+	  <div class="conteudo_interna">
+	  	<div id="titulo_pag" class="titulo_pag">
+			  <div class="borda_esq">
+				  <div class="borda_dir">
+					  <h1>Desbloquear Cartões</h1>
+				  </div>
+			  </div>
+			</div>
+			<a href="javascript:ajuda('u05c02t01');" class="btn_ajuda"><img src="DesbloqueioPedidos_arquivos/btn_ajuda.gif" alt="Ajuda"></a>
+			
+	        <table width="100%" border="0">
+	        
+			
+			<tbody><tr>
+				<td align="center">
+					<form name="desbloqueioPedidoForm" id="form" method="post" action="/vt2/comprador/cartoes/DesbloqueioPedidosSave.do">
+						<input type="hidden" id="todosOsPedidos" name="todosOsPedidos" value="false">
+						<!-- input type="hidden" id="nrPedidos" name="nrPedidos" value="" /-->
+						
+						
+							<table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+<table id="listTable" class="dataset" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th class="sortable sorted order2">
+<a href="./DesbloqueioPedidos.html">Pedido</a></th>
+<th>Data</th>
+<th>Quantidade de Cartões Bloqueados</th>
+<th>Desbloquear Todos os Cartões</th>
+<th>Detalhar Cartões</th></tr></thead>
+<tbody><tr class="empty"><td colspan="5" align="center">Nenhum registro encontrado.</td></tr></tbody></table><table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+													
+					</form>
+					
+					<div style="width:80%; margin: 5px; border:1px #BEBF77 solid; padding:5px; background-color:#EFEFD1;">
+					<strong style="color:#FF2600;">Seu cartão estará pronto para uso no prazo de 48h após o desbloqueio.</strong><br>
+					</div>
+					
+					<form name="desbloqueioCartaoForm" id="formDetail" method="post" action="/vt2/comprador/cartoes/DesbloqueioCartoes.do">
+						<input type="hidden" name="nrPedido" value="0" id="nrPedido">
+						<input type="hidden" name="dtPedido" value="" id="dtPedido">
+						<input type="hidden" name="qtdCartoes" value="0" id="qtdCartoes">
+					</form>
+					
+					
+				</td>
+			</tr>			
+				
+		    </tbody></table>
+		    
+	        					
+			<div class="menu_rodape clearfix">
+  <h3><span>Cartões</span></h3>
+  <ul>
+      <li id="menuRodapeItem01">
+      	<a href="./ConsultaCartoes.html">Consulta</a>
+      </li>    
+      <li id="menuRodapeItem02">
+		<a href="./DesbloqueioPedidos.html">Desbloquear</a>
+	  </li>
+      <li id="menuRodapeItem03">
+      	<a href="./IniciaCancelamentoPedido.html">Cancelar</a>
+      </li>
+      <li id="menuRodapeItem04">
+       	<a href="./RegistroCartoes.html">Registrar Vale-Rápido</a>
+      </li>
+      <li id="menuRodapeItem05">
+      	<a href="./ConsultaCartoesVtr.html">Consultar Vale-Rápido</a>
+      </li>
+      <li id="menuRodapeItem06">
+      	<a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a>
+      </li>
+                                    
+  </ul>
+</div>
+<script language="javascript">
+
+	 if (document.URL.indexOf('cartoesVtr') != -1) {
+		 document.getElementById('menuRodapeItem05').className = 'active';		 
+	} else if (document.URL.indexOf('consulta') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('desbloquear') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('cancelamento') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('registro') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('guiasVtr') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('Migracao') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+</script>
+
+	  </div>
+	</div>
+	
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="DesbloqueioPedidos_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+	
+
+<script language="javascript" src="DesbloqueioPedidos_arquivos/scripts.js"></script>
+<script language="javascript">
+	//initCheckBoxes();
+</script>
+<!-- DWR declarations -->
+<script type="text/javascript" src="DesbloqueioPedidos_arquivos/RioCardVT.js"></script>
+<script type="text/javascript" src="DesbloqueioPedidos_arquivos/engine.js"></script>
+<script type="text/javascript" src="DesbloqueioPedidos_arquivos/util.js"></script>
+</body></html>

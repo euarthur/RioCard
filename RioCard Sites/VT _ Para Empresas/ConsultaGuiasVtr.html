@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+<title>Riocard Mais Vale-Transporte / Cartões / Consultar Guias de Compra</title>
+
+<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<link href="ConsultaGuiasVtr_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="ConsultaGuiasVtr_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="ConsultaGuiasVtr_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="ConsultaGuiasVtr_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/comum.js"></script>
+
+<link rel="stylesheet" type="text/css" href="ConsultaGuiasVtr_arquivos/consulta.css" media="all">
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/cartoes.js"></script>
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/scripts.js"></script>
+<script language="JavaScript" src="ConsultaGuiasVtr_arquivos/lightboxAjuda.js"></script>
+
+</head>
+<body class="cartoes">
+
+<div id="site" class="clearfix">
+  
+	<a name="topo"></a>
+
+
+
+
+  <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+  
+  	
+  	
+    <div class="conteudo_interna">
+		<div id="titulo_pag" class="titulo_pag">
+		  <div class="borda_esq">
+			  <div class="borda_dir">
+				  <h1>Consultar Guias de Compra</h1>
+			  </div>
+		  </div>
+		</div>
+		        
+        <fieldset class="nivel_01 matricula">
+        	<legend>Guias de Compra</legend>
+        	
+			<form name="consultaCartoesVtrForm" id="formConsultaCartoesVtr" method="post" action="/vt2/comprador/cartoes/ConsultaGuiasVtrFiltrar.do">
+				<table class="formulario1" cellspacing="0">
+					<tbody><tr>
+						<td>&nbsp;</td>
+						<td>
+							<table>
+								<tbody><tr>
+									<td width="91">
+										<label>
+											De
+										</label>
+									</td>
+									<td>
+										<label>
+											Até
+										</label>
+									</td>
+								</tr>
+							</tbody></table>
+						</td>
+						<td>&nbsp;</td>
+		  			</tr>
+		  			<tr>
+						<td><label>Data de Compra: </label></td>
+						<td>
+							<table>
+								<tbody><tr>
+					        		<td>
+					        			<input type="text" name="diaInicial" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('diaInicial', 'mesInicial');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="diaInicial" class="dia_mes">
+					          			<label>/</label>
+					          			<input type="text" name="mesInicial" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('mesInicial', 'anoInicial');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="mesInicial" class="dia_mes">
+					          			<label>/</label>
+					          			<input type="text" name="anoInicial" maxlength="4" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('anoInicial', 'diaFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="anoInicial" class="ano">
+					        		</td>
+					        		<td>
+					        			<input type="text" name="diaFinal" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('diaFinal', 'mesFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="diaFinal" class="dia_mes">
+					          			<label>/</label>
+							          	<input type="text" name="mesFinal" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('mesFinal', 'anoFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="mesFinal" class="dia_mes">
+							          	<label>/</label>
+							          	<input type="text" name="anoFinal" maxlength="4" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="anoFinal" class="ano">
+					        		</td>											
+								</tr>
+							</tbody></table>
+						</td>
+						<td>
+							<p class="botao_acao botao_peq">
+								<a href="#" onclick="document.getElementById('formConsultaCartoesVtr').submit();">Pesquisar</a>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+																		
+						</td>
+					</tr>
+				</tbody></table>
+				<a href="javascript:ajuda('u05c06t01');" class="btn_ajuda"><img src="ConsultaGuiasVtr_arquivos/btn_ajuda.gif" alt="Ajuda"></a>
+			</form>
+		</fieldset>
+				
+        <div class="menu_rodape clearfix">
+  <h3><span>Cartões</span></h3>
+  <ul>
+      <li id="menuRodapeItem01">
+      	<a href="./ConsultaCartoes.html">Consulta</a>
+      </li>    
+      <li id="menuRodapeItem02">
+		<a href="./DesbloqueioPedidos.html">Desbloquear</a>
+	  </li>
+      <li id="menuRodapeItem03">
+      	<a href="./IniciaCancelamentoPedido.html">Cancelar</a>
+      </li>
+      <li id="menuRodapeItem04">
+       	<a href="./RegistroCartoes.html">Registrar Vale-Rápido</a>
+      </li>
+      <li id="menuRodapeItem05">
+      	<a href="./ConsultaCartoesVtr.html">Consultar Vale-Rápido</a>
+      </li>
+      <li id="menuRodapeItem06">
+      	<a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a>
+      </li>
+                                    
+  </ul>
+</div>
+<script language="javascript">
+
+	 if (document.URL.indexOf('cartoesVtr') != -1) {
+		 document.getElementById('menuRodapeItem05').className = 'active';		 
+	} else if (document.URL.indexOf('consulta') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('desbloquear') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('cancelamento') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('registro') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('guiasVtr') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('Migracao') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+</script>
+
+	</div>
+</div>
+
+<div class="version">
+	Vers�o 2.199.22
+</div>
+<script src="ConsultaGuiasVtr_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/scripts_002.js"></script>
+<!-- DWR declarations -->
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/RioCardVT.js"></script>
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/engine.js"></script>
+<script type="text/javascript" src="ConsultaGuiasVtr_arquivos/util.js"></script>
+
+</body></html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
+        <title>Abertura</title>
+        <link rel="stylesheet" type="text/css" href="Abertura_arquivos/homeestilos.css">
+        <link id="rel" rel="stylesheet" href="Abertura_arquivos/riocard.css">
+        <link id="rel2" rel="stylesheet" href="Abertura_arquivos/bootstrap.css">
+
+        <script type="text/javascript" src="Abertura_arquivos/tooltip.js"></script>
+        <script type="text/javascript" src="Abertura_arquivos/ManagerAjax.js"></script>
+        <script type="text/javascript" src="Abertura_arquivos/engine.js"></script>
+        <script type="text/javascript" src="Abertura_arquivos/util.js"></script>
+        <script language="JavaScript" src="Abertura_arquivos/jquery-1.9.1.min.js"></script>
+        <script src="Abertura_arquivos/jquery.maskedinput.js" type="text/javascript"></script>
+        <style type="text/css">
+
+            #recadastramentoObrigatorio {
+                display: none;
+                width: 636px;
+                height: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -203px;
+                margin-left: -318px;
+                z-index: 999;
+                background: rgba(255, 255, 255, 1);
+                background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(47%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(237, 237, 237, 1)));
+                background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+                background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+                background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+                background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=1);
+                border-radius: 5px;
+            }
+
+            #dark {
+                display: none;
+                position: fixed;
+                z-index: 900;
+                width: 100%;
+                height: 100%;
+                background: url('/scrcpr2/img/overlay.png');
+                opacity: 0.65;
+                -moz-opacity: 0.65;
+                filter: alpha(opacity=65);
+                top: 0;
+                left: 0;
+            }
+
+            #titulo-recadastramento {
+                font-family: coolveticaregular, serif;
+                font-size: 28px;
+                text-align: left;
+            }
+
+            #mensagem-recadastramento p {
+                font-family: Roboto, serif;
+                font-size: 16px;
+                text-align: left;
+            }
+
+            #msg_erro_recadastramento {
+                font-family: Roboto, serif;
+                font-size: 16px;
+            }
+
+            #msg-dados-obrigatorio p {
+                font-family: Roboto, serif;
+            }
+
+            #div-recadastramento {
+                width: 660px;
+            }
+
+            #div-recadastramento label {
+                font-family: Roboto, serif;
+                font-size: 14px;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .banner {
+                z-index: 11;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .regras_setrans {
+                cursor: pointer;
+                background-color: #c7662f;
+                color: white;
+                font-family: Trebuchet MS;
+                font-size: 25px;
+                text-align: center;
+                margin-top: 5px;
+                padding: 10px;
+            }
+
+            input.text {
+                margin-bottom: 12px;
+                width: 95%;
+                padding: .4em;
+            }
+
+            fieldset {
+                padding: 0;
+                border: 0;
+                margin-top: 25px;
+            }
+
+            h1 {
+                font-size: 1.2em;
+                margin: .6em 0;
+            }
+
+            div#users-contain {
+                width: 350px;
+                margin: 20px 0;
+            }
+
+            div#users-contain table {
+                margin: 1em 0;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            div#users-contain table td, div#users-contain table th {
+                border: 1px solid #eee;
+                padding: .6em 10px;
+                text-align: left;
+            }
+
+            .ui-dialog .ui-state-error {
+                padding: .3em;
+            }
+
+            .validateTips {
+                border: 1px solid transparent;
+                padding: 0.3em;
+            }
+        </style>
+    <script language="JavaScript" type="text/javascript">
+        function mostrarAvisoCadastroDesatualizado() {
+            document.getElementById("dark").style.display = "block";
+            document.getElementById("cadastroDesatualizado").style.display = "block";
+        }
+
+        function onlyNum(event) {
+            var isIE = (navigator.appName.indexOf("Microsoft") != -1) ? true : false;
+            if (!event) return false;
+            var keyNumber = (isIE) ? event.keyCode : event.which;
+            if (((keyNumber < 48) || (keyNumber > 57)) && (keyNumber != 13) && (keyNumber != "0") && (keyNumber != 8) && (!event.ctrlKey)) {
+                if (isIE) event.keyCode = 0;
+                return false;
+            }
+        }
+
+        function escondeAvisoCadastroDesatualizado() {
+            document.getElementById("dark").style.display = "none";
+            document.getElementById("cadastroDesatualizado").style.display = "none";
+            exibePopupRegrasMudaram();
+        }
+
+        function mostrarAvisoRecadastramentoObrigatorio() {
+            document.getElementById("dark").style.display = "block";
+            document.getElementById("recadastramentoObrigatorio").style.display = "block";
+        }
+
+        function exibePopupRegrasMudaram() {
+            var popup = document.getElementById("popupRegrasMudaram");
+            popup.style.display = 'block';
+        }
+
+        function retiraPopupRegrasMudaram() {
+            var popup = document.getElementById("popupRegrasMudaram");
+            popup.style.display = 'none';
+        }
+    </script></head>
+    
+    
+    <body>
+        <div id="msg"></div>
+        <input id="qtAcessos" type="text" style="display: none" value="23">
+        <div id="popupRegrasSetrans" onclick="retiraPopupRegrasSetrans()" style="width:100%; height:130%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10;">
+                <div class="banner">
+                    <img src="Abertura_arquivos/popupRegrasMudaram_v5.png" alt="Regras Setrans.">
+                </div>
+            </div><div id="popupRegrasMudaram" onclick="retiraPopupRegrasMudaram()" style="width:100%; height:130%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10;">
+                <div>
+                    <img class="banner" src="Abertura_arquivos/expresso_popup_366x540px_V7.png" alt="Riocard Mais">
+                </div>
+            </div><table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            
+            
+            <tbody><tr>
+                <td>
+                    
+
+
+<div class="menu_esq">
+	<div class="menu_dir">
+		<div class="menu">
+			<ul>
+				<li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+				<li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+				<li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+				<li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+				<li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+				<li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+				<li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+				<li style="width:9%;"><a href="">Sair</a></li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" valign="top" align="center">
+                    <div id="forms">
+                        <fieldset>
+                            <legend class="titulo">Riocard Mais -
+                                <span style="color:#2e7e9c;font-size:16px">Olá, COMPRADOR TESTE
+                                </span>
+                            </legend>
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody><tr>
+                                    
+                                    <td><strong style="color:#000000; font-size:12px;font-weight:bold; ">NÚmero do acesso: 23
+                                    </strong>
+                                    </td>
+                                    <td align="right"><strong style="color:#000000; font-size:12px;font-weight:bold;">Último acesso ao sistema: 04/08/2022 16:05:43
+                                    </strong>
+                                    </td>
+                                    
+                                </tr>
+                            </tbody></table>
+                            <div class="body">
+                                <div id="dark">
+                                    &nbsp;
+                                </div>
+
+                                <div id="cadastroDesatualizado" style="display:none;width:636px;height:405px;position:absolute;top:50%;left:50%;margin-top:-203px;margin-left:-318px;z-index:999;background-image:url(/scrcpr2/img/atualize_seus_dados.png)">
+                                    <div style="color:#FFFFFF;width:50px;height:50px;margin-left:580px;cursor:pointer" onclick="escondeAvisoCadastroDesatualizado()">&nbsp;
+                                    </div>
+                                    <div style="height:340px;width:580px;cursor:pointer" onclick="self.location.href = 'comprador/comprador/Comprador?action=edicaopf&amp;numDoc=12893764410&amp;reference=' + escape(self.location.href)">
+                                        &nbsp;
+                                    </div>
+                                </div>
+
+                                <div id="recadastramentoObrigatorio" class="p-3">
+                                    <div id="titulo-recadastramento">
+                                        Recadastramento necessário
+                                    </div>
+                                    
+                                    
+
+                                    <div id="div-recadastramento" class="mt-1">
+
+                                        <div id="erro_recadastramento" style="display:none">
+                                            <h4 id="msg_erro_recadastramento" class="text-danger"></h4>
+                                        </div>
+                                        <form id="form-recadastramento" method="post" action="/scrcpr2/Login?action=recadastramentoEndereco">
+                                            <input type="hidden" name="nrDocComprd" value="12893764410">
+
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="email">*E-Mail</label>
+                                                        <input type="text" class="form-control dados-cadastrais" id="email" name="email" placeholder="E-Mail" maxlength="60">
+                                                    </div>
+                                                        
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="telefone">*Telefone (com DDD)</label>
+                                                        <input type="text" class="form-control dados-cadastrais" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="nomeContato">*Nome de Contato</label>
+                                                        <input type="text" class="form-control dados-cadastrais" id="nomeContato" name="nomeContato" placeholder="Nome de Contato" maxlength="60">
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <div class="row">
+                                                <div id="msg-dados-obrigatorio" class="col text-left">
+                                                    <p>*Dados obrigatórios</p>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col text-center">
+                                                    <button id="atualizarDados" disabled="disabled" class="btn btn-primary btn-sm">Atualizar dados</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                                
+                                
+                            <table cellspacing="0" cellpadding="4" border="0" align="center">
+                                <tbody><tr>
+                                    <td>
+                                        <table width="100%" cellspacing="4" cellpadding="4" border="0">
+                                            <tbody><tr>
+                                                <td colspan="3">
+                                                    <span style="font-size:14px">Bem-vindo ao sistema de compras Riocard Mais!</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="70%" valign="top" height="100%">
+                                                    
+                                                    <table>
+                                                        <tbody><tr>
+                                                            <td class="textoalerta" align="center">
+                                                                <b>
+                                                                    
+                                                                </b>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                    
+                                                    <table width="100%" cellspacing="0" cellpadding="4" bordercolor="#26537f" border="0" align="center">
+                                                        <tbody><tr>
+                                                            <td width="100%" valign="top">
+                                                                <br>
+                                                                <div id="flat_btn_area" style="text-align: left">
+                                                                    <ul id="flat_btn">
+                                                                        <li style="width:400px;">
+                                                                        <a href="./PrePedido.html">
+                                                                                 Recarregar meu cartão
+                                                                            </a>
+                                                                        </li>
+                                                                        <li style="width:400px;">
+                                                                            <a href="./ConsultaComprador.html">
+                                                                                Alterar dados cadastrais do comprador
+                                                                            </a>
+                                                                        </li>
+                                                                        <li style="width:400px;">
+                                                                            <a href="./registrarCartao.html">
+                                                                                 Cadastrar cartão
+                                                                            </a>
+                                                                        </li>
+                                                                            
+                                                                        <li style="width:400px;">
+                                                                            <a href="https://riobilheteunico.com.br/declaracao/" target="_blank">
+                                                                                 Atualização da declaração de renda
+                                                                            </a>
+                                                                            
+                                                                        </li>
+                                                                        <li style="width:400px;">
+                                                                            <a href="./GerenciarUsuario.html">
+                                                                                 Solicitar Cartão
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <br>
+                                                                </div>
+                                                                <div class="regras_setrans">
+                                                                    <a href="https://www.riobilheteunico.com.br/" style="color: white;font-family: Trebuchet MS;font-size: 17px;" target="_blank">
+                                                                        Regras para concessão do Bilhete Único Intermunicipal
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                    
+                                                </td>
+                                                <td width="35%" valign="top" height="100%" align="center">
+                                                    <table cellspacing="3" cellpadding="0" border="0">
+                                                        <tbody><tr>
+                                                            <td>
+
+                                                                <br>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                    </fieldset></div>
+                    
+                    
+                </td>
+            </tr>
+        </tbody></table>
+        <br>
+
+        <script type="text/javascript">
+            
+            
+            
+            
+            
+
+            function exibePopupRegrasSetrans() {
+                document.getElementById("popupRegrasSetrans").style.display = 'block';
+            }
+
+            function retiraPopupRegrasSetrans() {
+                document.getElementById("popupRegrasSetrans").style.display = 'none';
+            }
+
+            function listarEnderecos(cep) {
+
+                if (cep != "") {
+
+                    ManagerAjax.listarEnderecosPorCep(callbackEndereco, cep);
+                } else {
+                    exibirMensagemErro("Favor informar o CEP.");
+                }
+            }
+
+            function callbackEndereco(lista) {
+                let inputs = $("#div-recadastramento").parents();
+
+                if (lista.length === 1) {
+                    let endereco = lista[0];
+                    let tpLogradouro = '';
+                    const tiposLogradouro = ['Rua', 'Avenida', 'Travessa', 'Conjunto'];
+                    let bairro = endereco.bairro == null ? "" : endereco.bairro.toUpperCase();
+                    let cidade = endereco.cidade == null ? "" : endereco.cidade.toUpperCase();
+                    let estado = endereco.sgUf != null ? endereco.sgUf : "";
+
+                    if (endereco.tpLogradouro && tiposLogradouro.includes(endereco.tpLogradouro)) {
+                        tpLogradouro = endereco.tpLogradouro.toUpperCase();
+                    }
+                    let enderecoComTipoLogradouro = endereco.logradouro == null ? "" : (tpLogradouro + " " + endereco.logradouro.toUpperCase());
+
+                    inputs.find('.auto').removeClass("hide");
+                    inputs.find('.manual').addClass("hide");
+
+                    $('#endereco').val(enderecoComTipoLogradouro).attr('disabled', true);
+                    $('#bairro').val(bairro).attr('disabled', true);
+                    $('#cidade').val(cidade).attr('disabled', true);
+                    $('#estado').val(estado).attr('disabled', true);
+
+                    if((endereco.logradouro == null && endereco.bairro == null) && endereco.cidade != null){
+                        $('#endereco').val(enderecoComTipoLogradouro).attr('disabled', false).focus();
+                        $('#bairro').val(bairro).attr('disabled', false);
+                    }
+
+                    if((endereco.logradouro != null && endereco.bairro != null) && endereco.cidade != null ){
+                        $('#endereco').val(enderecoComTipoLogradouro).attr('title', enderecoComTipoLogradouro).attr('disabled', true);
+                        $('#bairro').val(bairro).attr('disabled', true);
+                        $('#numero').focus();
+                    }
+
+
+                    $('#numero').attr('disabled', false).focus();
+                    $('#complemento').attr('disabled', false);
+                    $('#atualizarDados').attr('disabled', false);
+
+                } else {
+                    exibirMensagemErro("Nenhum endere\u00E7o localizado para o CEP informado. Preencha o formul\u00E1rio.");
+                    limparCamposEndereco();
+                    inputs.find('.manual').removeClass("hide");
+                    inputs.find('.auto').addClass("hide");
+
+                    $('#endereco').attr('disabled', false).focus();
+                    $('#estado').attr('disabled', false);
+                    $('#numero').attr('disabled', false);
+                    $('#complemento').attr('disabled', false);
+                    $('#atualizarDados').attr('disabled', false);
+
+
+                }
+            }
+
+            function callbackUfs(lista) {
+
+                if (lista.length > 0) {
+                    let options = [];
+
+                    $.each(lista, function (index, value) {
+                        options.push($("<option/>").text(value.nmUf).val(value.sgUf));
+                    })
+                    $("#estado").append(options);
+                } else {
+                    console.log('lista = 0');
+                }
+            }
+
+            function callbackCidades(lista) {
+                let options = [];
+
+                let inputCidade = $("#codigoCidade");
+                if (lista.length > 0) {
+                    options.push($("<option/>").text("Selecione uma Cidade").val(""));
+                    $.each(lista, function (index, value) {
+                        options.push($("<option/>").text(value.dsCidade).val(value.cdCidade));
+                    })
+                    inputCidade.attr('disabled', false);
+                } else {
+                    options.push($("<option/>").text("Nenhum bairro encontrado").val(""));
+                }
+                inputCidade.html(options);
+
+            }
+
+            function callbackBairros(lista) {
+                let options = [];
+                let inputBairro = $("#codigoBairro");
+                if (lista.length > 0) {
+                    options.push($("<option/>").text("Selecione um Bairro").val(""));
+                    $.each(lista, function (index, value) {
+                        options.push($("<option/>").text(value.dsBairro).val(value.cdBairro));
+                    })
+                    inputBairro.attr('disabled', false);
+                } else {
+                    options.push($("<option/>").text("Nenhum bairro encontrado").val(""));
+                }
+
+                inputBairro.html(options);
+            }
+
+            function limparCamposEndereco() {
+                let inputs = $("#div-recadastramento").parents();
+                inputs.find('.auto').removeClass("hide");
+                inputs.find('.manual').addClass("hide");
+
+                $('#endereco').val('').attr('disabled', true);
+                $('#bairro').val('').attr('disabled', true);
+                $('#cidade').val('').attr('disabled', true);
+                $('#estado').val('').attr('disabled', true);
+                $('#numero').val('').attr('disabled', true);
+                $('#complemento').val('').attr('disabled', true);
+                $('#atualizarDados').attr('disabled', true);
+
+            }
+
+            function exibirMensagemErro(msg) {
+
+                document.getElementById('erro_recadastramento').style.display = 'block';
+                document.getElementById('msg_erro_recadastramento').innerHTML = msg;
+            }
+
+            function esconderMensagemErro() {
+
+                var cepErroDiv = document.getElementById('erro_recadastramento');
+                cepErroDiv.style.display = 'none';
+            }
+
+            function isValidEmailAddress(emailAddress) {
+                var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+                return pattern.test(emailAddress);
+            }
+
+            $(document).ready(function () {
+
+                let $dadosCadastraraisElements = $("#form-recadastramento input.dados-cadastrais");
+
+                $dadosCadastraraisElements.on('blur', function () {
+                    if ($dadosCadastraraisElements.filter(function () {
+                        return $.trim($(this).val()).length === 0
+                    }).length === 0 && $("#pesquisar-cep").length === 0) {
+                        $('#atualizarDados').attr('disabled', false);
+                    }
+                });
+
+                $(".numbersOnly").on('paste keyup', function(e){
+                    let clearValue = $(this).val().replace(/[^\d]/g, '');
+                    jQuery(this).val(clearValue);
+                });
+
+
+                ManagerAjax.listarUFs(callbackUfs);
+
+                $("#pesquisar-cep").on('click', function () {
+                    let cep = $("#numero-cep").val();
+                    let repeatedNumbers = /^(\d)\1{2,}$/;
+                    $('#form-recadastramento').find('input, select, label').removeClass('text text-danger border border-danger');
+                    if (cep.length !== 8 || repeatedNumbers.test(cep)) {
+                        limparCamposEndereco()
+                        document.getElementById('erro_recadastramento').style.display = 'block';
+                        document.getElementById('msg_erro_recadastramento').innerHTML = "Digite um CEP válido";
+                        return false;
+                    }
+                    esconderMensagemErro();
+                    $("#codigoCidade").find('option').not(':first').remove();
+                    $("#codigoBairro").find('option').not(':first').remove();
+                    listarEnderecos(cep);
+                    return false;
+                });
+
+                $("#estado").on('change', function () {
+                    let siglaEstado = $(this).val();
+                    $("#codigoCidade").find('option').not(':first').remove();
+                    $("#codigoBairro").find('option').not(':first').remove();
+                    ManagerAjax.listarCidades(callbackCidades, siglaEstado);
+                });
+
+                $("#codigoCidade").on('change', function () {
+                    let codigo = $(this).val();
+                    let text = $(this).children("option:selected").text();
+                    $("#codigoBairro").find('option').not(':first').remove();
+                    $("#cidade").val(text);
+                    ManagerAjax.listarBairros(callbackBairros, codigo);
+                });
+
+                $("#codigoBairro").on('change', function () {
+                    let text = $(this).children("option:selected").text();
+                    $("#bairro").val(text);
+                });
+
+
+                $('#atualizarDados').on('click', function () {
+                    let hasError = false;
+                    let msg = '';
+                    $('#form-recadastramento').find('input, select').not('.hide').not('#complemento').each(function (index, value) {
+                        if ($(value).val() === '') {
+                            $(this).addClass('border border-danger');
+                            $(value).parent().find('label').addClass('text text-danger');
+                            hasError = true;
+                            msg = 'Por favor, preencha os campos obrigatórios';
+                        }
+                    });
+
+                    if (!isValidEmailAddress($('#email').val())){
+                        hasError = true;
+                        msg = 'Digite um endereço de e-mail válido';
+                    }
+
+                    let cep = $("#numero-cep").val();
+                    let repeatedNumbers = /^(\d)\1{2,}$/;
+                    if (cep.length !== 8 || repeatedNumbers.test(cep)) {
+                        $("#numero-cep").addClass('border border-danger');
+                        $("#numero-cep").parent().find('label').addClass('text text-danger');
+                        msg = "Digite um CEP válido";
+                        hasError = true;
+                    }
+
+                    if (hasError){
+                        exibirMensagemErro('Por favor, preencha os campos obrigatórios')
+                    } else {
+                        $('#telefone').unmask();
+                        document.getElementById("dark").style.display = "none";
+                        document.getElementById("recadastramentoObrigatorio").style.display = "none";
+                    }
+
+                    return !hasError;
+                })
+
+                 $('#form-recadastramento').submit(function (event) {
+                     $(this).find('input, select').removeAttr('disabled');
+                 })
+
+                $('#telefone').focusout(function () {
+                    var phone, element;
+                    element = $(this);
+                    element.unmask();
+                    phone = element.val().replace(/\D/g, '');
+                    if (phone.length > 10) {
+                        element.mask("(99)99999-999?9");
+                    } else {
+                        element.mask("(99)9999-9999?9");
+                    }
+                }).trigger('focusout');
+
+
+                $('#email').focusout(function () {
+
+                    if ($(this).val() && !isValidEmailAddress($(this).val())){
+                        exibirMensagemErro("Digite um endereço de e-mail válido");
+                    }else{
+                        esconderMensagemErro();
+                    }
+
+
+                }).trigger('focusout');
+
+
+                $('#nomeContato').keyup(function () {
+                    this.value = this.value.replace(/[^A-Za-z������������������������������� ]/g,'');
+                });
+
+            });
+
+        </script>
+    
+
+</body></html>

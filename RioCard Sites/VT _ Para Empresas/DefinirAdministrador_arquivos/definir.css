@@ -1,0 +1,76 @@
+/* CSS Document */
+
+table.CPF_CNPJ tr td * {
+	display: block;
+}
+
+table.CPF_CNPJ tr td input {
+	margin-right: 3px;
+}
+
+table.CPF_CNPJ tr td label {
+	margin-right: 8px;
+}
+
+table.CPF_CNPJ tr td label.ultimo {
+	margin-right: 0px;
+}
+
+.link_mostrar_outra_imagem {
+	margin-top: 18px;
+	background: url(../../visitante/login/imagens/bt_mostrar_outra_imagem.gif) no-repeat top left;
+	padding-left: 18px;
+	display: block;
+	padding-bottom: 2px;
+}
+
+.link_mostrar_outra_imagem a {
+	text-decoration: none;
+}
+
+.imagem_cadastro .imagem {
+	display: block;
+	float: left;
+	margin-left: 8px;
+}
+
+.imagem_cadastro .imagem img {
+	border: 1px solid #d1dde9;
+}
+
+.imagem_cadastro .mostrar_outra_imagem {
+	float: left;
+	width: 140px;
+	margin-left: 12px;
+	margin-right: 0px;
+}
+
+fieldset.nivel_02 {
+	margin-bottom: 6px;
+}
+
+.formulario2 {
+	float: left;
+}
+
+fieldset .ajuda_pesquisa {
+	margin-top: 60px;
+}
+
+input.cpf_cnpj_cei {
+	width: 201px;
+}
+
+h3.nome_empresa {
+	float: left;
+	margin-top: 10px;
+}
+
+h3.nome_empresa strong {
+	font-size: 16px;
+	font-weight: bold;
+}
+.bt_pesquisar {
+	display: block;
+	float: left;
+}

@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+		<title>Riocard Mais Vale-Transporte</title>
+		<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+		<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+		<link href="alterarsenha_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="alterarsenha_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="alterarsenha_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="alterarsenha_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="alterarsenha_arquivos/comum.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="alterarsenha_arquivos/dados.css" media="all">
+		<link rel="stylesheet" type="text/css" href="alterarsenha_arquivos/home.css" media="all">
+		<link rel="stylesheet" type="text/css" href="alterarsenha_arquivos/coluna_direita.css" media="all">
+	
+	  <style type="text/css">
+        .estilo_banner_popup{
+			background:#F1F1F1;
+			font-size:16px; 
+			text-align:center;
+			color:#4c8e38;
+			padding:20px;
+			border:5px solid #8b8b8b;
+			top: 80%;
+			position: absolute;
+			left:50%;  
+			width:448px; 
+			margin-left:-224px; 
+			margin-top:-384px;
+			display: none;
+			z-index:11;
+        }
+        .estilo_fechar_banner_popup {
+            height:25px;
+            background:#FFF;
+            color:#666;
+            cursor: pointer;
+            text-align: right;
+            padding-right:0px;
+            padding-top:3px;
+        }
+    </style>
+	
+	</head>
+	<body class="comprador">
+	
+		
+		<div id="site" class="clearfix">
+		  	
+	<a name="topo"></a>
+
+
+
+
+		  	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 0px;">Comprador <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');">relatórios <img src="alterarsenha_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="https://www.cartaoriocard.com.br/vt2/home/Logout.do">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="alterarsenha_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+	<div class="dropdowns">
+
+		<div class="dropdown" id="dropdown_comprador">
+			<ul>
+				<li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+			  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+			  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+			  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+			  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+			  
+				   
+				 
+			  
+				<li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+			</ul>
+		</div>
+		<div class="dropdown" id="dropdown_administrador"> 
+		  <ul>
+			  <li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+			<li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_usuarios"> 
+		  <ul>
+			<li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+			<li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+			<li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+			<li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+			<li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_cartoes">
+		  <ul>
+			<li><a href="./ConsultaCartoes.html">Consulta</a></li>
+			<li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+			<li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+			<li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+			<li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+			<li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown" id="dropdown_pedidos">
+			<ul>
+				 <li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+				<li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+			 </ul>
+		</div>    	
+		<div class="dropdown" id="dropdown_relatorios">
+		  <ul>
+			<li>
+				<a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+			</li>
+			<li>
+				<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+			</li>
+			<li>
+				<a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+			</li>        
+			<li>
+				<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+			</li>
+			<li>
+				<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+			</li>
+				
+		  </ul>
+		</div>
+   <div class="dropdown" id="dropdown_ajuda">
+      <ul>      
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_indice.jsp">Índice</a></li>
+      	<li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=s01#s01">Introdução</a></li>
+      	<li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=s02#s02">Passo a passo</a></li>    
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u01#u01">Home</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u02#u02">Comprador</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u03#u03">Administrador</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u04#u04">Usuários</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u05#u05">Cartões</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u06#u06">Pedidos</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u07#u07">Relatórios</a></li>
+      </ul>
+	</div>
+
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+		  	<div class="conteudo_interna">
+	  			<div id="titulo_pag" class="titulo_pag">
+	      			<div class="borda_esq">
+	        			<div class="borda_dir">
+	          				<h1>Alterar Senha</h1>
+	        			</div>	
+	      			</div>
+	    		</div>
+	    		
+				<div id="fields" class="col_principal clearfix" style="padding-top: 10px;">
+					
+				<div id="dark" style="position:absolute;top:0;left:0;width:100%;height:150%;z-index:10;background:#000;opacity:0.8;filter:alpha(opacity=80); display:none;">
+					&nbsp;
+				</div>
+				
+				<div id="bannerNewPassword" class="estilo_banner_popup">
+					<img src="alterarsenha_arquivos/confirm.gif"> Sua senha foi alterada com sucesso
+					<br>
+					<br>
+					<input type="image" onclick="closeBannerNewPassword();" name="imageField" src="alterarsenha_arquivos/botaozinho_ok.gif" class="button">
+				</div>
+	
+					
+						
+							
+						
+				  			
+				  			
+				  			
+						
+							<form name="trocaSenhaCompradorForm" id="form" method="post" action="/vt2/comprador/comprador/TrocaSenhaSave.do" style="margin-top: 20px;">
+									<fieldset class="nivel_01 cpf_cnpj">
+									  	
+									  		
+												<legend>CPF</legend>
+												<p>123.456.789-10</p> 									
+											
+											
+											
+									  	
+							      </fieldset>
+							      <fieldset class="nivel_01">
+									  <legend>Perfil</legend>
+									  <p class="com_ajuda">
+									  	<strong>PESSOA FÍSICA</strong> - 0 usuários
+									  </p>
+									  <a href="javascript:ajuda('u02c02t01');" class="btn_ajuda"><img src="alterarsenha_arquivos/btn_ajuda.gif" alt="Ajuda"></a>
+							     </fieldset>
+								 <fieldset class="nivel_01"><legend>Senha</legend>
+									  <table class="formulario1" cellspacing="0">
+										<tbody><tr>
+										  <td style="width: 20%">
+										  	<label>Senha Atual</label>
+										  </td>
+										  <td>			
+									  		<input type="password" name="senha" maxlength="8" value="" id="senha" class="senha">
+										  </td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+											<td>
+										  		<span>
+										  			
+										  		</span>									
+											</td>
+										</tr>
+										<tr>
+											<td>
+										  		<label>Nova Senha</label>
+											</td>
+											<td>
+												<input type="password" name="novaSenha" maxlength="8" value="" id="novaSenha" class="senha">
+											</td>
+											<td>
+										  		<label>Confirmar Nova Senha</label>
+											</td>
+											<td>
+												<input type="password" name="novaSenhaConfirmacao" maxlength="8" value="" id="confNovaSenha" class="senha">
+											</td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+											<td>
+												<span>
+											  		
+											  	</span>
+											</td>
+											<td>&nbsp;</td>
+											<td>
+												<span>
+											  		
+											  	</span>
+											</td>									
+										</tr>
+										<tr>
+											<td colspan="4">
+												<br>
+												<span>
+										  			
+										  		</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td colspan="3">
+
+												<p>
+												<br>
+												Troque regularmente sua Senha. 
+												Ela deve ser complexa, secreta e de uso restrito, pois a sua
+ descoberta ou divulgação poderá permitir o acesso indevido ao sistema, 
+por pessoas não autorizadas.
+												<br><br>
+												Requisitos da nova senha:<br>
+												- Ter no mínimo sete caracteres e no máximo oito;<br>
+												- Deve conter caracteres numéricos e alfanuméricos;<br>
+												- Deve possuir no mínimo uma letra minúscula;<br>
+												- Deve possuir no mínimo uma letra minúscula;<br>
+												- Pode conter caractere especial (apenas $,@ e #);<br>
+												- Não poderá repetir as últimas três senhas;<br>
+												- Deve ser modificada a cada 90 dias.<br>
+												</p>
+
+											</td>
+										</tr>
+									  </tbody></table>
+									  <a href="#" class="btn_gravar_master" onclick="submitForm();"><img src="alterarsenha_arquivos/btn_gravar_master.gif" alt="Alterar"></a> 
+								</fieldset>
+							</form>						
+						
+						
+					
+									
+
+				</div>
+			</div>
+		    <div class="col_secundaria clearfix">
+		      <div class="termo">
+		        <img src="alterarsenha_arquivos/imagem_download.png" alt="" width="57" height="43">
+		        <h3><strong><a href="https://www.cartaoriocard.com.br/vt2/comprador/comprador/termo_comodato.jsp">Termo de Comodato</a></strong></h3>
+		        <p>
+		        	<a href="https://www.cartaoriocard.com.br/vt2/comprador/comprador/termo_comodato.jsp">Clique aqui e visualize o Termo de Comodato, documento que rege o uso do cartão Vale-Transporte.</a>
+		        </p>
+		        <p class="link_mais"><a href="https://www.cartaoriocard.com.br/vt2/comprador/comprador/termo_comodato.jsp">Leia Mais</a></p>
+		      </div>
+		    </div>
+		    <div class="menu_rodape clearfix">
+  <h3><span>Comprador</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./dadosdocomprador.html">Dados do Comprador</a></li>
+    <li id="menuRodapeItem02" class="active"><a href="./TrocaSenha.html">Alterar Senha</a></li>
+    <li id="menuRodapeItem04"><a href="./VisualizarTermoComodato.html">Termo de Comodato</a></li>
+    <li id="menuRodapeItem08"><a href="./VisualizarTermoDeUso.html">Termo de Uso</a></li>
+    <li id="menuRodapeItem05"><a href="./TransferenciaBolsaUsuario.html">Transferẽncia de Bolsa de Crédito</a></li>
+   	
+		
+	 			  	  		  
+ 	 
+      <li id="menuRodapeItem05"><a href="./MultaDesassociacao.html">Serviço Extraordinário de Desassociação</a></li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('DadosComprador') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('TrocaSenha') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('Comodato') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('TransferenciaBolsaUsuario') != -1) {
+		document.getElementById('menuRodapeItem05').className = 'active';
+	} else if (document.URL.indexOf('Vip') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('VipVisulizarContrato') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('FaturaPesquisaFiltro') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+	
+	
+</script>
+		</div>
+		
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="alterarsenha_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+	
+	<script language="javascript" src="alterarsenha_arquivos/scripts.js"></script>
+	<script language="JavaScript" src="alterarsenha_arquivos/lightboxAjuda.js"></script>
+	<!-- DWR declarations -->
+	<script type="text/javascript" src="alterarsenha_arquivos/RioCardVT.js"></script>
+	<script type="text/javascript" src="alterarsenha_arquivos/engine.js"></script>
+	<script type="text/javascript" src="alterarsenha_arquivos/util.js"></script>
+	
+	
+	
+	<script type="text/javascript">
+		
+		 function ValidaDados() {
+	
+	         var minchar = 7;
+	         var maxChar = 8;
+	         
+	         var senha 			= document.getElementById("senha");
+	         var novaSenha 		= document.getElementById("novaSenha");
+	         var confNovaSenha 	= document.getElementById("confNovaSenha");
+	
+	         if (senha.value == "") {
+	             alert("A senha atual deve ser informada!");
+	             senha.focus();
+	             return false;
+	         }
+	
+	         if (novaSenha.value == "") {
+	             alert("A nova senha \u00E9 obrigat\u00F3ria!");
+	             novaSenha.focus();
+	             return false;
+	         } else
+	         if ( novaSenha.value.length < minchar) {
+	             alert("A nova senha deve ter no m\u00EDnimo "+ minchar +" caracteres!");
+	             novaSenha.focus();
+	             return false;
+	         } else
+	         if ( novaSenha.value.length > maxChar) {
+	             alert("A senha atual deve ter no m\u00E1ximo "+ maxChar +" caracteres!");
+	             novaSenha.focus();
+	             return false;
+	         }
+	
+	         if (confNovaSenha.value == "") {
+	             alert("A confirma\u00E7\u00E3o da senha \u00E9 obrigat\u00F3ria!");
+	             confNovaSenha.focus();
+	             return false;
+	         }else
+	         if (novaSenha.value != confNovaSenha.value) {
+	             alert("A nova senha e a confirma\u00E7\u00E3o n\u00E3o conferem!");
+	             novaSenha.focus();
+	             return false;
+	         } else{
+	             if ( confNovaSenha.value.length < minchar) {
+	                 alert("A confirma\u00E7\u00E3o da deve ter no m\u00EDnimo "+ minchar +" caracteres!");
+	                 confNovaSenha.focus();
+	                 return false;
+	             } else
+	             if ( confNovaSenha.value.length > maxChar) {
+	                 alert("A confirma\u00E7\u00E3o da senha atual deve ter no m\u00E1ximo "+ maxChar +" caracteres!");
+	                 confNovaSenha.focus();
+	                 return false;
+	             }
+	         }
+	
+	         return true;
+	     }
+
+
+	 	function closeBannerNewPassword(){
+			window.location='../home/CarregarHome.do';
+		}
+
+		function submitForm(){
+			
+			if(ValidaDados()){
+				document.getElementById("form").submit();
+			}
+
+		}
+	</script>
+	
+</body></html>

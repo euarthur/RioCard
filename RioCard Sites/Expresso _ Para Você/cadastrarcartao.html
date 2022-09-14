@@ -1,0 +1,689 @@
+<html><head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <title>RIOCARD - Registrar Cartão Expresso</title>
+        <link rel="stylesheet" type="text/css" href="cadastrarcartao_arquivos/homeestilos.css">
+        <link id="rel" rel="stylesheet" href="cadastrarcartao_arquivos/riocard.css">
+        <script type="text/javascript" src="cadastrarcartao_arquivos/tooltip.js"></script>
+        <script src="cadastrarcartao_arquivos/jquery-1.9.1.min.js"></script>
+        <style>
+            .banner {
+                z-index: 11;
+                position: absolute;
+                width: 448px;
+                left: 35%;
+                top: 40%;
+                transform: translate(-50%, -50%);
+            }
+            
+            .banner img {
+                border-radius: 20px;
+            }
+            
+            strong {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    
+
+
+                    <div class="menu_esq">
+                        <div class="menu_esq">
+                            <div class="menu_dir">
+                                <div class="menu">
+                                    <ul>
+                                        <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                        <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                        <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                        <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                        <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                        <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                        <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                        <li style="width:9%;"><a href="">Sair</a></li>
+                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" valign="top" align="center">
+                    <div id="forms">
+                        <fieldset>
+                            <legend class="titulo">Cadastrar cartão</legend>
+                            <form name="frmRegistrarCartao" action="Expresso" method="get" id="frmRegistrarCartao">
+                                <div style="margin-left: 2px;">
+                                    <p><strong>Nesta página você poderÁ:</strong>
+                                        <br>
+                                        <br>
+                                        </p><p>
+                                            -Cadastrar um cartão 
+Expresso, para recuperar seus créditos em caso de cancelamento por perda
+ ou roubo.
+                                        </p>
+                                        <p>
+                                            -Habilitar o benefício do 
+Bilhete Único Intermunicipal. Só é permitido um BUI por CPF
+                                        </p>
+                                        <p>
+                                            Atenção: ao cadastrar o CPF 
+desabilitando a opção BUI, automaticamento os demais
+                                            benefícios(ex: BU Niterói, 
+BRT+Metrô, BU Aquaviário,etc) serão habilitados no seu cartão.
+                                        </p>
+                                        <p>
+                                            Para saber mais sobre benefícios tarifários,
+                                            <a href="http://www.riobilheteunico.com.br/" target="_blank">clique aqui</a>.
+                                        </p>
+                                    <p></p>
+                                </div>
+                                <br>
+                                <table width="70%" cellspacing="1" cellpadding="4" border="0" align="center">
+                                    <tbody><tr>
+                                        <td style="color:#006BBC;" align="center">
+                                            <strong>
+                                                &nbsp; </strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table id="listaCartao" width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
+                                                
+                                                <tbody><tr bgcolor="#dfe6eb">
+                                                    <td width="7%" align="center"><strong>Seq.</strong></td>
+                                                    <td align="center"><strong>Número do Cartão</strong></td>
+                                                    <td align="center"><strong>Número do CHIP</strong></td>
+                                                    <td align="center"><strong>Habilitar BUI</strong></td>
+                                                    <td align="center"><strong>CPF Usuário</strong></td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_1" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        1
+                                                        <input name="nrIndice" type="hidden" value="1">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_1" name="nrCartaoSc_1" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_1" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_1" name="selecionados" style="border:0" type="checkbox" checked="checked" value="1" onclick="desabilitarCpf(this, 'nrCpf_1', 'idNrCartaoSc_1');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_1" id="nrCpf_1" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_2" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        2
+                                                        <input name="nrIndice" type="hidden" value="2">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_2" name="nrCartaoSc_2" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_2" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_2" name="selecionados" style="border:0" type="checkbox" checked="checked" value="2" onclick="desabilitarCpf(this, 'nrCpf_2', 'idNrCartaoSc_2');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_2" id="nrCpf_2" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_3" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        3
+                                                        <input name="nrIndice" type="hidden" value="3">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_3" name="nrCartaoSc_3" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_3" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_3" name="selecionados" style="border:0" type="checkbox" checked="checked" value="3" onclick="desabilitarCpf(this, 'nrCpf_3', 'idNrCartaoSc_3');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_3" id="nrCpf_3" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_4" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        4
+                                                        <input name="nrIndice" type="hidden" value="4">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_4" name="nrCartaoSc_4" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_4" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_4" name="selecionados" style="border:0" type="checkbox" checked="checked" value="4" onclick="desabilitarCpf(this, 'nrCpf_4', 'idNrCartaoSc_4');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_4" id="nrCpf_4" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_5" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        5
+                                                        <input name="nrIndice" type="hidden" value="5">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_5" name="nrCartaoSc_5" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_5" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_5" name="selecionados" style="border:0" type="checkbox" checked="checked" value="5" onclick="desabilitarCpf(this, 'nrCpf_5', 'idNrCartaoSc_5');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_5" id="nrCpf_5" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_6" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        6
+                                                        <input name="nrIndice" type="hidden" value="6">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_6" name="nrCartaoSc_6" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_6" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_6" name="selecionados" style="border:0" type="checkbox" checked="checked" value="6" onclick="desabilitarCpf(this, 'nrCpf_6', 'idNrCartaoSc_6');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_6" id="nrCpf_6" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_7" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        7
+                                                        <input name="nrIndice" type="hidden" value="7">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_7" name="nrCartaoSc_7" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_7" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_7" name="selecionados" style="border:0" type="checkbox" checked="checked" value="7" onclick="desabilitarCpf(this, 'nrCpf_7', 'idNrCartaoSc_7');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_7" id="nrCpf_7" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_8" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        8
+                                                        <input name="nrIndice" type="hidden" value="8">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_8" name="nrCartaoSc_8" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_8" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_8" name="selecionados" style="border:0" type="checkbox" checked="checked" value="8" onclick="desabilitarCpf(this, 'nrCpf_8', 'idNrCartaoSc_8');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_8" id="nrCpf_8" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_9" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        9
+                                                        <input name="nrIndice" type="hidden" value="9">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_9" name="nrCartaoSc_9" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_9" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_9" name="selecionados" style="border:0" type="checkbox" checked="checked" value="9" onclick="desabilitarCpf(this, 'nrCpf_9', 'idNrCartaoSc_9');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_9" id="nrCpf_9" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_10" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        10
+                                                        <input name="nrIndice" type="hidden" value="10">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_10" name="nrCartaoSc_10" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_10" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_10" name="selecionados" style="border:0" type="checkbox" checked="checked" value="10" onclick="desabilitarCpf(this, 'nrCpf_10', 'idNrCartaoSc_10');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_10" id="nrCpf_10" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_11" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        11
+                                                        <input name="nrIndice" type="hidden" value="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_11" name="nrCartaoSc_11" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_11" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_11" name="selecionados" style="border:0" type="checkbox" checked="checked" value="11" onclick="desabilitarCpf(this, 'nrCpf_11', 'idNrCartaoSc_11');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_11" id="nrCpf_11" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_12" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        12
+                                                        <input name="nrIndice" type="hidden" value="12">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_12" name="nrCartaoSc_12" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_12" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_12" name="selecionados" style="border:0" type="checkbox" checked="checked" value="12" onclick="desabilitarCpf(this, 'nrCpf_12', 'idNrCartaoSc_12');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_12" id="nrCpf_12" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_13" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        13
+                                                        <input name="nrIndice" type="hidden" value="13">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_13" name="nrCartaoSc_13" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_13" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_13" name="selecionados" style="border:0" type="checkbox" checked="checked" value="13" onclick="desabilitarCpf(this, 'nrCpf_13', 'idNrCartaoSc_13');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_13" id="nrCpf_13" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_14" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        14
+                                                        <input name="nrIndice" type="hidden" value="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_14" name="nrCartaoSc_14" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_14" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_14" name="selecionados" style="border:0" type="checkbox" checked="checked" value="14" onclick="desabilitarCpf(this, 'nrCpf_14', 'idNrCartaoSc_14');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_14" id="nrCpf_14" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_15" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        15
+                                                        <input name="nrIndice" type="hidden" value="15">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_15" name="nrCartaoSc_15" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_15" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_15" name="selecionados" style="border:0" type="checkbox" checked="checked" value="15" onclick="desabilitarCpf(this, 'nrCpf_15', 'idNrCartaoSc_15');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_15" id="nrCpf_15" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_16" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        16
+                                                        <input name="nrIndice" type="hidden" value="16">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_16" name="nrCartaoSc_16" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_16" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_16" name="selecionados" style="border:0" type="checkbox" checked="checked" value="16" onclick="desabilitarCpf(this, 'nrCpf_16', 'idNrCartaoSc_16');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_16" id="nrCpf_16" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_17" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        17
+                                                        <input name="nrIndice" type="hidden" value="17">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_17" name="nrCartaoSc_17" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_17" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_17" name="selecionados" style="border:0" type="checkbox" checked="checked" value="17" onclick="desabilitarCpf(this, 'nrCpf_17', 'idNrCartaoSc_17');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_17" id="nrCpf_17" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_18" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        18
+                                                        <input name="nrIndice" type="hidden" value="18">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_18" name="nrCartaoSc_18" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_18" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_18" name="selecionados" style="border:0" type="checkbox" checked="checked" value="18" onclick="desabilitarCpf(this, 'nrCpf_18', 'idNrCartaoSc_18');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_18" id="nrCpf_18" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_19" style="display:none" bgcolor="#FFFFFF" align="center">
+                                                    <td align="center">
+                                                        19
+                                                        <input name="nrIndice" type="hidden" value="19">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_19" name="nrCartaoSc_19" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_19" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_19" name="selecionados" style="border:0" type="checkbox" checked="checked" value="19" onclick="desabilitarCpf(this, 'nrCpf_19', 'idNrCartaoSc_19');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_19" id="nrCpf_19" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                                    
+                                                    
+                                                    
+                                                <tr id="tr_20" style="display:none" bgcolor="#F1F1F1" align="center">
+                                                    <td align="center">
+                                                        20
+                                                        <input name="nrIndice" type="hidden" value="20">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="idNrCartaoSc_20" name="nrCartaoSc_20" type="text" class="cxlaranja" maxlength="13" size="14">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input name="nrChipCartaoSc_20" type="text" class="cxlaranja" maxlength="10" size="11">
+                                                    </td>
+                                                    <td align="center">
+                                                        <input id="selecionado_20" name="selecionados" style="border:0" type="checkbox" checked="checked" value="20" onclick="desabilitarCpf(this, 'nrCpf_20', 'idNrCartaoSc_20');">
+                                                    </td>
+                                                    <td>
+                                                        <input name="nrCpf_20" id="nrCpf_20" type="text" class="cxlaranja" maxlength="11" size="12">
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody></table>
+                                            <div style="border-top:1px dotted #CCCCCC;margin-top:8px;width:97%;margin-left:17px;">
+                                                <a href="javascript:addLinha()">Incluir novo campo de cadastro</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <input type="button" name="btnVoltar" value="Voltar" class="button btn-company" >
+                                            <input type="button" name="btnEnviar" value="Enviar" class="button btn-company">
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                <input type="hidden" name="totalCartao" value="">
+                                <input type="hidden" name="action" id="action" value="">
+                            </form>
+                        </fieldset>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+        <br>
+        <div id="dark" style="position:absolute;z-index:900;width:100%;height:150%;background: url('../../img/overlay.png');opacity:1;-moz-opacity: 0.65;filter: alpha(opacity=65);display:none;top:0;left:0;)">
+            &nbsp;
+        </div>
+        <div id="avisoAdministrador" onclick="escondeBannerUsuario()" style="display: none;width: 754px;height: 600px;position: fixed;top: 0px;bottom: 0px;left: 0px;right: 0px;margin: auto;z-index: 999;background: white;">
+            <iframe id="iframeTermo" style="border-style: groove;" marginheight="2" marginwidth="2" title="Termo de uso" scrolling="auto" src="cadastrarcartao_arquivos/termo_aceite.html" width="750" height="550" frameborder="1"></iframe>
+            <div id="buttons" style="background: white;text-align: center;height: 45px;vertical-align: middle;">
+                <input id="cancelar" type="button" class="button " value="Não Aceito" style="margin-right: 40px;margin-top: 6px;">
+                <input id="enviar" type="button" class="button " value="Aceito">
+            </div>
+        </div>
+    
+    <script type="text/javascript">
+        $("#btnEnviar").click(function () {
+
+            var isBuChecked = false;
+            var elements = document.querySelectorAll("#frmRegistrarCartao input[type=checkbox]");
+            for(var i = 0, element; element = elements[i++];) {
+                var numeroChip = document.frmRegistrarCartao["nrChipCartaoSc_"+ i +""].value;
+                var numeroCartao = document.frmRegistrarCartao["nrCartaoSc_" + i + ""].value;
+                var numerocpf = document.frmRegistrarCartao["nrCpf_" + i + ""].value;
+                var checked = document.frmRegistrarCartao["selecionado_" + i + ""].checked;
+
+                if ( (numeroChip !== undefined &&  numeroChip.length !== 0) &&
+                    (numeroCartao !== undefined  && numeroCartao.length !== 0) &&
+                    (numerocpf !== undefined && numerocpf.length !== 0) &&  checked) {
+                    isBuChecked = true;
+                    break;
+                }
+            }
+
+            if(isBuChecked){
+                showAvisoUsuario();
+            }else{
+                enviar('registrar', $("#btnEnviar"));
+            }
+
+        });
+
+        $("#cancelar").click(function () {
+            escondeBannerUsuario();
+        });
+
+        $("#enviar").click(function () {
+            enviar('registrar', $("#btnEnviar"));
+        });
+
+        function showAvisoUsuario() {
+            document.getElementById("dark").style.display = "block";
+            document.getElementById("avisoAdministrador").style.display = "block";
+        }
+
+        function escondeBannerUsuario() {
+            document.getElementById('avisoAdministrador').style.display = 'none';
+            document.getElementById('dark').style.display = 'none';
+        }
+
+
+        document.forms[0].nrCartaoSc_1.focus();
+
+        var trAberta = 5;
+        var total = 20;
+
+        function addLinha() {
+            if (trAberta < 20) {
+                trAberta++;
+                var tr = document.getElementById("tr_" + trAberta);
+                if (tr != null) {
+                    tr.style.display = "";
+                }
+            }
+        }
+
+        
+
+        function exibeCadastrarCartoes() {
+            var popup = document.getElementById("popupCadastrarCartoes");
+            popup.style.display = 'block';
+        }
+
+        function retiraPopupCadastrarCartoes() {
+            var popup = document.getElementById("popupCadastrarCartoes");
+            popup.style.display = 'none';
+        }
+
+        function enviar(action, PButton) {
+            var form = document.forms[0];
+            if (PButton) {
+                if (form) {
+                    PButton.disabled = true;
+                    document.getElementById("action").value = action;
+                    form.totalCartao.value = trAberta;
+                    form.submit();
+                    escondeBannerUsuario();
+                }
+            }
+
+            return;
+        }
+
+        function desabilitarCpf(object, name, campoNumeroCartao) {
+
+            var tamanhoCampoNumeroCartao = document.getElementById(campoNumeroCartao).value.length;
+
+            var tipoCasco =  tamanhoCampoNumeroCartao == 13 ?  document.getElementById(campoNumeroCartao).value.substring(2, 4) : document.getElementById(campoNumeroCartao).value.substring(1, 3) ;
+
+            var isBUCarioca = tipoCasco == 9  || tipoCasco == 20  || tipoCasco == 22  || tipoCasco == 23;
+
+            if (!object.checked && !isBUCarioca) {
+                document.getElementById(name).value = "";
+                document.getElementById(name).readOnly = true;
+                document.getElementById(name).style.background = "#CCCCCC";
+            } else {
+                document.getElementById(name).readOnly = false;
+                document.getElementById(name).style.background = "#FFFFFF";
+            }
+        }
+    </script>
+</body></html>

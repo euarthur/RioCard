@@ -1,0 +1,218 @@
+<!-- Vari�veis -->
+<html><head><style>
+    table tbody tr td {
+        padding: 0px;
+        text-align: center
+    }
+</style>
+
+    <title>Gerenciamento de pedidos de cancelamento</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" href="OrdemCancel_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="OrdemCancel_arquivos/riocard.css">
+    <script language="JavaScript" src="OrdemCancel_arquivos/funcoes.js"></script>
+    <script language="JavaScript">
+   
+        function imprime(confirma) {
+            var res = true;
+            if (confirma) {
+                res = confirm('Ao finalizar o Pedido de Cancelamento, seus dados n\u00E3o poder\u00E3o mais ser alterados ou exclu\u00EDdos. Deseja Continuar ?');
+            }
+
+            return res;
+        }
+
+
+        function envia(action, nrOrdem) {
+            document.forms[0].action.value = action;
+            document.forms[0].nrOrdem.value = nrOrdem;
+            document.forms[0].submit();
+        }
+
+
+        function abrir(nrOrdem) {
+            document.getElementById('popup2').style.display = 'block';
+            document.forms[0].nrOrdem.value = nrOrdem;
+        }
+
+        function envia2(action, irParaSegundaVia) {
+            document.forms[0].action.value = action;
+            // document.forms[0].nrOrdem.value = nrOrdem;
+            document.forms[0].irParaSegundaVia.value = irParaSegundaVia;
+            document.forms[0].submit();
+        }
+
+        function envia3(action) {
+            document.forms[0].action.value = action;
+            document.forms[0].submit();
+        }
+
+        var url;
+        function gerarBoleto(){
+            window.open(this.url);
+        }
+        function showBannerVirusBoleto(url){
+            document.getElementById('dark').style.display = 'block';
+            document.getElementById('virusBoleto').style.display = 'block';
+            this.url = url;
+        }
+
+        function hideBannerVirusBoleto(){
+            document.getElementById('dark').style.display = 'none';
+            document.getElementById('virusBoleto').style.display = 'none';
+            gerarBoleto();
+        }
+        //-->
+    </script>
+</head>
+<body>
+
+<div id="dark" onclick="hideBannerVirusBoleto()" style="position:absolute;top:0;left:0;width:100%;height:210%;z-index:10;background:#000;opacity:0.8;filter:alpha(opacity=80); display:none;">
+    &nbsp;
+</div>
+
+<div id="virusBoleto" style="z-index:11; position:absolute; width:100%; display:none" onclick="hideBannerVirusBoleto()">
+    <img style="cursor:pointer;" src="OrdemCancel_arquivos/info_virus_boleto_santander_20180727.png">
+</div>
+
+<form action="OrdemCancel" name="frmOrdCancel">
+
+    <div id="popup2" style="width:100%; height:150%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10;">
+        <div style="position:absolute; left:30%; top:24%; width:450px; height:120px; padding:20px; border-width:7px; border-style:solid; background:#fff; color: #006BBD;">
+            <center>
+                <b> Segunda Via de cartão </b>
+
+                <p>Solicitar nova via?</p>
+
+                <p>
+                    <input type="button" value="Sim" class="button btn-company" onclick="envia2('segundavia', 'true');">
+                    <input type="button" value="Não" class="button btn-company" onclick="envia3('finalizar');">
+                </p>
+            </center>
+        </div>
+    </div>
+
+    <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody><tr>
+            <td>
+
+
+                <div class="menu_esq">
+                    <div class="menu_esq">
+                        <div class="menu_dir">
+                            <div class="menu">
+                                <ul>
+                                    <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                    <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                    <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                    <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                    <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                    <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                    <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                    <li style="width:9%;"><a href="">Sair</a></li>
+                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+</td>
+        </tr>
+        <tr>
+            <td rowspan="3" style="text-align: center" valign="top">
+
+                <div id="forms">
+                    <fieldset>
+                        <legend class="titulo">Gerenciamento de pedidos de cancelamento</legend>
+                        <div class="subtitulo">
+                            <!-- SUBTITULO -->
+                            
+                        </div>
+
+
+                        <br>
+                        <table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+
+                            
+                            <tbody><tr>
+                                <td style="text-align: left">
+                                    <input type="button" style="width: 200px;" class="button btn-company" name="incluiOrdCanc" value="Incluir Cancelamento">
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="text-align: left">
+                                    <strong style="font-weight: bold">Lista dos Pedidos de Cancelamento</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: left">
+                                    Para sua segurança ao gerar o boleto faça a verificação numérica.
+                                    Para saber mais <a href="https://www.cartaoriocard.com.br/scrcpr2/img/info_virus_boleto_santander_20180727.png" target="_blank">Clique aqui.</a>
+                                    <br>
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="textoalerta" style="text-align: center">
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="text-align: center">
+                                    <table width="100%" cellpadding="2" border="0">
+
+                                        <!-- Cabe�alho da lista -->
+                                        <tbody><tr bgcolor="#dfe6eb" align="center">
+                                            <td width="5%"><strong style="font-weight: bold">Seq.</strong></td>
+                                            <td width="11%"><strong style="font-weight: bold">Nr.Ordem</strong></td>
+                                            <td width="11%"><strong style="font-weight: bold">Dt.Ordem</strong></td>
+                                            <td width="14%"><strong style="font-weight: bold">Status</strong></td>
+                                            <td width="6%"><strong style="font-weight: bold">Finalizar</strong></td>
+                                            <td width="6%"><strong style="font-weight: bold">Boleto</strong></td>
+                                            <td width="6%"><strong style="font-weight: bold">Alterar</strong></td>
+                                            <td width="6%"><strong style="font-weight: bold">Excluir</strong></td>
+                                            <td width="6%"><strong style="font-weight: bold">Nota Fiscal</strong></td>
+                                        </tr>
+
+                                        <!-- Dados da lista -->
+                                        
+                                        
+                                        
+                                        <tr>
+                                            <td style="color:#006BBC" colspan="7">
+                                                <strong style="font-weight: bold">Nenhuma ordem de cancelamento encontrada.</strong>
+                                            </td>
+                                        </tr>
+                                        
+
+                                        <tr align="center">
+                                            <td colspan="8" style="text-align: center">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center">
+                                    <input type="Button" name="btvoltar" value="voltar" class="button btn-company">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <input type="hidden" name="irParaSegundaVia" value="">
+                        <input type="hidden" name="nrOrdem" value="">
+                        <input type="hidden" name="action" value="">
+                        <input type="hidden" name="com.montreal.framework.TokenPage" value="0.09375397814455666">
+                    </fieldset>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<br>
+
+
+</body></html>

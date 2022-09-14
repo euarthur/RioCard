@@ -1,0 +1,168 @@
+<html><head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <title>Abertura</title>
+    <link rel="stylesheet" type="text/css" href="PrePedido_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="PrePedido_arquivos/riocard.css">
+    <script type="text/javascript" src="PrePedido_arquivos/tooltip.js"></script>
+
+    <script language="Javascript">
+        var hintcontainer = null;
+        function showhint(obj, txt) {
+            if (hintcontainer == null) {
+                hintcontainer = document.createElement("div");
+                hintcontainer.className = "hintstyle";
+                document.body.appendChild(hintcontainer);
+            }
+            obj.onmouseout = hidehint;
+            obj.onmousemove = movehint;
+            hintcontainer.innerHTML = txt;
+        }
+        function movehint(e) {
+            if (!e) e = event; //line for IE compatibility
+            hintcontainer.style.top = (e.clientY + document.documentElement.scrollTop + 2) + "px";
+            hintcontainer.style.left = (e.clientX + document.documentElement.scrollLeft + 10) + "px";
+            hintcontainer.style.display = "";
+        }
+        function hidehint() {
+            hintcontainer.style.display = "none";
+        }
+    </script>
+
+</head>
+
+<body>
+
+
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="top" align="center">
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Compra de créditos para o seu cartão</legend>
+                    <table>
+                        <tbody><tr>
+                            <td colspan="2">
+                                <div>
+                                    <strong style="margin-bottom:8px;">Ao selecionar comprar créditos, o sistema automaticamente solicitará um cartão caso o usuário não tenha um.</strong>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+
+                                <div style="width:400px;">
+                                    <strong style="color:#407299;font-size:14px;">Pedidos de Crédito</strong>
+                                    <br><br>
+
+                                    <div id="flat_btn_area" style="width:810px; text-align: left">
+                                        <ul id="flat_btn">
+                                            <li>
+                                                <a href="./Compra0105.html">
+                                                    Compra de créditos de 1 até 5 cartões
+                                                </a>
+                                            </li>
+                                            <li style="width:280px;">
+                                                <a href="./maisde5.html">
+                                                    Compra de créditos para mais de 5 cartões
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="./reservarCredito.html">
+                                                    Inserir crédito na bolsa de crédito
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="./copiarPedido.html">
+                                                    Copiar pedido anterior
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="./ImportarPrePedido.html">
+                                                    Importação de Pedido
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td valign="top">
+
+                                <div style="width:410px;">
+                                    <strong style="color:#407299;font-size:14px;">Gerenciamento de Pedidos</strong>
+                                    <br><br>
+
+                                    <div id="flat_btn_area" style="width:300px; text-align: left">
+                                        <ul id="flat_btn">
+                                            <li>
+                                                <a href="./Finalizar.html">
+                                                    Finalizar pedido e imprimir boleto
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="./PosPedido.html">
+                                                    Consultar pedidos pagos
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <div style="width:410px;">
+                                    <strong style="color:#407299;font-size:14px;">Pedidos de segunda via de cartão</strong>
+                                    <br><br>
+
+                                    <div id="flat_btn_area" style="width:810px; text-align: left">
+                                        <ul id="flat_btn">
+                                            <li>
+                                                <a href="./solicitarNovaVia.html">
+                                                    Solicitar segunda via de cartão
+                                                </a>
+                                            </li>
+                                            <li style="width:410px;">
+                                                <a href="./transfBolsa.html">
+                                                    Transferência do saldo do cartão cancelado para a segunda via
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </fieldset>
+            </div>
+        </td>
+    </tr>
+</tbody></table>
+
+
+</body></html>

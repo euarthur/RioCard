@@ -1,0 +1,634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    
+    
+    
+    
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <title>Compra de créditos de 1 até 05 cartões</title>
+    <link rel="stylesheet" href="Compra0105_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="Compra0105_arquivos/riocard.css">
+    <link rel="stylesheet" href="Compra0105_arquivos/jovem.css">
+    <script type="text/javascript" language="JavaScript" src="Compra0105_arquivos/funcoes.js"></script>
+    <script type="text/javascript" language="javascript" src="Compra0105_arquivos/tooltip.js"></script>
+    <script type="text/javascript" src="Compra0105_arquivos/UsuarioAjax.js"></script>
+    <script type="text/javascript" src="Compra0105_arquivos/engine.js"></script>
+    <script type="text/javascript" src="Compra0105_arquivos/util.js"></script>
+    <script language="JavaScript" src="Compra0105_arquivos/jquery-1.9.1.min.js"></script>
+
+
+    <script type="text/javascript">
+      
+
+        function formatarValor(obj, e) {
+
+            var whichCode = (window.Event) ? e.which : e.keyCode;
+            var key = parseInt(whichCode);
+            var KEY_TAB = 0;
+            var KEY_BACKSPACE = 8;
+
+
+            if (key > 47 && key < 58) {
+                return; //alert( 'Tecla pressionada.' + String.fromCharCode(whichCode) );
+            } else {
+                if (key == 44 || key == 46 || key == KEY_TAB || key == KEY_BACKSPACE) {
+                    return;
+                } else {
+                    //alert( 'Tecla' + key );
+                    return false;
+                }
+            }
+        }
+
+        var undef;
+
+        function FormataReais(fld, milSep, decSep, e) {
+
+            var sep = 0;
+            var key = '';
+            var i = j = 0;
+            var len = len2 = 0;
+            var strCheck = '0123456789';
+            var aux = aux2 = '';
+
+            var whichCode = (window.Event) ? e.which : e.keyCode;
+            if (whichCode == 13) return true;
+
+            key = String.fromCharCode(whichCode);// Valor para o c�digo da Chave
+
+            if (strCheck.indexOf(key) == -1) return false; // Chave inv�lida
+
+            len = fld.value.length;
+
+            for (i = 0; i < len; i++)
+                if ((fld.value.charAt(i) != '0') && (fld.value.charAt(i) != decSep)) break;
+
+            aux = '';
+
+            for (; i < len; i++)
+                if (strCheck.indexOf(fld.value.charAt(i)) != -1) aux += fld.value.charAt(i);
+
+            aux += key;
+
+            len = aux.length;
+
+            if (len == 0) fld.value = '';
+            if (len == 1) fld.value = '0' + decSep + '0' + aux;
+            if (len == 2) fld.value = '0' + decSep + aux;
+
+            if (len > 2) {
+                aux2 = '';
+                for (j = 0, i = len - 3; i >= 0; i--) {
+                    if (j == 3) {
+                        aux2 += milSep;
+                        j = 0;
+                    }
+                    aux2 += aux.charAt(i);
+                    j++;
+                }// fim for
+                fld.value = '';
+                len2 = aux2.length;
+
+                for (i = len2 - 1; i >= 0; i--)
+                    fld.value += aux2.charAt(i);
+
+                fld.value += decSep + aux.substr(len - 2, len);
+
+            }// fim if
+            return false;
+
+        }
+
+        function preencheZeros(obj) {
+            var len = (obj.value.indexOf(",") != -1) ? obj.value.split(",")[1].length :
+                ((obj.value.indexOf(".") != -1) ? obj.value.split(".")[1].length : -1)
+            if (len == -1) {
+                obj.value += ",";
+                len = 0;
+            }
+            for (; len < 2; len++)
+                obj.value += "0";
+            obj.value = obj.value.replace(/\./g, ",");
+            if (obj.value.charAt(0) == ',')
+                obj.value = "0" + obj.value;
+            if (len > 2)
+                obj.value = obj.value.substring(0, obj.value.indexOf(",") + 3);
+        }
+
+        function somaCampos(campo) {
+            var lista = document.getElementsByName(campo);
+
+            if (lista == undef)
+                return;
+            var total = 0;
+
+            if (lista.length == undef) {
+                preencheZeros(lista);
+                total += Math.round(parseFloat(lista.value.replace(",", ".")) * 100);
+                return total / 100;
+            }
+
+            for (var i = 0; i < lista.length; i++) {
+                preencheZeros(lista[i]);
+                total += Math.round(parseFloat(lista[i].value.replace(",", ".")) * 100);
+            }
+            return total / 100;
+        }
+
+        function exibeSubtotal(campo, divSubtotal) {
+
+            var subtotal = new Object();
+            var msg_div_subtotal = document.getElementById(divSubtotal);
+
+            subtotal.value = "" + somaCampos(campo);
+            preencheZeros(subtotal);
+
+            if (msg_div_subtotal)
+                msg_div_subtotal.innerHTML = "<strong>" + subtotal.value + "</strong>";
+        }
+
+        function exibeTotal(campo1, campo2) {
+
+            var msg_div_total = document.getElementById('MSG_TOTAL');
+
+            var total = new Object();
+
+            var t = somaCampos(campo1) + somaCampos(campo2);
+
+            total.value = "" + t;
+
+            preencheZeros(total);
+
+            if (msg_div_total)
+                msg_div_total.innerHTML = "<strong>" + total.value + "</strong>";
+        }
+
+
+        function exibeTotalCargas() {
+            exibeSubtotal('vlCarga', 'MSG_TOTAL_CARGAS');
+            exibeTotal('vlCartao', 'vlCarga');
+        }
+
+        function exibeTotalCartoes() {
+            exibeSubtotal('vlCartao', 'MSG_TOTAL_CARTOES');
+            exibeTotal('vlCartao', 'vlCarga');
+        }
+
+
+        function enviar(action, PButton) {
+
+            var form = document.forms[0];
+            if (PButton) {
+
+                if (form) {
+                    hide();
+                    PButton.disabled = true;
+                    form.action.value = action;
+                    form.submit();
+                }// fim if
+            }// fim if
+
+            return;
+        }
+
+        var indiceGlobal;
+
+        function carregarUsuario(matricula, indice, nrDocComprd) {
+
+            indiceGlobal = indice;
+
+            var produto = document.getElementById("produto" + indiceGlobal);
+            var modelo = document.getElementById("modelo" + indiceGlobal);
+            var vlCartao = document.getElementById("vlCartao" + indiceGlobal);
+
+            produto.innerHTML = "";
+            modelo.innerHTML = "";
+            vlCartao.value = 0;
+            preencheZeros(vlCartao);
+
+            if (matricula != "") {
+                UsuarioAjax.getUsuario(exibirUsuario, matricula, nrDocComprd, true);
+            } else {
+                exibeSubtotal('vlCartao', 'MSG_TOTAL_CARTOES');
+                exibeTotal('vlCartao', 'vlCarga');
+            }
+
+        }
+
+        function exibirUsuario(usuario) {
+
+            if (usuario != null) {
+                var produto = document.getElementById("produto" + indiceGlobal);
+                var modelo = document.getElementById("modelo" + indiceGlobal);
+                var vlCartao = document.getElementById("vlCartao" + indiceGlobal);
+
+                var modeloId = usuario.modelo.id;
+
+                if (modeloId == 12 || modeloId == 13) {
+                    produto.innerHTML = "Cart\u00E3o Jovem";
+                } else if (modeloId == 14 || modeloId == 20 || modeloId == 25) {
+                    produto.innerHTML = "Bilhete \u00DAnico";
+                } else if (modeloId == 11 || modeloId == 70) {
+                    produto.innerHTML = "Cart\u00E3o Expresso";
+                } else if (modeloId == 68) {
+                    produto.innerHTML = "Cart\u00E3o Expresso de Nova Friburgo";
+                } else if (modeloId == 69) {
+                    produto.innerHTML = "Expresso Geek & Game Rio Festival";
+                } else if (modeloId == 21) {
+                    produto.innerHTML = "Cart\u00E3o ProUni";
+                } else if (modeloId == 26) {
+                    produto.innerHTML = "Cart\u00E3o UFF";
+                } else if (modeloId == 6) {
+                    produto.innerHTML = "Cart\u00E3o Moedeiro ao Portador";
+                }
+
+                modelo.innerHTML = usuario.modelo.descricao;
+
+                if (usuario.inSolicCartao == 1) {
+                    vlCartao.value = "" + usuario.modelo.valor;
+                } else {
+                    vlCartao.value = 0;
+                }
+
+                preencheZeros(vlCartao);
+
+                exibeSubtotal('vlCartao', 'MSG_TOTAL_CARTOES');
+                exibeTotal('vlCartao', 'vlCarga');
+            } else {
+                alert('Nenhum usu\u00E1rio encontrado.');
+            }
+
+        }
+
+        function setDefaultUsuario(matricula, nrDocComprd) {
+            if (matricula != "") {
+                UsuarioAjax.getUsuario(setDefaultUsuarioCallBack, matricula, nrDocComprd, true);
+            }
+        }
+
+        function setDefaultUsuarioCallBack(usuario) {
+            if (usuario != null) {
+                var input = document.getElementById('mat_1');
+                if (input != null) {
+                    input.value = usuario.nrMatric.replace(/^\s+|\s+$/, '');
+                    input.onblur();
+                }
+            }
+        }
+
+        //-->
+
+    </script>
+
+    <script language="Javascript">
+        var hintcontainer = null;
+
+        function showhint(obj, txt) {
+            if (hintcontainer == null) {
+                hintcontainer = document.createElement("div");
+                hintcontainer.className = "hintstyle";
+                document.body.appendChild(hintcontainer);
+            }
+            obj.onmouseout = hidehint;
+            obj.onmousemove = movehint;
+            hintcontainer.innerHTML = txt;
+        }
+
+        function movehint(e) {
+            if (!e) e = event; //line for IE compatibility
+            hintcontainer.style.top = (e.clientY + document.documentElement.scrollTop + 2) + "px";
+            hintcontainer.style.left = (e.clientX + document.documentElement.scrollLeft + 10) + "px";
+            hintcontainer.style.display = "";
+        }
+
+        function hidehint() {
+            hintcontainer.style.display = "none";
+        }
+    </script>
+</head>
+
+
+
+<body onload="exibeTotalCargas();exibeTotalCartoes();">
+
+
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+            
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="top" align="center">
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Compra de créditos de 1 até 05 cartões</legend>
+                    <div id="msg"></div>
+                    <form name="frmDigitacaoPrePedido" action="PrePedido" method="post">
+                        <table id="compraCreditos" width="96%" cellspacing="1" cellpadding="4" border="0" bgcolor="#FFFFFF" align="center">
+
+
+                            <tbody><tr>
+                                <td class="textoalerta" align="center">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Se você aproveitou o cadastro gerado automaticamente, sua identificação é 001. <br><br>
+                                    Se você criou uma nova identificação verifique <a href="./UsuarioManutencao.html">aqui</a>.<br><br>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table style="width: 100%" cellspacing="5" border="0" align="center">
+                                        <tbody><tr>
+                                            <td width="100%">
+                                                <table width="100%" cellspacing="1" cellpadding="4" border="0" align="center">
+                                                    
+                                                    <tbody><tr bgcolor="#dfe6eb">
+                                                        <td width="5%" align="center"><strong style="font-weight:bold;">Seq.</strong></td>
+                                                        <td width="25%" align="center"><strong style="font-weight:bold;">Identificaçã5
+                                                            o do Usuário</strong></td>
+                                                        <td width="20%" align="center"><strong style="font-weight:bold;">Produto</strong></td>
+                                                        <td width="20%" align="center"><strong style="font-weight:bold;">Modelo</strong></td>
+                                                        <td width="15%" align="center"><strong style="font-weight:bold;">Valor do Cartão</strong>
+                                                        </td>
+                                                        <td title="Digite o valor de créditos no campo abaixo" onmouseover="showhint(this, 'Digite o valor de cr\u00E9ditos no campo abaixo')" width="15%" align="center">
+                                                            <strong style="font-weight:bold;">Valor de Carga</strong>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr bgcolor="#FFFFFF" align="center">
+                                                        <td align="center">
+                                                            1
+                                                            <input type="hidden" name="nrIndice" value="1">
+                                                        </td>
+                                                        <td align="center">
+                                                            <input name="nrMatric" id="mat_1" type="text" class="cxlaranja" maxlength="15" size="16" onblur="carregarUsuario(this.value, 1, 12893764410);">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="produto1"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="modelo1"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input type="text" name="vlCartao" id="vlCartao1" size="10" class="cxlaranja" disabled="disabled" value="0,00">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input name="vlCarga" type="text" class="cxlaranja" onblur="exibeTotalCargas();" maxlength="6" size="10" onkeypress="return formatarValor(this,event);" value="0,00">
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr bgcolor="#F1F1F1" align="center">
+                                                        <td align="center">
+                                                            2
+                                                            <input type="hidden" name="nrIndice" value="2">
+                                                        </td>
+                                                        <td align="center">
+                                                            <input name="nrMatric" id="mat_2" type="text" class="cxlaranja" maxlength="15" size="16" onblur="carregarUsuario(this.value, 2, 12893764410);">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="produto2"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="modelo2"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input type="text" name="vlCartao" id="vlCartao2" size="10" class="cxlaranja" disabled="disabled" value="0,00">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input name="vlCarga" type="text" class="cxlaranja" onblur="exibeTotalCargas();" maxlength="6" size="10" onkeypress="return formatarValor(this,event);" value="0,00">
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr bgcolor="#FFFFFF" align="center">
+                                                        <td align="center">
+                                                            3
+                                                            <input type="hidden" name="nrIndice" value="3">
+                                                        </td>
+                                                        <td align="center">
+                                                            <input name="nrMatric" id="mat_3" type="text" class="cxlaranja" maxlength="15" size="16" onblur="carregarUsuario(this.value, 3, 12893764410);">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="produto3"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="modelo3"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input type="text" name="vlCartao" id="vlCartao3" size="10" class="cxlaranja" disabled="disabled" value="0,00">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input name="vlCarga" type="text" class="cxlaranja" onblur="exibeTotalCargas();" maxlength="6" size="10" onkeypress="return formatarValor(this,event);" value="0,00">
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr bgcolor="#F1F1F1" align="center">
+                                                        <td align="center">
+                                                            4
+                                                            <input type="hidden" name="nrIndice" value="4">
+                                                        </td>
+                                                        <td align="center">
+                                                            <input name="nrMatric" id="mat_4" type="text" class="cxlaranja" maxlength="15" size="16" onblur="carregarUsuario(this.value, 4, 12893764410);">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="produto4"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="modelo4"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input type="text" name="vlCartao" id="vlCartao4" size="10" class="cxlaranja" disabled="disabled" value="0,00">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input name="vlCarga" type="text" class="cxlaranja" onblur="exibeTotalCargas();" maxlength="6" size="10" onkeypress="return formatarValor(this,event);" value="0,00">
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr bgcolor="#FFFFFF" align="center">
+                                                        <td align="center">
+                                                            5
+                                                            <input type="hidden" name="nrIndice" value="5">
+                                                        </td>
+                                                        <td align="center">
+                                                            <input name="nrMatric" id="mat_5" type="text" class="cxlaranja" maxlength="15" size="16" onblur="carregarUsuario(this.value, 5, 12893764410);">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="produto5"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <div id="modelo5"></div>
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input type="text" name="vlCartao" id="vlCartao5" size="10" class="cxlaranja" disabled="disabled" value="0,00">
+                                                        </td>
+
+                                                        <td align="center">
+                                                            <input name="vlCarga" type="text" class="cxlaranja" onblur="exibeTotalCargas();" maxlength="6" size="10" onkeypress="return formatarValor(this,event);" value="0,00">
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: right; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">Valor dos cartões:</strong>
+                                                        </td>
+
+                                                        <td style="text-align: left; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">
+                                                                <div id="MSG_TOTAL_CARTOES"><strong>0,00</strong></div>
+                                                            </strong>
+                                                        </td>
+
+                                                        <td style="text-align: right; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">Valor de cargas:</strong>
+                                                        </td>
+
+                                                        <td style="text-align: left; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">
+                                                                <div id="MSG_TOTAL_CARGAS"><strong>0,00</strong></div>
+                                                            </strong>
+                                                        </td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="5" style="text-align: right; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">Total</strong>
+                                                        </td>
+
+                                                        <td style="text-align: left; " bgcolor="#dfe6eb">
+                                                            <strong style="font-weight:bold;">
+                                                                <div id="MSG_TOTAL"><strong>0,00</strong></div>
+                                                            </strong>
+                                                        </td>
+
+                                                    </tr>
+
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+
+                                    </tbody></table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center">
+                                    <input name="btnVoltar" type="button" class="button btn-company" id="btnVoltar" value="Voltar" >
+                                    <input name="btnVoltar" type="button" class="button btn-company" id="btnVoltar" value="Avançar" >
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                        <input type="hidden" name="np" value="1">
+                        <input type="hidden" name="action" value="">
+                        <input type="hidden" name="com.montreal.framework.TokenPage" value="0.5300358908753763">
+                        <script type="text/javascript">
+                          
+                            document.forms[0].nrMatric[0].focus();
+                            setDefaultUsuario("001", 12893764410);
+                            //-->
+                        </script>
+
+                    </form>
+                </fieldset>
+            </div>
+            
+        </td>
+    </tr>
+</tbody></table>
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Compra0105_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+
+</body></html>

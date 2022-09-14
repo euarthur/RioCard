@@ -1,0 +1,218 @@
+/* CSS Document */
+
+#titulo_pag { /* nas paginas de fluxo de pagamento o h1 fica fora do conteudo. Ele passa a ter margem */
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.abas_fluxo {
+	background: url(imagens/abas_fluxo/bg_abas_fluxo.gif) repeat-x bottom;
+	padding-left: 10px;
+}
+
+.abas_fluxo a {
+	display: block;
+	float: left;
+}
+
+.abas_fluxo img {
+	display: block;
+	float: left;
+}
+
+.funcoes_topo {
+	background: url(imagens/abas_fluxo/bg_degrade_funcoes_topo.gif) top repeat-x;
+	height: 44px;
+	margin-bottom: 10px;
+	padding-left: 13px;
+	padding-right: 13px;
+	padding-top: 10px;
+}
+
+.funcoes_bottom {
+	height: 34px;
+	margin-bottom: 10px;
+	margin-top:20px;
+	padding-top: 15px;
+	background: url(imagens/abas_fluxo/bg_funcoes_bottom.gif) top repeat-x;	
+}
+
+.funcao_fluxo {
+	float: left;
+	margin-right: 15px;
+}
+
+.funcao_fluxo a, .funcao_fluxo a:visited {
+	color: #1e6d9e;
+	text-decoration: underline;
+	font-size: 11px;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	float: left;
+	height: 16px;
+	padding-left: 20px;
+	padding-top: 4px;
+}
+
+.funcao_fluxo a:hover {
+	text-decoration: none;
+}
+
+.salvar {
+	background: url(imagens/abas_fluxo/ico_salvar.gif) no-repeat 0 5px;
+}
+
+.alterar {
+	background: url(imagens/abas_fluxo/ico_alterar.gif) no-repeat 0 4px;
+}
+
+.alterar a, .alterar a:visited {
+	padding-left: 30px;
+}
+
+.button_fluxo {
+	float: right;
+}
+
+.entrada_dados {	
+	margin-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: url(imagens/abas_fluxo/border_abas_entrada_dados.gif) repeat-x bottom;
+}
+
+.entrada_dados h4 {
+	font-size: 12px;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #00366b;
+	font-weight: bold;
+	float: left;
+	margin-right: 10px;
+	margin-top: 7px;
+}
+
+.entrada_dados .aba_entrada_dados a, .entrada_dados .aba_entrada_dados a:visited {
+	color: #56738c;
+	font-size: 11px;
+	text-decoration: none;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	display: block;
+	height: 24px;
+	border: 1px solid #bec6cd;
+	padding: 4px 7px;
+	text-align: center;
+	line-height: 12px;
+	background: #f3f6f9;
+	float: left;
+}
+
+.entrada_dados .aba_entrada_dados a:hover {
+	text-decoration: underline;
+	background: #d6e7f9;
+}
+
+.entrada_dados .aba_entrada_dados a.active, .entrada_dados .aba_entrada_dados a.active:visited {
+	color: #00366b;
+	display: block;
+	border-bottom: 1px solid white;
+	margin-left: 5px;
+	margin-right: 5px;
+	background: url(imagens/abas_fluxo/bg_aba_entrada_dados_ativa.gif) repeat-x;
+}
+
+.entrada_dados .aba_entrada_dados a.active:hover {
+	text-decoration: none;
+	background: url(imagens/abas_fluxo/bg_aba_entrada_dados_ativa.gif) repeat-x;
+}
+
+.valor_total {
+	font-size: 12px;
+	font-weight: bold;
+	color: #323232;
+}
+
+.valor_total .vlr_total_cor {
+	font-size: 13px;
+}
+
+.valor_total .vlr_total_cor span {
+	font-size: 13px;
+}
+
+.valor_total_topo {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.link_auxiliar{
+	font-size:11px;
+	font-weight:normal;
+	margin-left:5px;
+}
+
+.link_auxiliar a{
+	text-decoration:underline;
+}
+
+.link_auxiliar a:hover{
+	color:#1493e2;
+}
+
+.box_selecionado, fieldset.box_selecionado{
+	background:#ddecf5;
+	border:3px solid #d3e4f1;
+}
+
+fieldset.det_pedido{
+	padding-bottom:20px;
+	padding-top:15px;
+	*padding-top:0;
+}
+
+fieldset.det_pedido legend{
+	*margin-bottom:20px;
+}
+
+.det_pedido p, .det_pedido h3 {
+	float:left;
+	margin-right:20px;
+}
+
+fieldset.valores strong{
+	font-size:12px;
+}
+
+
+.download_pdf {
+	background: url(../../visitante/downloads/imagens/icone_download.png) no-repeat top left;
+}
+
+.download {
+	padding-left: 110px;
+	margin-bottom: 48px;
+}
+
+.download h2 {
+	font-size: 14px;
+	color: #125395;
+	font-weight: normal;
+	font-family: "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
+	margin-bottom: 12px;
+}
+
+.download .versao_data {
+	color: #2798ac;
+	font-size: 12px;
+	margin-bottom: 6px;
+}
+
+.download .botao {
+	background: url(../../visitante/downloads/imagens/bt_baixar.gif) no-repeat top left;
+	display: block;
+	width: 120px;
+	height: 25px;
+}
+
+.download .botao span {
+	font-size: 5px;
+	margin-left: -10000px;
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR"><head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <title>Riocard Mais Vale-Transporte</title>
+    <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+    <link href="VisualizarTermoComodato_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="VisualizarTermoComodato_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="VisualizarTermoComodato_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="VisualizarTermoComodato_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="VisualizarTermoComodato_arquivos/comum.js"></script>
+
+
+</head>
+<body class="comprador" onload="initLightbox(); correctPNG();">
+
+
+
+
+<div id="site" class="clearfix">
+    
+	<a name="topo"></a>
+
+
+
+
+    <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+    <div class="conteudo_interna">
+        <br>
+        <table cellspacing="2" align="center">
+            <tbody><tr>
+                <td>
+                    <div class="btn_padrao">
+                        <div class="bg_esq">
+                            <div class="bg_dir">
+                                <a href="./VisualizarTermoComodatoImpressao.html" target="_blank">&nbsp;Imprimir&nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+
+        <div style="font-size: 11px;background: #F1F1F1">
+            <style type="text/css">
+    ol#comodato {
+        background: #F1F1F1;
+        font: 11px "Tahoma";
+    }
+
+    ol#comodato li {
+        padding-top: 10pt;
+        font: 11px "Tahoma";
+        text-align: justify;
+    }
+
+    body{
+        background: #F1F1F1;
+    }
+
+    p{
+        background: #F1F1F1;
+        padding-top: 10pt;
+        font-family: Tahoma;
+        font-size: 11px;
+    }
+
+
+    em {
+        font-style: normal; /* Removes italics */
+        text-decoration: underline; /* Makes underline */
+    }
+</style>
+<br>
+<p style="text-align: center;"><strong>CONTRATO DE COMODATO
+    <br/>
+    DO CART&Atilde;O RIOCARD MAIS VALE-TRANSPORTE </strong>
+</p>
+<p>
+    Pelo presente Contrato de Comodato (&quot;Contrato&quot;) de um lado a <strong>RIOPAR PARTICIPA&Ccedil;&Otilde;ES S.A.</strong>, com sede na Cidade e no Estado do Rio de Janeiro, na Rua da Assembleia n&ordm; 10, 39&ordm; andar &ndash; parte, CEP 20.011-901, inscrita no
+    CNPJ/MF sob n&ordm; 16.727.386/0001-78, doravante denominada COMODANTE, e do outro a (Pessoa Jur&iacute;dica / Pessoa F&iacute;sica) doravante denominada COMODAT&Aacute;RIA.
+</p>
+<p>
+    CONSIDERANDO que a COMODANTE, pessoa jur&iacute;dica com experi&ecirc;ncia no desenvolvimento e gest&atilde;o de meios de pagamentos eletr&ocirc;nicos, possui legitimidade conferida pela Entidade Sindical representativa das empresas transportadoras (&quot;FETRANSPOR&quot;),
+    para executar os atos materiais de emiss&atilde;o e distribui&ccedil;&atilde;o dos cart&otilde;es Riocard Mais Vale-Transporte (&quot;<em>Cart&otilde;es</em>&quot;), incluindo a emiss&atilde;o de 2&ordf; (segunda) via, para a utiliza&ccedil;&atilde;o no Sistema de Bilhetagem Eletr&ocirc;nica institu&iacute;do no Estado do Rio de Janeiro.
+</p>
+<p>
+    CONSIDERANDO que a COMODANTE pretende ceder em comodato &agrave; COMODAT&Aacute;RIA Cart&atilde;o(&otilde;es) Riocard Mais Vale-Transporte;
+</p>
+
+<p>
+    Resolvem as Partes firmar o presente Contrato de Comodato (&quot;<em>Contrato</em>&quot;), que ser&aacute; regido pelas seguintes cl&aacute;usulas e condi&ccedil;&otilde;es:
+</p>
+
+<ol id="comodato">
+    <li>
+        A COMODANTE vem pelo presente Contrato ceder em comodato &agrave; COMODAT&Aacute;RIA, por prazo indeterminado, o(s) &quot;Cart&atilde;o(&otilde;es)&quot; para ser(em) utilizado(s) no Sistema de Bilhetagem Eletr&ocirc;nica institu&iacute;do no Estado do Rio de Janeiro, conforme previsto nos
+        artigos 579 a 585 do C&oacute;digo Civil.
+    </li>
+    <li>
+        Fica desde j&aacute; acertada a entrega do(s) Cart&atilde;o(&otilde;es) solicitado(s), em bom estado de conserva&ccedil;&atilde;o, no local indicado pela COMODAT&Aacute;RIA no momento da realiza&ccedil;&atilde;o do pedido de compra de cr&eacute;ditos de passagens.
+    </li>
+    <li>
+        Por motivo de seguran&ccedil;a, todo(s) os Cart&atilde;o(&otilde;es) solicitado(s) ser&aacute;(&atilde;o) entregue(s) bloqueado(s) e apenas poder&aacute;(&atilde;o) ser desbloqueado(s) pela COMODAT&Aacute;RIA. Somente ap&oacute;s o desbloqueio do(s) Cart&atilde;o(&otilde;es) haver&aacute; a libera&ccedil;&atilde;o da(s) carga(s) de
+        cr&eacute;ditos direcionada(s) ao(s) respectivo(s) Cart&atilde;o(&otilde;es).
+    </li>
+    <li>
+        A primeira carga de cr&eacute;ditos em cada Cart&atilde;o solicitado dever&aacute; ser de, no m&iacute;nimo, R$ 40,00 (quarenta reais).
+    </li>
+    <li>
+        A COMODAT&Aacute;RIA se obriga a utilizar o(s) Cart&atilde;o(&otilde;es) apenas para o fim aven&ccedil;ado,
+        conservando-o(s) com zelo e cuidado, responsabilizando-se pelas despesas que, porventura, forem necess&aacute;rias &agrave; guarda e conserva&ccedil;&atilde;o do(s) Cart&atilde;o(&otilde;es) nas condi&ccedil;&otilde;es em que o(s) mesmo(s) foi(ram) cedido(s), sem direito a reembolso.
+    </li>
+    <li>
+        O extravio ou a inutiliza&ccedil;&atilde;o do(s) Cart&atilde;o(&otilde;es) cedido(s) em comodato, obriga a COMODAT&Aacute;RIA ao pagamento em favor da COMODANTE da quantia equivalente a 07 (sete) vezes o valor da tarifa modal vigente no munic&iacute;pio do Rio de Janeiro, por cart&atilde;o
+        extraviado ou inutilizado.
+    </li>
+    <li>
+        A transfer&ecirc;ncia dos cr&eacute;ditos existentes no(s) Cart&atilde;o(&otilde;es) extraviado(s)/inutilizado(s) para o(s) Cart&atilde;o(&otilde;es) de 2&ordf; via somente poder&aacute; ser efetuada ap&oacute;s a comprova&ccedil;&atilde;o do pagamento da quantia mencionada no item 6, acima.
+    </li>
+    <li>
+        A COMODAT&Aacute;RIA se obriga, independente de pr&eacute;via notifica&ccedil;&atilde;o, a restituir o(s) Cart&atilde;o(&otilde;es) &agrave; COMODANTE quando cessado(s) o(s) seu(s) uso(s) ou quando lhe for exigido pela COMODANTE.
+    </li>
+    <li>
+        A COMODANTE poder&aacute; exigir da COMODAT&Aacute;RIA a restitui&ccedil;&atilde;o do(s) Cart&atilde;o(&otilde;es) que n&atilde;o estiver(em) sendo utilizado(s) por um per&iacute;odo superior a 06 (seis) meses. Nessa hip&oacute;tese, a n&atilde;o devolu&ccedil;&atilde;o do(s) referido(s) Cart&atilde;o(&otilde;es), no prazo de at&eacute; 15
+        (quinze) dias a contar do recebimento da solicita&ccedil;&atilde;o, gerar&aacute; a obriga&ccedil;&atilde;o de pagamento, por parte da COMODAT&Aacute;RIA, em favor da COMODANTE, do valor mencionado no item 6 acima, por cada Cart&atilde;o n&atilde;o devolvido.
+    </li>
+    <li>
+        O descumprimento das cl&aacute;usulas do presente Contrato poder&aacute; implicar na sua rescis&atilde;o, independentemente de qualquer medida judicial.
+    </li>
+    <li>
+        A COMODAT&Aacute;RIA est&aacute; obrigada, ainda, a ressarcir a COMODANTE acerca de eventuais custas processuais ou extrajudiciais, bem como honor&aacute;rios advocat&iacute;cios, para se garantir cumprimento das obriga&ccedil;&otilde;es
+        previstas neste Contrato.
+    </li>
+    <li>
+        A aceita&ccedil;&atilde;o do presente Contrato ser&aacute; feita pela COMODAT&Aacute;RIA por meio eletr&ocirc;nico, e poder&aacute; ser ratificada quando houver altera&ccedil;&atilde;o de alguma regra de utiliza&ccedil;&atilde;o do Cart&atilde;o
+        ou sempre que houver necessidade.
+    </li>
+    <li>
+        O presente Contrato &eacute; aplic&aacute;vel somente para a modalidade de cart&atilde;o Riocard Mais Vale&ndash;Transporte.
+    </li>
+    <li>
+        Para fins de entendimento, os Cart&otilde;es RioCard Vale-Transporte emitidos a partir de maio de 2019 passaram a ser chamados de Cart&atilde;o Riocard Mais Vale-Transporte, sem que haja, entretanto, qualquer preju&iacute;zo na aplica&ccedil;&atilde;o
+        das regras e condi&ccedil;&otilde;es
+        do presente Contrato em rela&ccedil;&atilde;o aos Cart&otilde;es RioCard Vale-Transporte emitidos at&eacute; essa data.
+    </li>
+    <li>
+        Fica eleito o Foro Central da Comarca da Capital do Rio de Janeiro para a solu&ccedil;&atilde;o de qualquer controv&eacute;rsia que, eventualmente, surja em decorr&ecirc;ncia deste contrato, renunciando a qualquer outro por mais privilegiado
+        que seja.
+    </li>
+</ol>
+        </div>
+        <br>
+        <br>
+        <table cellspacing="2" align="center">
+            <tbody><tr>
+                <td>
+                    <div class="btn_padrao">
+                        <div class="bg_esq">
+                            <div class="bg_dir">
+                                <a href="./VisualizarTermoComodatoImpressao.html" target="_blank">&nbsp;Imprimir&nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+
+        <div class="menu_rodape clearfix">
+  <h3><span>Comprador</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./dadosdocomprador.html">Dados do Comprador</a></li>
+    <li id="menuRodapeItem02"><a href="/TrocaSenha.html">Alterar Senha</a></li>
+    <li id="menuRodapeItem04" class="active"><a href="./VisualizarTermoComodato.html">Termo de Comodato</a></li>
+    <li id="menuRodapeItem08"><a href="./VisualizarTermoDeUso.html">Termo de Uso</a></li>
+    <li id="menuRodapeItem05"><a href="./TransferenciaBolsaUsuario.html">Transferência de Bolsa de Crédito</a></li>
+   	
+		
+	 			  	  		  
+ 	 
+      <li id="menuRodapeItem05"><a href="./MultaDesassociacao.html">Serviço Extraordinário de Desassociação</a></li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('DadosComprador') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('TrocaSenha') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('Comodato') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('TransferenciaBolsaUsuario') != -1) {
+		document.getElementById('menuRodapeItem05').className = 'active';
+	} else if (document.URL.indexOf('Vip') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('VipVisulizarContrato') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('FaturaPesquisaFiltro') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+	
+	
+</script>
+    </div>
+</div>
+
+<div class="version">
+	Vers�o 2.199.22
+</div>
+<script src="VisualizarTermoComodato_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+
+<script language="javascript" src="VisualizarTermoComodato_arquivos/scripts.js"></script>
+<!-- DWR declarations -->
+<script type="text/javascript" src="VisualizarTermoComodato_arquivos/RioCardVT.js"></script>
+<script type="text/javascript" src="VisualizarTermoComodato_arquivos/engine.js"></script>
+<script type="text/javascript" src="VisualizarTermoComodato_arquivos/util.js"></script>
+
+</body></html>

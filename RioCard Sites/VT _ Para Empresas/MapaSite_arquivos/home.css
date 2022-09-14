@@ -1,0 +1,249 @@
+/*/*-----------------------------------------------------------------------------
+Portal Riocard Mais- Folha de estilos da Home
+
+autor:     Midia 3 - Werther Azevedo, Robson Waterkemper e Daniel Ramos
+website:   http://www.midia3.com.br/
+-----------------------------------------------------------------------------*/
+
+/* =Gerais
+-----------------------------------------------------------------------------*/
+.col_principal { 
+	width:65%; 
+	float:left;  
+	padding-top:18px;
+}
+
+.col_secundaria {
+	width:30%; 
+	float:left; 
+	padding:19px 14px 0 10px;
+}
+
+.btn_padrao {
+	margin-left:3px;
+}
+
+
+/* =Coluna Secund�ria
+-----------------------------------------------------------------------------*/
+.col_secundaria .titulo {
+	background:url(../comum/imagens/titulos/bg_titulo_listras.gif) repeat-x left 9px; 
+	font-size:14px; 
+	font-weight:bold; 
+	color:#172038; 
+	margin:0px; 
+	padding-left:10px;
+}
+
+.col_secundaria .azul {
+	color:#3267a0;
+}
+
+.col_secundaria .titulo span {
+	padding:0px 8px; 
+	background-color:white;
+}
+
+.col_secundaria .subtitulo {
+	background:url(../comum/imagens/titulos/bg_titulo_listras.gif) repeat-x left 7px; 
+	font-size:12px; 
+}
+
+.col_secundaria a span {
+	margin-left:-10000px;
+}
+
+.col_secundaria p {
+	margin:5px 5px 5px 11px;
+}
+
+.col_secundaria p strong {
+	color:#19578f;
+}
+
+.col_secundaria .box_ajuda {
+	background:url(../comum/imagens/backgrounds/bg_box_ajuda.gif) repeat-x top left #eef2f6;
+	height:26px;
+	padding:6px 4px;
+	margin:10px 0;
+}
+
+.col_secundaria .box_peqporte {
+	border:1px solid #d2d9d9;
+}
+
+.col_secundaria .box_peqporte legend{
+	color:#5a7f82; font-weight:bold; 
+	font-size:11px; 
+	padding:1px 8px 0px 8px; 
+	*padding:1px 5px 4px 5px; 
+	margin-left:3px; 
+	*margin-left:0px;
+}
+
+.col_secundaria .box_peqporte legend select {
+	margin:0 3px; 
+	width:123px;
+	font-weight:bold;
+}
+
+.col_secundaria .box_peqporte ul {
+	background-color:#e4e8e9;
+	margin:5px; 
+	*margin:0 5px 5px 5px;
+}
+
+.col_secundaria .box_peqporte ul li {
+	float:left; 
+	height:31px; 
+	padding:5px;
+
+}
+
+.col_secundaria .box_peqporte ul li strong {
+	color:#5a7f82;
+}
+
+.box_field{
+	padding:15px 0; 
+	clear:both;
+}
+
+.box_field .btn_ajuda {
+	margin-top:-20px;
+}
+
+.nivel_02 .busca {
+	margin:9px 10px; 
+	*margin:5px 15px; 
+	_margin:5px 10px; 
+	color:#295d8d; 
+	float:left;
+}
+
+.nivel_02 .busca input {
+	margin-left:10px; 
+	border:1px solid #b8cfe6; 
+	width:139px;
+}
+
+.botao_acao {
+	float:left; 
+	margin:7px 0; 
+	*margin:4px 0;
+}
+
+/* =Personalizar Menu
+-----------------------------------------------------------------------------*/
+p.azul {
+	color:#3267a0;
+}
+
+select.edit_menu {
+	border:1px solid #aab8c6; 
+	width:203px; 
+	margin:0 0 10px 10px; 
+	font-size:12px;
+	font-weight:bold;
+}
+
+select.edit_menu .selecione { 
+/*	width:257px;*/
+}
+
+select.edit_menu .topico {
+	 
+	color:#0465a1; 
+	background:#d9e4ee; 
+}
+
+
+
+
+/* =Coluna Principal
+-----------------------------------------------------------------------------*/
+.col_principal a span {
+	margin-left:-10000px;
+}
+
+.col_principal .bloco_info {
+	padding:10px 0px 10px 15px;
+}
+
+.col_principal .bloco_info p.recado{
+	font-size:12px; 
+	font-weight:bold; 
+	color:#172038;
+	margin-bottom:10px;
+}
+
+fieldset.nivel_02 {
+	width:80%; 
+}
+
+.sem_padd {}
+
+.sem_padd table {
+	margin:10px 0 20px 0; 
+	*margin:10px 0 15px 0;
+}
+
+.arquivo {
+	padding-left:6px; 
+	padding-top:3px;
+}
+
+.arquivo input {
+	*width:239px;
+}
+
+.btn_importar {
+	text-align:center; 
+	width:280px; 
+	*width:200px; 
+	padding-left:10px;
+}
+
+.aviso {
+	background:url(../comum/imagens/backgrounds/layouts_pdf.gif) no-repeat right;
+	border:0px;
+}
+
+.aviso a {
+	display:block; 
+	width:105px; 
+	height:54px;
+}
+
+.aviso a span {
+	display:none;
+}
+
+.pq_nota {
+	font-size:10px; 
+	color:#9e9fa1;
+	padding-left:6px;
+}
+
+.btn_padrao_aviso{
+	background:url(../comum/imagens/abas_btns/aba_meio_btn_aviso.gif) repeat-x top; 
+	float:left;
+	margin:0px 5px 10px 15px;
+	*margin:0px 5px 0px 15px;
+	_margin:0px 5px 0px 10px;
+}
+
+.btn_padrao_aviso a{
+	font-size:10px;
+}
+
+
+.aviso_buc {
+	color:#333399;
+	border:1px solid #FF6600;
+	margin:3px 5px;
+	padding:5px;
+	background-color:#eef2f6;
+}
+
+

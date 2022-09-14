@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><style>
+    table tbody tr td {
+        padding: 0px;
+        text-align: center
+    }
+
+    h2{
+
+    }
+</style>
+
+    
+    
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <title>Transferência de Bolsa de Credito para Pedido</title>
+    <link rel="stylesheet" href="transfBolsa_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="transfBolsa_arquivos/riocard.css">
+    <link rel="stylesheet" href="transfBolsa_arquivos/jovem.css">
+    <script language="JavaScript" src="transfBolsa_arquivos/funcoes.js"></script>
+    <script type="text/javascript" language="JavaScript" src="transfBolsa_arquivos/tooltip.js"></script>
+    <script type="text/javascript">
+        
+
+        var undef;
+        function preencheZeros(obj) {
+            var len = (obj.value.indexOf(",") != -1) ? obj.value.split(",")[1].length :
+                    ((obj.value.indexOf(".") != -1) ? obj.value.split(".")[1].length : -1)
+            if (len == -1) {
+                obj.value += ",";
+                len = 0;
+            }
+            for (; len < 2; len++)
+                obj.value += "0";
+            obj.value = obj.value.replace(/\./g, ",");
+            if (obj.value.charAt(0) == ',')
+                obj.value = "0" + obj.value;
+            if (len > 2)
+                obj.value = obj.value.substring(0, obj.value.indexOf(",") + 3);
+        }
+
+        function somaCampos() {
+            var lista = document.forms[0].vlCarga;
+
+            if (lista == undef)
+                return 0;
+
+            var total = 0;
+
+            if (lista.length == undef) {
+                preencheZeros(lista);
+                total += Math.round(parseFloat(lista.value.replace(',', '.')) * 100);
+                return total / 100;
+            }
+
+            for (i = 0; i < lista.length; i++) {
+                preencheZeros(lista[i]);
+                if (document.frmTransfBolsaCred.seExcluido[i].checked)
+                    total += Math.round(parseFloat(lista[i].value.replace(',', '.')) * 100);
+            }
+            return total / 100;
+        }
+
+        function exibeTotal() {
+            var total = new Object();
+            total.value = "" + somaCampos();
+            preencheZeros(total);
+            if (self.total != undef)
+                self.total.innerHTML = "<strong>" + total.value + "</strong>";
+        }
+
+        function enviar(action, PButton) {
+
+            var form = document.forms[0];
+            if (PButton) {
+
+                if (form) {
+                    hide();
+                    PButton.disabled = true;
+                    document.getElementById("btnCancelar").disabled = true;
+                    form.action.value = action;
+                    form.submit();
+                }// fim if
+            }// fim if
+
+            return;
+        }
+
+        function marca(check) {
+            var lista = document.forms[0].seExcluido;
+            if (lista == undef)
+                return;
+            if (lista.length == undef) {
+                lista.checked = check;
+                return;
+            }
+            for (i = 0; i < lista.length; i++)
+                lista[i].checked = check;
+        }
+
+        function closePopup() {
+            document.getElementById('backgroudPopup').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function openPopup() {
+            document.getElementById('backgroudPopup').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+
+        //-->
+    </script>
+</head>
+
+<body onload="exibeTotal();javascript:document.forms[0].btnMarcar.focus()">
+
+<div id="backgroudPopup" style="width:100%; height:175%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10; left: 0px; top: 0px;">
+    <div id="popup" style="position:absolute; top: 25%; left: 50%; margin: -75px 0 0 -150px; width: 300px; height: 100px; padding: 20px; border: solid 1px #331; background: #dfe6eb; display: none;">
+        <h4>
+            Você está transferindo esse valor para uma nova via de cartão. Você confirma?
+        </h4>
+
+        <div style="width: 20%; height: 10px; left: 60px; top: 70%; position:absolute;">
+            <input type="button" style="border: 1px solid #7AA6C3; padding: 2px; width: 100%;" onclick="closePopup();" value="N�O" id="btnCancelar" class="button btn-company">
+        </div>
+        <div style="width: 20%; height: 10px; right: 60px; top: 70%; position:absolute;">
+            <input type="button" style="border: 1px solid #7AA6C3; padding: 2px; width: 100%;" ;="" onclick="enviar( 'transfBolsaIncluir', this  );" value="SIM" id="btnEnviar" class="button btn-company">
+        </div>
+    </div>
+</div>
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="top" align="center">
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Transferência do saldo do cartão cancelado para a segunda via</legend>
+                    <div class="subtitulo">Relação de Usuários</div>
+                    <div id="msg"></div>
+
+                    <form name="frmTransfBolsaCred" action="PrePedido" method="post">
+                        <table width="96%" cellspacing="1" cellpadding="4" border="0" bgcolor="#FFFFFF" align="center">
+
+                            <tbody><tr>
+                                <td>
+                                    <table width="100%" cellspacing="5" border="0" align="center">
+                                        <tbody><tr>
+                                            <td style="text-align: left"><input type="checkbox" style="border:0" name="btnMarcar" checked="checked" onclick="marca( btnMarcar.checked );exibeTotal();">Marcar
+                                                todos desta página
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="100%">
+                                                <table width="100%" cellspacing="1" cellpadding="4" border="0" align="center">
+
+                                                    
+                                                    <tbody><tr bgcolor="#dfe6eb">
+                                                        <td style="text-align: center" width="03%"><strong style="font-weight: bold">Seq</strong></td>
+                                                        <td style="text-align: center" width="07%"><strong style="font-weight: bold">Seleção</strong>
+                                                        </td><td style="text-align: center" width="07%"><strong style="font-weight: bold">Identificação
+                                                            do Usuário</strong></td>
+                                                        <td style="text-align: center" width="35%"><strong style="font-weight: bold">Usuário</strong></td>
+                                                        <td style="text-align: center" width="13%"><strong style="font-weight: bold">CPF</strong>
+                                                        </td><td style="text-align: center" width="20%"><strong style="font-weight: bold">Cartão</strong>
+                                                        </td><td style="text-align: center" width="15%"><strong style="font-weight: bold">Valor da
+                                                            Carga</strong></td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+
+                                                    
+                                                    <tr>
+                                                        <td class="textoalerta" colspan="7" style="text-align: center">Não
+                                                            existem usuários com saldos de cartões a transferir e/ou com
+                                                            um
+                                                            cartão ativo.
+                                                        </td>
+                                                    </tr>
+                                                    
+
+                                                    <tr>
+                                                        <td colspan="6" style="text-align: right" bgcolor="#dfe6eb">
+                                                            <strong style="font-weight: bold">Total:</strong>
+                                                        </td>
+
+                                                        <td style="text-align: right" id="total" bgcolor="#dfe6eb"><strong>0,00</strong></td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+
+                                    </tbody></table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center"><input name="btnVoltar" type="button" class="button btn-company" id="btnVoltar" value="Voltar"> 
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                        <input type="hidden" name="np" value="1"> <input type="hidden" name="action" value=""> <input type="hidden" name="com.montreal.framework.TokenPage" value="0.8390844495798659">
+                    </form>
+                </fieldset>
+            </div>
+        </td>
+    </tr>
+</tbody></table>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="transfBolsa_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+</body></html>

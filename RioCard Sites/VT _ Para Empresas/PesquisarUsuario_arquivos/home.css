@@ -1,0 +1,394 @@
+/*-----------------------------------------------------------------------------
+Portal Riocard Mais- Folha de estilos da Home
+
+autor:     Midia 3 - Werther Azevedo, Robson Waterkemper e Daniel Ramos
+website:   http://www.midia3.com.br/
+-----------------------------------------------------------------------------*/
+
+/* =Gerais
+-----------------------------------------------------------------------------*/
+
+#info_principal {
+	float:left;
+	position:relative;
+	/*width:670px;*/
+	width:700px;
+}
+
+.info_dir {
+	float:left;
+	width:220px;
+	/*width: 249px;*/
+	margin-left: 4px;
+	height:600px;
+}
+
+#info_secundaria{
+	clear:both;
+}
+
+/* =Destaques
+-----------------------------------------------------------------------------*/
+
+#destaques{
+	float:left;
+	width:700px;
+	/*height:321px;*/
+	height:250px;
+	/*background:#f1f5f9 url(../home/imagens/padrao_flash.gif) repeat-x 0 215px;*/	
+}
+
+#destaques h2{
+	position:absolute;
+	margin-left:-10000px;
+}
+
+#destaques .flash{
+	width:360px;
+	height:250px;
+	margin:0 auto;
+}
+
+/* =Telefones
+-----------------------------------------------------------------------------*/
+
+#central{
+	/*background:url(../home/imagens/padrao_telefones.jpg) repeat-x 0 4px;*/
+	/*height:95px;*/
+	/*background:url(../home/imagens/bg_banners_blue.png) repeat-y;*/
+	color:#FFFFFF;
+	text-align:center;
+	height:100%;
+	width:218px;
+}
+
+#central .banner {
+	text-align:center;
+	margin-top:9px;
+}
+
+
+#central a:link img {
+	border:solid 1px;
+	border-color:#EEF2F8;
+}
+
+#central a:visited img {
+	border:solid 1px;
+	border-color:#EEF2F8;
+}
+
+#central a:hover img {
+	border:solid 1px;
+	border-color:#7D9CC5;
+}
+
+#central a:active img {
+	border:solid 1px;
+	border-color:#7D9CC5;
+}
+
+#telefones h3{
+	font-weight:bold;
+	font-style: normal; /* com isso a fonte ficou feita em italico no Firefox e IE6 pois nao tem anti-alias */
+	*font-style: italic !important; /* com anti-alias a fonte fica legal em italico, por isso o Hack que funciona somente no IE 7 */
+	font-style: normal;
+	font-size:11px; /* o tamanho da fonte teve que diminiuir na troca de Atendimento para Relacionamento */
+	padding:6px 6px 0 0;
+}
+
+#telefones h3 span{
+	color:#fcbb08;
+}
+
+#telefones .tel{
+	font-size:17px;
+	font-weight:bold;
+	font-family:"News Gothic", "Trebuchet MS", "Lucida Sans", sans-serif;
+	font-style:italic;
+	padding:0 6px;
+	background:#05417a;
+	display:inline;
+}
+
+#telefones .tel span{
+	font-size:12px;
+	margin-right:3px;
+}
+
+#telefones .horario{
+	color:#05417a;
+	padding:8px 0 0 0;
+}
+
+#telefones .horario strong{
+	font-size:10px;
+	font-weight:bold;
+	margin-left:6px;
+}
+
+#telefones .postos{
+	color:#323232;
+	padding:8px 0 0 0;	
+}
+
+#telefones .postos a, #telefones .postos a:visited {
+	color:#323232;	
+}
+
+#telefones .postos a strong {
+	text-decoration: underline;	
+}
+
+#telefones .postos a:hover strong {
+	text-decoration: none;	
+}
+
+.efeito_telefones {
+	height:95px;
+	position:absolute;
+	top:0;
+	left:6px;
+	width:100%;
+	background:url(../home/imagens/bg_fios_telefones.gif) no-repeat left bottom;	
+}
+
+/* =Noticias
+-----------------------------------------------------------------------------*/
+
+#noticias{
+	background:url(../home/imagens/bg_noticias.gif) repeat-x;	 
+	height:240px;
+	clear:both;
+	position:relative;
+	/*width:48%;*/
+	width:100%;
+}
+
+.noticias_esq{
+	height:100%;	
+}
+
+#noticias h3{
+	font-size:15px;
+	color:#172038;
+	font-weight:bold;
+	padding-top:18px;
+}
+
+#noticias h3 strong{
+	background:#FFFFFF;
+	padding:0 6px;
+	margin-left:18px;
+}
+
+#noticias .link_todas{
+	position:absolute;
+	top:11px;
+	right:0;
+	width:173px;
+	height:30px;
+	background:url(../home/imagens/fnd_veja_todas.gif) no-repeat 0 0;	
+}
+
+#noticias .link_todas a{
+	background:#316bac;
+	line-height:13px;
+	margin-left:34px;
+	margin-top:6px;
+}
+
+#noticias .link_todas a:hover{
+	background:#6b9cd2;
+}
+
+#noticias ul{
+	margin:6px 0 0 24px;
+}
+
+#noticias ul h4{
+	color:#00366b;
+	font-size:13px;
+	font-weight:bold;
+	margin-bottom:3px;
+}
+
+#noticias ul h4 a, #noticias ul h4 a:visited {
+	color: #00366b;
+}
+
+#noticias ul li p a, #noticias ul li p a:visited {
+	color: #333333;
+}
+
+
+
+#noticias ul li{
+	margin-bottom:6px;
+}
+
+#noticias ul li .link_mais{
+	margin-top:6px;
+	padding-left:14px;
+	height:15px;
+	background:url(../comum/imagens/ic_leiaMais.gif) no-repeat 0 0;
+	width:18%;	
+}
+
+#noticias ul li p.link_mais a{
+	background:#117fb2;
+	color: #FFFFFF;
+}
+
+#noticias ul li p.link_mais a:hover{
+	background:#81b4cc;
+}
+
+#noticias ul li.com_divisa{
+	background:url(../comum/imagens/bg_pontilhado.gif) repeat-x bottom left;
+	padding-bottom:12px;
+}
+
+
+
+/* =Recarga
+-----------------------------------------------------------------------------*/
+
+.recarga{
+	/*width:27%;*/
+	width:36%;
+	height:197px;	
+	background:url(../home/imagens/bg_recarga2.gif) repeat-x;	
+	float:left;
+	margin-bottom:10px;
+}
+
+.recarga_dir{
+	background:url(../home/imagens/recarga_dir2.gif) no-repeat top right;
+	float:left;
+	width:100%;
+	height:197px;
+}
+
+.recarga h3{
+	background:url(../home/imagens/icone_recarga.gif) no-repeat top left;
+	font-size:12px;
+	font-weight:bold;
+	color:#FFFFFF;
+	margin:0 0 20px 0;
+	padding:10px 0 0 40px;
+	line-height:16px;
+	height:46px;
+}
+
+.recarga h3 em{
+	font-weight:bold;
+	font-size:15px;
+	color:#ffc600;
+}
+
+.recarga .text_input{
+	border:1px solid #c2c2c2;
+	margin-left:6px;
+	padding:2px 6px;
+	color:#4f4f4f;
+}
+
+.bt_enviar{
+	margin-top:-2px;
+}
+
+.recarga .link_mais{
+	background:url(../home/imagens/ic_mais_azul.gif) no-repeat 0 0;
+	width:112px;
+	margin:6px 0 0 6px;
+	height:16px;
+	padding:1px 0 0 17px;	
+}
+
+.recarga .link_mais a{
+	height:14px;
+	line-height:14px;
+	background:#97b6d4;
+}
+
+.recarga .link_mais a:hover{
+	background:#6b9cd2;
+}
+
+.link_rede{
+	margin:38px 0 0 12px;
+}
+
+.link_rede a{
+	color:#3f93e2;
+	text-decoration:underline;
+}
+
+
+/* =Noticias Inferiores
+-----------------------------------------------------------------------------*/
+
+.not_inferior{
+	/*width:22%;*/
+	width:30%;
+	float:left;
+	margin:6px 0 0 2%;
+}
+
+.not_inferior h3{
+	font-weight:bold;
+	color:#286a67;
+	background:#d7eae9 url(../home/imagens/bg_tit_noticiasInf.gif) repeat-x 0 10px; 
+	padding:3px 6px 3px 0;
+	margin-bottom:8px;
+}
+
+.not_inferior h3 strong{
+	padding:0 8px;
+	background:#d7eae9;	
+}
+
+.not_inferior h3 strong a, .not_inferior h3 strong a:visited {
+	color: #286a67;
+}
+
+.not_inferior p a, not_inferior p a:visited {
+	color: #333333;
+}
+
+.not_inferior .link_mais{
+	margin-top:12px;
+	background:url(../comum/imagens/ic_saibaMais.gif) no-repeat 0 0;	
+	height:16px;
+	padding:0 0 0 18px;	
+	width:40%;
+}
+
+.not_inferior p.link_mais a, .not_inferior p.link_mais a:visited {
+	color: #FFFFFF;
+	background:#9cbebc;
+}
+
+.not_inferior p.link_mais a:hover{
+	background:#4db5af;
+}
+
+#flipbook{
+	widht:500px;
+	height:30px;
+	padding-top:10px;
+	float:right;	
+}
+
+div.msgTrocaSenha {
+	background:#F1F1F1;
+	font-size:16px; 
+	text-align:center;
+	color:#4c8e38;
+	padding:20px;
+	border:5px solid #8b8b8b;
+}
+div.txt_msg img {
+	margin-right:8px;
+}

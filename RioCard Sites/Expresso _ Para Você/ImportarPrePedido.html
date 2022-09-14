@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><style>
+    table tbody tr {
+        padding: 0px;
+        text-align: center
+    }
+</style>
+
+    <title>Inclusão de pedido por arquivo</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" href="ImportarPrePedido_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="ImportarPrePedido_arquivos/riocard.css">
+    <script language="JavaScript" type="text/javascript" src="ImportarPrePedido_arquivos/funcoes.js"></script>
+    <script language="JavaScript">
+       
+
+        var undef;
+
+        function enviar(PButton) {
+
+            var form = document.forms[0];
+            var nomeArquivo = form.arquivo.value;
+            var extArquivo = nomeArquivo.split('.').pop();
+
+            if (PButton) {
+                if (form.arquivo.value == "") {
+                    alert('N\u00E3o h\u00E1 arquivo selecionado. \u00C9 necess\u00E1rio selecionar um arquivo para prosseguir.');
+                    return;
+                } else if (extArquivo != "txt" && extArquivo != "TXT") {
+                    alert('Arquivo diferente de txt.')
+                    return;
+                }
+
+                PButton.disabled = true;
+                form.action.value = 'frmImportacaoFase1';
+                form.submit();
+            }
+            return;
+        }
+
+        //-->
+    </script>
+</head>
+
+<body onload="javascript:document.forms[0].arquivo.focus()">
+<div id="msg"></div>
+<form name="formPrincipal" action="ImportarPrePedido" method="post" enctype="multipart/form-data">
+    <br>
+
+    <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody><tr>
+            <td>
+                
+
+
+                <div class="menu_esq">
+                    <div class="menu_dir">
+                        <div class="menu">
+                            <ul>
+                                <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                <li style="width:9%;"><a href="">Sair</a></li>
+                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" valign="top" align="center">
+
+
+                <div id="forms">
+                    <fieldset>
+                        <legend class="titulo">Importação de Pedidos</legend>
+                        <table width="96%" cellspacing="1" cellpadding="4" border="0" align="center">
+                            <tbody><tr>
+                                <td>
+                                    <table width="100%" cellspacing="4" border="0" align="center">
+                                        <tbody><tr>
+                                            <td colspan="2" class="textopretob" align="center">
+                                                <table width="100%" border="0" align="center">
+                                                    
+
+                                                    </table><br><br><table class="" cellspacing="0" border="0">
+
+                                                        <tbody><tr>
+                                                            <td style="width: 70%; text-align: left">
+                                                                <p>É recomendável utilizar arquivos com no máximo
+                                                                    2.000 registros,
+                                                                    pois arquivos maiores poderão causar queda de
+                                                                    conexão ou demora no
+                                                                    processamento.</p>
+
+                                                                <p>Caso você precise fazer pedidos com mais de
+                                                                    2.000 registros, sugerimos
+                                                                    gerar vários arquivos e importá-los um a um.</p>
+                                                                <br>
+
+                                                                <p>Selecione o arquivo de pedidos que deseja importar
+                                                                    de seu disco rígido</p>
+
+                                                                <input type="file" name="arquivo" value="" class="fileBox" size="80">
+
+                                                            </td>
+
+                                                            <td style="width: 30%" align="right">
+                                                                <a href="https://www.cartaoriocard.com.br/scrcpr2/pdf/PEF-V02-Ver1.4.0_-_Layouts_do_arquivo_de_importacao_de_usuarios.pdf" target="_blank">
+                                                                    <div>
+                                                                        <img src="ImportarPrePedido_arquivos/imagem_download.png" alt="Download do arquivo" title="Download do arquivo">
+                                                                        <br>
+
+                                                                        <p>Layout do arquivo de importação.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: left">
+                                                                <div style="padding-top: 3px;">
+                                                                    <input type="button" name="btnVoltar" value="Voltar"  class="button btn-company">
+                                                                    <input type="button" name="btnEnviar" value="Enviar" class="button btn-company">
+                                                                    <input type="hidden" name="com.montreal.framework.TokenPage" value="0.9301302945549067">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td></tr></tbody></table>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </fieldset></div></td>
+                            </tr>
+                        </tbody></table>
+                    
+                
+            
+        
+    
+</form>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="ImportarPrePedido_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+
+
+</body></html>

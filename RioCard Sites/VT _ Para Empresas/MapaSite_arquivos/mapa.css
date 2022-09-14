@@ -1,0 +1,55 @@
+/* Mapa Site */
+.bloco {
+	padding-bottom:20px;
+}
+
+.titulos_princ {
+	margin-bottom:0px;
+	font-weight:bold;
+}
+
+.titulos_princ a{color:#4a536c; text-decoration:underline;}
+
+.titulos_princ a:hover {text-decoration:none;}
+
+.classe_2 {
+	display:block; 
+	height:15px; 
+	background:url(../comum/imagens/bullets/bullet_seta.gif) no-repeat left 5px; 
+	padding-left:15px; 
+	font-weight:bold; 
+	font-size:13px; 
+	color:#20638c; 
+	margin:5px 20px; 
+	margin-bottom:10px;
+	text-decoration:underline;
+	float:left;
+	clear:both;
+}
+
+.classe_2:hover {
+	text-decoration:none;
+}
+
+.classe_3 {
+	display:block; 
+	height:15px; 
+	padding-left:15px; 
+	background:url(../comum/imagens/bullets/bullet_mapa2.gif) no-repeat left 6px; 
+	margin:0px 33px;
+	margin-bottom:10px;
+	text-decoration:underline;
+	float:left;
+	clear:both;
+}
+
+.classe_3:hover {
+	text-decoration:none;
+}
+
+.normal {
+	 clear:both;
+	  cursor:default;
+	  text-decoration:none;
+}
+

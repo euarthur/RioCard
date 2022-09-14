@@ -1,0 +1,147 @@
+/* CSS Document */
+
+.nr_cartao {
+	margin-bottom: 10px;
+}
+
+.form_itens tr td {
+	padding-right: 10px;
+}
+
+.instrucao1 {
+	margin-right: 10px;
+}
+
+.bt_pesquisar {
+	display: block;
+	float: left;
+}
+
+#btPesquisarDisabled {
+	display: none;
+}
+
+.pesquisar_usuarios {
+	margin-bottom: 10px;
+}
+
+.pesquisar_usuarios legend .instrucao {
+	font-weight: normal;
+}
+
+#formPesquisaUsuarios {
+	display: none;
+}
+
+.pesquisar_usuarios .form_itens {
+	float: left;
+}
+
+.pesquisar_usuarios .form_itens input {
+	width: 200px;
+}
+
+#tabelaUsuarios {
+	display: none;
+	margin-top: 20px;
+	clear: both;
+}
+
+.bt_master {
+	margin-bottom: 15px;
+	*margin-bottom: 0px;
+}
+
+hr {
+	height:1px;
+    background:#79abda;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: 0;
+	*color: #79abda;
+}
+
+.fieldsets_esq {
+	float: left;
+	width: 62%;
+}
+
+.fieldsets_esq fieldset {
+	margin-bottom: 10px;
+}
+
+.fieldsets_esq table {
+	width: 100%;
+}
+
+.fieldsets_esq table tr td {
+	text-align: center;
+}
+
+.fieldsets_esq label {
+	margin-right: 5px;
+}
+
+.sem_restricao {
+	color: #006600;
+}
+
+.com_restricao {
+	color: #990000;
+}
+
+.datas_cartao {
+	float: right;
+	width: 33%;
+	height: 95px;
+}
+
+.datas_cartao table tr td {
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.dados_pessoais {
+	width: 59%;
+	float: left;
+	height: 95px;
+	_height: 100px;
+}
+
+.dados_pessoais table tr td {
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.dados_pessoais .cpf {
+	text-align: right;
+}
+
+.dados_pessoais .cpf label {
+	margin-right: 6px;
+}
+
+.botoes_bottom {
+	clear: both;
+}
+
+.usuario_associado .btn_padrao {
+	float: right;
+	margin-top: 8px;
+}
+
+#btEsconderHistorico {
+	display: none;
+}
+
+#conteudoHistorico {
+	display: none;
+	_zoom: 1;
+}
+.pesquisa {
+	background:url(../comum/imagens/icones/ic_voltar.gif) no-repeat left; 
+	padding-left:18px; 
+	margin:0 5px;
+	float:right;
+	margin-top:5px;
+}

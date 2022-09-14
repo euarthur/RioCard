@@ -1,0 +1,520 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head><style>
+        table tbody tr td {
+            padding: 0px;
+            text-align: center
+        }
+        
+        .msgErro {
+            color: #ff0000;
+        }
+    </style>
+    
+        <title>Cadastro do Comprador Pessoa Física</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="CadastrodoCompradorPessoaFisica_arquivos/lightbox.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="CadastrodoCompradorPessoaFisica_arquivos/homeestilos.css" rel="stylesheet" type="text/css">
+        <link id="rel" rel="stylesheet" href="CadastrodoCompradorPessoaFisica_arquivos/riocard.css">
+        <script src="CadastrodoCompradorPessoaFisica_arquivos/tooltip.js" language="javascript" type="text/javascript"></script>
+        <script type="text/javascript" src="CadastrodoCompradorPessoaFisica_arquivos/ManagerAjax.js"></script>
+        <script type="text/javascript" src="CadastrodoCompradorPessoaFisica_arquivos/engine.js"></script>
+        <script type="text/javascript" src="CadastrodoCompradorPessoaFisica_arquivos/util.js"></script>
+        <script language="JavaScript" src="CadastrodoCompradorPessoaFisica_arquivos/lightboxEnd.js"></script>
+    <script language="JavaScript" type="text/javascript">
+        function somenteNumero(e) {
+            var tecla = (window.event) ? event.keyCode : e.which;
+            if ((tecla > 47 && tecla < 58)) return true;
+            else {
+                if (tecla == 8 || tecla == 0) return true;
+                else return false;
+            }
+        }
+
+        function letra_maiuscula_minuscula() {
+            var form = document.forms[0];
+            form.email.style.textTransform = 'lowercase';
+        }
+
+        function listarEnderecos(cep) {
+
+            apagarMensagemCep();
+
+            if (cep != "") {
+                exibirMsgAguarde();
+                ManagerAjax.listarEnderecosPorCep(callbackEndereco, cep);
+            } else {
+                exibirMensagemCep("Favor informar o CEP.");
+            }
+        }
+
+        function callbackEndereco(lista) {
+            if (lista == null) {
+                exibirMensagemCep("Consulta \u00C7 base de CEPs indispon\u00EDvel. Preencha manualmente os campos de endere\u00E7o.");
+            } else if (lista.length == 1) {
+
+                var tpLogradouro = lista[0].tpLogradouro;
+
+                if (tpLogradouro == "Rua" || tpLogradouro == "Avenida" || tpLogradouro == "Travessa" || tpLogradouro == "Conjunto") {
+                    tpLogradouro = tpLogradouro.toUpperCase();
+                } else {
+                    tpLogradouro = "";
+                }
+
+                document.getElementById('endereco').value = lista[0].logradouro == null ? "" : (tpLogradouro + " " + lista[0].logradouro.toUpperCase());
+                document.getElementById('bairro').value = lista[0].bairro == null ? "" : lista[0].bairro.toUpperCase();
+                document.getElementById('cidade').value = lista[0].cidade == null ? "" : lista[0].cidade.toUpperCase();
+                document.getElementById('estado').value = lista[0].sgUf != null && lista[0].sgUf != null ? lista[0].sgUf : "";
+
+                esconderBotaoEndereco();
+                exibirMensagemCep("Foi localizado um endereco para este CEP. Verifique e complete o formul\u00E1rio.");
+
+            } else if (lista.length > 1) {
+                exibirTabelaEndereco(lista, formataCep(lista[0].cep));
+                exibirBotaoEndereco(formataCep(lista[0].cep));
+            } else {
+                exibirMensagemCep("Nenhum endere\u00E7o localizado para o CEP informado. Preencha o formulario.");
+                limparCamposEndereco();
+                esconderBotaoEndereco();
+
+            }
+
+            esconderMsgAguarde();
+        }
+
+        function formataCep(cep) {
+            var numCep = cep.substring(0, 5);
+            var cepDig = cep.substring(5, 8);
+
+            return numCep + '-' + cepDig;
+        }
+
+
+        function limparCamposEndereco() {
+            document.getElementById('endereco').value = "";
+            document.getElementById('bairro').value = "";
+            document.getElementById('cidade').value = "";
+            document.getElementById('estado').value = "RJ";
+        }
+
+
+        function exibirTabelaEndereco(lista, cep) {
+
+            var titulo = '<div  style="width: 100%; z-index: 90; height: 10%"><h1 class="titulocep" style="font-size: 14px" >' +
+                "Endere\u00E7os Localizados para o CEP " + cep +
+                '</h1></div>';
+
+            var strTab = '<div  style="width: 100%;height: 80%;overflow-x:hidden;overflow-y:scroll;" >' +
+                '<table border="0" cellspacing="0" id="tbendereco"><tr><th>Logradouro</th><th>Tipo Logradouro</th><th>Bairro</th><th>Cidade</th><th>UF</th><th>Selecionar</th></tr>';
+
+            for (var i = 0; i < lista.length; i++) {
+                strTab += '<tr>';
+                strTab += '<td align="left"><label id="cTxLograd' + i + '">' + (lista[i].logradouro == null ? "&nbsp;" : lista[i].logradouro) + '</label></td>';
+
+                var tpLogradouro = lista[i].tpLogradouro;
+
+                if (tpLogradouro != "Rua" && tpLogradouro != "Avenida" && tpLogradouro != "Travessa" && tpLogradouro != "Conjunto") {
+                    tpLogradouro = "Outros";
+                }
+
+                strTab += '<td align="left"><label id="cTpLograd' + i + '">' + tpLogradouro.toUpperCase() + '</label></td>';
+                strTab += '<td align="left"><label id="cNmBairro' + i + '">' + (lista[i].bairro == null ? "" : lista[i].bairro.toUpperCase()) + '</label></td>';
+                strTab += '<td align="left"><label id="cNmCidade' + i + '">' + (lista[i].cidade == null ? "" : lista[i].cidade.toUpperCase()) + '</label></td>';
+                strTab += '<td align="left"><label id="cSgUf' + i + '">' + (lista[i].sgUf != null && lista[i].sgUf != null ? lista[i].sgUf : "") + '</label></td>';
+                strTab += '<td align="center"><a href="javascript: preencheEndereco(' + i + ');hideLightboxEnd();">Selecionar</a></td>';
+                strTab += '</tr>';
+            }
+            strTab += '</table></div>';
+
+            var btnCancelar = '<br /><p class="buttons" ><a href="javascript:hideLightboxEnd();">Cancelar</a><p>';
+
+            document.conteudoLBCEP = titulo + strTab + btnCancelar;
+
+            showLightboxEnd(document.conteudoLBCEP);
+        }
+
+        function exibirMsgAguarde() {
+            var obj = document.getElementById("aguarde");
+            obj.style.display = 'block';
+        }
+
+        function esconderMsgAguarde() {
+            var obj = document.getElementById("aguarde");
+            obj.style.display = 'none';
+        }
+
+        function apagarMensagemCep() {
+
+            var cepErroDiv = document.getElementById('cep_erro');
+            cepErroDiv.style.display = 'none';
+        }
+
+
+        function exibirBotaoEndereco(cep) {
+            var btTrocaSenha = document.getElementById('trocaEndereco');
+            var lTrocaEndereco = document.getElementById('lTrocaEndereco');
+            btTrocaSenha.style.display = 'block';
+            lTrocaEndereco.innerHTML = "Endere\u00E7os localizados (CEP: " + cep + ")";
+        }
+
+        function esconderBotaoEndereco() {
+            var btTrocaSenha = document.getElementById('trocaEndereco');
+            var lTrocaEndereco = document.getElementById('lTrocaEndereco');
+            btTrocaSenha.style.display = 'none';
+            lTrocaEndereco.innerHTML = "";
+        }
+
+        function exibirMensagemCep(msg) {
+
+            var cepErroDiv = document.getElementById('cep_erro');
+            cepErroDiv.style.display = 'block';
+            var msgCepErroDiv = document.getElementById('msg_cep_erro');
+            msgCepErroDiv.innerHTML = msg;
+        }
+
+        function preencheEndereco(indice) {
+            limparCamposEndereco();
+
+            document.getElementById('endereco').value = document.getElementById('cTpLograd' + indice).innerHTML + " " + document.getElementById('cTxLograd' + indice).innerHTML;
+            document.getElementById('bairro').value = document.getElementById('cNmBairro' + indice).innerHTML;
+            document.getElementById('cidade').value = document.getElementById('cNmCidade' + indice).innerHTML;
+            document.getElementById('estado').value = document.getElementById('cSgUf' + indice).innerHTML;
+        }
+    </script></head>
+    
+    
+    <body onload="javascript:document.forms[0].txLoginUsuar.focus();apagarMensagemCep();esconderMsgAguarde();initLightboxEnd();"><div id="overlayEnd" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightboxEnd" class="enderecoBox" style="display: none; position: absolute; z-index: 100; width: 680px; height: 480px;"></div>
+        <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    
+
+
+<div class="menu_esq">
+	<div class="menu_dir">
+		<div class="menu">
+			<ul>
+				<li style="width:10%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/Login?action=abertura&amp;cache=1659699065481">Inicio</a></li>
+				<li style="width:15%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/Menu?opcao=comprd&amp;cache=1659699065481">Comprador</a></li>
+				<li style="width:12%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/Menu?opcao=usuario&amp;cache=1659699065481">Usuários</a></li>
+				<li style="width:10%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/Menu?opcao=cartao&amp;cache=1659699065481">Cartões</a></li>
+				<li style="width:13%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/pedidopre/PrePedido?action=menuCCred&amp;cache=1659699065481">Pedidos</a></li>
+				<li style="width:14%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/Menu?opcao=relatorio&amp;cache=1659699065481">Relatórios</a></li>
+				<li style="width:16%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/comprador/Menu?action=mapa&amp;cache=1659699065481">Mapa do Site</a></li>
+				<li style="width:9%;"><a href="https://www.cartaoriocard.com.br/scrcpr2/Login?action=conflogoff&amp;cache=1659699065481">Sair</a></li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" valign="top" align="center">
+                    <div id="forms">
+                        <fieldset>
+                            <legend class="titulo">Alteração de dados cadastrais do comprador
+                                <c:choose>
+                                    <c:when test="true">
+                                        <img src="CadastrodoCompradorPessoaFisica_arquivos/img_info.png" title="Para garantir que os dados estejam corretos, usamos automaticamente as informações do documento informado para completar o cadastro, por isso você não pode alterar estes campos.">
+                                    </c:when>
+                                </c:choose>
+                            </legend>
+                            <br>
+                            
+                                <form name="FormCad_CComprd" action="Comprador" method="post">
+                                    
+                                    <div id="msg"></div>
+                                    <table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+                                        <tbody><tr align="center">
+                                            <td>
+                                                <table width="100%" cellspacing="5" border="0">
+                                                    
+                                                    <tbody><tr>
+                                                        <td colspan="3" style="text-align: center">
+                                                            <table width="98%" cellspacing="2" border="0" align="center">
+                                                                <tbody><tr>
+                                                                    <td colspan="2" style="text-align: right">
+                                                                        <table width="100%" border="0">
+                                                                            <tbody><tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Cadastro de pessoa fisica (somente n\u00FAmeros).', 'msg')" onmouseout="hide()">
+                                                                                        CPF:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left" width="70%">
+                                                                                    
+                                                                                    <strong>
+                                                                                        128.937.644-10
+                                                                                    </strong>
+                                                                                    <input type="hidden" name="numDoc" value="12893764410">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Login do comprador.', 'msg')" onmouseout="hide()">
+                                                                                        Login:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left" width="70%">
+                                                                                    <input name="txLoginUsuar" value="EUARTHURS" type="text" maxlength="15" class="cxlaranja" size="16" tabindex="1">
+                                                                                    <input name="txLoginUsuarOld" value="EUARTHURS" type="hidden">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Nome do comprador.', 'msg')" onmouseout="hide()">
+                                                                                        Nome:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left" width="70%">
+                                                                                    
+                                                                                    <strong>
+                                                                                        JOSE ARTHUR DOS SANTOS
+                                                                                    </strong>
+                                                                                    
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    Data de nascimento*:
+                                                                                </td>
+                                                                                <td style="text-align: left" width="70%">
+                                                                                    
+                                                                                    <strong>
+                                                                                        06/07/1999
+                                                                                    </strong>
+                                                                                    
+                                                                                    (DD/MM/AAAA)
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Nome fantasia da empresa.', 'msg')" onmouseout="hide()">
+                                                                                        Nome a ser impresso no cartão:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="nomefan" value="JOSE ARTHUR DOS SANTOS" type="text" maxlength="40" class="cxlaranja" size="40" tabindex="3">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Conta de e-mail para contatos.', 'msg')" onmouseout="hide()">
+                                                                                        E-mail:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="email" value="santosarthur87@gmail.com" type="text" maxlength="60" class="cxlaranja" size="60" tabindex="4">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Conta de e-mail alternativa.', 'msg')" onmouseout="hide()">
+                                                                                        E-mail Alternativo:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="emailAlternativo" value="santosarthur87@gmail.com" type="text" maxlength="60" class="cxlaranja" size="60" tabindex="6">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    
+                                                                                    <input type="checkbox" name="ckbox" checked="checked" tabindex="5">
+                                                                                    
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <span onmouseover="mensagem( 'Marque se deseja receber e-mails.', 'msg')" onmouseout="hide()">
+                                                                        
+                Autorizo o envio de e-mails com informações sobre o 
+Riocard Mais.
+                                                                        
+            </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Numero do CEP para entrar em contato.', 'msg')" onmouseout="hide()">
+                                                                                        CEP:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    
+                                                                                    <input name="cep" id="cep" value="58421690" type="text" maxlength="8" onkeypress="return somenteNumero(event);" class="cxlaranja" size="8" tabindex="12">
+                                                                                    
+                                                                                    <div id="trocaEndereco" style="display:none">
+                                                                                        <a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                                                                    </a></div><a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                                                                </a></td>
+                                                                            </tr><tr>
+                                                                                <td></td>
+                                                                                <td style="text-align: left" width="30%">
+                                                                                    <input type="button" value="Localizar Endereço" onclick="javascript:listarEnderecos(document.getElementById('cep').value);" class="button btn-company">
+                                                                                </td>
+                                                                            </tr>
+                                                                            
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%"></td>
+                                                                                <td style="text-align: left" width="10%">
+                                                                                    <div id="cep_erro" style="display:none">
+                                                                                        <h4 id="msg_cep_erro"></h4>
+                                                                                    </div>
+                                                                                    <div id="aguarde" style="display:none">
+                                                                                        <h4>Aguarde...</h4>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody></table>
+                                                                        <table width="100%" border="0">
+                                                                            <tbody><tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Endere\u00E7o para contato.', 'msg')" onmouseout="hide()">
+                                                                                        Endereço:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="endereco" id="endereco" value="rua arcoverde" type="text" maxlength="60" class="cxlaranja" size="60" tabindex="6">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'N\u00FAmero da rua ou apartamento.', 'msg')" onmouseout="hide()">
+                                                                                        Número:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="numero" id="numero" value="31" type="text" maxlength="5" onkeypress="return somenteNumero(event);" class="cxlaranja" size="5" tabindex="7">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Complemento do endere\u00E7o.', 'msg')" onmouseout="hide()">
+                                                                                        Complemento:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="complemento" id="complemento" type="text" maxlength="30" class="cxlaranja" size="30" tabindex="8">
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Bairro do endere\u00E7o informado.', 'msg')" onmouseout="hide()">
+                                                                                        Bairro:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="bairro" id="bairro" value="Bairro das cidades" type="text" maxlength="40" class="cxlaranja" size="40" tabindex="9">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Informe a Unidade Federativa.', 'msg' )" onmouseout="hide()">
+                                                                                        UF:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <div id="divUF">
+                                                                                        <select name="cod_uf" id="estado" type="text" class="cxlaranja" tabindex="13">
+                                                                                            <option value="AC">ACRE</option><option value="AL">ALAGOAS</option><option value="AM">AMAZONAS</option><option value="AP">AMAPA</option><option value="BA">BAHÍA</option><option value="CE">CEARÁ</option><option value="DF">DISTRITO FEDERAL</option><option value="ES">ESPÍRITO SANTO</option><option value="GO">GOIÁS</option><option value="MA">MARANHÃO</option><option value="MG">MINAS GERAIS</option><option value="MS">MATO GROSSO DO SUL</option><option value="MT">MATO GROSSO</option><option value="PA">PARÁ</option><option value="PB" selected="selected">PARAÍBA</option><option value="PE">PERNAMBUCO</option><option value="PI">PIAUÍ</option><option value="PR">PARANÁ</option><option value="RJ">RIO DE JANEIRO</option><option value="RN">RIO GRANDE DO NORTE</option><option value="RO">RONDÔNIA</option><option value="RR">RORAIMA</option><option value="RS">RIO GRANDE DO SUL</option><option value="SC">SANTA CATARINA</option><option value="SE">SERGIPE</option><option value="SP">SAO PAULO</option><option value="TO">TOCANTINS</option>
+
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Informe a cidade do endere\u00E7o informado.', 'msg' )" onmouseout="hide()">
+                                                                                        Cidade:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="cidade" id="cidade" value="CAMPINA GRANDE" type="text" maxlength="50" class="cxlaranja" size="50" tabindex="13">
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody></table>
+                                                                        <table width="100%" border="0">
+                                                                            <tbody><tr>
+                                                                                <td style="text-align: right" width="30%">
+                                                                                    <span onmouseover="mensagem( 'Telefone para contato (somente n\u00FAmeros).', 'msg')" onmouseout="hide()">
+                                                                                        Telefone:
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td style="text-align: left">
+                                                                                    <input name="telefone_ddd" type="text" value="83" maxlength="3" onkeypress="return somenteNumero(event);" class="cxlaranja" size="3" tabindex="13">
+                                                                                    <input name="telefone_num" type="text" value="988608313" maxlength="10" onkeypress="return somenteNumero(event);" class="cxlaranja" size="10" tabindex="14">
+                                                                                    <input name="telefone_rm" type="text" maxlength="4" onkeypress="return somenteNumero(event);" class="cxlaranja" size="4" tabindex="15"> &nbsp;(DDD-número-ramal)
+                                                                                </td>
+                                                                            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                            
+                                                                        </tbody></table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody></table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center">
+                                                
+                                                <input type="reset" value="Voltar" class="button btn-company" onclick="self.location.href = 'Comprador?action=dadoscomprd'">&nbsp; 
+                                                <input type="Submit" name="Submit" value="Confirmar" class="button btn-company" tabindex="18">
+                                                
+                                                <input type="hidden" name="action" value="edicao2">
+                                                <input type="hidden" name="txLog" value="A5873090">
+                                                
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                    <input name="login" value="A5873090" type="hidden">
+                                    <input type="hidden" name="tpDoc" value="1">
+                                    <input type="hidden" name="origem" value="pf">
+                                    <input type="hidden" name="exibeOutrosProd" value="0">
+                                </form>
+                        </fieldset>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+        <br>
+        <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="CadastrodoCompradorPessoaFisica_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+    
+
+</body></html>

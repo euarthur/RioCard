@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+    <title>Riocard Mais Vale-Transporte</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+    <link href="IniciaCancelamentoPedido_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="IniciaCancelamentoPedido_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="IniciaCancelamentoPedido_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="IniciaCancelamentoPedido_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="IniciaCancelamentoPedido_arquivos/comum.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="IniciaCancelamentoPedido_arquivos/novo_pedido.css" media="all">
+    <link rel="stylesheet" type="text/css" href="IniciaCancelamentoPedido_arquivos/digitacao.css" media="all">
+    <link rel="stylesheet" type="text/css" href="IniciaCancelamentoPedido_arquivos/pedido_cancelamento.css" media="all">
+    <script type="text/javascript" src="IniciaCancelamentoPedido_arquivos/scripts.js"></script>
+    <script language="JavaScript" src="IniciaCancelamentoPedido_arquivos/lightboxAjuda.js"></script>
+
+    <!-- DWR declarations -->
+    <script type="text/javascript" src="IniciaCancelamentoPedido_arquivos/RioCardVT.js"></script>
+    <script type="text/javascript" src="IniciaCancelamentoPedido_arquivos/engine.js"></script>
+    <script type="text/javascript" src="IniciaCancelamentoPedido_arquivos/util.js"></script>
+
+    <style>
+        strong {
+            font-weight: bold;
+        }
+        .banner{
+            z-index:11; position:absolute; width:448px;
+            left: 50%;top: 50%;transform: translate(-50%, -50%);
+        }
+
+        .botao_medio_vermelho {
+            width: 74px;
+            background: url(../comum/imagens/botoes/btn_vermelho_medio_rr.png) no-repeat;
+            margin-left: 0px;
+            padding-top:2px;
+        }
+    </style>
+
+    <script type="text/javaScript">
+
+        function mostraLinhaCorrente(index) {
+            for (i = 0; i < 0; i++) {
+
+                var sembusca = document.getElementById("sembusca" + i);
+                var combusca = document.getElementById("combusca" + i);
+
+                if (i == index) {
+                    sembusca.style.display = "block";
+                    combusca.style.display = "none";
+                }
+                else {
+                    sembusca.style.display = "none";
+                    combusca.style.display = "none";
+                }
+                document.getElementById("nrCartao" + i).disabled = "";
+
+            }
+        }
+
+        function mostraBuscaCorrente(index) {
+            var sembusca = document.getElementById("sembusca" + index);
+            var combusca = document.getElementById("combusca" + index);
+
+            sembusca.style.display = "none";
+            combusca.style.display = "block";
+
+            var nrCartao = document.getElementById("nrCartao" + index);
+            nrCartao.disabled = "disabled";
+        }
+
+        function mostraBotaoBusca(index, texto) {
+            var habilitado = document.getElementById("habilitado" + index);
+            var desabilitado = document.getElementById("desabilitado" + index);
+            var ok = document.getElementById("ok" + index);
+            var okdisabled = document.getElementById("okdisabled" + index);
+            var select = document.getElementById("select" + index);
+
+            if (texto.length > 6) {
+                habilitado.style.display = "block";
+                desabilitado.style.display = "none";
+            }
+            else {
+                habilitado.style.display = "none";
+                desabilitado.style.display = "block";
+            }
+
+            ok.style.display = "none";
+            okdisabled.style.display = "block";
+
+            select.disabled = "disabled";
+        }
+
+        var comboBox;
+        var alerta;
+
+        function carregarUsuarios(nrDocComprd, procura, index) {
+            //document.body.style.cursor="crosshair";
+
+            comboBox = "select" + index;
+            alerta = "alerta" + index;
+
+            DWRUtil.removeAllOptions(comboBox);
+
+            var combo = document.getElementById(comboBox);
+            combo[0] = new Option("Aguarde...", -1);
+
+            var ok = document.getElementById("ok" + index);
+            var okdisabled = document.getElementById("okdisabled" + index);
+
+            ok.style.display = "block";
+            okdisabled.style.display = "none";
+
+            RioCardVT.listarUsuariosComCartao(preencheComboBox, nrDocComprd, procura);
+        }
+
+        function preencheComboBox(listaUsuarios) {
+            var combo = document.getElementById(comboBox);
+            var aviso = document.getElementById(alerta);
+
+            DWRUtil.removeAllOptions(comboBox);
+            combo[0] = new Option("Selecione", -1);
+
+            for (var i = 0; i < listaUsuarios.length; i++) {
+                combo[i + 1] = new Option(listaUsuarios[i].usuar.nmUsuar, listaUsuarios[i].cartaoScon.nrCartaoSc);
+            }
+
+            combo.disabled = "";
+
+            if (listaUsuarios.length >= 20) {
+                aviso.innerHTML = "<strong>Limitado aos primeiros 20 usu&aacute;rios. Refine sua busca e tente novamente</strong>";
+            }
+            else {
+                aviso.innerHTML = "";
+            }
+
+            document.body.style.cursor = 'default';
+
+        }
+
+        var descricao;
+        var indexGlobal;
+
+        function mostraUsuarioSelecionado(nrCartao, index) {
+            nrCartao = nrCartao + "";
+            indexGlobal = index;
+
+            if (nrCartao.length > 0) {
+                descricao = "descricao" + index;
+                RioCardVT.selecionarUsuarioCartao(preencheDescricao, 12893764410, nrCartao);
+            }
+        }
+
+        function preencheDescricao(bean) {
+            var d = document.getElementById(descricao);
+            if (bean != null && d != null) {
+                d.style.color = '#000000';
+
+                var str = "";
+
+                if (bean.usuar.nrMatric != null) {
+                    str += "Matr&iacute;cula: " + bean.usuar.nrMatric + " - ";
+                }
+
+                if (!bean.cartaoScon.vtr) {
+                    str += "Nome: ";
+                }
+
+                str += bean.usuar.nmUsuar;
+
+                d.innerHTML = str;
+
+            } else {
+                d.style.color = '#990000';
+                d.innerHTML = 'Cart&atilde;o n&atilde;o encontrado, ou n&atilde;o possui usu&aacute;rio associado';
+            }
+
+            document.getElementById('erroNrCartao' + indexGlobal).innerHTML = "";
+        }
+
+        function obterIdMatricula(index) {
+            var comboBox = document.getElementById("select" + index);
+            var nrCartao = document.getElementById("nrCartao" + index);
+            if (comboBox.value != -1) {
+                nrCartao.disabled = "";
+                nrCartao.value = comboBox.value;
+                nrCartao.focus();
+                nrCartao.blur();
+            }
+        }
+
+        function salvarPedido() {
+            var form = document.getElementById("formCancelarPedidoUm");
+            form.action = "/vt2/comprador/cartoes/SalvaCancelamentoPedido.do";
+            form.submit();
+        }
+
+        function formatarSaidaValorTotal(valor) {
+            valor = new String(valor);
+
+            valor = mascararNumero(valor, '.', ',');
+            return valor;
+        }
+
+        function calcValorTotal() {
+            var elementValorAtualTop = document.getElementById('valor_total_top');
+            var elementValorAtualBot = document.getElementById('valor_total_bot');
+            var length = 0;
+            var valorTotal = 0;
+
+            for (var i = 0; i < length; i++) {
+                var valor = document.getElementById('vlCancel' + i).innerHTML;
+                if (valor != '') {
+                    valor = valor = valor.replace(/,/g, ".");
+                    valor = parseFloat(valor);
+                    valorTotal = parseFloat(valorTotal);
+                    valorTotal = valorTotal + valor;
+                }
+
+            }
+            valorTotal = formatarSaidaValorTotal(valorTotal.toFixed(2));
+
+
+            elementValorAtualTop.innerHTML = valorTotal;
+            elementValorAtualBot.innerHTML = valorTotal;
+
+        }
+
+        function setVlTxCancel(i) {
+            if (i != null) {
+                var cartao = document.getElementById('nrCartao' + i);
+                var comboMtCancel = document.getElementById('cdMtCancCartao' + i);
+                var elementVlTxCancel = document.getElementById('vlCancel' + i);
+
+                if (comboMtCancel != null && elementVlTxCancel != null) {
+
+                    if (comboMtCancel.value != -1) {
+                        if (cartao.value.length > 0) {
+                            setVlTxCancelAjax(cartao.value, i);
+                        }
+
+                    }
+                    else {
+                        elementVlTxCancel.innerHTML = '0,00';
+                        calcValorTotal();
+                    }
+
+                }
+            }
+        }
+
+        function setVlTxCancelAjax(nrCartao, i) {
+            RioCardVT.isCartaoBilheteUnicoEmMigracao(isCartaoBilheteUnicoEmMigracaoCallBack, nrCartao, i);
+        }
+
+        function isCartaoBilheteUnicoEmMigracaoCallBack(arrayValues) {
+            var vlTxCancel = '28,35';
+            var i = arrayValues[0];
+            var isCartaoBilheteUnicoEmMigracao = Boolean(arrayValues[1]);
+
+            var cartao = document.getElementById('nrCartao' + i);
+            var elementVlTxCancel = document.getElementById('vlCancel' + i);
+
+            if (cartao.value.length > 0) {
+                cartao.value = padLeft(cartao.value, "0", 13);
+
+                var valor = (1 * cartao.value.substring(0, 4));
+
+                if (valor == 205 || valor == 103 || valor == 110 || isCartaoBilheteUnicoEmMigracao) {
+                    elementVlTxCancel.innerHTML = '0,00';
+                }
+                else {
+                    elementVlTxCancel.innerHTML = formatarSaidaValorTotal(vlTxCancel);
+                }
+            }
+            calcValorTotal();
+        }
+
+        function padLeft(str, pad, count) {
+            while (str.length < count) {
+                str = pad + str;
+            }
+
+            return str;
+        }
+
+        function alterarDados() {
+            var f = document.getElementById('formCancelarPedidoUm');
+            if (f != null) {
+                var qtd = document.getElementById("qtdCartaoCanc").value;
+                var action = "/vt2/comprador/cartoes/IniciaCancelamentoPedido.do";
+                f.action = action + '?qtdCartao=' +qtd;
+                f.method = "post";
+                f.submit();
+            }
+        }
+
+        function sub() {
+            var f = document.getElementById('formCancelarPedidoUm');
+            if (f != null) {
+                var qtd = 0
+                var action = "/vt2/comprador/cartoes/IncluiCancelamentoPedido.do";
+                f.action = action + '?qtdCartao=' +qtd;
+                f.method = "post";
+                f.submit();
+            }
+        }
+
+
+
+    </script>
+
+</head>
+<body class="cartoes">
+
+
+
+
+<div id="dark" onclick="hideBannerCataoDefeito()" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 210%; z-index: 10; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0.8; display: none;">
+    &nbsp;
+</div>
+<div id="atencaoCataoDefeito" style="display: none;" class="banner" onclick="hideBannerCataoDefeito()">
+
+    <div class="modal fade" id="modalMsgSucesso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #F8F8FF">
+                <div class="modal-header">
+                    <span style="font-size: 35px; font-family: Coolvetica;">Atenção!</span>
+                    <img src="IniciaCancelamentoPedido_arquivos/close.png" class="close" data-dismiss="modal" aria-label="Close" style="float: right">
+                </div>
+                <div class="modal-body" style="font-size: 20px;">
+                    Se o seu cartão está apresentando erro de leitura no validador no momento do pagamento da passagem,
+                    <br>
+                    ele pode estar com defeito ou mau funcionamento. Neste caso você poderá comparecer a uma loja Riocard Mais
+                    <br>
+                    e solicitar a análise técnica. Se ficar comprovado o problema, seu cartão será substituído sem custo.
+                    <br>
+                    Se for caso de perda, roubo ou quebra/avaria do cartão siga com o cancelamento.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="site" class="clearfix">
+    
+	<a name="topo"></a>
+
+
+
+
+    <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="https://crr.sophieagent.com/" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+    	<div id="titulo_pag" class="titulo_pag"> <!-- nas paginas do fluxo o h1 fica fora do conteudo_interna. Ele vai ter margin -->
+    	<div class="borda_esq">
+        	<div class="borda_dir">
+            	<h1>Cancelar Cartões</h1>
+          		<div class="submenu"><div class="borda">
+          			<ul>
+              			<li id="novoPedidoMenu" style="margin-right: 20px;" class="item_ativo"><a href="./IniciaCancelamentoPedido.html">Novo Pedido de Cancelamento</a></li>
+              			<li id="gerenciarPedidoMenu" style="margin-right: 0px;"><a href="./GerenciarPedidoCancelamento.html">Gerenciar Pedidos de Cancelamento</a></li>
+           			</ul>
+          		</div></div>
+            </div>
+        </div>        
+    </div>
+	<script language="javascript">
+		if (document.URL.indexOf('IniciaCancelamentoPedido') != -1 || document.URL.indexOf('IncluiCancelamentoPedido') != -1) 
+		{
+			document.getElementById('novoPedidoMenu').className = 'item_ativo';
+		} 
+		else if (document.URL.indexOf('GerarBoletoBancario') != -1){
+			document.getElementById('novoPedidoMenu').className = 'item_ativo';
+		}else if (document.URL.indexOf('FinalizaCancelamentoPedido') != -1){
+			document.getElementById('novoPedidoMenu').className = 'item_ativo';
+		}
+		else if (document.URL.indexOf('SalvaCancelamentoPedido') != -1)
+		{
+			
+	
+			
+				document.getElementById('novoPedidoMenu').className = 'item_ativo';
+			 			
+		} else {
+			document.getElementById('gerenciarPedidoMenu').className = 'item_ativo';
+		}
+	</script>
+    
+
+
+
+
+
+
+<div class="abas_fluxo clearfix">
+	
+	<img src="IniciaCancelamentoPedido_arquivos/01_dados_pedido_ativa.gif" alt="1 - Dados do Pedido" id="abaFluxo1">
+	
+		
+		
+			<img src="IniciaCancelamentoPedido_arquivos/02_pagamento.gif" alt="2 - Pagamento" id="abaFluxo2">
+		
+	
+	
+</div>
+<script language="javascript">
+		var compradorVip = '0';
+		
+		
+		if (document.URL.indexOf('IncluiCancelamentoPedido') != -1)
+		{
+			
+
+			
+				temp = document.getElementById('abaFluxo1').src;
+				document.getElementById('abaFluxo1').src = temp.replace('.gif','_ativa.gif');
+			 
+		}else if (document.URL.indexOf('GerarBoletoBancarioCancelamento') != -1 || document.URL.indexOf('RealizaPagamentoCancelamentoBolsaCredito') != -1 ){
+			temp = document.getElementById('abaFluxo4').src;
+			document.getElementById('abaFluxo4').src = temp.replace('.gif','_ativa.gif');
+		}else if ((compradorVip != 2 && document.URL.indexOf('FinalizaCancelamentoPedido') != -1) || (document.URL.indexOf('IniciaFinalizacaoCancelamentoPedido') != -1)){
+				temp = document.getElementById('abaFluxo2').src;
+				document.getElementById('abaFluxo2').src = temp.replace('.gif','_ativa.gif');
+		}else if (document.URL.indexOf('GerarBoletoBancario') != -1){
+			temp = document.getElementById('abaFluxo3').src;
+			document.getElementById('abaFluxo3').src = temp.replace('.gif','_ativa.gif');
+			
+		}
+
+		else {
+			temp = document.getElementById('abaFluxo1').src;
+			document.getElementById('abaFluxo1').src = temp.replace('.gif','_ativa.gif');			
+		}
+		
+			
+
+	
+</script>
+
+
+
+
+    
+
+
+
+        <div class="conteudo_interna">
+
+            
+
+            
+
+
+            <form name="cancelamentoPedidoForm" id="formCancelarPedidoUm" method="post" action="/vt2/comprador/cartoes/IncluiCancelamentoPedido.do">
+
+                <fieldset class="nivel_03 nivel_03_fechado">
+                    <legend>Quantidade de Cartões</legend>
+                    <table class="reset2 formulario1" cellspacing="0">
+                        <tbody><tr>
+                            <td><label>Indique aqui a quantidade de cartões que deseja cancelar</label></td>
+                            <td>
+                                <input type="text" id="qtdCartaoCanc" name="qtdCartaoCanc" maxlength="2" size="3" onkeypress="return onlyNum(event);" onkeyup="removeNonNumberCharacters( this );">
+                            </td>
+                            <td>
+                                <a href="javascript:ajuda('u05c03t01');" class="btn_ajuda" style="margin-left: 350px;"><img src="IniciaCancelamentoPedido_arquivos/btn_ajuda.gif" alt="Ajuda"></a>
+                                <a href="#" class="button_fluxo" onclick="alterarDados();" style="margin-right: 300px;"><img src="IniciaCancelamentoPedido_arquivos/flecha_input_to_select.gif" alt="Continuar"></a>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </fieldset>
+
+
+                <input type="hidden" name="nrOrdCancel" value="" id="nrOrdCancel">
+                 
+            </form>
+        </div>
+        <script type="text/javascript">
+            mostraLinhaCorrente(0);
+            calcValorTotal();
+        </script>
+    
+
+    
+</div>
+<script type="text/javascript">
+    
+    document.getElementById('dark').style.display = '';
+    document.getElementById('atencaoCataoDefeito').style.display = '';
+    
+    
+    function hideBannerCataoDefeito(){
+        document.getElementById('dark').style.display = 'none';
+        document.getElementById('atencaoCataoDefeito').style.display = 'none';
+    }
+
+</script>
+
+<script language="javascript" src="IniciaCancelamentoPedido_arquivos/scripts_002.js"></script>
+
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="IniciaCancelamentoPedido_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+
+
+
+
+
+</body></html>

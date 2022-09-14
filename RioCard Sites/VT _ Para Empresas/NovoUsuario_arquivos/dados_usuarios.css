@@ -1,0 +1,144 @@
+/* CSS Document */
+
+#col_principal{
+	padding:0 1%;
+	_padding: 0 12px;
+}
+
+.bl_instrucao {
+	margin:0 0 5px 0;
+}
+
+.bl_instrucao .instrucao {
+	color:#9e9fa1;
+	float:right;
+	font-size:10px;
+}
+
+.matricula {
+	width:40%;
+}
+
+.formulario2 {
+	margin-bottom:15px;
+}
+
+.matricula input {
+	width:200px;
+}
+
+.cem_por_cento {
+	width:99%;
+}
+
+.dados_pessoais {
+	margin-right:10px;
+	float:left;
+	border:1px solid red;
+}
+
+.dados_adicionais {
+	margin-bottom:10px; 
+	*margin-bottom:10px
+}
+
+.dados_adicionais .img_leg {
+	margin:0px 5px 0px 5px;
+	vertical-align:bottom;
+	*vertical-align:middle;
+	*margin-bottom:-10px;
+	_margin-bottom:0px;
+}
+
+.padd_sexo {
+	padding-left:190px;
+}
+
+.padd_status {
+	padding-left:100px;
+}
+
+.margem_topbot {
+	margin-bottom:7px;
+	*margin-top:15px;
+	_margin-top:0px;
+}
+
+.vlr_cor {
+	width:60px;
+}
+
+.leg_radio {
+	margin:5px 5px 0 0	;
+	vertical-align: bottom;
+	*vertical-align: middle;
+}
+
+.nivel_03 {
+	margin-bottom:10px;
+	margin-top:5px;
+}
+
+.bl_instrucao .esquerda {
+	float:left;
+}
+
+/*USUARIOS ALTERA��O*/
+.matricula_02 {
+	float:left;
+}
+
+.blocos_infos {
+	width:23%; 
+	float:left; 
+	margin-left:3%; 
+	_margin-left:2%;
+}
+
+fieldset.blocos_infos_dir {
+	width:20%; 
+	float:right; 
+	margin-left:1%;
+	/*padding:5px 6px 5px 6px;*/
+}
+
+.destaque {
+	font-weight:bold;
+	font-size:12px;
+	color:#323232;
+	text-align:center;
+}
+
+.margens {
+	margin:5px 10px;
+}
+
+.largura_td {
+	width:200px;
+}
+
+.largura_td_menor {
+	width:120px;
+}
+
+.pesquisa {
+	background:url(../comum/imagens/icones/ic_voltar.gif) no-repeat left; 
+	padding-left:18px; 
+	margin:0 5px;
+	float:right;
+	margin-top:5px;
+}
+
+.erro {
+	border: 2px solid #CC0000;
+}
+
+.erro_cem_por_cento {
+	border:2px solid #CC0000;
+	width:99%;
+}
+
+.imgCartaoRiocard{
+	background-color:#666;
+	border-radius: 10px;
+}

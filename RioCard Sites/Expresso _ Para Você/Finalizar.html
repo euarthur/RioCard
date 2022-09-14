@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+        
+
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <link rel="stylesheet" href="Finalizar_arquivos/homeestilos.css">
+        <link rel="stylesheet" href="Finalizar_arquivos/jovem.css">
+        <link id="rel" rel="stylesheet" href="Finalizar_arquivos/riocard.css">
+        <link id="rel2" rel="stylesheet" href="Finalizar_arquivos/bootstrap.css">
+        <title>Manutenção de Pedidos</title>
+        <script language="javascript">
+          
+
+            var div;
+            var combo;
+            var undefined;
+            var timeoutID;
+            var x;
+            var y;
+
+            function show() {
+                div.style.visibility = "visible";
+                div.style.position = "absolute";
+                div.style.zIndex = "999";
+                if (combo) {
+                    combo.style.visibility = "hidden";
+                }
+                if (div != null) {
+                    var posX = x - 120;
+                    var posY = y - 80;
+
+                    if (posX < 0) {
+                        posX = 0;
+                    }
+                    div.style.left = (posX) + "px";
+                    div.style.top = (posY) + "px";
+                }// fim if
+
+            }
+
+            function hide() {
+                clearTimeout(timeoutID);
+                if (div == undefined)
+                    return;
+                div.style.visibility = "hidden";
+                if (combo) {
+                    combo.style.visibility = "visible";
+                }
+                div = undefined;
+                combo = undefined;
+            }
+
+            /*
+             * Mostra uma determinada mensagem em um Tooltip
+             * e torna o combo invisivel para n?o sobrepor o tooltip
+             */
+            function mensagemCombo(msg, id, idCombo) {
+
+                div = document.getElementById(id);
+                combo = document.getElementById(idCombo);
+                show();
+                div.innerHTML = '<table cellpadding="0" cellspacing="0"  style="border: 1px solid;border-color: #97B7DB; background-color: #dfe6eb;"><tr height="60px"><td>' + msg + '</td></tr></table>';
+
+            }
+
+            function mensagem(msg, id) {
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout("mostra('" + msg + "', '" + id + "');", 600);
+            }
+
+            /*
+             * Mostra uma determinada mensagem em um Tooltip
+             */
+            function mostra(msg, id) {
+                div = document.getElementById(id);
+                combo = undefined;
+                show();
+                div.innerHTML = '<table cellpadding="0" cellspacing="0"  style="border: 1px solid;border-color: #97B7DB; background-color: #dfe6eb;"><tr height="60px"><td>' + msg + '</td></tr></table>';
+            }
+
+
+            window.document.onmousemove = function update(e) {
+
+                x = (document.all) ? window.event.x + document.body.scrollLeft : e.pageX;
+                y = (document.all) ? window.event.y + document.body.scrollTop : e.pageY;
+
+                if (div != null) {
+                    var posX = x - 120;
+                    var posY = y - 80;
+
+                    if (posX < 0) {
+                        posX = 0;
+                    }
+
+
+                    div.style.left = (posX) + "px";
+                    div.style.top = (posY) + "px";
+                }// fim if
+
+            }// fim
+
+            function enviar(url) {
+                var form = document.forms[0];
+
+                if (form) {
+
+                    form.action = url;
+                    form.submit();
+
+                }// fim if
+            }
+
+            var url;
+
+            function gerarBoleto() {
+                window.open(this.url);
+            }
+
+
+            //Ci�ncia do usu�rio - popup
+            function escondeBannerUsuario() {
+                document.getElementById('avisoAdministrador').style.display = 'none';
+                document.getElementById('dark').style.display = 'none';
+            }
+
+            function showAvisoUsuario() {
+                document.getElementById("dark").style.display = "block";
+                document.getElementById("avisoAdministrador").style.display = "block";
+            }
+
+
+            //-->
+        </script>
+        
+        
+        
+        
+        
+        
+    </head>
+    
+    <body>
+        <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    
+
+                    <div class="menu_esq">
+                        <div class="menu_dir">
+                            <div class="menu">
+                                <ul>
+                                    <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                    <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                    <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                    <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                    <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                    <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                    <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                    <li style="width:9%;"><a href="">Sair</a></li>
+                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" valign="top" align="center">
+                    <div id="forms">
+                        <fieldset>
+                            <legend class="titulo">Finalizar pedido e Imprimir boleto</legend>
+                            <div id="msg"></div>
+                            <form id="frmListaPedidos" method="post">
+                                <table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+                                    <tbody><tr>
+                                        <td align="center">
+                                            <!-- Dados -->
+                                            <table width="100%" cellspacing="2" cellpadding="2" border="0">
+                                                <tbody><tr>
+                                                    <td colspan="10" style="color:#006BBC;" align="center">
+                                                        <strong>
+                                                            Pedido excluído com sucesso.&nbsp; </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="10" style="text-align: left;">
+                                                        Prezado Cliente,
+                                                        <br>
+                                                        Para sua 
+segurança, ao gerar o boleto bancário neste site, confirme se o número 
+que aparece ao lado da marca do banco Itaú, é 341-7.
+                                                        <br>
+                                                        Caso contrário, 
+favor não efetuar o pagamento, e entre em contato com Riocard Mais 
+Atende através do telefone: (21) 2127-4000.
+                                                        <br>
+                                                        
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="10" style="text-align: left">Clique na imagem da impressora para imprimir o boleto</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="10">&nbsp;</td>
+                                                </tr>
+                                                
+                                                <tr bgcolor="#dfe6eb" align="center">
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'N\u00FAmero sequencial.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Seq. </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'N\u00FAmero de identifica\u00E7\u00E3o do pedido no sistema. <br>O link mostra a p\u00E1gina de resumo do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Pedido </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Data da confec\u00E7\u00E3o ou finaliza\u00E7\u00E3o do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Dt. Pedido </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Valor total dos cart\u00F5es do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Vl. Cartões </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Valor total das cargas do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Vl. Cargas </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Fase em que se encontra o pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Status </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Altera o valor da carga de um item do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Alterar item </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Visualiza o pedido, permitindo incluir e excluir itens ou alterar valores das cargas.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Manutenção </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Faz uma cr\u00EDtica geral, apresentando os erros encontrados ou finalizando a confec\u00E7\u00E3o do pedido.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Finalizar </strong>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Emite o boleto de um pedido com status �Aguardando pagamento�.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Boleto </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong onmouseover="mensagem( 'Exclui um pedido com status �Em preparo�.', 'msg')" onmouseout="hide()" style="font-weight:bold;"> Excluir </strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td colspan="11" class="textoalerta" align="center">
+                                                        Não existem pedidos pendentes para este comprador
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="11" align="center">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <input type="button" name="btnVoltar" value="Voltar" class="button btn-company">
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                <input type="hidden" name="com.montreal.framework.TokenPage" value="0.462877009730169">
+                                <input type="hidden" name="ciente" value="1">
+                                <br>
+                            </form>
+                        </fieldset>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+    
+</body></html>

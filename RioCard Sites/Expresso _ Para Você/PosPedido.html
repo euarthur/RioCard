@@ -1,0 +1,172 @@
+<html><head>
+    
+    
+    
+    
+
+    <title>Relação de Pedidos do Comprador</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" href="PosPedido_arquivos/homeestilos.css">
+    <link rel="stylesheet" href="PosPedido_arquivos/jovem.css">
+    <link id="rel" rel="stylesheet" href="PosPedido_arquivos/riocard.css">
+    <script type="text/javascript" language="JavaScript" src="PosPedido_arquivos/tooltip.js"></script>
+    <script language="JavaScript">
+       
+        var undef;
+
+        function enviar(action, PButton) {
+            var form = document.forms[0];
+
+            if (form) {
+                var numPedido = form.nrPedido;
+
+                if (PButton && numPedido.value == '')
+                    alert('Favor informar o n\u00FAmero do pedido para a pesquisa.');
+                else {
+                    if (PButton)
+                        PButton.disabled = true;
+
+                    form.action.value = action;
+                    form.submit();
+                }
+            }// fim if
+            return;
+        }
+        //-->
+    </script>
+</head>
+
+<body onload="javascript:document.forms[0].nrPedido.focus()">
+
+<div id="msg"></div>
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+</td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="top" align="center">
+
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Consultar pedidos pagos</legend>
+                    <form action="PosPedido" method="post">
+                        <div style="background:#F8F8FF;padding:5px;font-size:12px;">
+                            <strong>Caro comprador:</strong> assim que o pedido for retirado na loja, você deverá desbloquear o(s) cartão(s), antes
+                            de entregar ao(s) usuário(s) neste site. Informamos que o prazo para a efetivação da recarga nos
+                            validadores dos ônibus É de 48 horas após o desbloqueio.
+                        </div>
+
+                        <br>
+                        <table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+
+                            <tbody><tr>
+                                <td>
+                                    <table width="100%" cellpadding="2" border="0">
+
+                                        <tbody><tr>
+                                            <td>
+                                                <b>Atenção: O recibo de entrega estará disponível somente após a Riocard Mais confeccionar os cartões solicitados.</b>
+                                                <br>
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td style="text-align: left">
+                                                <!--//N�mero de pedido aumentou para 8 d�gitos-->
+                                                Consulta de pedido anterior a 90 dias:
+                                                <input name="nrPedido" type="text" size="8" maxlength="8" class="cxlaranja" id="nrPedido">
+                                                <input name="btnEnviar" type="button" style="width: 80px;" class="button btn-company" value="Enviar">
+                                                
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center">
+                                    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+                                        
+
+                                        <tbody><tr bgcolor="#dfe6eb" align="center">
+                                            <td><strong style="font-weight: bold">Seq</strong></td>
+                                            <td><strong style="font-weight: bold">Pedido</strong></td>
+                                            <td><strong style="font-weight: bold">Dt. Pagto.</strong></td>
+                                            <td><strong style="font-weight: bold">Dt. Liber.</strong></td>
+                                            <td><strong style="font-weight: bold">Qtd. Cargas</strong></td>
+                                            <td><strong style="font-weight: bold">Qtd. Cartões</strong></td>
+                                            <td><strong style="font-weight: bold">Vl. Cartões</strong></td>
+                                            <td><strong style="font-weight: bold">Vl. Cargas</strong></td>
+                                            <td><strong style="font-weight: bold">Status</strong></td>
+                                            <td><strong style="font-weight: bold">Recibo</strong></td>
+                                        </tr>
+
+                                        
+
+                                        
+
+                                        
+                                        <tr bgcolor="#dfe6eb" align="center">
+                                            <td colspan="10" class="textoalerta"><strong>Nenhum pedido
+                                                cadastrado</strong></td>
+                                        </tr>
+                                        <tr bgcolor="#dfe6eb" align="center">
+                                            <td colspan="10" class="textoalerta">&nbsp;</td>
+                                        </tr>
+                                        
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <input type="button" name="btnVoltar" value="Voltar" class="button btn-company">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <input type="hidden" name="action" value="">
+                        <input type="hidden" name="com.montreal.framework.TokenPage" value="0.015295731604704876">
+                    </form>
+                </fieldset>
+            </div>
+
+            
+        </td>
+    </tr>
+</tbody></table>
+
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="PosPedido_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+
+</body></html>

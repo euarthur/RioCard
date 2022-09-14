@@ -1,0 +1,72 @@
+/* CSS Document */
+
+table.dataset tr td {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+table.reset2 tr td {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+table.formulario3 tr td {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.col_seq {
+	width: 3%;
+}
+
+.col_usuarios {
+	width: 77%;
+}
+
+.col_valor {
+	width: 18%;
+}
+
+.btn_ok, .btn_cancelar {
+	float: right;
+	margin-left: 5px;
+}
+
+.nome {
+	width: 180px;
+}
+
+.select_nome {
+	width: 240px;
+}
+
+fieldset.nivel_03 {
+	margin-top: 10px;
+	*background: url(../comum/imagens/fieldsets/bg_branco_nivel_03.gif) repeat-x 0 20px;
+}
+
+fieldset.nivel_03_fechado {
+	margin-top: 10px;
+	*background: url(../comum/imagens/fieldsets/bg_cinza_nivel_03_fechado.gif) repeat-x 0 20px;
+}
+
+input.vlr_cor {
+	width: 60px;
+	text-align: right;
+}
+
+tr.sendo_digitada td {
+	background: #ddecf5;
+	border-top: 2px solid #8ac0d3;
+	border-bottom: 2px solid #8ac0d3;
+}
+
+tr.sendo_digitada td table tr td {
+	background: none;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+table.dataset { /* este CSS eh soh para mostrar as 3 tabelas ao mesmo tempo */
+	margin-bottom: 25px;
+}

@@ -1,0 +1,40 @@
+/* CSS Document */
+
+
+
+.mostrar_pedidos legend select {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 4px;
+	width: 200px;
+	margin-right: 4px;
+}
+
+.mostrar_pedidos .campo_pesquisa {
+	width: 110px;
+}
+
+.mostrar_pedidos .filtro {
+	width: 56%;
+	float: left;
+}
+
+.mostrar_pedidos .filtro td {
+}
+
+.mostrar_pedidos .pedidos_mais_90_dias {
+	width: 38%;
+	float: right;
+}
+
+.mostrar_pedidos .pedidos_mais_90_dias table {
+	margin-top: 16px;
+}
+
+.btn_padrao {
+	margin-left: 8px;
+}
+
+.txpreto1 {
+	text-align:left;
+}

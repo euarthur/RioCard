@@ -1,0 +1,94 @@
+#lightbox {
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}
+
+#lightboxDetails {
+	font-size: 0.8em;
+	padding-top: 0.4em;
+}	
+
+#lightboxCaption { 
+    float: left; 
+}
+
+#keyboardMsg { 
+    float: right; 
+}
+
+#closeButton { 
+    top: 5px; right: 5px; 
+}
+
+#lightbox img { 
+    border: none; clear: both;
+} 
+
+#overlay img { 
+    border: none; 
+}
+
+#overlay {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+#overlayEnd {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+/*
+#overlay {
+	background-color: #333;
+	back\ground-color: transparent;
+	background-image: url(blank.gif);
+	background-image: url(overlay.png);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");
+}
+*/
+
+.dialogBox {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 100px;
+    text-align: center; 
+    padding: 5px;
+}
+
+.enderecoBox {
+    background-color: #FFFFFF;
+    width: 680px;
+    height: 480px;
+    text-align: center; 
+    padding: 5px;
+}
+
+.ajudaBox {
+    background-color: #FFFFFF;
+    width: 780px;
+    height: 580px;
+    text-align: left; 
+    padding: 5px;       
+    overflow: scroll;     
+}
+
+#fundo {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+#ajuda {
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}

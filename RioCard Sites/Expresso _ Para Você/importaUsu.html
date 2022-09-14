@@ -1,0 +1,243 @@
+<html><head>
+        <style>
+            table tbody tr td {
+                padding: 0px;
+                text-align: center;
+            }
+            
+            .centralizar {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .banner {
+                z-index: 11;
+                position: absolute;
+                width: 448px;
+                left: 45%;
+                top: 25%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+        <title>Importação de usuários</title>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
+        <link rel="stylesheet" href="importaUsu_arquivos/homeestilos.css">
+        <link id="rel" rel="stylesheet" href="importaUsu_arquivos/riocard.css">
+        <script src="importaUsu_arquivos/funcoes.js"></script>
+        <script src="importaUsu_arquivos/jquery-1.9.1.min.js"></script>
+        <script src="importaUsu_arquivos/jquery.maskedinput.js"></script>
+        <script type="text/javascript">
+            function showHideTermoDeUso(codModelo) {
+                var codModeloInt = parseInt(codModelo);
+                var fieldTermo = document.getElementById('fieldTermoUso');
+                var checkTermoUsoBUI = document.getElementById('tpCascoBUI');
+                var checkTermoUsoBUC = document.getElementById('tpCascoBUC');
+                var termoUsoBUI = document.getElementById('termoUsoBUI');
+                var termoUsoBUC = document.getElementById('termoUsoBUC');
+
+                fieldTermo.style.display = checkTermoUsoBUI.checked || checkTermoUsoBUC.checked ? 'block' : 'none';
+                if (codModeloInt === 14 || codModeloInt === 20 || codModeloInt === 11) {
+                    if (codModeloInt === 14) {
+                        termoUsoBUI.style.display = checkTermoUsoBUI.checked ? 'block' : 'none';
+                    } else if (codModeloInt === 20) {
+                        termoUsoBUC.style.display = checkTermoUsoBUC.checked ? 'block' : 'none';
+                    }
+                }
+            }
+
+            $(document).ready(function () {
+                $('#tpCascoBUI').on('change', function () {
+                    if (document.getElementById('tpCascoBUI').checked) {
+                        document.getElementById("popupRegrasSetrans").style.display = 'block';
+                    }
+                });
+
+                $('#popupRegrasSetrans').on('click', function () {
+                    document.getElementById("popupRegrasSetrans").style.display = 'none';
+                });
+                
+
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div id="popupRegrasSetrans" onclick="retiraPopupRegrasSetrans()" style="width:115%; height:220%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10;">
+            <div class="banner">
+                <img src="importaUsu_arquivos/popupRegrasSetrans_v5.png" alt="Regras Setrans.">
+            </div>
+        </div>
+        <br>
+        <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    
+
+
+<div class="menu_esq">
+    <div class="menu_esq">
+        <div class="menu_dir">
+            <div class="menu">
+                <ul>
+                    <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                    <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                    <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                    <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                    <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                    <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                    <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                    <li style="width:9%;"><a href="">Sair</a></li>
+    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</td>
+</tr>
+<tr>
+    <td rowspan="3" valign="top" align="center">
+        <div id="forms">
+            <fieldset>
+                <legend class="titulo">Importa&ccedil;&atilde;o de Usu&aacute;rios</legend>
+                <form name="frmImportaUsuario" action="/scrcpr2/comprador/usuario/ImportacaoUsuario" method="post" enctype="multipart/form-data">
+                    <input type="hidden" value="11" id="tpCascoExp" name="tpCartaoExp" />
+                    <table width="96%" border="0" cellspacing="1" cellpadding="4" align="center">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="4" align="center">
+                                    <tr>
+                                        <td colspan="2" style="text-align: center" class="textopretob">
+                                            <table width="100%" border="0" align="center">
+                                                <div style="background: #fffbbd;color:#000000; border:2px solid #b29f00;">
+                                                    <div style="margin-bottom: 5px; font-weight:bold; color:#650000; font-size:13px;">
+                                                        Aten&ccedil;&atilde;o:
+                                                    </div>
+                                                    <p>Fique atento, o layout de importação mudou! Antes de realizar o processo, baixe o novo modelo disponível abaixo.</p>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <fieldset>
+                                                    <legend>
+                                                        Inclus&atilde;o e Altera&ccedil;&atilde;o de Usu&aacute;rios por Importa&ccedil;&atilde;o de Arquivo
+                                                    </legend>
+                                                    <table border="0" cellspacing="0">
+                                                        <tr>
+                                                            <td colspan="3">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="70%" style="text-align: left">
+                                                                <p>&Eacute; recomend&aacute;vel utilizar arquivos com no m&aacute;ximo 200 registros, pois arquivos maiores poder&atilde;o causar queda de conex&atilde;o ou demora no
+                                                                    processamento.</p>
+                                                                <p>Caso voc&ecirc; precise importar mais de 200 usu&aacute;rios, sugerimos gerar v&aacute;rios arquivos e import&aacute;-los um a um.</p>
+                                                                <br />
+                                                                <p>Selecione o arquivo de usu&aacute;rios que deseja importar de seu disco r&iacute;gido</p>
+                                                                <input type="file" name="file" />
+                                                            </td>
+                                                            <td style="width: 30%" style="text-align: right">
+                                                                <a href="#" target="_blank">
+                                                                    <div>
+                                                                        <img src="/scrcpr2/img/imagem_download.png" alt="Download do arquivo" title="Download do arquivo" />
+                                                                        <br />
+                                                                        <p>Layout do arquivo de importa&ccedil;&atilde;o.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            
+                                                        </tr>
+                                                    </table>
+                                                </fieldset>
+                                                <fieldset id="fieldTermoUso" style="margin-bottom: 0px; display: none;">
+                                                    <legend>Termo de uso para usu&aacute;rios solicitantes do Bilhete &Uacute;nico</legend>
+                                                    <fieldset id="termoUsoBUI" class="centralizar" style="display: none; margin-top: 15px; width: 99%">
+                                                        <legend>
+                                                            Cart&atilde;o Bilhete &Uacute;nico Intermunicipal
+                                                        </legend>
+                                                        <table cellpadding="0" cellspacing="0" border="0" class="formulario1 centralizar">
+                                                            <tr>
+                                                                <td style="text-align: center">
+                                                                    <iframe id="iframeTermo" style="border-style: groove;" frameborder="1" marginheight="2" marginwidth="2" title="termo de uso" scrolling="auto" width="850" height="200"
+                                                                            src="/scrcpr2/geral/termo_aceite.jsp"></iframe>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </fieldset>
+                                                    <fieldset id="termoUsoBUC" class="centralizar" style="display: none; margin-top: 15px; width: 99%">
+                                                        <legend>Cart&atilde;o Bilhete &Uacute;nico Carioca</legend>
+                                                        <table cellpadding="0" cellspacing="0" border="0" class="formulario1 centralizar">
+                                                            <tr>
+                                                                <td style="text-align: center">
+                                                                    <iframe id="iframeTermo" style="border-style: groove;" frameborder="1" marginheight="2" marginwidth="2" title="termo de uso" scrolling="auto" width="850" height="200"
+                                                                            src="/scrcpr2/geral/termo_aceite_buc.jsp"></iframe>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </fieldset>
+                                                    <br />
+                                                    <br />
+                                                    <div style="text-align: center;">
+                                                        <input type="checkbox" style="border: none;" id="aceito" name="aceito"  />
+                                                        <label for="aceito">Declaro que li e aceito os Termos de Uso acima descritos e que todas as informa&ccedil;&otilde;es
+                                                            <br />
+                                                            por mim prestadas no cadastro s&atilde;o verdadeiras.
+                                                        </label>
+                                                        
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset id="fieldTermoAceiteComodato" style="margin-bottom: 0px; margin-top: 20px;">
+                                                    <legend>Termo de Comodato</legend>
+                                                    <table cellpadding="0" cellspacing="0" border="0" class="formulario1 centralizar">
+                                                        <tr>
+                                                            <td style="text-align: center">
+                                                                <iframe style="border-style: groove;" frameborder="1" marginheight="2" marginwidth="2" title="termo de uso" scrolling="auto" width="850px" height="200px"
+                                                                        src="/scrcpr2/geral/termo_comodato_conteudo.jsp"></iframe>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <div style="text-align: center; margin-top: 20px;">
+                                                        <input type="checkbox" style="border: none;" id="aceitoTermoComodato" name="aceitoTermoComodato"  />
+                                                        <label for="aceitoTermoComodato">Declaro que li e aceito os Termos de Comodato acima descritos e que todas as informa&ccedil;&otilde;es
+                                                            <br />
+                                                            por mim prestadas no cadastro s&atilde;o verdadeiras.
+                                                        </label>
+                                                        
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <tr>
+                                                        <td colspan="2" style="text-align: left">
+                                                            <div style="padding-top: 3px;">
+                                                                <input value="Importar"  alt="Importar" title="Importar" class="button btn-company" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </fieldset>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </fieldset>
+        </div>
+    </td>
+</tr>
+</table>
+</body>
+<br />
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3201662-2");
+pageTracker._trackPageview();
+</script>
+</html>

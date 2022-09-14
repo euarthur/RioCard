@@ -1,0 +1,78 @@
+/* CSS Document */
+.aviso_liberacao {
+	float:left;
+	margin-bottom: 10px;
+	width:65%;
+}
+
+.aviso_liberacao h4 {
+	font-size: 11px;
+	font-weight: bold;
+	color: #dd632e;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.aviso_liberacao ul li {
+	background: url(../pedidos/imagens/dados_complementares/bullet_importante.gif) no-repeat 5px 6px;
+	padding-left: 12px;
+	color: #6d4747;
+	font-size: 11px;
+	margin-bottom: 5px;
+}
+
+.destaque {
+	font-weight:bold;
+	font-size:12px;
+	color:#323232;
+	margin:10px 0;
+}
+
+.maior {
+	font-size:17px;
+	font-style:italic;
+	color:#015db5;
+}
+
+.menor {
+	font-size:12px;
+}
+
+.info {
+	background:url(../comum/imagens/backgrounds/bg_fieldset.gif) bottom repeat-x; 
+	border:1px solid #cbd7e6; 
+	min-height:60px; 
+	float:right; 
+	padding:5px; 
+	padding-left:10px;
+	width:30%; 
+	margin:0 0 25px 0;
+}
+
+.alinhar {
+	margin-top:15px;
+}
+
+.botoes {
+	clear:both;
+}
+
+.dataset {
+	margin:10px 0;
+}
+
+.dataset .left {
+	text-align:left;
+}
+
+.dataset input {
+	width:280px;
+}
+
+.dataset .checkbox {
+	width:auto;
+}
+
+.botao_grande {
+	float:left;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+		<title>Riocard Mais Vale-Transporte</title>
+		<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+		<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+		<link href="DefinirAdministrador_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="DefinirAdministrador_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="DefinirAdministrador_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="DefinirAdministrador_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="DefinirAdministrador_arquivos/comum.js"></script>
+		
+		<script type="text/javascript" src="DefinirAdministrador_arquivos/lightbox.js"></script>
+		<script type="text/javascript" src="DefinirAdministrador_arquivos/administrador.js"></script>
+		<script language="JavaScript" src="DefinirAdministrador_arquivos/lightboxAjuda.js"></script>
+			
+	    <link rel="stylesheet" type="text/css" href="DefinirAdministrador_arquivos/definir.css" media="all">
+	    
+	</head>
+	<body class="administrador"><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div>
+		
+		<div id="site" class="clearfix"> 
+			
+	<a name="topo"></a>
+
+
+
+
+			<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+		  	<div class="conteudo_interna">
+				<div id="titulo_pag" class="titulo_pag">
+				  <div class="borda_esq">
+					  <div class="borda_dir">
+						  <h1>Definir Administrador para a Sua Conta</h1>
+					  </div>
+				  </div>
+				</div>
+				<div style="border: 1px solid #24B6F7; padding: 5px 15px;background-color:  #D5EEFF;">
+					<div style="color: #00366B; margin-bottom: 5px;">IMPORTANTE</div>
+					<p style="color: #4A7DBD;">Nesta tela é possível definir um administrador e revogar os direitos de um administrador.</p>
+					<p style="color: #4A7DBD;">Para definir um administrador basta seguir os seguintes passos:</p>
+					<ol style="margin-left: 10px; color: #4A7DBD;">
+						<li>1. Clique no botão 'Adicionar Administrador'</li>
+						<li>2. Busque pelo comprador que será definido como administrador.</li>
+						<li>3. Escolha um perfil: <b>Master</b> (Todas as funções) ou <b>Operador</b> (Sem acesso a bolsa de crédito)</li>
+						<li>4. Informe o texto da imagem.</li>
+						<li>5. Clique no botão 'Definir como Administrador'.</li>
+					</ol>
+					<p style="color: #4A7DBD;">Esta tela também lista todos os administradores definidos para este comprador.</p>
+					<p style="color: #4A7DBD;">Para revogar os direitos de um administrador, basta encontra-lo na lista de administradores e clicar no botão 'Revogar'.</p>
+				</div>
+				
+						
+				<br>
+				<fieldset class="nivel_01 clearfix">
+                    <a href="#" onclick="javascript:swapDisplay('boxPesquisarAdministrador');" class="bt_pesquisar">
+                        <img src="DefinirAdministrador_arquivos/bt_add_administrador.gif" alt="Adicionar Administrador">
+                    </a>
+                    <br><br><br>
+					<div id="boxPesquisarAdministrador" style="display:block;">
+						<fieldset class="nivel_01 clearfix">
+							<legend>Pesquisa</legend>
+							<br>
+							<form name="definicaoAdminCompradoresForm" id="pesquisarAdminCompradoresForm" method="post" action="/vt2/comprador/comprador/PesquisarAdministrador.do">
+								<table class="formulario2" cellspacing="0" border="0">
+									<tbody><tr>
+										<td colspan="5"><small class="instrucao">Informe o CPF, CNPJ de um comprador que poderá ser administrador de sua conta.</small></td>
+									</tr>
+									<tr>
+										<td class="labels">
+											<table class="reset CPF_CNPJ" cellspacing="0">
+												<tbody><tr>
+													<td><input type="radio" name="tpDocComprd" value="1" style="border: none;"></td>
+													<td><label>&nbsp;CPF&nbsp;</label></td>
+													<td><input type="radio" name="tpDocComprd" value="2" checked="checked" style="border: none;"></td>
+													<td><label>&nbsp;CNPJ&nbsp;</label></td>
+													
+												</tr>
+											</tbody></table>
+										</td>
+										<td>
+											<input type="text" name="nrDocAdmin" maxlength="14" size="15" onkeyup="removeNonNumberCharacters(this);" onkeypress="return onlyNum( event );" onblur="removeNonNumberCharacters(this);" id="nrDocAdminPesquisar" style="width: 277px;" class="cpf_cnpj_cei">  
+										   	<span class="instrucao" style="margin-left: 5px;">Somente Números</span> 
+										</td>
+										<td>
+											<table class="reset" cellspacing="0" cellpadding="0" border="0">
+												<tbody><tr>
+													<td width="200" align="right">
+														<p class="botao_acao botao_medio"><a href="#" onclick="javascript: submitForm('pesquisarAdminCompradoresForm');">Pesquisar</a></p>
+													</td>
+												</tr>
+											</tbody></table>
+										</td>
+										<td style="padding-bottom: 10px;" width="80" align="right">
+											<a href="javascript:ajuda('u03c02t01');" class="btn_ajuda">
+												<img src="DefinirAdministrador_arquivos/btn_ajuda.gif" alt="Ajuda">
+											</a>										
+										</td>
+									</tr>
+								</tbody></table>
+							</form>
+							<div style="color: #990000;" id="divMsg">
+								
+							</div>
+						</fieldset>
+					</div>
+						
+				</fieldset>			
+
+				<fieldset class="nivel_01">
+					<legend>Administradores da sua conta</legend>
+					<table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+<table style="text-align: center;" id="administrador" class="dataset" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th>Razão Social / Nome</th>
+<th>CPF / CNPJ / CEI</th>
+<th>Perfil</th></tr></thead>
+<tbody><tr class="empty"><td colspan="3" align="center">Nenhum registro encontrado.</td></tr></tbody></table><table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>					
+				</fieldset>
+				<div class="menu_rodape clearfix">
+  <h3><span>Administrador</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./AdministracaoCompradores.html">Administrar Outros Compradores </a></li>
+    <li id="menuRodapeItem02"><a href="./CarregarDefinirAdministrador.html">Definir Administrador para a Sua Conta </a> </li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('administrar') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('definir') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	}
+</script>
+		  </div>
+		</div>
+			
+		
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="DefinirAdministrador_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+	
+	
+	<script type="text/javascript" src="DefinirAdministrador_arquivos/scripts.js"></script>
+	<!-- DWR declarations -->
+	<script type="text/javascript" src="DefinirAdministrador_arquivos/RioCardVT.js"></script>
+	<script type="text/javascript" src="DefinirAdministrador_arquivos/engine.js"></script>
+	<script type="text/javascript" src="DefinirAdministrador_arquivos/util.js"></script>
+	
+
+</body></html>

@@ -1,0 +1,85 @@
+a {  text-decoration: none; color:blue}
+a:hover {  color: #fcb819; text-decoration: underline}
+a:visited {  text-decoration: none}
+a:active {  color: #fcb819; text-decoration: underline}
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	color: #000000;
+	/*background-color : #e8f3ff;*/
+}
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 7.5pt; color: #000000}
+.titbranco {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #FFFFFF}
+.titblack  {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #000000}
+.txbranco {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 7.5pt; color: #FFFFFF}
+.txbrancob {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.textoalerta {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #ff0000;	
+}
+.legenda {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #000000;	
+}
+.destaque {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #000000;	
+}
+
+.txalertagrd {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #ff0000;	
+}
+.txpretob {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #ff9900;
+}
+.txpreto65 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 6.5pt;
+	color: #000000;
+}
+.txblackb {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #000000;
+}
+.cxlaranja {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: bold; color: #000000; border: 1px solid; border-color: #FCB819 #fcb819 #fcb819}
+.cxazul {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: bold; color: #000000; border: 1px solid; border-color: #26537f #26537f #26537f}
+.btazul {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #26537f;
+	border: 1px solid #D9E7F6;
+	text-align: center;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+.btlaranja {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-weight: bold;
+	color: #000000;
+	background-color: #ffcc00;
+	border: 1px solid #ff9900;
+	text-align: center;
+	padding-right: 2px;
+	padding-left: 2px;
+}

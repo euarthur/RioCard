@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+	<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+	<link href="PesquisarUsuario_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="PesquisarUsuario_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="PesquisarUsuario_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="PesquisarUsuario_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="PesquisarUsuario_arquivos/comum.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="PesquisarUsuario_arquivos/home.css" media="all">
+	<link rel="stylesheet" type="text/css" href="PesquisarUsuario_arquivos/pesquisa_usuarios.css" media="all">
+	<script type="text/javascript" src="PesquisarUsuario_arquivos/lightbox.js"></script>	
+	<script type="text/javascript" src="PesquisarUsuario_arquivos/lightboxAjuda.js"></script>
+	<script type="text/javascript" src="PesquisarUsuario_arquivos/script_usuario.js"></script>
+
+	<style>
+		.banner{
+		z-index:11; position:absolute; width:448px;
+		left: 50%;top: 25%;transform: translate(-50%, -50%);
+		}
+	</style>
+	
+	<title>Riocard Mais Vale-Transporte / Usuários / Pesquisar</title>
+	
+	<script type="text/javascript">
+		function showDialogExcluirUsuario( cdUsuar ) {
+				dialogBox = 'dialogBoxDiv';
+				globalCdUsuar = cdUsuar;
+				showLightbox();
+		}
+
+		var globalCdUsuar;
+		function excluir() {
+
+			var f = document.getElementById("formBusca");
+
+			if(f == null) {
+				f = document.getElementById("formConsultarCartao");
+			}
+			
+			f.action = "/vt2/comprador/usuarios/ExcluirUsuario.do?cdUsuario=" + globalCdUsuar;	
+			f.submit();
+		}
+
+		function enviarDadosParaBotaoVoltar(id, nrCartao, data){
+				var formBusca = document.getElementById('formBusca');
+
+				if(formBusca != null){
+					if(id == 'formConsultarRelatorio'){
+						var formRelatorioRecargas = document.getElementById(id);
+						formRelatorioRecargas.idUrl.value = formBusca.idUrl.value;	
+						formRelatorioRecargas.idCampoFiltragemListarUsuario.value = formBusca.tpFiltroUsuario.value;
+						formRelatorioRecargas.idPalavraChaveListarUsuario.value = formBusca.campoPalavraChave.value;
+						formRelatorioRecargas.idPalavraDeListarUsuario.value = formBusca.campoPalavraDe.value;
+						formRelatorioRecargas.idPalavraAteListarUsuario.value = formBusca.campoPalavraAte.value;
+						formRelatorioRecargas.idStatusUsuarioListarUsuario.value = formBusca.campoStatusUsuario.value;
+						formRelatorioRecargas.idTpFiltroBilheteUnicoListarUsuario.value = formBusca.tpFiltroBilheteUnico.value;
+						formRelatorioRecargas.tpFiltroCompraListarUsuarioPassagem.value 	= formBusca.tpFiltroCompraPassagem.value;
+						
+						
+						submitForm(id, nrCartao); 
+						
+					}
+					if(id == 'formConsultarRelatorioSaldoUso'){
+						var formSaldoUso = document.getElementById(id);
+						formSaldoUso.idUrl.value 								= formBusca.idUrl.value;	
+						formSaldoUso.idPalavraDeListarUsuario.value 			= formBusca.campoPalavraDe.value;
+						formSaldoUso.idPalavraAteListarUsuario.value 			= formBusca.campoPalavraAte.value;
+						formSaldoUso.idPalavraChaveListarUsuario.value 			= formBusca.campoPalavraChave.value;
+						formSaldoUso.idStatusUsuarioListarUsuario.value 		= formBusca.campoStatusUsuario.value;
+						formSaldoUso.idCampoFiltragemListarUsuario.value 		= formBusca.tpFiltroUsuario.value;
+						formSaldoUso.idTpFiltroBilheteUnicoListarUsuario.value 	= formBusca.tpFiltroBilheteUnico.value;
+						formSaldoUso.tpFiltroCompraListarUsuarioPassagem.value 	= formBusca.tpFiltroCompraPassagem.value;
+							
+
+							submitForm2(id, nrCartao, data);
+					}
+				}else{
+					document.getElementById('vId1').value = 2;
+					document.getElementById('vId2').value = 2;
+					if(id == 'formConsultarRelatorio'){
+						submitForm(id, nrCartao); 
+					}else{
+						submitForm2(id, nrCartao, data);
+					}
+				}
+					
+									
+		}
+		
+		function enviaDadosBotaoAlterar(id, nrCartao){
+			var formAlterarUsuario = document.getElementById(id);
+			var formBusca = document.getElementById('formBusca');
+			
+			if(formBusca != null){			
+				formAlterarUsuario.idUrl.value 								= formBusca.idUrl.value;	
+				formAlterarUsuario.idPalavraDeListarUsuario.value 			= formBusca.campoPalavraDe.value;
+				formAlterarUsuario.idPalavraAteListarUsuario.value 			= formBusca.campoPalavraAte.value;
+				formAlterarUsuario.idPalavraChaveListarUsuario.value 		= formBusca.campoPalavraChave.value;
+				formAlterarUsuario.idStatusUsuarioListarUsuario.value 		= formBusca.campoStatusUsuario.value;
+				formAlterarUsuario.idCampoFiltragemListarUsuario.value 		= formBusca.tpFiltroUsuario.value;
+				formAlterarUsuario.idTpFiltroBilheteUnicoListarUsuario.value 	= formBusca.tpFiltroBilheteUnico.value;
+				formAlterarUsuario.tpFiltroCompraListarUsuarioPassagem.value 	= formBusca.tpFiltroCompraPassagem.value;
+				submitForm(id, nrCartao);
+			}else{
+				submitForm(id, nrCartao);
+			}
+		}
+		function hideBannerCompradorBloqueado(){
+			document.getElementById('dark').style.display = 'none';
+			document.getElementById('atencaoCompradorBloqueado').style.display = 'none';
+		}
+
+		function showBannerCompradorBloqueado(){
+			document.getElementById('dark').style.display = 'block';
+			document.getElementById('atencaoCompradorBloqueado').style.display = 'block';
+		}
+	</script>
+</head>
+
+<body class="usuarios"><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div>
+
+
+<div id="site" class="clearfix">
+
+	<a name="topo"></a>
+
+
+
+
+<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="https://crr.sophieagent.com/" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script> 
+ 
+<div id="fechaAjuda" style="height:10px; position:absolute;display:none; text-align:right; padding:10px; cursor:pointer">
+	<span style="color:#FFFFFF; background:#000000">[FECHAR]</span> 
+</div>  
+
+<div class="conteudo_interna">
+
+	<div id="titulo_pag" class="titulo_pag">
+		<div class="borda_esq">
+			<div class="borda_dir">
+				<h1>Pesquisar</h1>
+			</div>
+		</div>
+    </div>
+    
+   	 
+    
+	<div style="margin: 5px; border:1px #FFC400 solid; padding:5px; background-color: #FFF6D9;">
+        <p>
+            <strong>
+				Sempre que um funcionário for demitido, é indispensável a sua 
+inativação no cadastro de usuários neste site, pois o cartão está 
+vinculado ao CPF do mesmo.
+            </strong><br>
+			<strong>
+				Lembre-se: O cartão PERSONALIZADO USUÁRIO pertence ao empregado. Por
+ esse motivo Você deve inativar o cartão para ser vinculado a outro 
+comprador/empresa.
+			</strong>
+        </p>
+	</div>
+
+	
+
+    
+    
+
+	
+	
+		<center><label style="color: #990000;">Nenhum Usuário cadastrado.</label></center>
+	
+
+    <div class="menu_rodape clearfix">
+  <h3><span>Usuários</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+    <li id="menuRodapeItem02"><a href="./PesquisarUsuario.html">Pesquisar </a> </li>
+	<li id="menuRodapeItem03">
+		<a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a> 
+	</li>
+	<li id="menuRodapeItem04">
+		<a href="./ImportarUsuarios.html">Importação de Usuários</a>  
+	</li>
+	<li id="menuRodapeItem05">
+		<a href="./GerenciarBU.html">Gerenciar Bilhete Único</a>
+	</li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('AlterarUsuario') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('pesquisar') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('alterar') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('importacao') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	}
+</script>
+  </div>
+</div>
+
+<div id="dialogBoxDiv" class="dialogBox" style="display: none;">
+	<div style="width: 100%; z-index: 90; height: 70%">
+		<h1 style="font-size: 14px">
+			Deseja excluir o usuário?
+		</h1>
+	</div>
+	<table style="height: 30%; width: 100%;" border="0">
+		<tbody><tr>
+			<td valign="top" align="center">
+		     	<div class="botao_acao botao_medio" style="float: inherit">
+		     		<a href="javascript: excluir();">Confirmar</a>
+		     	</div>
+			</td>
+			<td valign="top">
+				<a href="javascript: hideLightbox();" id="dialogBox_btn_cancelar" style="display: inline;">
+					<img src="PesquisarUsuario_arquivos/cancelar.gif" alt="Cancelar" width="74" height="25">
+				</a>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="PesquisarUsuario_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+
+<script language="javascript" src="PesquisarUsuario_arquivos/scripts.js"></script>
+<!-- DWR declarations -->
+<script type="text/javascript" src="PesquisarUsuario_arquivos/RioCardVT.js"></script>
+<script type="text/javascript" src="PesquisarUsuario_arquivos/engine.js"></script>
+<script type="text/javascript" src="PesquisarUsuario_arquivos/util.js"></script>
+</body></html>

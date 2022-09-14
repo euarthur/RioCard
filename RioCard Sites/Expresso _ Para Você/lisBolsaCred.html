@@ -1,0 +1,165 @@
+<html><head><style>
+    table tbody tr td {
+        padding: 0px;
+        text-align: center
+    }
+</style>
+
+    <title>Transferência de Bolsa de Crédito do Usuário para Comprador</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" type="text/css" href="lisBolsaCred_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="lisBolsaCred_arquivos/riocard.css">
+<script src="lisBolsaCred_arquivos/funcoes.js" language="JavaScript1.2"></script><script>
+    function selecionatudo() {
+        for (i = 0; i < document.frmBolsaCred.elements.length; i++) {
+
+            if (document.frmBolsaCred.elements[i].type == 'checkbox') {
+                if (document.frmBolsaCred.seltodos.checked) {
+                    document.frmBolsaCred.elements[i].checked = true;
+                }
+                else {
+                    document.frmBolsaCred.elements[i].checked = false;
+                }
+            }
+        }
+    }
+
+    function validar() {
+        var i
+        var str
+        str = ''
+
+        for (i = 0; i < document.frmBolsaCred.elements.length; i++) {
+            if (( document.frmBolsaCred.elements[i].type == 'checkbox' ) && ( document.frmBolsaCred.elements[i].name != 'seltodos' )) {
+                if (document.frmBolsaCred.elements[i].checked) {
+                    if (str == '') {
+                        str = document.frmBolsaCred.elements[i].value
+                    }
+                    else {
+                        str += ',' + document.frmBolsaCred.elements[i].value
+                    }
+                }
+            }
+        }
+
+        if (str == "") {
+            alert("Marque pelo menos um usu\u00E1rio");
+            return false;
+        }
+    }
+    
+</script></head>
+
+
+
+
+
+
+<body>
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</td>
+    </tr>
+    <tr>
+        <td rowspan="3" style="text-align: center" valign="top">
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Transferência de Bolsa de Crédito do Usuário para Comprador</legend>
+
+                    <form name="frmBolsaCred" action="UsuarioManutencao" method="post" onsubmit="return validar()">
+                        <table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+
+                            <tbody><tr>
+                                <td>
+                                    <strong>Relação de Usuários com bolsa de Crédito</strong>
+                                </td>
+                                <td style="text-align: right">
+                                    <input name="seltodos" type="checkbox" style="border:0" id="seltodos" onclick="selecionatudo()" value="checkbox">Marcar todos
+                                </td>
+                            </tr>
+
+                            
+
+                            <tr>
+                                <td style="text-align: center" colspan="2">
+                                    <table width="100%" cellspacing="2" cellpadding="4" border="0">
+                                        <thead>
+                                        <tr bgcolor="#dfe6eb" align="center">
+                                            <td><strong style="font-weight: bold">Matrícula</strong></td>
+                                            <td><strong style="font-weight: bold">Nome do usuário</strong></td>
+                                            <td><strong style="font-weight: bold">CPF</strong></td>
+                                            <td><strong style="font-weight: bold">Situação</strong></td>
+                                            <td><strong style="font-weight: bold">Ultima atualização</strong></td>
+                                            <td><strong style="font-weight: bold">Saldo</strong></td>
+                                            <td><strong style="font-weight: bold">Selecionar</strong></td>
+                                        </tr>
+                                        </thead>
+
+                                        
+                                        <!-- N�o existe dados para ser exibido -->
+                                        <tbody>
+                                        <tr style="text-align: center" bgcolor="#F1F1F1">
+                                            <td colspan="7">
+                                                <div class="textoalerta">
+                                                    Não existem usuários com Bolsa de Crédito
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="7" align="center">&nbsp;</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left" colspan="2">
+                                    <div align="center">
+                                        <input type="button" onclick="self.location.href = './Comprador.html'" value="Voltar" class="button btn-company">
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </form>
+                </fieldset>
+            </div>
+
+        </td>
+    </tr>
+</tbody></table>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="lisBolsaCred_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+
+</body></html>

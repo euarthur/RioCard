@@ -1,0 +1,1303 @@
+/*-----------------------------------------------------------------------------
+Portal Riocard Mais- Folha de estilos gerais do Site
+
+autor:     Midia 3 - Werther Azevedo, Robson Waterkemper e Daniel Ramos 
+website:   http://www.midia3.com.br/
+-----------------------------------------------------------------------------*/
+
+
+/* =Reset
+-----------------------------------------------------------------------------*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style: none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+a{ text-decoration:none; color:#3564a7; }
+
+
+
+/* =Hacks
+-----------------------------------------------------------------------------*/
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix { height:1%; }
+
+
+
+/* =Elementos HTML
+-----------------------------------------------------------------------------*/
+
+html{
+
+}
+
+body {
+	font:11px "Trebuchet MS", "Lucida Sans", Tahoma, sans-serif;
+	color:#323232;
+	text-align:center;
+	padding-bottom:12px;
+}
+
+select, input, textarea {
+	font:11px "Trebuchet MS", "Lucida Sans", Tahoma, sans-serif;
+	padding:3px;
+}
+
+
+/* =Gerais
+-----------------------------------------------------------------------------*/
+
+#site{
+	margin:0 auto;
+	width:100%;
+	background:#FFFFFF;
+	padding-bottom:12px;
+
+}
+
+#barra_portal, #site{
+	text-align:left;
+}
+
+#barra_portal ul li.sem_divisa, #menu_principal li.sem_divisa{
+	background:none;
+}
+
+.textbox_com_botao{
+	float:left;
+	margin-right:6px;
+}
+
+.logo{
+	background:url(../imagens/logo.png) no-repeat right bottom;	
+	width:112px;
+	height:40px;
+	padding:9px 0 0 24px;
+	float:left;
+}
+
+.logo a{
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+.text_hide span{
+	margin-left:-10000px;
+}
+
+#col_principal {
+	padding:0 1%;
+	_padding: 0 12px;
+}
+
+.box_destaque { /* box de destaque com degrade cinza. Usado em Fale Conosco, Atividades e Downloads */
+	width:198px;
+	min-height: 110px;
+	*height: 110px;
+	background:url(../imagens/box_destaque_cinza_deg.jpg) no-repeat 0 0;	
+	padding:12px 18px 0 18px;
+}
+
+/* =Links e elementos auxiliares
+-----------------------------------------------------------------------------*/
+
+#col_principal a {
+	text-decoration: underline;
+}
+
+#col_principal a:hover {
+	text-decoration: none;
+}
+
+
+.link_mais a{
+	text-transform:uppercase;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:10px;
+	padding-left:6px;
+	display:block;
+	height:13px;
+	line-height:13px;
+}
+
+.link_topo{
+	background:url(../imagens/bt_topo.gif) no-repeat 0 0;		
+	width:99px;
+	height:22px;
+	margin:0px 18px 0 0;
+	padding-top:5px;
+	float:right;
+}
+
+.link_topo a, #col_principal .link_topo a {
+	color:#1e6d9e;
+	font-weight:normal;
+	padding:0 0 0 18px;
+	text-decoration: none;
+}
+
+.link_topo a:hover{
+	color:#04468c;
+}
+
+
+.link_topo_left {
+	float:left;
+}
+
+.imprimir {
+	background:url(../imagens/btn_imprimir.gif) no-repeat top right; 
+	height:20px; 
+	padding:1px 6px 10px 20px;
+	float:left;
+	font-size:12px;
+	font-weight:normal;
+	margin:3px 0 0 0px;
+}
+
+#col_principal .imprimir a {
+	float:left;
+	text-decoration: none;
+}
+
+.imprimir_dir {
+	float:right;
+	margin-top:-20px;
+	*margin-top:-30px;
+}
+
+.imprimir_dir a {
+	float:right;
+	text-decoration: none;
+}
+
+
+/* =Tabelas
+-----------------------------------------------------------------------------*/
+#col_principal table {
+	margin-bottom:10px;
+	border-collapse: collapse;
+	
+}
+
+#col_principal table tr td, #col_principal table tr th {
+	border: 1px solid #c8c8c8;
+	padding: 6px;
+}
+
+#col_principal table tr td {
+	background: url(../imagens/tabelas/bg_td.gif) repeat-y; 
+}
+
+#col_principal table tr th {
+	background:url(../imagens/tabelas/bg_tr.gif) repeat-y; 
+	height:36px; 
+	text-align:center; 
+	font-weight:bold;
+	vertical-align: middle;
+}
+
+#col_principal table.cem_por_cento {
+	width: 100%;
+}
+
+#col_principal table tr.linha_alternada td {
+	background: url(../imagens/bg_degrade_escuro.gif) #F3F3F3 repeat-y;
+}
+
+#tabela table tr td {
+	background: url(../imagens/bg_degrade_escuro.gif) #F3F3F3 repeat-y;
+}
+
+
+/* Filedsets e forms
+--------------------------------------------------------------------*/
+
+
+
+
+#col_principal input.erro {
+	border: 2px solid #CC0000;
+}
+
+#col_principal textarea.erro {
+	border: 2px solid #CC0000;
+}
+
+#col_principal p.erro {
+	font-size: 11px;
+	color: #990000;
+	clear: both;
+}
+
+#col_principal h1.erro {
+	color: #990000;
+}
+
+#col_principal fieldset label {
+	color: #19578f;
+	font-size: 12px;
+}
+
+#col_principal fieldset small { /* vai ser usado para pequenas instrucoes nos campos */
+	color: #8f8f8f;
+	font-size: 10px;
+}
+
+#col_principal p.instrucao {
+	color: #677fa2;
+	font-size: 11px;
+}
+
+#col_principal p.instrucao2 {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+#col_principal fieldset #col_principal fieldset input.radio, #col_principal fieldset input.check {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+
+/* =Titulacao
+-----------------------------------------------------------------------------*/
+
+#titulo_pag {
+	margin:12px 0 0 0; 
+	background:url(../imagens/bgn_titulo.gif) repeat-x; 
+	height:30px; 
+	margin-bottom:12px;
+}
+
+#titulo_pag.titulo_pag_com_submenu_abaixo { /* Se houver um submenu de links ou ancoras abaixo do titulo, este deve ter margem bottom = 0 */
+	margin-bottom: 0px;
+}
+
+#titulo_pag .borda_esq {
+	background:url(../imagens/det_esq_titulo.gif) no-repeat top left; 
+	height:30px;  
+}
+
+#titulo_pag .borda_dir {
+	background:url(../imagens/det_dir_titulo.gif) no-repeat top right; 
+	height:30px; 
+}
+
+#titulo_pag h1 {
+	font-size:14px; 
+	font-family:Lucida Sans, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, sans-serif;   
+	text-transform:uppercase; 
+	color:#1a4f70; 
+	font-size:18px; 
+	font-weight:bold; 
+	padding:4px 12px;
+	float: left;
+}
+
+#titulo_pag span.link_voltar, #titulo_pag span.paginacao { /* voltar e paginacao */
+	float: right; 
+	margin: 6px 5px 0 0;
+}
+
+#titulo_pag span.link_voltar {
+	background:url(../imagens/link_voltar.gif) no-repeat; 
+	width:96px; 
+	height:19px;
+	font-size:11px;
+	font-family: Trebuchet MS,Lucida Sans, Lucida Sans Unicode, Lucida Grande, sans-serif;
+	font-weight:normal;
+	text-transform: none;
+	padding-left:17px;
+}
+
+#titulo_pag span.link_voltar a{    
+	text-decoration: none;	
+}
+
+#titulo_pag span.link_voltar a:hover {
+	color:#6ba0d2;
+}
+
+/* Titulos de erro */
+#titulo_pag_erro {
+	margin:12px 0 0 0; 
+	background:url(../imagens/bgn_titulo_erro.gif) repeat-x; 
+	height:30px; 
+	margin-bottom:12px;
+}
+
+#titulo_pag_erro.titulo_pag_com_submenu_abaixo { /* Se houver um submenu de links ou ancoras abaixo do titulo, este deve ter margem bottom = 0 */
+	margin-bottom: 0px;
+}
+
+#titulo_pag_erro .borda_esq {
+	background:url(../imagens/det_esq_titulo_erro.gif) no-repeat top left; 
+	height:30px;  
+}
+
+#titulo_pag_erro .borda_dir {
+	background:url(../imagens/det_dir_titulo_erro.gif) no-repeat top right; 
+	height:30px; 
+}
+
+#titulo_pag_erro h1 {
+	font-size:14px; 
+	font-family:Lucida Sans, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, sans-serif;   
+	text-transform:uppercase; 
+	color:#1a4f70; 
+	font-size:18px; 
+	font-weight:bold; 
+	padding:4px 12px;
+	float: left;
+}
+
+#titulo_pag_erro span.link_voltar, #titulo_pag span.paginacao { /* voltar e paginacao */
+	float: right; 
+	margin: 6px 5px 0 0;
+}
+
+#titulo_pag_erro span.link_voltar {
+	background:url(../imagens/link_voltar.gif) no-repeat; 
+	width:96px; 
+	height:19px;
+	font-size:11px;
+	font-family: Trebuchet MS,Lucida Sans, Lucida Sans Unicode, Lucida Grande, sans-serif;
+	font-weight:normal;
+	text-transform: none;
+	padding-left:17px;
+}
+
+#titulo_pag_erro span.link_voltar a{    
+	text-decoration: none;	
+}
+
+#titulo_pag_erro span.link_voltar a:hover {
+	color:#6ba0d2;
+}
+
+#col_principal h2 {
+	margin:0px 0px 22px 0; 
+	font-family:Lucida Sans, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, sans-serif; 
+	font-size:17px; 
+	color:#699dbe; 
+}
+
+#col_principal h2 span { 
+	margin:3px 5px 0 10px;
+	font-size:11px; 
+	font-weight:bold; 
+	color:#2a6286; 
+	float:right;
+}
+
+#col_principal p{
+	color:#323232; 
+	line-height:17px;
+	margin-bottom:10px;
+}
+
+#col_principal .esquerda {
+	margin:0 15px 15px 0;
+	float:left;
+	border:3px solid #e6e6e6;
+}
+
+#col_principal p .direita {
+	margin:0 15px 15px 0;
+	float:right;
+	border:3px solid #e6e6e6;
+}
+
+.tit_listagem{
+	color:#1a4f70;
+	background:url(../imagens/pontilhado_titulos.gif) repeat-x left bottom;	
+	font-weight:bold;
+	font-size:14px;
+	padding-bottom:6px;
+}
+
+#col_principal .subtitulo h2{
+	color:#1a4f70;
+}
+
+.titulo_medio{
+	color:#1a4f70;
+	font-size:15px;
+	font-family:"Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", sans-serif;
+	margin-bottom:6px;	
+}
+
+.subtitulo_com_link{
+	padding:12px 0 8px 0;
+	background:url(../imagens/bgn_outras2.gif) repeat-x bottom;  
+	height:23px; 	
+}
+
+#col_principal .subtitulo_com_link h2{
+	float:left;
+	margin:0;
+	color:#1a4f70;
+	margin:0px 0 0 8px;
+}
+
+#col_principal .subtitulo_com_link p{
+	margin-bottom:0;
+	_margin-bottom:-5px;
+}
+
+.subtitulo {
+	background:url(../imagens/bgn_outras2.gif) repeat-x bottom;  
+	height:23px; 
+}
+
+.subtitulo h3 {
+	font:Lucida Sans, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, sans-serif; 
+	color:#1a4f70; 
+	font-size:12px; 
+	margin:0px 0 0 8px; 
+}
+
+.subtitulo h3 span{
+	margin:0px 15px 0 0px; 
+	font-family: Trebuchet MS,Lucida Sans, Lucida Sans Unicode, Lucida Grande, sans-serif; 
+	font-size:11px; 
+	color:#2a6286; 
+	float:right;
+}
+
+/* =Submenu de links ou de ancoras
+---------------------------------------------------------------------------- 
+Quando for o primeiro elemento da pagina depois do titulo usar o estilo internas_submenu.css */
+
+.submenu {
+	background:url(../imagens/submenu/bg_submenu.gif) top repeat-x;
+}
+
+#titulo_pag .submenu {
+	background-image: none;
+}
+
+/* 
+	Diferente do Portal Riocard Mais, o submenu de links existe somente dentro do H1 ou titulo_pag
+   	O submenu que tem background, no VT, sera' somente o de ancoras.
+*/
+
+.submenu .borda {
+	background:url(../imagens/submenu/det_submenu.gif) no-repeat right;
+}
+
+#titulo_pag .submenu .borda {
+	background: none;
+}
+
+.submenu .borda ul {
+	height:25px;  
+	padding-top:10px;
+	padding-left:0px;
+}
+
+#titulo_pag .submenu .borda ul {
+	padding-top:6px;
+	margin-left: 3%;
+	float: left;
+}
+
+.submenu .borda ul li {
+	display:inline; 
+	list-style:none; 
+	font-size:12px; 
+	font-weight:bold; 
+	color:#2a6286; 
+	margin:14px 5% 0 0;
+	padding-left:10px;
+	border:0px solid red;
+}
+
+#titulo_pag .submenu .borda ul li {
+	display: block;
+	float: left;
+	margin-right: 25%;
+	*margin-right:5%; 
+	margin-top: 0px;
+	border:0px solid red;
+}
+
+#col_principal .submenu .borda ul li a, #col_principal .submenu .borda ul li a:visited {
+	text-decoration: none;
+}
+
+.submenu .borda ul li.item_ativo {
+	background:url(../imagens/submenu/bullet_ativo.gif) no-repeat left;
+	padding-left:15px; 
+	margin:14px 5% 0 8px;
+	text-transform: uppercase;
+}
+
+#col_principal .submenu .borda ul li.item_ativo a, #col_principal .submenu .borda ul li.item_ativo a:visited {
+	color:#1a4f70; 
+	text-decoration: none;
+}
+
+.submenu .borda ul li a:hover {
+	color:#1a4f70;
+}
+
+#col_principal .ancora .borda ul li a, #col_principal .ancora .borda ul li a:visited {
+	text-decoration: underline;
+	color: #2a6286
+}
+
+#col_principal .ancora .borda ul li a:hover {
+	text-decoration: none;
+}
+
+
+.pos_sub {
+	background:url(../imagens/submenu/bg_submenu_bottom.gif) repeat-x;
+}
+
+.pos_sub .borda {
+	background:url(../imagens/submenu/det_submenu_bottom.gif) no-repeat right top;  
+	padding:20px 0 8px 14px;
+	color:#323232; 
+	line-height:15px;
+}
+
+.pos_sub_margin { /* se o elemento apos o submenu tiver bg, deve haver uma div vazia com essa classe */
+	height: 24px;
+}
+
+/* =Sistema de abas
+-----------------------------------------------------------------------------*/
+
+.menu_abas {
+	background:url(../imagens/abas/bg_abas.gif) repeat-x bottom; 
+	height:40px;
+}
+
+ul .bgaba {
+	float:left; 
+	background:url(../imagens/abas/bg_aba_padrao.gif) repeat-x;
+}
+
+ul .sem_boresq{
+	height:40px; 
+	padding-left:5px;
+	float:left; 
+}
+
+ul .sem_bordir{
+	height:40px; 
+	padding-left:5px;
+	float:left; 
+}
+
+ul .esq_aba {
+	float:left; 
+	height:40px; 
+	padding-left:10px; 
+	background:url(../imagens/abas/borda_esq_aba_padrao.gif) no-repeat left;
+}
+
+ul .esq_aba3{
+	background:url(../imagens/abas/borda_esqdir_aba_padrao.gif) no-repeat left; 
+	height:40px; 
+	padding-left:15px;
+	float:left; 
+}
+
+ul .dir_aba {
+	float:left; 
+	background:url(../imagens/abas/borda_dir_aba_padrao.gif) no-repeat right; 
+	height:40px; 
+	padding-right:10px;
+}
+
+ul .paddpad {
+	padding-top:18px;
+	float:left; 
+}
+
+#col_principal ul .paddpad a {
+	font-weight: bold;
+	display: block;
+	cursor: pointer; 
+	text-decoration: none;
+}
+
+
+/* ATIVO */
+.bgaba_ativo {
+	float:left; 
+	background:url(../imagens/abas/bg_aba_ativa.gif) repeat-x;
+}
+
+.bgaba_ativo .esq_aba{
+	background:url(../imagens/abas/borda_esq_aba_ativa.gif) no-repeat left; 
+	height:40px; 
+	padding-left:10px;
+	float:left; 
+}
+
+.bgaba_ativo .esq_aba2{
+	background:url(../imagens/abas/borda_esq_aba_ativa2.gif) no-repeat left; 
+	height:40px; 
+	padding-left:10px;
+	float:left; 
+}
+
+.bgaba_ativo .dir_aba{
+	background:url(../imagens/abas/borda_dir_aba_ativa.gif) no-repeat right; 
+	height:40px; 
+	padding-right:10px;
+	float:left; 
+}
+
+.bgaba_ativo .dir_aba2{
+	background:url(../imagens/abas/borda_dir_aba_ativa2.gif) no-repeat right; 
+	height:40px; 
+	padding-right:10px;
+	float:left; 
+}
+
+.bgaba_ativo .paddativ {
+	padding-top:16px;
+}
+
+.pos_aba { /* qdo tiver uma aba, deve ter uma div englobando o conteudo seguinte */
+	background:url(../imagens/abas/bg_deg_pos_aba.gif) repeat-x top;
+	padding-left: 12px;
+	padding-top: 12px;
+}
+
+.pos_aba2 { /* qdo tiver uma aba e um submneu deve ter uma div antes do submenu */
+	background:url(../imagens/abas/bg_deg_pos_aba.gif) repeat-x top;
+	height: 18px;
+}
+
+/* =Pagina��o
+-----------------------------------------------------------------------------*/
+.paginacao {
+	float:right;
+}
+
+#col_principal .paginacao a {
+	text-decoration: none;
+	float:left;
+	padding:0 3px;
+}
+
+.paginacao .numpag, .paginacao .numpag:visited {
+	margin-left: 2px;
+	margin-right: 2px;
+	background: none;
+}
+
+.paginacao .numpag:hover {
+    background: #042c5c;
+	color:#ffffff;
+}
+
+.paginacao .numpag_ativ {
+	background-color:#042c5c;
+	color:#ffffff;
+}
+
+.paginacao .voltartd_inat, .paginacao .voltar_inat, .paginacao .voltartd, .paginacao .voltar, .paginacao .avancar, .paginacao .avancartd .paginacao .avancar_inat .paginacao .avancartd_inat{
+	width:9px; 
+	height:12px
+}
+.paginacao .voltartd_inat {
+	background:url(../imagens/paginacao/pag_seta_first_inativo.gif) no-repeat center 4px; 
+}
+
+.paginacao .voltar_inat {
+	background:url(../imagens/paginacao/pag_seta_prev_inativo.gif) no-repeat center 4px; 
+}
+
+.paginacao .voltartd {
+	background:url(../imagens/paginacao/pag_seta_first.gif) no-repeat center 4px; 
+}
+
+.paginacao .voltar {
+	background:url(../imagens/paginacao/pag_seta_prev.gif) no-repeat center 4px; 
+}
+
+.paginacao .avancar {
+	background:url(../imagens/paginacao/pag_seta_next.gif) no-repeat center 4px; 
+}
+
+.paginacao .avancartd {
+	background:url(../imagens/paginacao/pag_seta_last.gif) no-repeat center 4px; 
+}
+
+.paginacao .avancar_inat {
+	background:url(../imagens/paginacao/pag_seta_next_inativo.gif) no-repeat center 4px; 
+}
+
+.paginacao .avancartd_inat {
+	background:url(../imagens/paginacao/pag_seta_last_inativo.gif) no-repeat center 4px; 
+}
+
+.paginacao .voltar_inat {
+	background:url(../imagens/paginacao/pag_seta_prev_inativo.gif) no-repeat center 4px; 
+}
+
+.paginacao .banner .selecionado{
+	background-color:#042c5c;
+	color:#ffffff;	
+	float: right;
+}
+
+.paginacao .banner a .paginacao .banner a:visited{
+	margin-left: 2px;
+	margin-right: 2px;
+	background: none;		
+}
+
+.paginacao .banner a:hover {
+    background: #042c5c;
+	color:#ffffff;
+}
+
+.paginacao a span {
+	margin-left:-10000px;
+}
+.paginacao em { 
+	float:left; 
+	display:block; 
+	padding:0 3px;
+}
+
+/*-----------------------------------------------------------------------------
+Portal Riocard Mais- Folha de estilos do header, menu e rodap�, comuns a todo o site
+
+autor:     Midia 3 - Werther Azevedo, Robson Waterkemper e Daniel Ramos 
+website:   http://www.midia3.com.br/
+-----------------------------------------------------------------------------*/
+
+/* =Barra portal
+-----------------------------------------------------------------------------*/
+
+#barra_portal{
+	width:98%;
+	/*max-width:924px;*/
+	max-width:928px;
+	_width:expression(document.body.clientWidth > 924? "924px": "98%" );		
+	margin:0 auto;
+	overflow:hidden;
+	height:25px;
+	margin-top:4px;
+}
+
+.barra_esq{
+	background:url(../imagens/barra_portal/barra_RioCard_esq.gif) no-repeat bottom left;
+}
+
+.barra_meio{
+	background:url(../imagens/barra_portal/barra_RioCard_meio.gif) repeat-x bottom left;
+}
+
+.barra_dir{
+	background:url(../imagens/barra_portal/barra_RioCard_dir.gif) no-repeat bottom right;
+	/*height:41px;*/
+	height:25px;
+}
+
+#barra_portal span{
+	position:absolute;
+	margin:-10000px;
+}
+
+#barra_portal ul{
+	float:left;
+	width:100%;
+}
+
+#barra_portal ul li{
+	overflow:hidden;
+	height:38px;
+	float:left;
+	background:url(../imagens/barra_portal/menuport_divisa.gif) no-repeat left 14px;
+}
+
+#barra_portal ul li p{
+	float:left;
+	height:100%;
+	width:100%;
+}
+
+#barra_portal ul li p a{
+	float:left;
+	width:100%;
+	height:100%;
+}
+
+#barra_portal ul li.riocard { 
+	width:27%;
+	padding-right:20px;
+	text-align:center;
+	background:url(../imagens/barra_portal/aba_VT_esq.gif) no-repeat right top;	
+ }
+ 
+#barra_portal ul li.VT { 
+	width:119px;
+	background:url(../imagens/barra_portal/aba_VT_meio.gif) no-repeat;	 
+}
+
+#barra_portal ul li.expresso { 
+	width:18%; 
+	padding-left:20px;
+	background:url(../imagens/barra_portal/aba_VT_dir.gif) no-repeat left top;
+}
+
+#barra_portal ul li.integracao { width:17%; }
+
+#barra_portal ul li.gratuidade { width:16%; }
+
+#barra_portal ul li.riocard p{
+	background:url(../imagens/barra_portal/menuport_riocard.gif) no-repeat 0 12px;
+	margin:0 auto;
+	width:190px;
+	float:none;
+	font-size:9px;
+	color:#001458;
+	text-align:right;
+	padding:14px 0 0 0;
+	height:24px;
+}
+
+#barra_portal ul li.expresso p{
+	background:url(../imagens/barra_portal/menuport_expresso.gif) no-repeat center 18px;
+}
+
+#barra_portal ul li.integracao p{
+	background:url(../imagens/barra_portal/menuport_integracao.gif) no-repeat center 15px;
+}
+
+#barra_portal ul li.gratuidade p{
+	background:url(../imagens/barra_portal/menuport_gratuidade.gif) no-repeat center 16px;
+}
+
+
+
+/* =Menu principal
+-----------------------------------------------------------------------------*/
+
+#menu_principal{
+
+
+	height:32px;
+}
+
+#menu_principal li{
+	float:left;
+
+	height:30px;
+	text-align:center;
+}
+
+#menu_principal li.item01 { width:7%; }
+#menu_principal li.item02 { width:12%; }
+#menu_principal li.item03 { width:11%; }
+#menu_principal li.item04 { width:9%; }
+#menu_principal li.item05 { width:10%; }
+#menu_principal li.item06 { width:7%; }
+#menu_principal li.item07 { width:11%;  }
+#menu_principal li.item08 { width:12%; }
+#menu_principal li.item09 { width:11%; }
+
+#menu_principal li.item08 a { padding-right:2px; _padding-right:7px; }
+
+#menu_principal li a{
+	float:left;
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#666666;
+	height:22px;
+	padding:8px 0 0 0;
+	margin-right:1px;
+	width:99%;
+}
+
+#menu_principal li a:hover, #menu_principal li a.pag_atual{
+	background-position:0 0;
+}
+
+/* =Rodape
+-----------------------------------------------------------------------------*/
+
+#rodape_conteudo{
+	width:98%;
+	max-width:924px;
+	_width:expression(document.body.clientWidth > 924? "924px": "98%" );
+	_height:40px;
+	margin:0 auto;	
+	border-right:2px solid #8295a9;
+	border-left:2px solid #8295a9;	
+	padding: 0px 0 6px 0;
+}
+
+#rodape_conteudo .link_topo_container {
+	height:60px;
+	padding-top: 40px;
+}
+
+#rodape_conteudo .link_topo_container .link_topo {
+	background:url(../imagens/bt_volta_topo_rodape.gif) no-repeat 0 0;		
+	width:107px;
+	height:22px;
+	margin:-25px 12px 0 0;
+	_margin:-25px 22px 0 0;
+	float:right;
+}
+
+#rodape_conteudo .link_topo_container .link_lojas {
+	background:url(../imagens/bt_lojas_riocard.gif) no-repeat 0 0;		
+	width:107px;
+	height:22px;
+	margin:0 12px 0 0;
+	padding-top:7px;
+	float:right;
+}
+
+/* BEGIN RODAP� LINKS POR RONALDO JR. */
+
+#rodape_conteudo .link_topo_container .link_twitter {	
+	width:42px;
+	height:42px;
+	margin:0 0 0 12px;
+	_margin:0 0 0 20px;
+	float:left;
+}
+
+#rodape_conteudo .link_topo_container .link_twitter a:link {
+	background:url(../imagens/twitter_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_twitter a:visited {
+	background:url(../imagens/twitter_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_twitter a:hover {
+	background:url(../imagens/twitter_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_facebook {	
+	width:42px;
+	height:42px;
+	margin:0 0 0 5px;
+	_margin:0 0 15px 5px;
+	float:left;
+}
+
+#rodape_conteudo .link_topo_container .link_facebook a:link {
+	background:url(../imagens/facebook.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_facebook a:visited {
+	background:url(../imagens/facebook.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_facebook a:hover {
+	background:url(../imagens/facebook.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_youtube {	
+	width:42px;
+	height:42px;
+	margin:0 0 0 5px;
+	_margin:0 0 15px 5px;
+	float:left;
+}
+
+#rodape_conteudo .link_topo_container .link_youtube a:link {
+	background:url(../imagens/youtube_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_youtube a:visited {
+	background:url(../imagens/youtube_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_youtube a:hover {
+	background:url(../imagens/youtube_vt.jpg) no-repeat 0 0;	
+	display:block;
+	height:42px;
+}
+
+#rodape_conteudo .link_topo_container .link_procon {	
+	width:140px;
+	margin:-43px 10px 0px -150px;
+	float:right;
+	height:85px;
+}
+
+#rodape_conteudo .link_topo_container .link_procon a:link {
+	background:url(../imagens/procon.jpeg) no-repeat 0 0;	
+	display:block;
+	height:85px;
+}
+
+#rodape_conteudo .link_topo_container .link_procon a:visited {
+	background:url(../imagens/procon.jpeg) no-repeat 0 0;	
+	display:block;
+	height:85px;
+}
+
+#rodape_conteudo .link_topo_container .link_procon a:hover {
+	background:url(../imagens/procon.jpeg) no-repeat 0 0;	
+	display:block;
+	height:85px;
+}
+
+
+/* END RODAP� LINKS POR RONALDO JR. */
+
+#rodape_conteudo .link_topo_container .link_topo a{
+	color:#1e6d9e;
+	font-weight:normal;
+	padding:0 0 0 7px;
+}
+
+.info_fetranspor{
+	float:left;
+	font-size:10px;
+	color:#747474;
+	text-align:left;
+	margin:-12px 0 0 24px;
+	_margin-left:12px;
+}
+
+.links_selo{
+	float:right;
+	margin-right:24px;
+	_margin-right:12px;	
+}
+
+.links_selo ul{
+	margin-right:12px;
+}
+
+.links_selo ul li{
+	float:left;
+	text-align:left;
+	margin-right:24px;
+}
+
+.links_selo ul li a{
+	text-decoration:underline;
+	color:#1371c9;
+}
+
+.links_selo ul li a:hover{
+	color:#0687ff;
+}
+
+.rodape_padrao{
+	background:url(../imagens/rodape/padrao_footer.jpg) repeat-x 0 0;	
+	height:53px;	
+	width:98%;
+	max-width:924px;
+	_width:expression(document.body.clientWidth > 924? "924px": "98%" );		
+	margin:0 auto;	
+	padding:0 2px;	
+	position:relative;
+}
+
+.rodape_padrao .padrao_esq{
+	background:url(../imagens/rodape/footer_esq.jpg) no-repeat top left;	
+	height:53px;	
+	width:18px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.rodape_padrao .padrao_dir{
+	background:url(../imagens/rodape/footer_dir.jpg) no-repeat top right;	
+	height:53px;	
+	width:18px;	
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.version{
+	font-size:10px;
+	color: #FFFFFF;
+	text-align:center;
+	width:98%;
+}
+
+/* ------------ lightbox.css ------------------------------*/
+#lightbox {
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}
+
+#lightboxDetails {
+	font-size: 0.8em;
+	padding-top: 0.4em;
+}	
+
+#lightboxCaption { 
+    float: left; 
+}
+
+#keyboardMsg { 
+    float: right; 
+}
+
+#closeButton { 
+    top: 5px; right: 5px; 
+}
+
+#lightbox img { 
+    border: none; clear: both;
+} 
+
+#overlay img { 
+    border: none; 
+}
+
+#overlay {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+#overlayEnd {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+/*
+#overlay {
+	background-color: #333;
+	back\ground-color: transparent;
+	background-image: url(blank.gif);
+	background-image: url(overlay.png);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");
+}
+*/
+
+.dialogBox {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 100px;
+    text-align: center; 
+    padding: 5px;
+}
+
+.enderecoBox {
+    background-color: #FFFFFF;
+    width: 680px;
+    height: 480px;
+    text-align: center; 
+    padding: 5px;
+}
+
+.ajudaBox {
+    background-color: #FFFFFF;
+    width: 780px;
+    height: 580px;
+    text-align: left; 
+    padding: 5px;       
+    overflow: scroll;     
+}
+
+#fundo {  
+    background-image: url(overlay.png);
+    filter: alpha(opacity=75); /* IE's opacity*/
+    opacity: 0.75;
+    -moz-opacity:0.75;
+}
+
+#ajuda {
+	background-color:#eee;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+}
+#col_principal table.form-login {
+	background:none;
+	border:none;
+}
+#col_principal table.form-login td, th {
+	background: none;
+	border: none;
+}
+fieldset.login {
+	border:1px solid #CCCCCC;
+	padding:7px;
+}
+
+#col_principal fieldset {
+	border:1px solid #c3d0de;
+	padding:10px 10px 15px 15px;
+	*padding-top:0;
+	margin-bottom:15px;
+	background:url(../imagens/fieldset/bg_fieldset.gif) repeat-x bottom;
+	*min-height:60px;
+	_height:60px;
+}

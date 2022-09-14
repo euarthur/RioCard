@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+		<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+		<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+		<link href="AlterarValorUsoDiario_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="AlterarValorUsoDiario_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="AlterarValorUsoDiario_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="AlterarValorUsoDiario_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="AlterarValorUsoDiario_arquivos/comum.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="AlterarValorUsoDiario_arquivos/home.css" media="all">		
+		<link rel="stylesheet" type="text/css" href="AlterarValorUsoDiario_arquivos/pesquisa_usuarios.css" media="all">
+		<script language="JavaScript" src="AlterarValorUsoDiario_arquivos/lightboxAjuda.js"></script>
+		
+		<title>Riocard Mais Vale-Transporte / Usuários / Alterar valor de uso di�rio</title>
+			<script type="text/javascript">
+	    	function handleSelectButtons() {
+	    		var table = document.getElementById('listTable');
+	    		var inputs = table.getElementsByTagName('input');
+	
+				var allMarked = true;
+	    		for (var i = 0; i < inputs.length; i++)
+	    			if ( inputs[i].type == 'checkbox' && inputs[i].checked != true ) 
+	    				allMarked = false;
+	    		
+	    		if ( allMarked ) {
+	    			document.getElementById('deselecionarTop').style.display = 'inline';
+	    			document.getElementById('selecionarTop').style.display = 'none';
+	    			document.getElementById('deselecionarBottom').style.display = 'inline';
+	    			document.getElementById('selecionarBottom').style.display = 'none';
+	    		} else {
+	    			document.getElementById('deselecionarTop').style.display = 'none';
+	    			document.getElementById('selecionarTop').style.display = 'inline';
+	    			document.getElementById('deselecionarBottom').style.display = 'none';
+	    			document.getElementById('selecionarBottom').style.display = 'inline';
+	    		}
+	    	}
+	    
+	    	function selecionarTodas() {
+	    		var table = document.getElementById('listTable');
+	    		if (table == null) return;
+	    		var inputs = table.getElementsByTagName('input');
+	    		for (var i = 0; i < inputs.length; i++)
+	    			if (inputs[i].type == 'checkbox') 
+	    				inputs[i].checked = 'checked';
+	    				
+	    		handleSelectButtons();
+	    	}
+	    	
+	    	function deselecionarTodas() {
+	    		var table = document.getElementById('listTable');
+	    		if (table == null) return;
+	    		var inputs = table.getElementsByTagName('input');
+	    		for (var i = 0; i < inputs.length; i++)
+	    			if (inputs[i].type == 'checkbox') 
+	    				inputs[i].checked = false;
+	    		
+	    		handleSelectButtons();
+	    	}
+	    	
+	    	function checkIfAllUncheckedAndSubmit() {
+	    		var table = document.getElementById('listTable');
+	    		var inputs = table.getElementsByTagName('input');
+	    		var submitPedidos = '';
+	    		
+	    		var flag = false;
+				for (var i = 0; i < inputs.length; i++) {
+	    			if ( inputs[i].type == 'checkbox' && (inputs[i].checked == true || inputs[i].checked == 'checked') ) {
+	    				if ( flag ) {
+	    					submitPedidos += ', ' + inputs[i].value;
+	    				} else {
+	    					submitPedidos += inputs[i].value;
+	    					flag = true;
+	    				}
+	    			} 
+	    		}
+	    		if ( submitPedidos.length < 1 ) {
+	    			alert( 'Selecione ao menos um pedido para desbloquear seus cart\u00F5es.' );
+	    		} else {
+	    			submitForm( submitPedidos );
+	    		}
+	    	}
+	    	
+	    	function submit(formName) {
+	    	
+	    		var formulario = document.getElementById(formName);
+	    		
+	    		var novoValorTodosUsuarios 	= document.getElementById("novoValorTodosUsuarios").value;
+	 			
+	    		var novoValorTodoUsuariosFormat = novoValorTodosUsuarios.replace(",",".");
+	 			
+	    		if (novoValorTodoUsuariosFormat != null 
+	    		 && novoValorTodoUsuariosFormat != "" 
+	    		 && novoValorTodoUsuariosFormat > "0,00") {	    			
+	    			document.getElementById("valorNovoFmtHidden").value	= novoValorTodosUsuarios;	    				    			
+	    	}
+			
+	    		formulario.submit();
+	    	}
+			
+			function preparaBuscaCpf( element ){
+				var tpFiltroUsuario = document.getElementById('filtro');
+				if (element && element != null && tpFiltroUsuario){
+					if (tpFiltroUsuario.value == 3){
+						removeNonNumberCharacters(element);
+					}
+				}
+			}
+
+	    </script>
+	</head>
+	<body class="usuarios">
+		
+		<div id="site" class="clearfix">
+			
+	<a name="topo"></a>
+
+
+
+
+			<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');">Comprador <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usu�rios <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');" style="background-position: 0px 32px;">Cart�es <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');" style="background-position: 0px 32px;">pedidos <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');">relat�rios <img src="AlterarValorUsoDiario_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="https://www.cartaoriocard.com.br/vt2/home/Logout.do">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="AlterarValorUsoDiario_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./DadosComprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./TrocaSenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./VisualizarTermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.do" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+  
+	<div class="dropdown" id="dropdown_comprador">
+		<ul>
+			<li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+			   
+			 
+		  
+			<li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+	<div class="dropdown" id="dropdown_administrador"> 
+	  <ul>
+		  <li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+		<li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+	  </ul>
+	</div>
+	<div class="dropdown" id="dropdown_usuarios"> 
+	  <ul>
+		<li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+		<li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+		<li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+		<li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+		<li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+	  </ul>
+	</div>
+	<div class="dropdown" id="dropdown_cartoes">
+	  <ul>
+		<li><a href="./ConsultaCartoes.html">Consulta</a></li>
+		<li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+		<li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+		<li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+		<li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+		<li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+	  </ul>
+	</div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+			 <li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+			<li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+	<div class="dropdown" id="dropdown_relatorios">
+	  <ul>
+		<li>
+			<a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+		</li>
+		<li>
+			<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+		</li>
+		<li>
+			<a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+		</li>        
+		<li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+		</li>
+		<li>
+			<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+		</li>
+			
+	  </ul>
+	</div>
+   <div class="dropdown" id="dropdown_ajuda">
+      <ul>      
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_indice.jsp">Índice</a></li>
+      	<li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=s01#s01">Introdução</a></li>
+      	<li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=s02#s02">Passo a passo</a></li>    
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u01#u01">Home</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u02#u02">Comprador</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u03#u03">Administrador</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u04#u04">Usuários</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u05#u05">Cartões</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u06#u06">Pedidos</a></li>
+        <li><a href="https://www.cartaoriocard.com.br/vt2/visitante/ajuda/ajuda_pagina.jsp?r=u07#u07">Relatórios</a></li>
+      </ul>
+	</div>
+
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+			<div class="conteudo_interna">
+				<div id="titulo_pag" class="titulo_pag">
+				  <div class="borda_esq">
+					  <div class="borda_dir">
+						  <h1>Alteração de Valor de Uso Diário</h1>
+					  </div>
+				  </div>
+				</div>
+				<form name="alterarValorUsoDiarioForm" id="formBusca" method="post" action="/vt2/comprador/usuarios/FiltrarAlteracaoValorUsoDiario.do">
+					<fieldset class="nivel_01">
+						<input type="hidden" name="isPesquisa" value="true" id="isPesquisa">
+						<legend>Pesquisa</legend>
+						<fieldset class="nivel_02">
+							<legend>Filtrar Pesquisa</legend>
+							<table class="formulario_pesquisa" cellspacing="0" border="0">
+								
+								<tbody><tr>
+									<td><label>Campo para filtragem</label></td>
+									<td><label>Palavra-Chave</label></td>
+									<td><label>De</label></td>
+									<td><label>Até</label></td>
+								</tr>
+								<tr>
+								
+									
+									<td>
+								    	<select name="filtro" id="filtro" class="tpFiltroUsuario"><option value="1" selected="selected">Matrícula</option>
+											<option value="2">Nome</option>
+											<option value="3">CPF</option></select>				
+									</td>
+									
+																	
+									
+									<td>
+										<input type="text" name="palavraChave" onkeyup="isNumericField( this, event, 'filtro', 3 );" onkeypress="return isNumericField( this, event, 'filtro', 3 );" onblur="isNumericField( this, event, 'filtro', 3 );" id="campoPalavraChave" class="palavraChave">
+									</td>
+									
+									<td>
+										<input type="text" name="palavraDe" onkeyup="isNumericField( this, event, 'filtro', 3 );" onkeypress="return isNumericField( this, event, 'filtro', 3 );" onblur="isNumericField( this, event, 'filtro', 3 );" id="campoPalavraDe" class="palavraDe">
+									</td> 
+									
+									<td>
+										<input type="text" name="palavraAte" onkeyup="isNumericField( this, event, 'filtro', 3 );" onkeypress="return isNumericField( this, event, 'filtro', 3 );" onblur="isNumericField( this, event, 'filtro', 3 );" id="campoPalavraAte" class="palavraAte">
+									</td>
+									
+								</tr>
+								<tr>
+									
+									<td width="120"></td>
+									
+									<td width="200">
+										
+		
+									</td>
+									
+									<td width="200">
+																					
+									</td>
+									
+									<td width="200">
+																					
+									</td>
+									
+									
+								</tr>
+								
+								<tr>
+									<td><label>Status</label></td>
+									<td><label>Valor Atual R$</label></td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr><tr>
+								
+								</tr><tr>
+								
+									<td>
+										<select name="status" id="status" class="status"><option value="A" selected="selected">Ativo</option>
+											<option value="I">Inativo</option>
+											<option value="">Ambos</option></select>		
+									</td>
+									
+									<td colspan="2">										
+										<input type="text" name="valorAtualFmt" maxlength="6" size="5" onkeyup="removeNonNumberOrCommaCharacters(this);" onkeypress="return onlyNumAndComma(this, event);" onchange="removeNonNumberOrCommaCharacters(this);" onblur="mascararMoeda(this);">
+										<span class="instrucao">
+											Use duas casas decimais. Ex.: 5,50 ou 5,00
+										</span>							
+									</td>
+									
+									<td>&nbsp;</td>
+								
+								</tr>
+								
+							    <tr> 
+							    	<td></td>
+									
+									<td colspan="2">
+										
+									</td>
+									
+									<td>&nbsp;</td>
+									
+							    </tr>
+		
+							</tbody></table>
+						</fieldset>
+						<fieldset class="nivel_02">
+							<legend>Alterar Valor de Uso Di�rio</legend>
+							<table class="formulario_pesquisa" cellspacing="0" border="0">
+								<tbody><tr>
+									<td>										 
+										&nbsp;&nbsp;<label>Novo Valor R$</label>&nbsp;&nbsp;
+										<input type="text" name="valorNovoFmt" maxlength="6" size="5" onkeyup="removeNonNumberOrCommaCharacters(this);" onkeypress="return onlyNumAndComma(this, event);" onchange="removeNonNumberOrCommaCharacters(this);" onblur="mascararMoeda(this);" id="novoValorTodosUsuarios">
+										<span class="instrucao">
+											Use duas casas decimais. Ex.: 5,50 ou 5,00
+										</span>
+									</td>									
+									<td><a href="javascript:ajuda('u04c03t01');" class="btn_ajuda"><img src="AlterarValorUsoDiario_arquivos/btn_ajuda.gif" alt="Ajuda"></a></td>		
+								</tr>
+								<tr>
+									<td class="instrucao">
+										Defina aqui o novo valor de uso diário. Este será aplicado para todos os usuários pesquisados.
+									</td>
+								</tr>																
+								<tr>
+									<td colspan="2" align="left">
+										
+									</td>
+								</tr>																	
+					</tbody></table>
+					<div class="bt_master btm_normal">
+	               	<div class="btm_dir">
+	                   	<p class="btm_meio"><a href="javascript: submit('formBusca');" onclick="isNumericField( document.getElementById('campoPalavraChave'), event, 'filtro', 3);">Consultar</a></p>
+	               	</div>
+           		</div>
+			</fieldset>					
+		</fieldset>
+	</form>
+		
+				<form name="alterarValorUsoDiarioForm" id="form" method="post" action="/vt2/comprador/usuarios/AlterarValorUsoDiarioSave.do">
+				<input type="hidden" name="isPesquisa" value="false" id="isPesquisa">
+    			<input type="hidden" name="valorNovoFmt" value="" id="valorNovoFmtHidden">
+					<table width="100%">
+						
+						<tbody><tr style="width: 100%">
+							<td align="center">
+								
+								<!-- STARTS TABLE -->
+								<table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+<table style="width: 100%;" id="listTable" class="dataset" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th>Matrícula</th>
+<th>Nome</th>
+<th>Valor Atual (R$)</th>
+<th>Novo Valor (R$)</th>
+<th>Selecionar</th></tr></thead>
+<tbody><tr class="empty"><td colspan="5" align="center">Nenhum registro encontrado.</td></tr></tbody></table><table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+								<!-- ENDS TABLE -->
+							</td>
+						</tr> 
+						
+					</tbody></table>
+				</form>
+				<div class="menu_rodape clearfix">
+  <h3><span>Usuários</span></h3>
+  <ul>
+    <li id="menuRodapeItem01"><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+    <li id="menuRodapeItem02"><a href="./usuarios/PesquisarUsuario.html>Pesquisar </a> </li>
+	<li id="menuRodapeItem03">
+		<a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a> 
+	</li>
+	<li id="menuRodapeItem04">
+		<a href="./ImportarUsuarios.html">Importação de Usuários</a>  
+	</li>
+	<li id="menuRodapeItem05">
+		<a href="./GerenciarBU.html">Gerenciar Bilhete único</a>
+	</li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('AlterarUsuario') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('pesquisar') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('alterar') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('importacao') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	}
+</script>
+			</div>
+		</div>
+		
+<div class="version">
+	Vers�o 2.199.22
+</div>
+<script src="AlterarValorUsoDiario_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+	
+	<script language="javascript" src="AlterarValorUsoDiario_arquivos/scripts.js"></script>
+	<!-- DWR declarations -->
+	<script type="text/javascript" src="AlterarValorUsoDiario_arquivos/RioCardVT.js"></script>
+	<script type="text/javascript" src="AlterarValorUsoDiario_arquivos/engine.js"></script>
+	<script type="text/javascript" src="AlterarValorUsoDiario_arquivos/util.js"></script>	
+</body></html>

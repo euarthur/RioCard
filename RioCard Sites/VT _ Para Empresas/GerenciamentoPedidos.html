@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+        <title>Riocard Mais Vale-Transporte</title>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+        <link href="GerenciamentoPedidos_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciamentoPedidos_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciamentoPedidos_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="GerenciamentoPedidos_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="GerenciamentoPedidos_arquivos/comum.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="GerenciamentoPedidos_arquivos/gerenciar_pedidos.css" media="all">
+    </head>
+            
+    <body class="pedidos" onload="initLightbox(); correctPNG(); "><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div>
+        
+        
+        <div id="site" class="clearfix">
+            
+	<a name="topo"></a>
+
+
+
+
+            <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+            <div style="margin: 5px; border:1px #FFC400 solid; padding:5px; background-color:#FFF6D9;">
+                <p>
+                    <strong> Atenção:</strong>
+                </p><p>
+                    <strong> - O recibo de entrega estará disponível somente após a confecção dos cartões solicitados.</strong>
+                </p>
+                <p><strong> - Caro comprador, antes de entregar os 
+cartões aos seus usuários, efetue o desbloqueio dos mesmos neste site. 
+Informamos que o prazo para a efetivação da recarga nos validadores dos 
+ônibus
+                    é de até 48h após o desbloqueio. </strong>
+                </p>
+            </div>
+            <div class="conteudo_interna">
+                <div id="titulo_pag" class="titulo_pag">
+                    <div class="borda_esq">
+                        <div class="borda_dir">
+                            <h1>Gerenciar Pedidos de VT</h1>
+                        </div>
+                    </div>
+                </div>
+                  
+                <fieldset class="nivel_01 mostrar_pedidos">
+                    <legend>Consultar Pedidos</legend>
+                    <form name="filtrarPedidosForm" id="formFiltro" method="post" action="/vt2/comprador/pedidos/GerenciamentoPedidos.do"> <input type="hidden" name="filtrar" value="sim"> <input type="hidden" name="tpFiltro" value="" id="tpFiltro"> <input type="radio" name="periodo" value="1" checked="checked" style="border: none;">
+                        <label>&nbsp;Dos últimos 90 Dias&nbsp;</label>
+                        <br>
+                        <input type="radio" name="periodo" value="2" style="border: none;">
+                        <label>&nbsp;Anteriores e 90 Dias&nbsp;</label>
+                        <br>
+                        <br>
+                        <fieldset class="nivel_02 filtro" style="width: 97%;">
+                            <legend>Filtros</legend>
+                            <table class="formulario1" id="filtroPorPedido" cellspacing="0">
+                                <tbody><tr>
+                                    <td>
+                                        <label>Status</label>
+                                    </td>
+                                    <td>
+                                        <label>Campo para Pesquisa</label>
+                                    </td>
+                                    <td id="labelDefault">
+                                        <label>Palavra-Chave</label>
+                                    </td>
+                                    <td id="labelPedido" style="display:none;">
+                                        <label>Número do Pedido</label>
+                                    </td>
+                                    <td id="labelData" style="display:none;">
+                                        <label>Período</label>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="cdStPedido"><option value="0" selected="selected">Todos</option> <option value="1">Em Preparo</option> <option value="2">Aguardando Pagamento</option> <option value="4">Pago</option> <option value="8">Aguardando Liberação</option> <option value="6">Recarga Liberada</option> <option value="13">Sem Cargas a Efetuar</option></select>
+                                    </td>
+                                    <td>
+                                        <select name="tpFiltro" onchange="mostrarFiltro(this.value)" id="tpFiltroPedido" class="campo_pesquisa"><option value="-1" selected="selected">Todos</option> <option value="0">Pedido</option> <option value="1">Data</option></select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="nrPedido" maxlength="9" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" disabled="disabled" id="idNrPedido" style="background: #CCC;" class="palavra_chave">
+                                        <table id="data" style="display: none;" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody><tr>
+                                                <td>
+                                                    <input type="text" name="diaInicial" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('diaInicial', 'mesInicial');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="diaInicial" class="dia_mes">
+                                                    <label>/</label>
+                                                    <input type="text" name="mesInicial" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('mesInicial', 'anoInicial');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="mesInicial" class="dia_mes">
+                                                    <label>/</label>
+                                                    <input type="text" name="anoInicial" maxlength="4" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('anoInicial', 'diaFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="anoInicial" class="ano">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="diaFinal" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('diaFinal', 'mesFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="diaFinal" class="dia_mes">
+                                                    <label>/</label>
+                                                    <input type="text" name="mesFinal" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField('mesFinal', 'anoFinal');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="mesFinal" class="dia_mes">
+                                                    <label>/</label>
+                                                    <input type="text" name="anoFinal" maxlength="4" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="anoFinal" class="ano">
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                    <td>
+                                        <p class="botao_acao botao_peq">
+                                            <a href="#" onclick="document.getElementById('formFiltro').submit();">Filtrar</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            
+                        </fieldset>
+                    </form>
+                </fieldset>
+                <div style="text-align: right;">
+                    <a href="javascript:ajuda('u06c02t01');">
+                        <img src="GerenciamentoPedidos_arquivos/btn_ajuda.gif" alt="Ajuda">
+                    </a>
+                </div>
+                 <table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+<table class="dataset" id="pedido" cellspacing="0">
+<thead>
+<tr>
+<th class="sortable sorted order2">
+<a href="./GerenciamentoPedidos.html">Pedido</a></th>
+<th>Dt. Pedido</th>
+<th>Valor da Carga</th>
+<th>Status</th>
+<th>Ações</th></tr></thead>
+<tbody><tr class="empty"><td colspan="5" align="center">Nenhum registro encontrado.</td></tr></tbody></table><table class="paginacao clearfix"><tbody><tr><td><a href="#" class="active">1</a></td></tr></tbody></table>
+                <div class="btn_padrao com_icone bt_nova_pesquisa" style="margin-top: 8px;">
+                    <div class="bg_esq">
+                        <div class="bg_dir">
+                            <a href="#">Pesquisar Novamente</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu_rodape clearfix">
+  <h3><span>Pedidos</span></h3>
+  <ul>
+		<li id="menuRodapeItem01">
+			<a href="./IniciaDigitacaoPedido.html">
+				Novo Pedido de VT
+			</a>
+		</li>
+		<li id="menuRodapeItem03" class="active">
+			<a href="./GerenciamentoPedidos.html">
+				Gerenciar Pedidos de VT
+			</a>
+		</li>
+  </ul>
+</div>
+<script language="javascript">
+	var menuRodapeItem01Urls = new Array();
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.do' );
+	
+	var menuRodapeItem03Urls = new Array();
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.do' );
+
+	
+	
+	
+	
+	for ( var i = 0; i < menuRodapeItem01Urls.length; i++ ) {
+		if ( document.URL.indexOf( menuRodapeItem01Urls[i] ) != -1 ) {
+			document.getElementById('menuRodapeItem01').className = 'active';
+			break;
+		}
+	}
+	
+	for ( var i = 0; i < menuRodapeItem03Urls.length; i++ ) {
+		if ( document.URL.indexOf( menuRodapeItem03Urls[i] ) != -1 ) {
+			document.getElementById('menuRodapeItem03').className = 'active';
+			break;
+		}
+	}
+		
+</script>
+            </div>
+        </div>
+        <div id="dialogBoxDiv" class="dialogBox" style="display: none;">
+            <div style="width: 100%; z-index: 90; height: 70%">
+                <h1 style="font-size: 14px">
+                    Deseja confirmar a exclusivo do pedido ? </h1>
+            </div>
+            <table style="height: 30%; width: 100%;" border="0">
+                <tbody><tr>
+                    <td valign="top" align="center">
+                        <div class="botao_acao botao_medio" style="float: inherit">
+                            <a href="javascript: excluir();">Confirmar</a>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <a href="javascript: hideLightbox();" id="dialogBox_btn_cancelar" style="display: inline;">
+                            <img src="GerenciamentoPedidos_arquivos/cancelar.gif" alt="Cancelar" width="74" height="25">
+                        </a>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div id="dialogBoxDivCopiar" class="dialogBox" style="display: none;">
+            <div style="width: 100%; z-index: 90; height: 70%">
+                <h1 style="font-size: 14px">
+                    Deseja confirmar a criação da cópia do pedido? </h1>
+            </div>
+            <table style="height: 30%; width: 100%;" border="0">
+                <tbody><tr>
+                    <td valign="top" align="center">
+                        <div class="botao_acao botao_medio" style="float: inherit">
+                            <a href="javascript: copiarPedido();">Confirmar</a>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <a href="javascript: hideLightbox();" id="dialogBox_btn_cancelar" style="display: inline;">
+                            <img src="GerenciamentoPedidos_arquivos/cancelar.gif" alt="Cancelar" width="74" height="25">
+                        </a>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="GerenciamentoPedidos_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+    
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/scripts.js"></script>
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/scripts.js"></script>
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/lightbox.js"></script>
+    <script language="JavaScript" src="GerenciamentoPedidos_arquivos/lightboxAjuda.js"></script>
+    <script type="text/javascript">
+      
+        function mostrarFiltro(valor) {
+            var data = document.getElementById("data");
+            var inputPedido = document.getElementById('idNrPedido');
+            var labelDefault = document.getElementById('labelDefault');
+            var labelPedido = document.getElementById('labelPedido');
+            var labelData = document.getElementById('labelData');
+
+            if (valor == -1) {
+                inputPedido.style.display = "block";
+                labelDefault.style.display = "block";
+                labelPedido.style.display = "none";
+                inputPedido.disabled = true;
+                inputPedido.style.background = '#CCC';
+                labelData.style.display = "none";
+                data.style.display = "none";
+
+                document.getElementById("tpFiltro").value = '';
+                document.getElementById("tpFiltroPedido").value = -1;
+
+            } else {
+                if (valor == 0) {
+                    inputPedido.style.display = "block";
+                    labelDefault.style.display = "none";
+                    labelPedido.style.display = "block";
+                    inputPedido.disabled = false;
+                    inputPedido.style.background = '#FFF';
+                    labelData.style.display = "none";
+                    data.style.display = "none";
+
+                    document.getElementById("tpFiltro").value = 0;
+                    document.getElementById("tpFiltroPedido").value = 0;
+
+                } else {
+                    data.style.display = "block";
+                    labelDefault.style.display = "none";
+                    labelData.style.display = "block";
+                    labelPedido.style.display = "none";
+                    inputPedido.style.display = "none";
+
+                    document.getElementById("tpFiltroPedido").value = 1;
+                }
+            }
+
+            document.getElementById("tpFiltro").value = 0;
+            document.getElementById("tpFiltro").value = valor;
+        }
+
+        var globalNrPedido;
+
+        function excluir() {
+            window.location.href = "/vt2/comprador/pedidos/ExcluiPedido.html?nrPedidoEx=" + globalNrPedido;
+        }
+
+        function showDialogExcluirPedido(nrPedido) {
+            dialogBox = 'dialogBoxDiv';
+            globalNrPedido = nrPedido;
+            showLightbox();
+        }
+
+        function copiarPedido() {
+            window.location.href = "/vt2/comprador/pedidos/IncluiCopiaPedido.do?nrPedido=" + globalNrPedido;
+        }
+
+        function showDialogCopiarPedido(nrPedido) {
+            dialogBox = 'dialogBoxDivCopiar';
+            globalNrPedido = nrPedido;
+            showLightbox();
+        }
+
+        function submitForm(formId) {
+            if (formId != "") {
+                var form = document.getElementById(formId);
+                if (form != null) form.submit();
+            }
+        }
+
+        //-->
+    </script>
+    <!-- DWR declarations -->
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/RioCardVT.js"></script>
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/engine.js"></script>
+    <script type="text/javascript" src="GerenciamentoPedidos_arquivos/util.js"></script>
+
+</body></html>

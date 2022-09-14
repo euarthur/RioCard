@@ -1,0 +1,68 @@
+/* CSS Document */
+
+
+
+.not_inferior{
+	width:100%;
+	float:none;
+	margin: 0;
+	margin-bottom: 14px;
+	padding-bottom: 14px;
+	background: url(imagens/border_chamada_col_direita.gif) bottom repeat-x;
+}
+
+.not_inferior h3{
+	background: none; 
+	padding:0;
+	margin-bottom: 2px;
+}
+
+.not_inferior h3 strong{
+	padding:0;
+	background:none;	
+}
+
+.not_inferior p {
+	margin-bottom: 6px;
+}
+
+.not_inferior .link_mais {
+	margin-top:0px;
+}
+
+.termo h3{
+	color:#00366b;
+	font-size:12px;
+	font-weight:bold;
+	margin-bottom:3px;
+}
+
+.termo h3 a, .termo h3 a:visited {
+	color: #00366b;
+}
+
+.termo p a, .termo p a:visited {
+	color: #333333;
+}
+
+.termo .link_mais{
+	margin-top:6px;
+	padding-left:14px;
+	height:15px;
+	background:url(../../visitante/comum/imagens/ic_leiaMais.gif) no-repeat 0 0;
+	width: 60px;	
+}
+
+.termo p.link_mais a, .termo p.link_mais a:visited {
+	background:#117fb2;
+	color: #FFFFFF;
+}
+
+.termo p.link_mais a:hover{
+	background:#81b4cc;
+}
+
+.termo img {
+	float: right;
+	margin-left: 6px;
+}

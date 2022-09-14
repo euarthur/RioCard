@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+	<title>Riocard Mais Vale-Transporte</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+	<link href="MapaSite_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="MapaSite_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="MapaSite_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="MapaSite_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="MapaSite_arquivos/comum.js"></script>
+
+	<link href="MapaSite_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" type="text/css" href="MapaSite_arquivos/componentes.css">
+	<link rel="stylesheet" type="text/css" href="MapaSite_arquivos/home.css">
+	<script language="javascript" src="MapaSite_arquivos/comum.js"></script>
+	<link rel="stylesheet" type="text/css" href="MapaSite_arquivos/mapa.css">
+</head>
+<body class="mapa_do_site">
+	
+	<div id="site" class="clearfix">
+		
+	<a name="topo"></a>
+
+
+
+
+		<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+	  	<div class="conteudo_interna">
+			<div id="titulo_pag" class="titulo_pag">
+			  <div class="borda_esq">
+				  <div class="borda_dir">
+					  <h1>Mapa do Site</h1>
+				  </div>
+			  </div>
+			</div>
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Home</span></h2>
+				<a href="./CarregarHome.html" class="classe_2">Consultar Seu Perfil de Comprador</a>
+				<a href="./CarregarHome.html?editMenu=true" class="classe_2">Editar Menu Personalizado</a>
+			</div>
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Comprador</span></h2>
+				<a href="./dadosdocomprador.html" class="classe_2">Dados do Comprador</a>
+				<a href="./TrocaSenha.html" class="classe_2">Alterar Senha</a>
+				<a href="./VisualizarTermoComodato.html" class="classe_2">Termo de Comodato</a>
+				<a href="./TransferenciaBolsaUsuario.html" class="classe_2">Transferência de Bolsa de Crédito</a>
+				<a href="./MultaDesassociacao.do" class="classe_2">Serviço Extraordinário de Desassociação</a>
+			</div>
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Administrador</span></h2>
+				<a href="./AdministracaoCompradores.html" class="classe_2">Administrar Outro Comprador</a>
+				<a href="./CarregarDefinirAdministrador.html" class="classe_2">Definir Administrador para sua Conta</a>
+			</div>
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Usuários</span></h2>
+				<a href="./NovoUsuario.html" class="classe_2">Incluir Usuario</a>
+				<a href="./PesquisarUsuario.html" class="classe_2">Pesquisar</a>
+				<a href="./AlterarValorUsoDiario.html" class="classe_2">Alterar Valor de Uso Diário</a>
+				<a href="./ImportarUsuarios.html" class="classe_2">Importação de Arquivo</a>
+				<a href="./GerenciarBU.html" class="classe_2">Gerenciar Bilhete Único</a>
+			</div>
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Cartões</span></h2>
+				<a href="./ConsultaCartoes.html" class="classe_2">Consulta</a>
+				<a href="./DesbloqueioPedidos.html" class="classe_2">Desbloquear</a>
+				<div class="classe_2 normal">Cancelar</div>
+					<a href="./IniciaCancelamentoPedido.html" class="classe_3">Novo Pedido de Cancelamento</a>
+					<a href="./GerenciarPedidoCancelamento.html" class="classe_3">Gerenciar Pedidos de Cancelamento</a>
+				<a href="./NovaConsultaGuiasVtr.html" class="classe_2">Registrar Vale-Rápido</a>
+				<a href="./ConsultaCartoesVtr.html" class="classe_2">Consultar Vale-Rápido</a>
+				<a href="./ConsultaGuiasVtr.html" class="classe_2">Consultar Guias de Compra</a>				
+			</div>
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Pedidos</span></h2>
+					<a href="./IniciaDigitacaoPedido.html" class="classe_2">Novo Pedido de VT</a>
+					<a href="./GerenciamentoPedidos.html" class="classe_2">Gerenciar Pedidos de VT</a>    	
+			</div>				
+			
+			<div class="bloco clearfix">
+				<h2 class="titulos_princ"><span>Relatórios</span></h2>
+				<a href="./RelExtratoComprador.html" class="classe_2">Extrato de Contas do Comprador</a>
+				<a href="./RelRelacaoCartoesSearch.html" class="classe_2">Relatório de Cartões</a>
+				<a href="./RelUsuariosBolsaCredito.html" class="classe_2">Usuários com Bolsa de Crédito</a>
+				<a href="./RelRecargasPendEfetSearch.html" class="classe_2">Relatório de Recargas</a>
+				<a href="./RelSaldoInfoUsoSearch.html" class="classe_2">Saldo e Informações de Uso</a>
+				
+			</div>
+
+	  	</div>
+	</div>
+	
+<div class="version">
+	Vers�o 2.199.22
+</div>
+<script src="MapaSite_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+	
+	
+	<script language="javascript" src="MapaSite_arquivos/scripts.js"></script>
+	<!-- DWR declarations -->
+	<script type="text/javascript" src="MapaSite_arquivos/RioCardVT.js"></script>
+	<script type="text/javascript" src="MapaSite_arquivos/engine.js"></script>
+	<script type="text/javascript" src="MapaSite_arquivos/util.js"></script>
+</body></html>

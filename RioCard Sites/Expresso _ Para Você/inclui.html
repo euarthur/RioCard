@@ -1,0 +1,722 @@
+<html><head><style>
+        table tbody tr td {
+            padding: 0px;
+            text-align: center
+        }
+        
+        .banner {
+            z-index: 11;
+            position: absolute;
+            width: 448px;
+            left: 45%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    
+        <title>Inclusão/alteração de Usuários</title>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <link rel="stylesheet" href="inclui_arquivos/homeestilos.css">
+        <link id="rel" rel="stylesheet" href="inclui_arquivos/riocard.css">
+        <script language="javascript" type="text/javascript" src="inclui_arquivos/funcoes.js"></script>
+        <script src="inclui_arquivos/jquery-1.9.1.min.js"></script>
+        <script src="inclui_arquivos/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="inclui_arquivos/UsuarioAjax.js"></script>
+        <script type="text/javascript" src="inclui_arquivos/engine.js"></script>
+        <script type="text/javascript" src="inclui_arquivos/util.js"></script>
+        <script type="text/javascript">
+            function SomenteNumero(e) {
+                var tecla = (window.event) ? event.keyCode : e.which;
+                if (tecla > 47 && tecla < 58) {
+                    return true;
+                }
+
+                if (tecla == 8 || tecla == 0) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            function Mascara(objeto) {
+                if (objeto.value.length == 8) {
+                    objeto.value = objeto.value.substring(0, 4) + '-' + objeto.value.substring(4, objeto.value.length);
+                }
+            }
+
+            function exibePopupRegrasSetrans(opcaoSelecionada) {
+                if (parseInt(opcaoSelecionada) === 3) {
+                    document.getElementById("popupRegrasSetrans").style.display = 'block';
+                }
+            }
+
+            function retiraPopupRegrasSetrans() {
+                document.getElementById("popupRegrasSetrans").style.display = 'none';
+            }
+
+            /*************************************************************************************************/
+            function letraMaiuscula() {
+                cadastra.nrMatricula.style.textTransform = 'uppercase';
+            }
+
+
+            function tratatexto() {
+                Mascara('DATA', window.event.keyCode, 'document.cadastra.dtNascto');
+            }
+
+            /*************************************************************************************************/
+            function verificaInd() {
+                if (document.forms[0].SolicCartao != null && document.forms[0].SolicCartao[0].checked) {
+                    selectedIndex = document.forms[0].cboImprCartao.selectedIndex;
+                    if (selectedIndex == 4) {
+                        document.getElementById("cartaoExistente").style.display = "block";
+                    }
+                }
+                if (true) {
+                    document.getElementById("cartaoExistente").style.display = "none";
+                } else {
+                    document.getElementById("cartaoExistente").style.display = "block";
+                }
+
+                return true;
+            }
+
+            /*************************************************************************************************/
+
+            function trataAfastamento() {
+                var undefined;
+                var form = document.forms[0];
+                var Situacao = form.cboSituacao;
+                var SituacaoAtual = form.statusAtual;
+                var stUsuarAtual = SituacaoAtual.value;
+
+                if (Situacao != undefined && stUsuarAtual == 'A') {
+                    var stUsuar = Situacao.value;
+
+                    if (stUsuar == '0') stUsuar = stUsuarAtual;
+
+                    if (stUsuar == 'A') {
+                        TR_MotivoAfastamento.style.display = "none";
+                    } else if (stUsuar == 'I') {
+                        TR_MotivoAfastamento.style.display = "block";
+                    }// fim if
+                } else if (stUsuarAtual == 'A') {
+                    // Como n�o existe situa��o o combo n�o aparecer�
+                    TR_MotivoAfastamento.style.display = "none";
+                }// fim if
+                return;
+            }
+
+            function dadosPessoais(opSolic) {
+                var form = document.forms[0];
+                var opCdImpr = form.cboImprCartao.value;
+                //var produto = form.cboProduto.value;
+                var undefined;
+
+                if (opSolic == null) {
+                    opSolic = 1;
+                }
+
+                if (opCdImpr == -1) {
+                    opCdImpr =
+                    0
+                }// fim if
+
+                if (1 == opSolic) {
+                    if (undefined != form.cboCartaoDisp) {
+                        // Desabilitar combo de cartoes utilizados
+                        form.cboCartaoDisp.style.visibility = "hidden";
+
+                    }// fim if
+
+                    // Habilitar combo de cart�es utilizados
+                    form.cboImprCartao.style.display = "block";
+                } else if (2 == opSolic) {
+                    form.cboImprCartao.style.display = "none";
+
+                    // Habilitar combo de cart�es utilizados
+                    form.cboCartaoDisp.style.visibility = "visible";
+                    //showImagemCartao(form.cboCartaoDisp.value);
+                } else if (3 == opSolic) {
+
+                    form.cboImprCartao.style.display = "none";
+
+                    if (undefined != form.cboCartaoDisp) {
+                        // Desabilitar combo de cartoes utilizados
+                        form.cboCartaoDisp.style.visibility = "hidden";
+                        //form.cboCartaoDisp.value = form.numeroChipCartaoIndividualExistenteDisponivel.value;
+                    }// fim if
+                }
+                return;
+            }
+
+            function enviar(PButton) {
+                var form = document.forms[0];
+                form.setAttribute("method", "post");
+
+                if (form) {
+                    if (PButton) {
+                        PButton.disabled = true;
+                        form.submit();
+                    }// fim if
+                }// fim if
+                return;
+            }
+
+            function showDialog(PButton) {
+
+                var nrCpf = Trim(document.getElementById("nrCpf").value);
+
+                if (nrCpf == "") {
+                    if (confirm("O campo CPF \u00E9 obrigat\u00F3rio para habilitar o Bilhete \u00DAnico. Deseja prosseguir sem informar o CPF?")) {
+                        enviar(PButton);
+                    } else {
+                        document.getElementById("nrCpf").focus();
+                        return false;
+                    }
+
+                } else {
+                    enviar(PButton);
+                }
+            }
+
+            function trocaTermosAceite(codModelo) {
+                var iframe = document.getElementById("iframeTermo");
+
+                if (codModelo == 14) {
+                    iframe.src = "/scrcpr2/geral/termo_aceite.jsp";
+                } else if (codModelo == 20) {
+                    iframe.src = "/scrcpr2/geral/termo_aceite_buc.jsp";
+                }
+            }
+
+            function onlyNum(event) {
+                var isIE = navigator.appName.indexOf("Microsoft") != -1;
+                if (!event) return false;
+                var keyNumber = (isIE) ? event.keyCode : event.which;
+                if (((keyNumber < 48) || (keyNumber > 57)) && (keyNumber != 13) && (keyNumber != "0") && (keyNumber != 8) && (!event.ctrlKey)) {
+                    if (isIE) event.keyCode = 0;
+                    return false;
+                }
+            }
+
+            function hideNmUsuar(nrCpf) {
+                if(nrCpf.value === "" || nrCpf.value === '___________') {
+                    if (document.all) {  // para o IE
+                        document.getElementById('trNome').style.display = 'block';
+                    } else { // para o Firefox
+                        document.getElementById('trNome').style.display = 'table-row';
+                    }
+                }else{
+                    if (document.all) {  // para o IE
+                        document.getElementById('trNome').style.display = 'none';
+                    } else { // para o Firefox
+                        document.getElementById('trNome').style.display = 'none';
+                    }
+                }
+            }
+
+            function showCadastroNomeMenor(dtNascto) {
+                var isMaior18 = Is18(dtNascto.value);
+                var nrCpf = document.getElementById('nrCpf').value;
+
+                if(isMaior18 && (nrCpf != "" && nrCpf != '___________')) {
+                    if (document.all) {  // para o IE
+                        document.getElementById('trNome').style.display = 'none';
+                    } else { // para o Firefox
+                        document.getElementById('trNome').style.display = 'none';
+                    }
+                }else{
+                    if (document.all) {  // para o IE
+                        document.getElementById('trNome').style.display = 'block';
+                    } else { // para o Firefox
+                        document.getElementById('trNome').style.display = 'table-row';
+                    }
+                }
+            }
+
+            function getIdade(data) {
+                var hoje = new Date();
+
+                var nascimento = new Date(convertDateMMDDYYY(data.split("/")));
+
+                //Retorna a diferença entre hoje e a data de nascimento em anos.
+                var ano = hoje.getFullYear() - nascimento.getFullYear();
+
+                //Retorna a diferença de mês do mês de nascimento para o atual.
+                var m = hoje.getMonth() - nascimento.getMonth();
+
+                //Caso ainda não tenha ultrapassado o dia e o mês
+                if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+                    ano--;
+                }
+                return ano;
+            }
+
+            function convertDateMMDDYYY(datearray) {
+                return datearray[1] + '-' + datearray[0] + '-' + datearray[2];
+            }
+
+            function Is18(data) {
+                if(getIdade(data) >= 18)
+                    return true;
+                else
+                    return false;
+            }
+
+            function hideBannerCompradorBloqueado(){
+                document.getElementById('dark').style.display = 'none';
+                document.getElementById('atencaoCompradorBloqueado').style.display = 'none';
+            }
+
+            function showBannerCompradorBloqueado(){
+                document.getElementById('dark').style.display = 'block';
+                document.getElementById('atencaoCompradorBloqueado').style.display = 'block';
+            }
+        </script>
+    </head>
+    <body onload="document.forms[0].nrMatricula.focus();;showHideTermoUso(-1) ">
+
+        
+        <div id="popupRegrasSetrans" onclick="retiraPopupRegrasSetrans()" style="width:115%; height:220%;  position:absolute; background-image: url(/scrcpr2/img/overlay.png); display:none; z-index:10;">
+            <div class="banner">
+                <img src="inclui_arquivos/popupRegrasSetrans_v5.png" alt="Regras Setrans.">
+            </div>
+        </div>
+        
+        <br>
+        <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    
+
+                    <div class="menu_esq">
+                        <div class="menu_dir">
+                            <div class="menu">
+                                <ul>
+                                    <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                    <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                    <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                    <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                    <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                    <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                    <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                    <li style="width:9%;"><a href="">Sair</a></li>
+                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" valign="top" align="center">
+                    <div id="forms">
+                        <fieldset>
+                            <legend class="titulo">Incluir Usuário</legend>
+                            <form name="cadastra" action="UsuarioManutencao" method="get">
+                                <input type="hidden" name="modelo" value="11">
+                                <input type="hidden" name="cboProduto" value="1">
+                                <input type="hidden" name="cboCidade" value="2">
+                                <table width="96%" cellspacing="1" cellpadding="4" border="0" align="center">
+                                    
+                                    <tbody><tr>
+                                        <td>
+                                            <table width="100%" cellspacing="4" border="0" align="center">
+                                                <tbody><tr>
+                                                    <td colspan="2" style="text-align: center" class="textopretob">
+                                                        <table width="100%" border="0" align="center">
+                                                            <tbody><tr>
+                                                                <td style="text-align: right" width="30%">
+                                                                    <br>
+                                                                    Identificação do Usuário:
+                                                                </td>
+                                                                <td style="text-align: left" width="70%">
+                                                                    <br>
+                                                                    <input name="nrMatricula" type="text" class="cxlaranja" size="20" maxlength="15" tabindex="1">
+                                                                    * escolha um nome ou número de identificação
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: right">
+                                                                    CPF:
+                                                                </td>
+                                                                <td style="text-align: left">
+                                                                    <input name="nrCpf" id="nrCpf" type="text" size="11" maxlength="14" class="cxlaranja" tabindex="2" onblur="hideNmUsuar(this);">&nbsp;* obrigatório para Personalizado Usuário.
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="TR_OCULTAR_DTNASCIMENTO">
+                                                                <td style="text-align: right" width="30%">
+                                                                    Data de nascimento:
+                                                                </td>
+                                                                <td style="text-align: left" width="70%">
+                                                                    <input name="dtNascto" type="text" class="cxlaranja" size="10" maxlength="10" onblur="showCadastroNomeMenor(this);" tabindex="3">
+                                                                    * (DD/MM/AAAA)
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="trNome" style="display: table-row">
+                                                                <td style="text-align:right">
+                                                                    Nome:
+                                                                </td>
+                                                                <td style="text-align: left">
+                                                                    <input name="nmUsuario" type="text" class="cxlaranja" size="60" maxlength="60" tabindex="4">
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: right">
+                                                                    Valor de uso diário:
+                                                                </td>
+                                                                <td style="text-align: left">
+                                                                    <input name="vlUsuario" type="text" class="cxlaranja" size="12" maxlength="6" tabindex="5">
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: right">
+                                                                    Rede de recarga:
+                                                                </td>
+                                                                <td style="text-align: left">
+                                                                    <select name="cboAgencia" style="height: auto;" class="cxlaranja" tabindex="6">
+                                                                        <option value="-1" selected="selected">-- Escolha uma opção --</option>
+                                                                        
+                                                                        <option value="1">ônibus
+                                                                        </option>
+                                                                        
+                                                                        <option value="2">Metrô
+                                                                        </option>
+                                                                        
+                                                                        <option value="3">Trens
+                                                                        </option>
+                                                                        
+                                                                        <option value="6">Vans
+                                                                        </option>
+                                                                        
+                                                                    </select>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: right">
+                                                                    Outras informações:
+                                                                </td>
+                                                                <td style="text-align: left">
+                                                                    <input name="txLivre" class="cxlaranja" size="60" maxlength="60" tabindex="7">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align:right">
+                                                                    Cartão
+                                                                    <br>
+                                                                    (Selecione uma das opções):
+                                                                </td>
+                                                                <td>
+                                                                    <table cellspacing="0" border="0">
+                                                                        <tbody><tr>
+                                                                            <td style="text-align: left">
+                                                                                <input type="radio" style="border: none;" name="SolicCartao" value="1" checked="checked" onclick="dadosPessoais( 1 ); showHideTermoUso(-1);" tabindex="8">
+                                                                            </td>
+                                                                            <td style="text-align: left">
+                                                                                Solicitar novo cartão:
+                                                                            </td>
+                                                                            
+                                                                            <td style="text-align: left">
+                                                                                <select name="cboImprCartao" id="cboImprCartao" class="cxlaranja" onchange="dadosPessoais( 1 )" style="display:block;" tabindex="9">
+                                                                                    <option value="-1" selected="selected">-- Escolha uma opção --
+                                                                                    </option>
+                                                                                    
+                                                                                    <option value="1">
+                                                                                        Cartão ao portador
+                                                                                    </option>
+                                                                                    
+                                                                                    <option value="2">
+                                                                                        Cartão Personalizado Empresa
+                                                                                    </option>
+                                                                                    
+                                                                                    <option value="4">
+                                                                                        Cartão Personalizado Usuário
+                                                                                    </option>
+                                                                                    
+                                                                                </select>
+                                                                                <span id="msgCartaoJovem" style="color:#006BBC;display:none" class="textoalerta">
+                                                                                    Cartão jovem não permite personalização.
+                                                                                </span>
+                                                                                <span id="msgBU" style="color:#006BBC;display:none;">
+                                                                                    Cartão Personalizado Usuário.
+                                                                                </span>
+                                                                                
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        
+                                                                        <tr>
+                                                                            <td style="text-align: left">
+                                                                                <input type="radio" style="border: none;" disabled="true" name="SolicCartao" value="3" onclick="dadosPessoais(3); showHideTermoUso(-1);" tabindex="12" id="idRadioSolicCartaoIndivExist">
+                                                                            </td>
+                                                                            <td style="text-align: left;" id="idTdMsgNrSolicCartaoIndivExist">
+                                                                        
+        Utilizar cart�o individual existente &nbsp;&nbsp;
+                                                                        
+        <span style="color: blue; font-weight:bold; " id="numeroCartaoIndividualExistenteDisponivel"></span>
+                                                                                <input type="hidden" id="cboCartaoDispNovo" name="cboCartaoDispNovo">
+                                                                            </td>
+                                                                            <td style="text-align: left">
+                                                                                
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                        <br>
+                                                        
+                                                        <fieldset id="cartaoExistente">
+                                                            <legend class="titulo">Dados Adicionais</legend>
+                                                            <table width="100%" cellspacing="4" border="0" align="center">
+                                                                <tbody><tr id="TR_OCULTAR_LABEL">
+                                                                    <td style="text-align: center" colspan="2" class="textoalerta"></td>
+                                                                </tr>
+                                                                <tr id="TR_OCULTAR_NRDDDTEL">
+                                                                    <td style="text-align: right">
+                                                                        DDD:
+                                                                    </td>
+                                                                    <td style="text-align: left">
+                                                                        <input name="nrDddTel" type="text" onkeypress="return SomenteNumero(event);" class="cxlaranja" size="3" maxlength="3">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="TR_OCULTAR_NRTEL">
+                                                                    <td style="text-align: right">
+                                                                        Telefone:
+                                                                    </td>
+                                                                    <td style="text-align: left">
+                                                                        <input name="nrTel" id="nrTelefone" type="text" class="cxlaranja" size="10" maxlength="9">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="TR_OCULTAR_NRDDDCELULAR">
+                                                                    <td style="text-align: right">
+                                                                        DDD:
+                                                                    </td>
+                                                                    <td style="text-align: left">
+                                                                        <input name="nrDddCelular" type="text" onkeypress="return SomenteNumero(event);" class="cxlaranja" size="3" maxlength="3">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="TR_OCULTAR_NRCELULAR">
+                                                                    <td style="text-align: right">
+                                                                        Celular:
+                                                                    </td>
+                                                                    <td style="text-align: left">
+                                                                        <input name="nrCelular" id="nrCel" type="text" class="cxlaranja" size="10" maxlength="9">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="TR_OCULTAR_TXEMAIL">
+                                                                    <td style="text-align: right">
+                                                                        E-mail:
+                                                                    </td>
+                                                                    <td style="text-align: left">
+                                                                        <input name="txEmail" type="text" class="cxlaranja" size="60" maxlength="60">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody></table>
+                                                        </fieldset>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                    <tr id="idTermoUso" style="display: none;" align="center">
+                                        <td style="text-align: center" width="100%">
+                                            <table width="50%" align="center">
+                                                <tbody><tr>
+                                                    <td style="text-align: center">
+                                                        <strong style="font-weight: bold">Termos de Uso</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center">
+                                                        <iframe id="iframeTermo" style="border-style: groove;" marginheight="2" marginwidth="2" title="Termo de uso" scrolling="auto" src="inclui_arquivos/termo_aceite.html" width="750" height="200" frameborder="1"></iframe>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                            <br>
+                                            <div align="center">
+                                                <input type="checkbox" style="border: none;" id="aceito" name="aceito" value="false">
+                                                <label for="aceito">Declaro que li e aceito os Termos de Uso acima descritos e que todas as informações
+                                                    <br>
+                                                    por mim prestadas no cadastro são verdadeiras.
+                                                </label>
+                                                
+                                                <br>
+                                                <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td style="text-align: center" width="100%">
+                                            <table width="50%" align="center">
+                                                <tbody><tr>
+                                                    <td style="text-align: center">
+                                                        <strong style="font-weight: bold">Termos de Comodato</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center">
+                                                        <iframe id="termoComodatoConteudo" sandbox="allow-same-origin" style="border-style: groove;" marginheight="2" marginwidth="2" title="Termo de comodato" scrolling="auto" src="inclui_arquivos/termo_comodato_conteudo.html" width="750px" height="200px" frameborder="1"></iframe>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                            <br>
+                                            <div align="center">
+                                                <input type="checkbox" style="border: none;" id="aceitoTermoComodato" name="aceitoTermoComodato" value="false">
+                                                <label for="aceitoTermoComodato">Declaro que li e aceito os Termos de Comodato acima descritos e que todas as informações
+                                                    <br>
+                                                    por mim prestadas no cadastro são verdadeiras.
+                                                </label>
+                                                
+                                                <br>
+                                                <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center">
+                                            <input type="hidden" name="nrViaCartao" value="">
+                                            <input type="reset" name="reset" value="Voltar" class="button btn-company"  tabindex="14">
+                                            <input type="button" name="btnEnviar" value="Incluir" class="button btn-company" id="btnEnviar" tabindex="13">
+                                            <input type="hidden" name="action" value="confirmaInclusao">
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </form>
+                        </fieldset>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+        <br>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                trocaTermosAceite('');
+            });
+        </script>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if ($("#message").length > 0 && $("#message").html().indexOf("sucesso") > 0) {
+                    showAvisoUsuario();
+                }
+
+               $("input[id='nrCpf']").mask('99999999999');
+                
+                
+                
+            });
+
+            function showAvisoUsuario() {
+                document.getElementById("dark").style.display = "block";
+                document.getElementById("avisoAdministrador").style.display = "block";
+            }
+
+            function escondeBannerUsuario() {
+                document.getElementById('avisoAdministrador').style.display = 'none';
+                document.getElementById('dark').style.display = 'none';
+            }
+
+            $(function () {
+                $('#nrCel').focusout(function () {
+                    var element = $(this);
+                    element.unmask();
+
+                    element.mask(element.val().replace(/\D/g, '').length > 8 ? '99999-999?9' : '9999-9999?9');
+                }).trigger('focusout');
+            });
+
+            $(function () {
+                $('#nrTelefone').focusout(function () {
+                    var phone, element;
+                    element = $(this);
+                    element.unmask();
+
+                    phone = element.val().replace(/\D/g, '');
+
+                    element.mask("9999-9999");
+
+                }).trigger('focusout');
+            });
+
+            $(function () {
+                $("input[name='dtNascto']").mask('99/99/9999');
+                //UsuarioAjax.selecionaCartaoIndividualExistenteDisponivel(exibeNrCartaoIndividualExistenteDisponivel, $('#nrCpf').val());
+            });
+
+            $('#nrCpf').on('change focus ready ', function () {
+                var cpf = $(this).val().replace(/\D/g,'');
+                UsuarioAjax.selecionaCartaoIndividualExistenteDisponivel(exibeNrCartaoIndividualExistenteDisponivel, cpf);
+                UsuarioAjax.selecionaCartaoIndividualExistenteDisponivelChip(exibeNrDoChipCartaoIndividualExistenteDisponivel, cpf);
+            });
+
+            $('#nrCpf').on('paste', function(){
+                $(this).val('');
+            });
+/*
+            $(document).on('paste', '#nrCpf', function(e) {
+                var cpf = $(this).val();
+                console.log(cpf);
+            });*/
+            
+           
+
+            $('#aceito').on('change', function () {
+                var obj = document.getElementById('aceito');
+                obj.value = obj.checked;
+            });
+
+            $('#aceitoTermoComodato').on('change', function () {
+                var obj = document.getElementById('aceitoTermoComodato');
+                obj.value = obj.checked;
+            });
+
+
+            function exibeNrCartaoIndividualExistenteDisponivel(numeroCartao) {
+                $("#numeroCartaoIndividualExistenteDisponivel").text(numeroCartao);
+                if (numeroCartao.length > 0) {
+                    $('#idRadioSolicCartaoIndivExist').prop("disabled", false);
+                } else {
+                    $('#idRadioSolicCartaoIndivExist').prop("disabled", true);
+                }
+            }
+
+            function exibeNrDoChipCartaoIndividualExistenteDisponivel(numeroCartao) {
+                $("#cboCartaoDispNovo").val(numeroCartao);
+            }
+
+            $("input[name='SolicCartao']").click(function () {
+                var $select = $(this).closest("tr").find("select");
+                var value = $select.find("option:first").val();
+                $select.val(value);
+            });
+        </script>
+        <div id="dark" style="position:absolute;z-index:900;width:100%;height:150%;background: url('../../img/overlay.png');opacity:1;-moz-opacity: 0.65;filter: alpha(opacity=65);display:none;top:0;left:0">
+            &nbsp;
+        </div>
+        <div id="avisoAdministrador" onclick="escondeBannerUsuario()" style="display:none;  width: 442px; height: 382px;  position: fixed; top: 0; bottom: 0;left: 0;right: 0;margin: auto;z-index:999;background:url(../../img/incluir_usuario_expresso.png);">
+            &nbsp;
+        </div>
+        <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="inclui_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+    
+</body></html>

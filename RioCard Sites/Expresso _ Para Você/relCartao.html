@@ -1,0 +1,557 @@
+<html><head>
+    <title>Relatório de Relação de Cartões</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" href="relCarta_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="relCarta_arquivos/riocard.css">
+    <style>
+        strong {
+            font-weight: bold;
+        }
+
+        table tbody tr td {
+            padding: 2px;
+            text-align: center
+        }
+    </style>
+<script language="JavaScript" type="text/javascript">
+    <!--
+    function submete() {
+        //***** verifica se campo De n�o foi preenchido quando existir conte�do em At� *****
+        if ((document.forms[0].de.value == "") && (document.forms[0].ate.value != "")) {
+            alert("Informe o par�metro inicial de consulta.");
+            document.forms[0].de.focus();
+            return false;
+        }
+        //***** fim *****
+
+        //***** in�cio-critica n�mero do cart�o *****
+        if (document.forms[0].ordem[0].checked) {
+            if (isNaN(document.forms[0].de.value)) {
+                alert("Para sele\u00E7\u00E3o por N\u00FAmero do Cart\u00E3o o campo \"De\" deve conter apenas n\u00FAmeros!");
+                document.forms[0].de.focus();
+                return false;
+            }
+            if (isNaN(document.forms[0].ate.value)) {
+                alert("Para sele\u00E7\u00E3o por N\u00FAmero do Cart\u00E3o o campo \"At\u00E9\" deve conter apenas n\u00FAmeros!");
+                document.forms[0].ate.focus();
+                return false;
+            }
+
+        }
+        //***** fim-critica n�mero do cart�o *****
+
+
+        //***** Verifica se filtro escolhido � Dt.Cancelamento com status Ativo *****
+        if ((document.forms[0].ordem[1].checked) && (document.forms[0].situacao[1].checked)) {
+            alert("N\u00E3o existe data de cancelamento para cart\u00F5es ativos. Altere o filtro.");
+            return false;
+        }
+        //***** fim *****
+
+
+        //***** in�cio-critica data inicial e data final *****
+        //data inicial
+        if (document.forms[0].ordem[1].checked) {
+            if (document.forms[0].de.value.length != 0) {
+                if (document.forms[0].de.value.length == 10) {
+                    if (CriticaData(document.forms[0].de.value) == false) {
+                        alert("O campo" + " De " + "possui uma data inv\u00E1lida.");
+                        document.forms[0].de.value = "";
+                        document.forms[0].de.focus();
+                        return false;
+                    }
+                } else {
+                    alert("O campo" + " De " + "possui uma data com o formato inv\u00E1lido.\nEste campo deve ter o formato dd/mm/aaaa!");
+                    document.forms[0].de.value = "";
+                    document.forms[0].de.focus();
+                    return false;
+                }
+            }
+
+            //data final
+            if (document.forms[0].ate.value.length != 0) {
+                if (document.forms[0].ate.value.length == 10) {
+                    if (CriticaData(document.forms[0].ate.value) == false) {
+                        alert("O campo" + " At\u00E9 " + "possui uma data inv\u00E1lida.");
+                        document.forms[0].ate.value = "";
+                        document.forms[0].ate.focus();
+                        return false;
+                    }
+                } else {
+                    alert("O campo" + " At\u00E9 " + "possui uma data com o formato inv\u00E1lido.\nEste campo deve ter o formato dd/mm/aaaa!");
+                    document.forms[0].ate.value = "";
+                    document.forms[0].ate.focus();
+                    return false;
+                }
+            }
+        }
+        //***** fim-critica data inicial e data final *****
+
+        // Autor: Felipe Desiderati e Souza
+        // -->
+        In&iacute;cio.
+            // Verifica se o campo "At�" est� com uma data inferior ao campo "De".
+                function
+        tipo_data(dia, mes, ano)
+        {
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+        }
+
+        function extrair_data(string) {
+            // Indica que o campo de data possui separadores. Ex.: 01/01/2001
+            var data_invalida = false;
+            switch (string.length) {
+                case  8:
+                    var offset = 0;
+                    break;
+                case 10:
+                    var offset = 1;
+                    break;
+
+                default:
+                    data_invalida = true;
+                    break;
+            }
+
+            if (!data_invalida) {
+                var dia = string.substr(0 + (offset * 0), 2);
+                var mes = string.substr(2 + (offset * 1), 2);
+                var ano = string.substr(4 + (offset * 2), 4);
+
+                return new tipo_data(dia, mes, ano);
+            }
+            else
+                return null;
+        }
+
+        if (document.forms[0].de.value.length != 0 && document.forms[0].ate.value.length != 0) {
+            var data_de = extrair_data(document.forms[0].de.value);
+            var data_ate = extrair_data(document.forms[0].ate.value);
+            if (parseInt(data_ate.ano + data_ate.mes + data_ate.dia) < parseInt(data_de.ano + data_de.mes + data_de.dia)) {
+                alert("O campo" + " At\u00E9 " + "possui uma data inferior \u00C7 data informada no campo " + " De " + ".");
+                document.forms[0].ate.focus();
+                return false;
+            }
+        }
+        // --> Final.
+
+        return true;
+    }
+    //-->
+</script><script>
+    function FillString(campo, Size) {
+        if (document.forms[0].ordem[0].checked) {
+            if (campo.value != "") {
+                var ZeroStr = '000000000000000000000000000000000000000000000000000000000000000000000000000';
+                var OldStrLen = campo.value.length;
+
+                campo.value = ZeroStr.substring(0, Size - OldStrLen).concat(campo.value);
+            }
+        }
+    }
+    //Colocar no input de "de": onblur="JavaScript: FillString(FormRelatorio.de, 13);"
+    //onblur="JavaScript: FillString(FormRelatorio.ate, 13);"
+</script><script language="JavaScript">
+    function CriticaData(strinput) {
+        var barra1;
+        var barra2;
+        var parte1;
+        var parte2;
+        var partedia;
+        var partemes;
+        var parteano;
+        var retorno;
+        var restobisexto;
+        var arrayultimodia;
+        var datagerada;
+        parte1 = strinput.substr(0, 3);
+        barra1 = parte1.search("/");
+
+
+        if (barra1 > 0) {
+            if (barra1 == 1) {
+                partedia = "0" + parte1.substr(0, barra1);
+            }
+            else {
+                partedia = parte1.substr(0, barra1);
+            }
+            parte2 = strinput.substr(barra1 + 1, 3);
+            barra2 = parte2.search("/");
+            if (barra2 > 0) {
+
+                if (barra2 == 1) {
+                    partemes = "0" + parte2.substr(0, barra2);
+                }
+                else {
+                    partemes = parte2.substr(0, barra2);
+                }
+                parteano = strinput.substr(1 + barra1 + barra2 + 1);
+
+                if (parteano.length == 2) {
+
+                    if (parseInt(parteano) > 50) {
+                        parteano = 19 + parteano;
+                    }
+                    else {
+                        parteano = 20 + parteano;
+                    }
+                    restobisexto = parteano % 4;
+                    if (restobisexto != 0) {
+                        arrayultimodia = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                    }
+                    else {
+                        arrayultimodia = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                    }
+                    if (partemes > 0) {
+                        if (partemes <= 12) {
+                            if (partedia > 0) {
+                                if (partedia <= arrayultimodia[partemes - 1]) {
+                                    datagerada = new Date(parseInt(parteano), parseInt(partemes), parseInt(partedia));
+                                    if (datagerada) {
+                                        retorno = true;
+                                    }
+                                }
+                                else {
+                                    retorno = false;
+                                }
+                            }
+                            else {
+                                retorno = false;
+                            }
+                        }
+                        else {
+                            retorno = false;
+                        }
+                    }
+                    else {
+                        retorno = false;
+                    }
+
+                }
+                else {
+                    if (parteano.length == 4) {
+                        restobisexto = parteano % 4;
+                        if (restobisexto != 0) {
+                            arrayultimodia = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                        }
+                        else {
+                            arrayultimodia = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                        }
+                        if (partemes > 0) {
+                            if (partemes <= 12) {
+                                if (partedia > 0) {
+                                    if (partedia <= arrayultimodia[partemes - 1]) {
+                                        datagerada = new Date(parseInt(parteano), parseInt(partemes), parseInt(partedia));
+                                        if (datagerada) {
+                                            retorno = true;
+                                        }
+                                    }
+                                    else {
+                                        retorno = false;
+                                    }
+                                }
+                                else {
+                                    retorno = false;
+                                }
+                            }
+                            else {
+                                retorno = false;
+                            }
+                        }
+                        else {
+                            retorno = false;
+                        }
+                    }
+                    else {
+                        // ano com tamanho diferente de 2 e 4
+                        retorno = false;
+                    }
+                }
+            }
+            else {
+                // nao achou a segunda barra ou est� na terceira posicao
+                retorno = false;
+            }
+        }
+        else {
+            // nao achou a primeira barra ou est� na primeira posicao
+            retorno = false;
+        }
+        return retorno;
+    }
+</script><script language="JavaScript">
+    function Mascara(formato, keypress, objeto) {
+        campo = eval(objeto);
+
+// NUMERO
+        if (formato == 'NUMERO') {
+            if (document.all) // Internet Explorer
+                var tecla = event.keyCode;
+            else if (document.layers) // Nestcape
+                var tecla = e.which;
+            if (tecla > 47 && tecla < 58) // numeros de 0 a 9
+                return true;
+            else {
+                if (tecla != 8 && tecla != 13) // backspace e Enter
+                {//event.keyCode = 0;
+                    event.keyCode = null;
+                }	//return false;
+                else
+                    return true;
+            }
+        }
+
+// DATA
+        if (formato == 'DATA') {
+            separador = '/';
+            conjunto1 = 2;
+            conjunto2 = 5;
+            if (campo.value.length == conjunto1) {
+                campo.value = campo.value + separador;
+            }
+            if (campo.value.length == conjunto2) {
+                campo.value = campo.value + separador;
+            }
+
+            if ((event.keyCode >= 48) && (event.keyCode <= 57)) {
+                return true
+            } else {
+                if (event.keyCode != 8) {
+                    event.keyCode = 0
+                    return false
+                }
+            }
+        }
+    }
+</script><script language="JavaScript">
+    function tratatexto() {
+        if (document.forms[0].ordem[1].checked) {
+            Mascara('DATA', window.event.keyCode, 'document.FormRelatorio.de');
+            Mascara('DATA', window.event.keyCode, 'document.FormRelatorio.ate');
+        }
+
+        if (document.forms[0].ordem[0].checked) {
+            Mascara('NUMERO', window.event.keyCode, 'document.FormRelatorio.de');
+            Mascara('NUMERO', window.event.keyCode, 'document.FormRelatorio.ate');
+        }
+    }
+</script><script type="text/javascript">
+    /*************************************************************************************************/
+    function ocultar_campo(esconder) {
+        if (esconder == true) {
+            TD_OCULTAR_TITULO.style.visibility = "hidden";
+            TD_OCULTAR_MOTTODOS.style.visibility = "hidden";
+            TD_OCULTAR_MOTROUBO.style.visibility = "hidden";
+            TD_OCULTAR_MOTQUEBRA.style.visibility = "hidden";
+            TD_OCULTAR_MOTDEFEITO.style.visibility = "hidden";
+            TD_OCULTAR_MOTPERDA.style.visibility = "hidden";
+        }
+        else {
+            TD_OCULTAR_TITULO.style.visibility = "visible";
+            TD_OCULTAR_MOTTODOS.style.visibility = "visible";
+            TD_OCULTAR_MOTROUBO.style.visibility = "visible";
+            TD_OCULTAR_MOTQUEBRA.style.visibility = "visible";
+            TD_OCULTAR_MOTDEFEITO.style.visibility = "visible";
+            TD_OCULTAR_MOTPERDA.style.visibility = "visible";
+        }
+    }
+    /*************************************************************************************************/
+</script></head>
+
+
+
+
+
+
+<body onload="ocultar_campo(true);javascript:document.forms[0].de.focus();">
+
+<form name="FormRelatorio" action="RelCompr" method="post">
+
+    <table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody><tr>
+            <td>
+
+
+                <div class="menu_esq">
+                    <div class="menu_esq">
+                        <div class="menu_dir">
+                            <div class="menu">
+                                <ul>
+                                    <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                                    <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                                    <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                                    <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                                    <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                                    <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                                    <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                                    <li style="width:9%;"><a href="">Sair</a></li>
+                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+</td>
+        </tr>
+        <tr>
+            <td rowspan="3" valign="top" style="text-align: left">
+
+                <div id="forms">
+                    <fieldset>
+                        <legend class="titulo">Rela&ccedil;&atilde;o de Cart&otilde;es</legend>
+                        <div class="subtitulo">
+                            Par&acirc;metros para sele&ccedil;&atilde;o do relat&oacute;rio
+                        </div>
+                        <table width="100%" border="0" cellspacing="1" cellpadding="4" align="center">
+                            <tr>
+                                <td>
+                                    <table width="95%" border="0" cellspacing="5" align="center">
+
+                                        <tr>
+                                            <td colspan="3" style="text-align: left">
+                                                <ul style="padding: 0px">
+                                                    <li><font size="1">Para selecionar um grupo de registros a partir de
+                                                        um dado, preencha apenas o campo "De".</font></li>
+                                                    <li><font size="1">Para selecionar um grupo de registros entre dois
+                                                        dados, preencha os campos "De" e "At&eacute;".</font></li>
+                                                    <li><font size="1" color="#CC0000"><strong>Aten&ccedil;&atilde;o: O resultado da
+                                                        sele&ccedil;&atilde;o est&aacute; limitado a 2000 cart&otilde;es. Caso sua empresa
+                                                        ultrapasse este limite, selecione faixas de cart&otilde;es ou de
+                                                        data.</strong></font></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td width="37%" style="text-align: left"><strong>Selecionar pelo campo:</strong></td>
+                                            <td width="32%" style="text-align: left"><strong>Status do Cart&atilde;o:</strong></td>
+                                            <td width="32%" id=TD_OCULTAR_TITULO style="text-align: left"><strong>Motivo de
+                                                Cancelamento:</strong></td>
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td style="text-align: left"><input type="radio" name="ordem" style="border:0"
+                                                                    value="numCartao" checked>N&uacute;mero do Cart&atilde;o
+                                            </td>
+                                            <td style="text-align: left"><input type="radio" name="situacao" style="border:0"
+                                                                    value="todos" onClick="ocultar_campo(true)" checked>Todos
+                                            </td>
+                                            <td id=TD_OCULTAR_MOTTODOS style="text-align: left"><input type="radio" style="border:0"
+                                                                                           name="motCancel"
+                                                                                           value="motTodos" checked>Todos
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left"><input type="radio" name="ordem" style="border:0"
+                                                                    value="datCancela" >Data
+                                                de cancelamento
+                                            </td>
+                                            <td style="text-align: left"><input type="radio" name="situacao" style="border:0"
+                                                                    value="ativo"
+                                                                    onClick="ocultar_campo(true)" >Ativo
+                                            </td>
+                                            <td id=TD_OCULTAR_MOTROUBO style="text-align: left"><input type="radio" name="motCancel"
+                                                                                           style="border:0"
+                                                                                           value="roubo" >Roubo
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left"><input type="radio" name="situacao" style="border:0"
+                                                                    value="inativo"
+                                                                    onCLick="ocultar_campo(false)" >Inativo
+                                            </td>
+                                            <td id=TD_OCULTAR_MOTQUEBRA style="text-align: left"><input type="radio"
+                                                                                            name="motCancel"
+                                                                                            value="quebraAvaria"
+                                                                                            style="border:0" >Quebra
+                                                / Avaria
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td id=TD_OCULTAR_MOTDEFEITO style="text-align: left"><input type="radio"
+                                                                                             name="motCancel"
+                                                                                             value="defeito"
+                                                                                             style="border:0" >Defeito
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td id=TD_OCULTAR_MOTPERDA style="text-align: left"><input type="radio" name="motCancel"
+                                                                                           value="perda"
+                                                                                           style="border:0" >Perda
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" style="text-align: right">
+                                                <table width="100%" border="0">
+                                                    <tr>
+                                                        <td width="12%" style="text-align: right">De:</td>
+                                                        <td width="88%" style="text-align: left"><input name="de"
+                                                                                            value=""
+                                                                                            type="text"
+                                                                                            onKeyPress="javascript:tratatexto(); "
+                                                                                            size="20" maxlength="13"
+                                                                                            class="cxlaranja" id="de"
+                                                                                            tabindex="4">
+
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right">At&eacute;:</td>
+                                                        <td style="text-align: left">
+                                                            <input name="ate" value=""
+                                                                   type="text" onKeyPress="javascript:tratatexto();"
+                                                                   maxlength="13" class="cxlaranja" id="ate" size="20"
+                                                                   tabindex="5">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            <tr>
+                                <td>
+                                    <input type="button" name="voltar" value="Voltar" class="button btn-company"
+                                                                                      tabindex="7">&nbsp;
+                                    <input type="button" name="button" value="Enviar" class="button btn-company" tabindex="6">
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <input type="hidden" name="action" value="listaCartao">
+    <input type="hidden" name="np" value="1">
+    <input type="hidden" name="rp" value="20">
+</form>
+<br>
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

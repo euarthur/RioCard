@@ -1,0 +1,175 @@
+/* CSS Document */
+
+.col_principal {
+	width: 70%;
+	float: left;
+}
+
+.col_secundaria {
+	width: 26%;
+	float: right;
+	padding-right: 10px;
+}
+
+fieldset.cpf_cnpj {
+	float: left;
+	margin-right: 10px;
+	height: 43px;
+}
+
+fieldset table tr td.labels {
+	text-align: right
+}
+
+input.cem_por_cento {
+	width: 99%;
+}
+
+input.oitenta_por_cento {
+	width: 80%;
+}
+
+.tamanho_medio {
+	width: 250px;
+}
+
+.dados_comprador table {
+	width: 100%;
+}
+
+.dados_comprador table tr td {
+	vertical-align: top;
+}
+
+.dados_comprador table tr td.labels {
+	width: 160px;
+	padding-top: 5px;
+}
+
+.dados_comprador select {
+	margin-top: 3px;
+}
+
+.aviso p {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+.revalidar_email {
+	background: #e6eef5;
+	border: 1px solid white;
+	padding: 6px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.revalidar_email .btn_padrao {
+	float: left;
+	margin-right: 10px;
+}
+
+.revalidar_email .instrucao {
+	float: left;
+}
+
+.dados_comprador .com_ajuda {
+	margin-bottom: 0px;
+}
+
+.dados_comprador .e-mail .checkbox {
+	margin-right: 3px;
+}
+
+.endereco table {
+	width: 100%;
+}
+
+.endereco table tr td.labels {
+	width: 50px;
+}
+
+.endereco .logradouro {
+	width: 80px;
+}
+
+.endereco .endereco_campo {
+	width: 79%;
+}
+
+.endereco .numero {
+	width: 40px;
+}
+
+.endereco .complemento {
+	width: 150px;
+}
+
+.endereco .bairro_cidade {
+	width: 99%;
+}
+
+.endereco .estado {
+	width: 16px;
+}
+
+.endereco .cep1 {
+	width: 30px;
+}
+
+.endereco .cep2 {
+	width: 18px;
+	margin-right: 10px;
+}
+
+.campos_cep {
+	float: left;
+}
+
+fieldset input.verificar_cep {
+	float: left;
+	margin-right: 20px;
+}
+
+.nao_sabe_cep {
+	margin-top: 4px;
+	float: left;
+}
+
+.endereco .label_complemento, .endereco .label_cep {
+	margin-right: 6px;
+}
+
+.endereco .label_complemento {
+	margin-left: 60px;
+}
+
+.endereco .label_cep {
+	margin-left: 144px;
+}
+
+.telefones table tr td.labels {
+	width: 60px;
+}
+
+
+.telefones .ddd {
+	width: 12px
+}
+
+.telefones .numero {
+	width: 48px;
+}
+
+.telefones .ramal {
+	width: 30px;
+}
+
+.telefones small {
+	margin-left: 6px;
+}
+
+.aguarde{
+	font-size:13px; 
+	color: #D26A33;
+}
+

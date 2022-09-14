@@ -1,0 +1,794 @@
+/* Gerais */
+
+body{
+	margin:0;
+	padding:0;
+}
+
+body *{
+	font-size:11px;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+}
+
+img{
+	border:0;
+}
+
+.tablealt{
+	padding: 2px;
+}
+
+ul, li{
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+ul{
+	list-style:none;
+}
+
+h1, h2, h3, h4, h5, h6, form{
+	padding:0;
+	margin:0;
+}
+
+.corpo{
+	margin:0 auto 0 auto;
+	width:210px;
+	
+}
+
+/* Header */
+
+.header{
+	background:url(/scrcpr2/img/fundo_topo_repete.jpg);
+	height:105px;
+	border-bottom:4px solid #FFFFFF;
+	margin-bottom:1px;
+}
+
+
+/*.head_home{
+	width:770px;
+	margin:0 auto;
+}*/
+
+.header .logo_FT{
+margin:0 10px 0 50px;
+}
+
+
+.header .logo_RC{
+margin:15px 0 0 65px;
+}
+
+
+/* Menu */
+
+.menu_entrar{
+	width:77px;
+	height:20px !important;
+	height:25px;
+	border:none;
+	background:url('../../scrcpr2/img/menu_entrar2.gif') no-repeat 0 0;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font:bold 11px Tahoma;
+	text-align:center;
+	cursor:pointer;
+	padding-top:5px;
+	float:left;
+}
+
+.menu{
+	background:url(/scrcpr2/img/fundo_menu.jpg) repeat-x;
+	height:30px;
+}
+
+
+
+.menu ul li{
+	float:left;
+	text-align:center;
+	width:11%;
+	padding-top:3px; 
+}
+
+.menu ul li a{
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	font-size:13px;
+	color:#58798d;
+	text-decoration:none;
+}
+
+.menu ul li a:hover{
+	text-decoration:underline;
+}
+
+/* Comprador e Atendimento */
+
+.box_topo{
+	height:100px;
+	position:relative;
+	width:375px;	
+}
+
+.box_topo h1, .box_topo h2{
+	font:bold 11px Tahoma;
+	margin:0 0 0 40px;
+}
+
+.box_topo .conteudo{
+	padding:5px 0 0 0;
+	
+}
+
+.area_comprador{
+	background:url(/scrcpr2/img/bg_comprador.gif) top right repeat-x;
+}
+
+.area_comprador .conteudo{
+	background:url(/scrcpr2/img/ic_comprador.gif) top left no-repeat;
+} 
+
+.area_comprador .texto{
+	margin:13px 13px 0 13px;
+	color:#466fab;     
+
+}
+
+.area_comprador .texto p{
+	line-height:18px;
+	font-size:14px;
+}
+
+.area_comprador strong{
+	font-size:14px;
+	font-weight:bold;
+}
+
+.area_comprador h1{
+	color:#114c8d;
+}
+
+.bt_comprar{
+	width:94px;
+	height:42px;
+	background:url(/scrcpr2/img/bt_comprar3.gif) no-repeat;
+	float:right;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-decoration:none;
+	text-align:center;
+	margin-top:18px;	    
+}
+
+.bt_cadastrar{
+	width:94px;
+	height:42px;
+	background:url(/scrcpr2/img/bt_cadastrar.gif) no-repeat;
+	float:right;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-decoration:none;
+	text-align:center;
+	margin-top:18px;	    
+}
+
+.central_atendimento{
+	background:url(/scrcpr2/img/bg_central.gif) top right repeat-x;
+}
+
+.central_atendimento .conteudo{
+	background:url(/scrcpr2/img/ic_central.gif) top left no-repeat;
+}
+
+.central_atendimento h2{
+	color:#a9701e;
+	margin-bottom:12px;
+}
+
+.fone, .postos{
+	margin:0 5px 0 15px;
+}
+
+.fone{
+	height:32px;
+	background:#e8b066;
+}
+
+.fone .numero{
+	background:url(/scrcpr2/img/seta_fone.gif) top left no-repeat;
+	padding-left:22px;
+	font:bold 19px Arial;
+	color:#FFFFFF;
+}
+
+.fone .numero small{
+	font:bold 13px Arial;
+}
+
+.horarios{
+	font-size:10px;
+	color:#FFFFFF;
+}
+
+.horarios strong{
+	font-size:10px;
+	font-weight:bold;
+}
+
+.postos{
+	background:#FFFFFF url(/scrcpr2/img/seta_postos.gif) top left no-repeat;
+	height:21px !important;
+	height:28px;
+	padding:7px 0 0 30px;
+	color:#a37b4b;
+	font-size:10px;
+	font-weight:bold;
+	margin-top:3px;
+}
+
+.postos a{
+	color:#e38d1e;
+	text-decoration:underline;
+	font-size:11px;
+	font-weight:bold;
+}
+
+
+/* Novidade */
+
+.novidades{
+	margin-left:10px;
+	width:360px;
+}
+
+.novidades h3{
+	font-size:17px;
+	font-weight:normal;
+	background:url(/scrcpr2/img/bg_fio_laranja.gif) bottom left repeat-x;
+	margin:5px 0 5px 0;
+	padding:0 0 6px 0;
+}
+
+.novidades h4{
+	font-size:13px;
+	font-weight:bold;
+	color:#0f4283;
+	margin-top:10px;
+	letter-spacing:-0.06em !important;
+	letter-spacing:-0.05em;
+}
+
+.novidades p{
+	line-height:17px;
+	margin:5px 0 0 0;
+}
+
+.novidades_texto {
+	width:210px;
+	height:180px;
+	float:left;
+}
+
+.novidades_banners {
+	padding-top:15px;
+	margin-left:15px;
+	width:140px;
+	height:165px;
+	float:left;
+}
+
+.novidades_banners img{
+	margin-bottom:10px;
+}
+
+.link_mais{
+	color:#e6a208;
+	text-transform:uppercase;
+	text-decoration:underline;
+	font-size:10px;
+	font-weight:bold;
+}
+
+.link_mais:hover{
+color:#d85100;
+}
+
+
+/* Recarga */
+
+h5{
+	width:150px;
+	height:50px;
+	background:url(/scrcpr2/img/tit_recarga.jpg) bottom left no-repeat;
+	margin:0;
+} 
+
+h5 span{
+	display:none;
+}
+
+.recarga .text_input{
+	color:#4f4f4f;
+	padding:5px 5px 0 5px;
+	height:25px;
+	width:150px;
+	margin:10px 0 0 0;
+	border:1px solid #c2c2c2;
+}
+
+.recarga .bt_enviar{
+	margin:10px 0 0 0;
+}
+
+/* Noticias Inferiores */
+
+.noticia_inf{
+	padding:0 20px;
+}
+
+.noticia_inf h6{
+	color:#638bbe;
+}
+
+.noticia_inf p{
+	margin:10px 0 0 0;
+	color:#70839a;
+	line-height:17px; 
+}
+
+.links_inf td{
+	padding-left:20px;
+}
+
+.links_inf td .link_mais{
+	border-right:1px solid #7e9ec6;
+	border-left:1px solid #7e9ec6;
+	text-decoration:none;
+	padding:0 5px;
+}
+
+.not_meio{
+	border-right:1px dashed #adadad;
+	border-left:1px dashed #adadad;
+}
+
+.not_esq{
+	padding-right:35px;
+}	
+
+
+/* Rodape */
+
+.rodape{
+	margin:25px 0 0 0;
+	background:url(/scrcpr2/img/bg_footer.gif) top left repeat-x;
+	padding-top:40px;
+	padding-bottom:20px;
+}
+
+.conteudo_rodape{
+	color:#838587;
+}
+
+.rodape ul li{
+	float:left;
+	margin-right:45px;
+	padding-top:5px;
+}
+
+.rodape ul li a{
+	color:#1371c9;
+}
+
+/* Begin rodapé links RSMJr. */
+
+.rodape .links {	
+	width:965px;
+	height:40px;
+	margin:-55px 0 0 150px;
+	float:left;
+}
+
+.rodape .link_twitter {	
+	width:113px;
+	height:40px;
+	margin:0 0 0 12px;
+	_margin:0 0 0 20px;;
+	float:left;
+}
+
+.rodape .link_twitter a:link {
+	background:url(../img/twitter.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_twitter a:visited {
+	background:url(../img/twitter.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_twitter a:hover {
+	background:url(../img/twitterh.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_orkut {	
+	width:113px;
+	height:40px;
+	margin:0 0 0 0;
+	_margin:0 0 15px 0;
+	float:left;
+}
+
+.rodape .link_orkut a:link {
+	background:url(../img/orkut.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_orkut a:visited {
+	background:url(../img/orkut.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_orkut a:hover {
+	background:url(../img/orkuth.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_youtube {	
+	width:113px;
+	height:40px;
+	margin:0 0 0 0;
+	_margin:0 0 15px 0;
+	float:left;
+}
+
+.rodape .link_youtube a:link {
+	background:url(../img/youtube.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_youtube a:visited {
+	background:url(../img/youtube.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_youtube a:hover {
+	background:url(../img/youtubeh.png) no-repeat 0 0;	
+	display:block;
+	height:40px;
+}
+
+.rodape .link_riocard {	
+	width:115px;
+	height:50px;
+	margin:0 0 0 0;
+	_margin:0 0 15px 0;
+	float:right;
+	background:url(../img/rodape_riocard.png) no-repeat 0 0;	
+	display:block;
+	height:50px;
+}
+
+
+/* End rodapé links RSMJr. */
+
+.volta {
+	background-image:url(../img/fundo_volta.jpg);
+	text-align:center;
+	width:200px;
+	display:box;
+	border:1px solid #ccc;
+}
+.volta a {
+	text-decoration:none;
+}
+
+#global {
+	height:670px;
+	text-align:center;
+	margin:0 auto;
+	
+}
+
+
+#banner {
+	width:926px;
+	height:95px;
+	margin:0 auto;
+	margin-top:5px;
+}
+
+#principal {
+	width:926px;
+	margin:0 auto;
+}
+
+#princ_esq {
+	margin-top:1px;
+	float:left;
+	width:770px;
+}
+
+#princ_dir {
+	float:right;
+	width:150px;
+	height:600px;
+}
+/* Begin banners a direita RSMJr. */
+#princ_dir img {
+	margin-bottom:10px;
+}
+
+#princ_dir embed {
+	margin-bottom:10px;
+}
+
+#princ_dir a:visited img, #princ_dir a:link img {
+	border:solid 1px #EEF2F8;
+}
+
+#princ_dir a:active img, #princ_dir a:hover img {
+	border:solid 1px #7D9CC5;
+}
+/* End banners a direita RSMJr. */
+/* Begin box destaques RSMJr. */
+.box_dest {
+	width:390px;
+	height:582px;
+	background-image:url(/scrcpr2/img/moca_bu.jpg);
+	background-repeat:no-repeat;
+}
+
+.box_dest_dir, .roxo, .cinza, .laranja {
+	float:right;
+	margin-bottom:5px;
+}
+
+.box_dest_dir a:link img, .box_dest_dir a:visited img {
+	border:solid 1px transparent;
+}
+
+.box_dest_dir a:hover img, .box_dest_dir a:active img {
+	border:solid 1px #7D9CC5;
+}
+
+.roxo a:link img, .roxo a:visited img, .cinza a:link img, .cinza a:visited img, .laranja a:link img, .laranja a:visited img {
+	border-right:solid 1px transparent;
+	border-bottom:solid 1px transparent;
+}
+
+.roxo a:hover img, .roxo a:active img {
+	border-right:solid 1px #9681CC;
+	border-bottom:solid 1px #9681CC;
+}
+
+.cinza a:hover img, .cinza a:active img {
+	border-right:solid 1px #9f9f9f;
+	border-bottom:solid 1px #9f9f9f;
+}
+.laranja a:link img, .laranja a:visited img {
+	border:solid 1px transparent;
+}
+
+.laranja a:hover img, .laranja a:active img {
+	border:solid 1px #e67817;
+}
+/* End box destaques RSMJr. */
+
+/* Estilo para formularios */
+div#forms {
+	width:97%;
+	height:auto; 
+	margin-top:10px;
+	text-align:left;
+	margin-bottom:20px;
+} 
+ 
+div#forms .head {
+	background:url(/scrcpr2/img/h_form.jpg);
+	height:59px;
+}
+div#forms .body {
+	/*background:url(/scrcpr/img/f_form.jpg) bottom repeat-x;*/
+	padding:12px;
+	padding-bottom:30px; 
+}
+
+div#forms .body table {
+	width:97%;
+}
+
+div#forms .titulo {
+	font-size:16px;
+	color:#7d97a9;
+	font-weight:bold; 
+	height:30px;
+	margin-left:11px;
+	padding-top:8px;
+	
+}
+
+div#forms input,textarea,select, a .button {
+	border:1px solid #7aa6c3;
+	padding:2px;
+}
+
+div#forms fieldset {
+	/*background:url(/scrcpr/img/fs_form.jpg) bottom repeat-x;*/
+	border:1px solid #c0d2dc;
+}
+
+div#forms legend {
+	color:#4982ab;
+	font-weight:bold;
+}
+
+div#forms .subtitulo {
+	font-size:11px;
+	color:#0e5e92;
+	height:30px;
+	margin-left:11px;
+	margin-top:2px; 
+	*margin-top:7px;
+}
+
+div#forms input.checkbox {
+	border:0px;
+} 
+
+#conteudo td,p,li, a {
+	font-family:"Trebuchet MS";
+	font-size:12px;
+	color:#595959;
+}
+#conteudo .titulo {
+	color:#4982ab; 
+	font-size:16px;
+}
+#conteudo .destaque {
+	color:#4982ab;
+	font-weight:bold;
+}
+
+#flat_btn li {
+	margin-left:25px;
+	margin-right:10px;
+	list-style:square;
+	/*list-style-position:inside;*/
+	height:20px;
+	width:250px;
+	border-bottom:1px dotted #CCCCCC;
+	padding:8px;
+	*padding:3px;
+	*margin-top:15px;
+}
+
+#flat_btn a {
+	text-decoration:none;
+	color:#666666;
+	font-size:13px;
+}
+#flat_btn a:hover {
+	color:#7396af;
+}
+#flat_btn_area {
+	background:#eaeff3;
+	padding:10px;
+}
+#relat td { }
+
+#grid_relat{
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+}
+#grid_relat td {
+	border-top:1px solid #CCCCCC;
+	
+}
+	
+.btn {
+	border:1px solid #7aa6c3;
+	padding:2px;
+}
+#passo li {
+	list-style-type:square;
+	list-style-position:inside;
+	text-decoration:none;
+}
+#passo ul {
+	margin-left:10px;
+}
+
+#tbendereco {
+	border:1px solid #CCCCCC;
+	background:#FFFFFF;
+}
+#tbendereco th {
+	background:url(/scrcpr2/img/h_form.jpg);
+	height:20px;	
+	padding:4px;
+}
+#tbendereco td {
+	padding:4px;
+	border:1px solid #CCCCCC;
+}
+#tbendereco td a {
+	color:#4982ab;
+}
+#tbendereco td a:hover {
+	color:#666666;
+}
+
+#lightboxEnd {
+	background:#FFFFFF;
+	text-align:center;
+}
+.titulocep {
+	color:#7d97a9;
+}
+#detalheEnderecoEntrega th {
+	width:250px;
+	text-align:right;
+	padding:4px;
+	background:#eaeff3;
+	
+}
+#detalheEnderecoEntrega td{
+	padding:4px;
+	background:#F1F1F1;
+	width:80%;
+}
+#detalheEnderecoEntrega tfoot td {
+	
+}
+#lightbox_faq {
+	background: #d5e5f1;
+	padding:10px;
+}
+
+/*Hintbox*/
+
+.hintstyle {  
+position:absolute;  
+background:#EEEEEE;  
+border:1px solid black;  
+padding:2px;  
+}
+
+.text_alert{
+	background: #ffface none repeat scroll 0 0;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+
+}
+.text_sucsses{
+	background: #dff0d8 none repeat scroll 0 0;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+}
+.text_error {
+	background: #f2dede none repeat scroll 0 0;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+}

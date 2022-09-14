@@ -1,0 +1,982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+        <title>Riocard Mais Vale-Transporte</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="cache-control" content="max-age=0">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+        <meta http-equiv="pragma" content="no-cache">
+        <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+        <link href="dadosdocomprador_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="dadosdocomprador_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="dadosdocomprador_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="dadosdocomprador_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="dadosdocomprador_arquivos/comum.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="dadosdocomprador_arquivos/dados.css" media="all">
+        <link rel="stylesheet" type="text/css" href="dadosdocomprador_arquivos/home.css" media="all">
+        <!-- a coluna secundaria usa elementos que estao na Home da area de Visitantes -->
+        <link rel="stylesheet" type="text/css" href="dadosdocomprador_arquivos/coluna_direita.css" media="all">
+        <link rel="stylesheet" type="text/css" href="dadosdocomprador_arquivos/shadowbox.css">
+        <script language="JavaScript" src="dadosdocomprador_arquivos/lightboxEnd.js"></script>
+        <script type="text/javascript" src="dadosdocomprador_arquivos/lightbox.js"></script>
+        <script language="JavaScript" src="dadosdocomprador_arquivos/lightboxAjuda.js"></script>
+        <script language="JavaScript" src="dadosdocomprador_arquivos/shadowbox.js"></script>
+        <script src="dadosdocomprador_arquivos/jquery-1.8.0.min.js"></script>
+        <script src="dadosdocomprador_arquivos/jquery.maskedinput.js" type="text/javascript"></script>
+        <!-- DWR declarations -->
+        <script type="text/javascript" src="dadosdocomprador_arquivos/engine.js"></script>
+        <script type="text/javascript" src="dadosdocomprador_arquivos/util.js"></script>
+        <script language="JavaScript">
+            var emailAtual = 'teste1@gmail.com';
+
+            function submitForm() {
+                var emailPreenchido = document.getElementById('email').value;
+                if (emailPreenchido != emailAtual) {
+                    if (confirm('Deseja indicar um novo endere\u00e7o de E-mail Alternativo ou manter o existente?')) {
+                        document.getElementById('form').submit();
+                    } else {
+                        document.getElementById('emailAlternativo').focus();
+                    }
+                } else {
+                    document.getElementById('form').submit();
+                }
+
+            }
+
+            function resetForm() {
+                document.getElementById('form').reset();
+            }
+
+            function callBackEmail(valid) {
+                var emailField = document.getElementById('email');
+                var emailValidoDiv = document.getElementById('email_valido');
+                var emailInvalidoDiv = document.getElementById('email_invalido');
+
+                if (valid) {
+                    emailField.style.borderColor = 'green';
+                    emailValidoDiv.style.display = 'block';
+                    emailInvalidoDiv.style.display = 'none';
+                } else {
+                    emailField.style.borderColor = 'red';
+                    emailValidoDiv.style.display = 'none';
+                    emailInvalidoDiv.style.display = 'block';
+                }
+            }
+
+            function callBackEmailAlternativo(valid) {
+                var emailField = document.getElementById('emailAlternativo');
+                var emailValidoDiv = document.getElementById('email_valido_alter');
+                var emailInvalidoDiv = document.getElementById('email_invalido_alter');
+
+                if (valid) {
+                    emailField.style.borderColor = 'green';
+                    emailValidoDiv.style.display = 'block';
+                    emailInvalidoDiv.style.display = 'none';
+                } else {
+                    emailField.style.borderColor = 'red';
+                    emailValidoDiv.style.display = 'none';
+                    emailInvalidoDiv.style.display = 'block';
+                }
+            }
+
+            function emailValidation(email) {
+                RioCardVT.validarEmail(callBackEmail, email);
+            }
+
+            function emailAlterValidation(email) {
+                var emailInvalidoDiv = document.getElementById('email_invalido_div');
+                emailInvalidoDiv.style.display = 'none';
+                RioCardVT.validarEmail(callBackEmailAlternativo, email);
+            }
+
+            function apagarMensagem() {
+
+                var emailValidoDiv = document.getElementById('email_valido');
+                var emailInvalidoDiv = document.getElementById('email_invalido');
+                var emailAlterValidoDiv = document.getElementById('email_valido_alter');
+                var emailAlterInvalidoDiv = document.getElementById('email_invalido_alter');
+
+                if (emailValidoDiv) {
+                    emailValidoDiv.style.display = 'none';
+                }
+
+                if (emailInvalidoDiv) {
+                    emailInvalidoDiv.style.display = 'none';
+                }
+
+                if (emailAlterValidoDiv) {
+                    emailAlterValidoDiv.style.display = 'none';
+                }
+
+                if (emailAlterInvalidoDiv) {
+                    emailAlterInvalidoDiv.style.display = 'none';
+                }
+            }
+
+            function cancelar() {
+                var form = document.getElementById("form");
+                form.action = "/vt2/comprador/home/CarregarHome.do";
+                form.submit();
+            }
+
+            function listarEnderecos(cep, cepDig) {
+                apagarMensagemCep();
+                esconderBotaoEndereco();
+
+                if (cep != "" && cepDig != "") {
+                    exibirMsgAguarde();
+                    RioCardVT.listarEnderecosPorCep(callbackEndereco, cep + cepDig);
+                } else {
+                    exibirMensagemCep("Favor informar o CEP.");
+                    esconderMsgAguarde();
+                }
+            }
+
+            function callbackEndereco(lista) {
+                if (lista == null) {
+                    exibirMensagemCep("Consulta \u00E0 base de CEPs indispon\u00EDvel. Preencha manualmente os campos de endere\u00E7o.");
+                } else if (lista.length == 1) {
+
+                    var tpLogradouro = lista[0].tpLogradouro;
+
+                    if (tpLogradouro == "Rua" || tpLogradouro == "Avenida" || tpLogradouro == "Travessa" || tpLogradouro == "Conjunto") {
+                        document.getElementById('tpEndereco').value = tpLogradouro;
+                    } else {
+                        document.getElementById('tpEndereco').value = "Outros";
+                    }
+
+                    document.getElementById('endereco').value = lista[0].logradouro == null ? "" : lista[0].logradouro;
+                    document.getElementById('bairro').value = lista[0].bairro == null ? "" : lista[0].bairro;
+                    document.getElementById('cidade').value = lista[0].cidade == null ? "" : lista[0].cidade;
+                    document.getElementById('estado').value = lista[0].uf != null && lista[0].uf.sgUf != null ? lista[0].uf.sgUf : "";
+
+                    document.getElementById("aguarde").innerHTML = "Foi localizado um endere\u00E7o para este CEP. Verifique e complete o formul\u00E1rio.";
+
+                } else if (lista.length > 1) {
+                    exibirTabelaEndereco(lista, formataCep(lista[0].cep));
+                    exibirBotaoEndereco(formataCep(lista[0].cep));
+                    esconderMsgAguarde();
+                } else {
+                    exibirMensagemCep("Nenhum endere\u00E7o localizado para o CEP informado. Preencha o formul\u00E1rio.");
+                    esconderMsgAguarde();
+                }
+
+
+            }
+
+            function formataCep(cep) {
+                var numCep = cep.substring(0, 5);
+                var cepDig = cep.substring(5, 8);
+
+                return numCep + '-' + cepDig;
+            }
+
+
+            function limparCamposEndereco() {
+                document.getElementById('tpEndereco').value = "Rua";
+                document.getElementById('endereco').value = "";
+                document.getElementById('bairro').value = "";
+                document.getElementById('cidade').value = "";
+                document.getElementById('estado').value = "RJ";
+                document.getElementById('numero').value = "";
+                document.getElementById('complemento').value = "";
+            }
+
+
+            function exibirTabelaEndereco(lista, cep) {
+
+                var titulo = '<div style="width: 100%; z-index: 90; height: 10%"><h1 style="font-size: 14px" >' +
+                    "Endere\u00E7os Localizados para o CEP " + cep +
+                    '</h1></div>';
+
+                var strTab = '<div style="width: 100%;height: 80%;overflow-x:hidden;overflow-y:scroll;" >' +
+                    '<table class="dataset" cellspacing="0"><tr><th>Logradouro</th><th>Tipo Logradouro</th><th>Bairro</th><th>Cidade</th><th>UF</th><th>Selecionar</th></tr>';
+
+                for (var i = 0; i < lista.length; i++) {
+
+                    strTab += '<tr>';
+                    strTab += '<td align="left"><label id="cTxLograd' + i + '">' + (lista[i].logradouro == null ? "&nbsp;" : lista[i].logradouro) + '</label></td>';
+
+                    var tpLogradouro = lista[i].tpLogradouro;
+
+                    if (tpLogradouro != "Rua" && tpLogradouro != "Avenida" && tpLogradouro != "Travessa" && tpLogradouro != "Conjunto") {
+                        tpLogradouro = "Outros";
+                    }
+
+                    strTab += '<td align="left"><label id="cTpLograd' + i + '">' + tpLogradouro + '</label></td>';
+                    strTab += '<td align="left"><label id="cNmBairro' + i + '">' + (lista[i].bairro == null ? "&nbsp;" : lista[i].bairro) + '</label></td>';
+                    strTab += '<td align="left"><label id="cNmCidade' + i + '">' + (lista[i].cidade == null ? "&nbsp;" : lista[i].cidade) + '</label></td>';
+                    strTab += '<td align="left"><label id="cSgUf' + i + '">' + (lista[i].uf != null && lista[i].uf.sgUf != null ? lista[i].uf.sgUf : "&nbsp;") + '</label></td>';
+                    strTab += '<td align="center"><div class="botao_acao botao_medio" style="float: inherit"><a href="javascript: preencheEndereco(' + i + ');hideLightboxEnd();">Selecionar</a></div></td>';
+                    strTab += '</tr>';
+                }
+                strTab += '</table></div>';
+
+                var btnCancelar = '<br /><p class="buttons" ><a href="javascript:hideLightboxEnd();"><img src="/vt2/comprador/comum/imagens/botoes/cancelar.gif" alt="Cancelar"/></a><p>';
+
+                document.conteudoLBCEP = '<div style="background:#FFFFFF;padding:8px;">' + titulo + strTab + btnCancelar + '</div>';
+
+                showLightboxEnd(document.conteudoLBCEP);
+            }
+
+            function exibirMsgAguarde() {
+                var obj = document.getElementById("aguarde");
+                obj.innerHTML = "Aguarde...";
+                obj.style.display = 'block';
+            }
+
+            function esconderMsgAguarde() {
+                var obj = document.getElementById("aguarde");
+                obj.style.display = 'none';
+            }
+
+            function isNumber(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            function apagarMensagemCep() {
+
+                var cepErroDiv = document.getElementById('cep_erro');
+                cepErroDiv.style.display = 'none';
+            }
+
+            function esconderBotaoEndereco() {
+                var btTrocaSenha = document.getElementById('trocaEndereco');
+                btTrocaSenha.style.display = 'none';
+            }
+
+            function exibirBotaoEndereco(cep) {
+                var btTrocaSenha = document.getElementById('trocaEndereco');
+                var lTrocaEndereco = document.getElementById('lTrocaEndereco');
+                btTrocaSenha.style.display = 'block';
+                lTrocaEndereco.innerHTML = "Endere\u00E7os localizados (" + cep + ")";
+            }
+
+            function exibirMensagemCep(msg) {
+
+                var cepErroDiv = document.getElementById('cep_erro');
+                cepErroDiv.style.display = 'block';
+                var msgCepErroDiv = document.getElementById('msg_cep_erro');
+                msgCepErroDiv.innerHTML = msg;
+            }
+
+            function preencheEndereco(indice) {
+                limparCamposEndereco();
+                document.getElementById('tpEndereco').value = document.getElementById('cTpLograd' + indice).innerHTML;
+                document.getElementById('endereco').value = document.getElementById('cTxLograd' + indice).innerHTML;
+                document.getElementById('bairro').value = document.getElementById('cNmBairro' + indice).innerHTML;
+                document.getElementById('cidade').value = document.getElementById('cNmCidade' + indice).innerHTML;
+                document.getElementById('estado').value = document.getElementById('cSgUf' + indice).innerHTML;
+            }
+
+            function mostrarAvisoCadastroDesatualizado() {
+                document.getElementById("dark").style.display = "";
+                document.getElementById("cadastroDesatualizado").style.display = "";
+            }
+
+            function escondeAvisoCadastroDesatualizado() {
+                document.getElementById("dark").style.display = "none";
+                document.getElementById("cadastroDesatualizado").style.display = "none";
+            }
+
+            function mostrarAvisoMktComprador() {
+                document.getElementById("dark").style.display = "";
+                document.getElementById("mktComprador").style.display = "";
+            }
+
+            function escondeAvisoMktComprador() {
+                document.getElementById("mktComprador").style.display = "none";
+                document.getElementById("dark").style.display = "";
+                document.getElementById("cadastroDesatualizado").style.display = "";
+            }
+        </script>
+    </head>
+    <body class="comprador" onload="javascript:apagarMensagem();apagarMensagemCep();esconderMsgAguarde();esconderBotaoEndereco();initLightboxEnd();correctPNG();"><div id="overlayEnd" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightboxEnd" class="enderecoBox" style="display: none; position: absolute; z-index: 100;"></div>
+        <div id="dark" style="position:absolute;z-index:900;width:100%;height:300%;background:#000000;opacity:0.65;-moz-opacity: 0.65;filter: alpha(opacity=65);display:none;top:0;left:0">
+            &nbsp;
+        </div>
+        <div id="cadastroDesatualizado" style="display:none;width:636px;height:405px;position:absolute;top:50%;left:50%;margin-top:-203px;margin-left:-318px;z-index:999;background:url(../../visitante/home/imagens/atualize_seus_dados.png)">
+            <div style="color:#FFFFFF;width:50px;height:50px;margin-left:580px;cursor:pointer" onclick="cancelar();">&nbsp;</div>
+            <div style="height:340px;width:580px;cursor:pointer" onclick="escondeAvisoCadastroDesatualizado()">&nbsp;</div>
+        </div>
+        
+        
+        <div id="site" class="clearfix">
+            
+	<a name="topo"></a>
+
+
+
+
+            <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="#" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+            <div class="conteudo_interna">
+                <div id="titulo_pag" class="titulo_pag">
+                    <div class="borda_esq">
+                        <div class="borda_dir">
+                              
+                                <h1>Dados do comprador</h1>
+                             
+                        </div>
+                    </div>
+                </div>
+                <div id="fields" class="col_principal clearfix">
+                    
+                    
+                    
+                    
+                    <form name="dadosCompradorForm" id="form" method="post" action="/vt2/comprador/comprador/DadosCompradorSave.do">
+                    <input type="hidden" name="numeroDocumentoComprador" value="0">
+                    <fieldset class="nivel_01 cpf_cnpj">
+                         
+                            <legend>CPF</legend>
+                            <p>
+                                12345678910
+                            </p>
+                            <p>
+                                
+                                    <label style="padding-left: 0px; color: red"> </label>
+                                
+                            </p>
+
+                           
+                    </fieldset>
+                    <fieldset class="nivel_01">
+                        <legend>Perfil</legend>
+                        <p class="com_ajuda">
+                            <strong>PESSOA FÍSICA</strong> - 0 usuários </p>
+                        <a href="javascript:ajuda('u02c01t01');" class="btn_ajuda">
+                            <img src="dadosdocomprador_arquivos/btn_ajuda.gif" alt="Ajuda">
+                        </a>
+                    </fieldset>
+                    <fieldset class="nivel_01">
+                        <legend>Dados para o sistema Riocard Mais</legend>
+                        <table class="formulario1 com_ajuda" cellspacing="0">
+                            <tbody><tr>
+                                <td>
+                                    <label>Login</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="login" maxlength="15" value="teste" class="login">
+                                </td>
+                                <td>
+                                    <span>
+                                        
+                                    </span>
+                                    <span class="instrucao">
+                                        Mínimo de 6 caracteres. Máximo de 15 caracteres.
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </fieldset>
+                    <fieldset class="nivel_01 dados_comprador">
+                        <legend>
+                            Dados do Comprador
+                            
+                                
+                                    <img src="dadosdocomprador_arquivos/img_info.png" title="Para garantir que os dados estejam corretos, usamos automaticamente as informações do documento informado para completar o cadastro, por isso você não pode alterar estes campos.">
+                                
+                            
+                        </legend>
+                        <table class="formulario2" cellspacing="0">
+                            <tbody><tr>
+                                <td class="labels">
+                                    <label>
+                                          Nome 
+                                    </label>
+                                </td>
+                                <td>
+                                    
+                                        
+                                        
+                                            <input type="text" name="razaoSocial" maxlength="60" size="61" value="COMPRADOR TESTE" readonly="readonly" style="background-color: #D4D0C8; border: 1px solid #AAB8C6;" class="cem_por_cento">
+                                        
+                                    
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>
+                                          Nome a ser Impresso no Cartão 
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="nomeFantasia" maxlength="60" size="61" value="COMPRADOR TESTE" class="com_ajuda tamanho_medio"> 
+                                </td>
+                            </tr>
+                            
+                                <tr>
+                                    <td class="labels">
+                                        <label>Data de Nascimento *</label>
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                            
+                                                <input type="text" name="dtNasctoDia" maxlength="2" value="06" onkeyup="jumpToNextField( 'dtNasctoDia', 'dtNasctoMes'); removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" readonly="readonly" id="dtNasctoDia" style="background-color: #D4D0C8; border: 1px solid #AAB8C6;" class="dia_mes">&nbsp;/&nbsp;
+                                                <input type="text" name="dtNasctoMes" maxlength="2" value="07" onkeyup="jumpToNextField( 'dtNasctoMes', 'dtNasctoAno'); removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" readonly="readonly" id="dtNasctoMes" style="background-color: #D4D0C8; border: 1px solid #AAB8C6;" class="dia_mes">&nbsp;/&nbsp;
+                                                <input type="text" name="dtNasctoAno" maxlength="4" value="1999" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" readonly="readonly" id="dtNasctoAno" style="background-color: #D4D0C8; border: 1px solid #AAB8C6;" class="ano">
+                                            
+                                        
+                                        <span class="instrucao"> dd/mm/aaaa</span>
+                                        <span>
+                                            
+                                            
+                                                <label style="padding-left: 0px; color: red"> </label>
+                                            
+                                        </span>
+                                    </td>
+                                </tr>
+                            
+                              
+                        </tbody></table>
+                        <fieldset class="nivel_02 e-mail">
+                            <legend>E-mail</legend>
+                             
+                                <div id="emailDiv">
+                                    <p>
+                                            <input type="text" name="email" maxlength="60" size="61" value="teste@gmail.com" id="email" class="cem_por_cento">
+                                    </p><div id="email_valido" class="aviso aviso_sucesso" style="display:none">
+                                        <h4>Este e-mail possui um formato válido</h4>
+                                    </div>
+                                    <div id="email_invalido" class="aviso aviso_erro" style="display:none;">
+                                        <h4>Este e-mail não possui um formato válido</h4>
+                                    </div>
+                                    <p></p>
+                                    <p>
+                                        
+                                    </p>
+                                    <div class="revalidar_email clearfix">
+                                        <div class="btn_padrao">
+                                            <div class="bg_esq">
+                                                <div class="bg_dir">
+                                                    <a href="javascript: emailValidation( document.getElementById('email').value );">Revalidar e-mail</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="instrucao">Clique neste botão para verificar se o e-mail informado possui um formato válido.</p>
+                                    </div>
+                                </div>
+                              
+                        </fieldset>
+                        <fieldset class="nivel_02 e-mail">
+                            <legend>E-mail Alternativo</legend>
+                            <div id="emailDiv">
+                                <p>
+                                        <input type="text" name="emailAlternativo" maxlength="60" size="61" value="teste@gmail.com" id="emailAlternativo" class="cem_por_cento">
+                                </p><div id="email_valido_alter" class="aviso aviso_sucesso" style="display:none">
+                                    <h4>Este e-mail possui um formato válido</h4>
+                                </div>
+                                <div id="email_invalido_alter" class="aviso aviso_erro" style="display:none;">
+                                    <h4>Este e-mail não possui um formato válido</h4>
+                                </div>
+                                <p></p>
+                                <p>
+                                    </p><div id="email_invalido_div">
+                                        
+                            </div>
+                            <p></p>
+                            <div class="revalidar_email clearfix">
+                                <div class="btn_padrao">
+                                    <div class="bg_esq">
+                                        <div class="bg_dir">
+                                            <a href="javascript: emailAlterValidation( document.getElementById('emailAlternativo').value );">Revalidar e-mail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="instrucao">Clique neste botão para verificar se o e-mail informado possui um formato válido.</p>
+                            </div>
+                        </div></fieldset>
+                        <div id="emailDiv">
+                            <p>
+                                <input type="checkbox" name="autorizaEmails" value="on" checked="checked" class="checkbox">
+
+                                <label>Você autoriza o recebimento de e-mails informativos sobre o Riocard Mais.</label>
+                            </p>
+                        </div>
+                    </fieldset>
+                    <fieldset class="nivel_01 endereco">
+                        <legend>Endereço</legend>
+                        <div id="cep_erro" class="aviso aviso_erro" style="display:none">
+                            <h4 id="msg_cep_erro"></h4>
+                        </div>
+                        <table class="formulario2" cellspacing="0">
+                            <tbody><tr>
+                                <td class="labels">
+                                    <label>CEP</label>
+                                </td>
+                                <td>
+                                    <div class="campos_cep">
+                                        <input type="text" name="cep" maxlength="5" value="XXXXX" onkeyup="jumpToNextField( 'cep', 'cepDig' );" onkeypress="return onlyNum(event);" onchange="esconderBotaoEndereco();limparCamposEndereco();" onblur="removeNonNumberCharacters(this);" id="cep" style="width: 40px" class="cep1">
+                                        <label>-</label>
+                                        <input type="text" name="cepDig" maxlength="3" value="XXX" onkeypress="return onlyNum(event);" onchange="esconderBotaoEndereco();limparCamposEndereco();" onblur="removeNonNumberCharacters(this);" id="cepDig" style="width: 30px" class="cep2">
+                                    </div>
+                                    <div class="btn_padrao">
+                                        <div class="bg_esq">
+                                            <div class="bg_dir">
+                                                <a href="javascript: listarEnderecos(document.getElementById('cep').value, document.getElementById('cepDig').value );">Localizar endereço</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn_padrao">
+                                        <div class="bg_esq">
+                                            <div class="bg_dir" id="trocaEndereco" style="display:none">
+                                                <a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                            </a></div><a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                        </a></div><a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                    </a></div><a href="javascript:showLightboxEnd(document.conteudoLBCEP);" id="lTrocaEndereco">
+                                    
+                                </a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td><td>
+                                    <div id="aguarde" class="aguarde" style="display:none">
+                                        <h4>Aguarde...</h4>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Endereço</label>
+                                </td>
+                                <td>
+                                    <select name="tpEndereco" id="tpEndereco"><option value="Rua" selected="selected">Rua</option> <option value="Avenida">Av.</option> <option value="Travessa">Travessa</option> <option value="Conjunto">Conjunto</option> <option value="Outros">Outros</option></select> <input type="text" name="endereco" maxlength="60" size="61" value="RUA ARCOVERDE" id="endereco" class="endereco_campo"> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Número</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="numero" maxlength="8" size="9" value="31" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters(this);" id="numero" class="numero">
+                                    <label class="label_complemento">Complemento*</label>
+                                    <input type="text" name="complemento" maxlength="30" size="31" id="complemento" class="complemento"> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Bairro</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="bairro" maxlength="40" size="41" value="teste" id="bairro" class="bairro_cidade"> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Cidade</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="cidade" maxlength="50" size="51" value="cidade teste" id="cidade" class="bairro_cidade"> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Estado</label>
+                                </td>
+                                <td>
+                                    <select name="estado" id="estado"><option value="AC">
+                                            AC
+                                        </option>
+                                       
+                                        <option value="AL">
+                                            AL
+                                        </option>
+                                       
+                                        <option value="AM">
+                                            AM
+                                        </option>
+                                       
+                                        <option value="AP">
+                                            AP
+                                        </option>
+                                       
+                                        <option value="BA">
+                                            BA
+                                        </option>
+                                       
+                                        <option value="CE">
+                                            CE
+                                        </option>
+                                       
+                                        <option value="DF">
+                                            DF
+                                        </option>
+                                       
+                                        <option value="ES">
+                                            ES
+                                        </option>
+                                       
+                                        <option value="GO">
+                                            GO
+                                        </option>
+                                       
+                                        <option value="MA">
+                                            MA
+                                        </option>
+                                       
+                                        <option value="MG">
+                                            MG
+                                        </option>
+                                       
+                                        <option value="MS">
+                                            MS
+                                        </option>
+                                       
+                                        <option value="MT">
+                                            MT
+                                        </option>
+                                       
+                                        <option value="PA">
+                                            PA
+                                        </option>
+                                      
+                                        <option value="PB" selected="selected">
+                                            PB
+                                        </option>
+                                        
+                                        <option value="PE">
+                                            PE
+                                        </option>
+                                       
+                                        <option value="PI">
+                                            PI
+                                        </option>
+                                       
+                                        <option value="PR">
+                                            PR
+                                        </option>
+                                       
+                                        <option value="RJ">
+                                            RJ
+                                        </option>
+                                       
+                                        <option value="RN">
+                                            RN
+                                        </option>
+                                       
+                                        <option value="RO">
+                                            RO
+                                        </option>
+                                       
+                                        <option value="RR">
+                                            RR
+                                        </option>
+                                       
+                                        <option value="RS">
+                                            RS
+                                        </option>
+                                       
+                                        <option value="SC">
+                                            SC
+                                        </option>
+                                       
+                                        <option value="SE">
+                                            SE
+                                        </option>
+                                       
+                                        <option value="SP">
+                                            SP
+                                        </option>
+                                       
+                                        <option value="TO">
+                                            TO
+                                        </option></select>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </fieldset>
+                    <fieldset class="nivel_01 telefones">
+                        <legend>Telefones de contato</legend>
+                        <table class="formulario2" cellspacing="0">
+                            <tbody><tr>
+                                <td class="labels">
+                                    <label>Telefone</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="dddTelefone" maxlength="2" value="83" onkeyup="jumpToNextField('dddTelefone', 'telefone');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters(this);" id="dddTelefone" style="width: 20px" class="ddd">
+                                    <input type="text" name="telefone" maxlength="9" size="10" value="99880-2020" id="telefone" style="width: 60px">
+                                    <input type="text" name="ramalTelefone" maxlength="4" onkeyup="jumpToNextField('ramalTelefone', 'dddCelular');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters(this);" id="ramalTelefone" style="width: 35px" class="ramal">
+                                    <small class="instrucao">DDD - Número - Ramal, somente números</small>
+                                     
+                                     
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labels">
+                                    <label>Celular</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="dddCelular" maxlength="2" onkeyup="jumpToNextField('dddCelular', 'celular');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters(this);" id="dddCelular" style="width: 20px" class="ddd">
+                                    <input type="text" name="celular" maxlength="9" id="celular" style="width: 60px" class="numero">
+                                    <small class="instrucao">DDD - Número, somente números</small>
+                                    
+                                    
+                                    
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </fieldset>
+                    <input type="hidden" name="inExibeOutrosProd" value="0">
+                        
+                            
+                            
+                                <a href="javascript: submitForm();" class="btn_gravar_master">
+                                    <img src="dadosdocomprador_arquivos/btn_gravar_master.gif" alt="Gravar">
+                                </a>
+                                <a href="javascript: cancelar();" class="btn_cancelar_master">
+                                    <img src="dadosdocomprador_arquivos/btn_cancelar_master.gif" alt="Cancelar">
+                                </a>
+                            
+                        
+                    </form>
+                </div>
+                <div class="col_secundaria clearfix">
+                    <div class="termo">
+                        <img src="dadosdocomprador_arquivos/imagem_download.png" alt="" width="57" height="43">
+                        <h3><strong><a href="https://www.cartaoriocard.com.br/vt2/comprador/comprador/termo_comodato.jsp">Termo de Comodato</a></strong></h3>
+                        <p>
+                            <a href="https://www.cartaoriocard.com.br/vt2/comprador/comprador/termo_comodato.jsp">Clique aqui e visualize o Termo de Comodato, documento que rege o uso do cartão Vale-Transporte.</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="menu_rodape clearfix">
+  <h3><span>Comprador</span></h3>
+  <ul>
+    <li id="menuRodapeItem01" class="active"><a href="./dadosdocomprador.html">Dados do Comprador</a></li>
+    <li id="menuRodapeItem02"><a href="./TrocaSenha.html">Alterar Senha</a></li>
+    <li id="menuRodapeItem04"><a href="./VisualizarTermoComodato.html">Termo de Comodato</a></li>
+    <li id="menuRodapeItem08"><a href="./VisualizarTermoDeUso.html">Termo de Uso</a></li>
+    <li id="menuRodapeItem05"><a href="./TransferenciaBolsaUsuario.html">Transferência de Bolsa de Crédito</a></li>
+   	
+		
+	 			  	  		  
+ 	 
+      <li id="menuRodapeItem05"><a href="./MultaDesassociacao.html">Serviço Extraordinário de Desassociação</a></li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('DadosComprador') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('TrocaSenha') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('Comodato') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('TransferenciaBolsaUsuario') != -1) {
+		document.getElementById('menuRodapeItem05').className = 'active';
+	} else if (document.URL.indexOf('Vip') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('VipVisulizarContrato') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('FaturaPesquisaFiltro') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+	
+	
+</script>
+            </div>
+        </div>
+        <div id="enderecoBoxDiv" class="enderecoBox" style="display: none;">
+            <div style="width: 100%; z-index: 90; height: 10%">
+                <h1 style="font-size: 14px" id="tituloTabelaEndereco"></h1>
+            </div>
+            <div id="tabelaEnderecos" style="width: 100%;height: 80%;overflow-x:hidden;overflow-y:scroll;"></div>
+            <br>
+            <br>
+            <p class="buttons">
+                <a href="javascript: hideLightbox();">
+                    <img src="dadosdocomprador_arquivos/cancelar.gif" alt="Cancelar">
+                </a>
+            </p><p>
+        </p></div>
+        
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="dadosdocomprador_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+    
+    <script>
+        $(function () {
+            $('#telefone').focusout(function () {
+                var phone, element;
+                element = $(this);
+                element.unmask();
+                phone = element.val().replace(/\D/g, '');
+                if (phone.length > 8) {
+                    element.mask("99999-999?9");
+                } else {
+                    element.mask("9999-9999?9");
+                }
+            }).trigger('focusout');
+
+        });
+
+        $(function () {
+            $('#celular').focusout(function () {
+                var phone, element;
+                element = $(this);
+                element.unmask();
+                phone = element.val().replace(/\D/g, '');
+                if (phone.length > 8) {
+                    element.mask("99999-999?9");
+                } else {
+                    element.mask("9999-9999?9");
+                }
+            }).trigger('focusout');
+
+        });
+
+        $(function () {
+            $('#fax').focusout(function () {
+                var phone, element;
+                element = $(this);
+                element.unmask();
+                phone = element.val().replace(/\D/g, '');
+
+                element.mask("9999-9999");
+            }).trigger('focusout');
+        });
+    </script>
+    <script language="javascript" src="dadosdocomprador_arquivos/scripts.js"></script>
+    <!-- DWR declarations2 -->
+    <script type="text/javascript" charset="ISO-8859-15" src="dadosdocomprador_arquivos/RioCardVT.js"></script>
+    <script type="text/javascript" src="dadosdocomprador_arquivos/engine.js"></script>
+    <script type="text/javascript" src="dadosdocomprador_arquivos/util.js"></script>
+       
+
+
+</body></html>

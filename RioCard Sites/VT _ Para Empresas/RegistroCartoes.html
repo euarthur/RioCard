@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"><head>
+        <title>Riocard Mais Vale-Transporte</title>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+        <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+        <link href="RegistroCartoes_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="RegistroCartoes_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="RegistroCartoes_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="RegistroCartoes_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="RegistroCartoes_arquivos/comum.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="RegistroCartoes_arquivos/regsitrar_vale_rapido.css">
+        <script language="JavaScript" src="RegistroCartoes_arquivos/lightboxAjuda.js"></script>
+        <script language="javascript" src="RegistroCartoes_arquivos/scripts.js"></script>
+        <script>
+            String.prototype.trim = function () {
+                return this.replace(/(?:^\s+|\s+$)/g, "");
+            }
+
+            function handleSelectButtons() {
+                var table = document.getElementById('listTable');
+                var inputs = table.getElementsByTagName('input');
+
+                var allMarked = true;
+                for (var i = 0; i < inputs.length; i++)
+                    if (inputs[i].type == 'checkbox' && inputs[i].checked != true)
+                        allMarked = false;
+
+                if (allMarked) {
+                    document.getElementById('deselecionarTop').style.display = 'inline';
+                    document.getElementById('selecionarTop').style.display = 'none';
+                    document.getElementById('deselecionarBottom').style.display = 'inline';
+                    document.getElementById('selecionarBottom').style.display = 'none';
+                } else {
+                    document.getElementById('deselecionarTop').style.display = 'none';
+                    document.getElementById('selecionarTop').style.display = 'inline';
+                    document.getElementById('deselecionarBottom').style.display = 'none';
+                    document.getElementById('selecionarBottom').style.display = 'inline';
+                }
+            }
+
+            function selecionarTodas() {
+                var table = document.getElementById('listTable');
+                if (table == null) return;
+                var inputs = table.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++)
+                    if (inputs[i].type == 'checkbox')
+                        inputs[i].checked = 'checked';
+
+                handleSelectButtons();
+            }
+
+            function deselecionarTodas() {
+                var table = document.getElementById('listTable');
+                if (table == null) return;
+                var inputs = table.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++)
+                    if (inputs[i].type == 'checkbox')
+                        inputs[i].checked = false;
+
+                handleSelectButtons();
+            }
+
+            function addBeforeSubmit(i) {
+                var nrCartao = document.getElementById('nrCartao' + i);
+                var nrChipCartao = document.getElementById('nrChipCartao' + i);
+                var nrCartoes = document.getElementById('nrCartoes');
+                var nrChipsCartoes = document.getElementById('nrChipsCartoes');
+
+                if (!(nrCartoes.value.trim().length > 0)) {
+                    nrCartoes.value = nrCartao.value.trim();
+                } else {
+                    nrCartoes.value += ', ' + nrCartao.value.trim();
+                }
+
+                if (!(nrChipsCartoes.value.trim().length > 0)) {
+                    nrChipsCartoes.value = nrChipCartao.value.trim();
+                } else {
+                    nrChipsCartoes.value += ', ' + nrChipCartao.value.trim();
+                }
+            }
+
+            function submit() {
+                var form = document.getElementById('form');
+                form.submit();
+            }
+
+            function check(checkId) {
+                if (checkId != null) {
+                    var checkBox = document.getElementById(checkId);
+                    if (checkBox)
+                        checkBox.checked = true;
+                }
+            }
+        </script>
+    </head>
+    <body class="cartoes">
+        
+        <div id="site" class="clearfix">
+            
+	<a name="topo"></a>
+
+
+
+
+            <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+<script language="javascript">
+
+	 if (document.URL.indexOf('cartoesVtr') != -1) {
+		 document.getElementById('menuRodapeItem05').className = 'active';		 
+	} else if (document.URL.indexOf('consulta') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('desbloquear') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('cancelamento') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('registro') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	} else if (document.URL.indexOf('guiasVtr') != -1) {
+		document.getElementById('menuRodapeItem06').className = 'active';
+	} else if (document.URL.indexOf('Migracao') != -1) {
+		document.getElementById('menuRodapeItem07').className = 'active';
+	}
+</script>
+
+        </div>
+        
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="RegistroCartoes_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+    
+    <script language="javascript">
+        //initCheckBoxes();
+    </script>
+
+</body></html>

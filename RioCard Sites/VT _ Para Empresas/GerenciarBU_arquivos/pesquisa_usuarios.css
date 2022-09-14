@@ -1,0 +1,36 @@
+.formulario_pesquisa {
+    width: 100%;   
+}
+
+.formulario_pesquisa tr td {
+    padding: 3px;
+    padding-top:0px;
+    vertical-align: top;
+}
+
+.formulario_pesquisa tr td * {
+    vertical-align: top;
+    margin:0px;
+    padding:0px;
+}
+
+.tpFiltroUsuario {
+    width: 105px;
+}
+
+.palavraChave {
+    width: 160px;    
+}
+
+.palavraDe {
+    width: 160px;    
+}
+
+.palavraAte {
+    width: 160px;    
+}
+
+.status {
+    width: 100px;   
+}
+

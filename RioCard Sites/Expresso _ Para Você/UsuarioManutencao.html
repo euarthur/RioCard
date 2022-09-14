@@ -1,0 +1,361 @@
+<!-- Variaveis criadas para Cria��o da nova pagina -->
+<!-- Cria os parametros para a pesquisa -->
+<html><head><style>
+    table tbody tr td {
+        padding: 0px;
+        text-align: center
+    }
+
+    .banner{
+        z-index:11; position:absolute; width:448px;
+        left: 50%;top: 50%;transform: translate(-50%, -50%);
+    }
+</style>
+
+    <title>Consulta Usuário</title>
+
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+    <link rel="stylesheet" href="UsuarioManutencao_arquivos/homeestilos.css">
+    <link id="rel" rel="stylesheet" href="UsuarioManutencao_arquivos/riocard.css">
+<script language="javascript">
+
+    function confirma(nrMatric, nmUsuar, reference) {
+
+        if (confirm("Deseja excluir usu\u00E1rio ?\n - matr\u00EDcula: " + nrMatric + "\n - nome: " + nmUsuar)) {
+            form.setAttribute("action", reference + "/comprador/usuario/UsuarioManutencao");
+
+            var hiddenField1 = document.createElement("input");
+            hiddenField1.setAttribute("type", "hidden");
+            hiddenField1.setAttribute("name", "action");
+            hiddenField1.setAttribute("value", "excluir");
+
+            form.appendChild(hiddenField1);
+            document.body.appendChild(form);
+            form.submit();
+
+        }
+        else {
+            return false;
+        }// fim if
+    }// fim confirma
+
+    function confirmaAlteracao(reference) {
+        form.setAttribute("action", reference + "/comprador/usuario/UsuarioManutencao");
+
+        var hiddenField1 = document.createElement("input");
+        hiddenField1.setAttribute("type", "hidden");
+        hiddenField1.setAttribute("name", "action");
+        hiddenField1.setAttribute("value", "altera");
+
+        form.appendChild(hiddenField1);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function hideBannerCompradorBloqueado(){
+        document.getElementById('dark').style.display = 'none';
+        document.getElementById('atencaoCompradorBloqueado').style.display = 'none';
+    }
+
+    function showBannerCompradorBloqueado(){
+        document.getElementById('dark').style.display = 'block';
+        document.getElementById('atencaoCompradorBloqueado').style.display = 'block';
+    }
+
+</script></head>
+
+
+
+<body>
+
+
+
+<br>
+
+
+
+<table width="80%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td>
+
+
+            <div class="menu_esq">
+                <div class="menu_dir">
+                    <div class="menu">
+                        <ul>
+                            <li style="width:10%;"><a href="./Abertura.html">Inicio</a></li>
+                            <li style="width:15%;"><a href="./Comprador.html">Comprador</a></li>
+                            <li style="width:12%;"><a href="./GerenciarUsuario.html">Usuários</a></li>
+                            <li style="width:10%;"><a href="./Cartoes.html">Cartões</a></li>
+                            <li style="width:13%;"><a href="./PrePedido.html">Pedidos</a></li>
+                            <li style="width:14%;"><a href="./Relatorios.html">Relatórios</a></li>
+                            <li style="width:16%;"><a href="./MapadoSite.html">Mapa do Site</a></li>
+                            <li style="width:9%;"><a href="">Sair</a></li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="top" align="center">
+            <div id="forms">
+                <fieldset>
+                    <legend class="titulo">Manutenção de Usuário</legend>
+                    <div class="subtitulo">
+                        Consulta Usuário
+
+                        
+
+                        
+                    </div>
+
+                    
+                    <div class="subtitulo">
+                        <font color="red"><b></b></font>
+                    </div>
+                    
+
+                    <form name="form" method="post" action="UsuarioManutencao">
+                        
+                        <br><table width="96%" cellspacing="0" cellpadding="4" border="0" align="center">
+
+                            
+                            <tbody><tr align="center">
+                                <td>
+                                    <table id="grid_relat" width="100%" cellspacing="0" cellpadding="2" border="0" align="center">
+                                        <tbody><tr>
+                                            <td style="text-align: left" valign="top">Identificação do Usuário
+                                                <br>
+                                                <strong style="font-weight: bold">01             
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">Nome
+                                                <br><strong style="font-weight: bold">Comprador Teste
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">
+
+                                                <br>
+                                                <strong style="font-weight: bold">
+
+                                                </strong>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+
+
+
+
+
+                                            <td style="text-align: left" valign="top">CPF
+                                                <br>
+                                                <strong style="font-weight: bold">123.456.789-10
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">Data de nascimento
+                                                <br>
+                                                
+                                                <strong style="font-weight: bold">
+                                                    15/07/1989
+                                                </strong>
+                                                
+                                            </td>
+                                            <td style="text-align: left" valign="top">
+
+                                                <br>
+                                                <strong style="font-weight: bold">
+
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left" valign="top">Telefone
+                                                <br>
+                                                <strong style="font-weight: bold">
+                                                    (83)
+                                                    &nbsp;9123-0831
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">Celular
+                                                <br>
+                                                <strong style="font-weight: bold">
+                                                    (83)
+                                                    &nbsp;988-8880
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">E-mail
+                                                <br>
+                                                
+                                                <strong style="font-weight: bold">
+                                                    comprador@teste.com
+                                                </strong>
+                                                
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: left" valign="top">Valor de uso diário
+                                                <br>
+                                                <strong style="font-weight: bold">
+                                                    
+                                                    100,00
+                                                    
+                                                </strong>
+                                            </td>
+                                            <td colspan="2" style="text-align: left" valign="top">Outras informações
+                                                <br>
+                                                <strong style="font-weight: bold">
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left" valign="top">
+                                                Cidade da Recarga<br>
+                                                <strong style="font-weight: bold">
+                                                    Rio de Janeiro
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">
+                                                Rede de Recarga<br>
+                                                <strong style="font-weight: bold">
+                                                    Ônibus
+                                                </strong>
+                                            </td>
+                                            <td style="text-align: left" valign="top">Destino da recarga
+                                                <br>
+                                                
+                                                
+                                                
+
+                                                
+                                                
+                                                
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left" valign="top">Status
+                                                <br>
+                                                
+                                                <strong style="font-weight: bold">Ativo</strong>
+                                                
+
+                                            </td>
+                                            
+                                            <td style="text-align: left" valign="top">Data do cadastramento
+                                                <br>
+                                                
+                                                <strong style="font-weight: bold">
+                                                    15/07/2022
+                                                </strong>
+                                                
+                                            </td>
+                                            <td style="text-align: left" valign="top">Última alterção
+                                                <br>
+                                                <strong style="font-weight: bold">
+                                                    
+                                                    21/07/2022
+                                                    &nbsp;
+                                                </strong>
+                                            </td>
+                                            
+                                        </tr>
+
+                                        
+                                        
+                                    </tbody></table>
+                                    <br>
+                                    <table width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
+                                        
+                                        <tbody><tr bgcolor="#dfe6eb" align="center">
+                                            <td style="text-align: center"><strong style="font-weight: bold">Via</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Cartão</strong></td>
+                                            
+                                            <td style="text-align: center"><strong style="font-weight: bold">Tipo de Cartão</strong></td>
+                                            
+                                            <td style="text-align: center"><strong style="font-weight: bold">Produto</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Modelo</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Bilhete Único</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Data da Associação</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Data do Recebimento</strong></td>
+                                            <td style="text-align: center"><strong style="font-weight: bold">Data da Desassociação</strong></td>
+                                        </tr>
+                                        
+                                        
+                                        
+
+                                        
+                                        	
+                                        
+                                        
+                                        <tr>
+                                            <td style="text-align: center">1</td>
+                                            <td style="text-align: center">Solicitado</td>
+
+                                            
+                                            <td style="text-align: left">
+                                                
+                                                Cartão Personalizado Usuário
+                                                
+                                            </td>
+                                            
+                                            <td style="text-align: center">Cartão Expresso</td>
+                                            <td style="text-align: center">Expresso</td>
+                                            <td style="text-align: center"></td>
+                                            <td colspan="1"></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan="9">&nbsp;</td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                            
+                            <!-- Botoes -->
+                            <tr>
+
+                                <td colspan="10" height="27" align="center">
+                                    <input type="button" value="Voltar" class="button btn-company">
+
+                                    
+                                    <input type="button" value="Alterar" class="button btn-company">
+                                    
+
+
+
+                                    
+
+                                    
+
+
+                                </td>
+                            </tr>
+                            
+                        </tbody></table>
+                        <br>
+
+                        <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="UsuarioManutencao_arquivos/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3201662-2");
+	pageTracker._trackPageview();
+</script>
+                    </form>
+
+                </fieldset>
+            </div>
+
+        </td>
+    </tr>
+</tbody></table>
+
+
+</body></html>

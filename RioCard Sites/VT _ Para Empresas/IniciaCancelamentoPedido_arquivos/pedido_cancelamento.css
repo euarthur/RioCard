@@ -1,0 +1,42 @@
+/* CSS Document */
+
+.instrucao {
+	font-size: 10px;
+	color: #666666;
+	white-space: nowrap;
+}
+
+.instrucao1 {
+	margin-right: 10px;
+}
+
+input.nome {
+	width: 100px;
+}
+
+select.select_nome {
+	width: 210px;
+}
+
+.resultado_nr_cartao table {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+.vlr_cor {
+	font-size: 12px;
+}
+
+.bolsa_credito{
+    display:none;
+}
+
+table.fieldsets{
+    width:60%;
+}
+
+td.qt_cartoes{
+    width:40%;
+}
+

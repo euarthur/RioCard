@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="pt"><head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Riocard Mais Vale-Transporte</title>
+	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+	<link href="NovoUsuario_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="NovoUsuario_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="NovoUsuario_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="NovoUsuario_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="NovoUsuario_arquivos/comum.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="NovoUsuario_arquivos/home.css" media="all">
+	<link rel="stylesheet" type="text/css" href="NovoUsuario_arquivos/dados_usuarios.css">
+	<!-- a coluna secundaria usa elementos que estao na Home da area de Visitantes -->
+	<script type="text/javascript" src="NovoUsuario_arquivos/lightboxAjuda.js"></script>
+	<script type="text/javascript" src="NovoUsuario_arquivos/lightbox.js"></script>
+	<script src="NovoUsuario_arquivos/jquery-1.8.0.min.js"></script>
+	<script src="NovoUsuario_arquivos/jquery.maskedinput.js" type="text/javascript"></script>
+	<script type="text/javascript" src="NovoUsuario_arquivos/script_usuario.js"></script>
+	<script type="text/javascript">
+
+
+        $(document).ready(function() {
+            
+			showCadastroNomeMenor();
+        });
+
+
+		var mostrarCheckHabilitarBilheteUnicoCarioca = false;	
+	
+		function habilitarDadosPessoais( habilita ) {
+			var nrDddTel = document.getElementById("nrDddTel");
+			var nrTel = document.getElementById("nrTel");
+			var nrDddCelular = document.getElementById("nrDddCelular");
+			var nrCelular = document.getElementById("nrCelular");
+			var txEmail = document.getElementById("txEmail");
+
+			if (document.getElementById("tpCartaoPersonalizado").checked == true ||
+				document.getElementById("imprCartao").value == 4) {
+				nrDddTel.disabled = false;
+				nrTel.disabled = false;
+				nrDddCelular.disabled = false;
+				nrCelular.disabled = false;
+				txEmail.disabled = false;	
+
+				var dados = document.getElementById("dados");
+				dados.checked = true;
+
+				entrou = "2";
+				
+			} else {
+				if (habilita == true) {
+					nrDddTel.disabled = false;
+					nrTel.disabled = false;
+					nrDddCelular.disabled = false;
+					nrCelular.disabled = false;
+					txEmail.disabled = false;
+				} else {
+					nrDddTel.disabled = true;
+					nrTel.disabled = true;
+					nrDddCelular.disabled = true;
+					nrCelular.disabled = true;
+					txEmail.disabled = true;
+					nrDddTel.value = '';
+					nrTel.value = '';
+					nrDddCelular.value = '';
+					nrCelular.value = '';
+					txEmail.value = '';
+				}							
+			}			
+		}	
+
+		function cartaoEscolhido( valor )
+		{
+			if (valor == 4)
+			{
+				escolherCartaoPersonalizado( true );
+			}
+		}
+		
+		function escolherCartaoPersonalizado( escolher )
+		{
+			var dados = document.getElementById("dados");			
+			
+			dados.checked = escolher;			
+			dados.onclick();
+		}
+
+		function carregar()
+		{
+			carregarCartao(document.getElementById("nrCpf").value);	
+			
+				
+					
+											
+						
+							habilitarDadosPessoais( false );
+						
+					
+					
+						
+					
+				
+				
+			
+		}		
+
+		function reiniciarEscolhaMidia(){
+			document.getElementById('escolhaCdMpmto13').checked  = false;
+			document.getElementById('escolhaCdMpmto7').checked = false;
+			document.getElementById('escolhaCdMpmto10').checked = false;
+            document.getElementById('escolhaCdMpmto172').checked  = false;
+		}
+
+		function incluiUsuario() {
+		  document.getElementById('formDadosUsuario').submit();
+		}		
+
+       function verificaCheckTermoDeUso(event){
+    	  var termoUso = document.getElementById("termoUso").checked;
+   	     
+         if(event == true){
+
+          termoUso.checked = true;      
+         }else{
+             
+          termoUso.checked = false;
+         }
+       }
+
+       function trocaTermosAceite(codModelo) {
+      		var termo = document.getElementById("termoUso");
+
+      		if (codModelo) {
+      			var codModeloInt = parseInt(codModelo);
+      			switch (codModeloInt) {
+      				case 7:
+      					document.getElementById("iframeTermo").src = "termo_adesao_BUIVT.jsp";
+   		   				termo.style.display = "block";
+      					break;
+      				case 10:
+      					document.getElementById("iframeTermo").src = "termo_adesao_BUCVT.jsp";
+   		   				termo.style.display = "block";
+      					break;
+      				default:
+   		   				termo.style.display = "none";
+   		   				break;
+      			}
+      		} else {
+      			termo.style.display = "none";
+      		}
+      	}
+
+        function showAvisoUsuario() {
+            document.getElementById("dark").style.display="block";
+            document.getElementById("avisoAdministrador").style.display="block";
+        }
+
+        function escondeBannerUsuario(){
+            document.getElementById('avisoAdministrador').style.display = 'none';
+            document.getElementById('dark').style.display = 'none';
+        }
+
+
+	</script>
+</head>
+
+
+<!-- obterDadosAPartirDoCpf();habilitarCampos();  -->
+
+<body class="usuarios" onload="displayField(); carregar(); initLightbox(); trocaTermosAceite('');"><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div>
+
+
+<div id="site" class="clearfix">
+  
+	<a name="topo"></a>
+
+
+
+
+  <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="https://crr.sophieagent.com/" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+  <div class="conteudo_interna">
+    <div id="titulo_pag" class="titulo_pag">
+      <div class="borda_esq">
+        <div class="borda_dir">
+          <h1>Incluir usuário</h1>
+        </div>
+      </div>
+    </div>
+    
+    
+
+	  
+
+    
+	
+
+	
+	
+
+	  <div id="dark" style="position:absolute;z-index:900;width:100%;height:150%;background: url('../../comum/imagens/overlay.png');opacity:0.8;-moz-opacity: 0.65;filter: alpha(opacity=65);display:none;top:0;left:0;")>
+		  &nbsp;
+	  </div>
+	  <div id="avisoAdministrador" onclick="escondeBannerUsuario()" style="display:none;  width: 442px; height: 382px; position: absolute; top: 60%; left: 60%;margin-top:-203px;margin-left:-318px;z-index:999;background:url(../usuarios/imagens/incluir_usuario_vt.png);">
+		  &nbsp;
+	  </div>
+
+
+    <div class="col_principal clearfix">
+	<form name="incluirUsuarioForm" id="formDadosUsuario" method="post" action="/vt2/comprador/usuarios/IncluiUsuario.do">
+		<input type="hidden" name="nrCartaoSc" value="" id="nrCartaoSc">
+		<input type="hidden" name="cdCid" value="2" id="cdCid">
+		<input type="hidden" name="cdSeqMpmtoCartao" value="13" id="cdSeqMpmtoCartao">
+
+		<div class="bl_instrucao clearfix">
+			<p class="instrucao">
+					* Campos obrigatórios<br>
+					** Campos obrigatórios para cartões do tipo personalizado usuário.
+
+			</p>
+		</div>
+		 <fieldset class="nivel_01 matricula">
+			<legend>Matrícula *</legend>
+			  <table class="formulario1 com_ajuda" cellspacing="0">
+				<tbody><tr>
+				  <td>
+				  	<input type="text" name="nrMatric" maxlength="15">
+  				    
+				  </td>
+				</tr>
+			  </tbody></table>
+			  
+			  <a href="javascript:ajuda('u04c01t01');" class="btn_ajuda"><img src="NovoUsuario_arquivos/btn_ajuda.gif" alt="Ajuda"></a>
+      	</fieldset>
+      	<a name="cpfembranco">
+		<fieldset class="nivel_01">
+	      	<legend>Dados Pessoais</legend>
+	      	<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr id="nome" style="display:table-row;">
+					<td class="labels">
+						<label>Nome *</label>
+					</td>
+					<td colspan="2" width="470">
+						<input type="text" name="nmUsuar" maxlength="60" class="cem_por_cento">
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="labels"><label>CPF *</label></td>
+					<td>
+						<input type="text" name="nrCpf" maxlength="11" size="12" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this ); carregarCartao( this.value ); hideNmUsuar(this);" id="nrCpf">
+					
+					</td>
+					<td>
+												
+						<p id="msgCpfSemCartao" style="color: #00366B; display: none;">Não existe cartão personalizado disponível associado ao cpf.</p>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="4">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+	  				    Obrigatório Cartão Personalizado Usuário.
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="labels"><label>Data de Nascimento *</label></td>
+					<td>
+						<input type="text" name="dtNasctoDia" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField( 'dtNasctoDia', 'dtNasctoMes');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="dtNasctoDia" style="padding-right: 3px" class="dia_mes">&nbsp;/&nbsp;
+						<input type="text" name="dtNasctoMes" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField( 'dtNasctoMes', 'dtNasctoAno');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="dtNasctoMes" style="padding-right: 3px" class="dia_mes">&nbsp;/&nbsp;
+						<input type="text" name="dtNasctoAno" maxlength="4" onkeyup="removeNonNumberCharacters( this );" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this ); showCadastroNomeMenor();" id="dtNasctoAno" style="padding-right: 3px" class="ano">
+					</td>
+					<td class="instrucao">dd/mm/aaaa</td>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">&nbsp;</td>
+				</tr>
+			</tbody></table>
+			<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td colspan="">&nbsp;</td>
+					<td colspan="3">
+						
+					</td>
+				</tr>
+		  	</tbody></table>
+		  	<br>
+		  	<fieldset class="nivel_02">
+		  		<legend>Escolha seu cartão</legend>
+				<div id="idOpcoesCartao" style="display: block">
+				</div>
+		  		<table class="formulario1" width="100%" cellspacing="0" cellpadding="0" border="0">
+		  			<tbody><tr>
+		  				<td colspan="4">
+		  					&nbsp;
+		  				    		  				
+		  				</td>
+		  			</tr>
+		  		</tbody></table>
+		  		<table class="formulario1" width="100%" cellspacing="0" cellpadding="0" border="0">
+			  		<tbody><tr style="line-height: 25px;">
+						<td style="padding: 0px 5px 0px 15px; margin: 0px; width: 5px;">
+							<input type="radio" name="tpCartao" value="1" onclick="hide('linhaImprCartao', true); hide('escolhaImprCartao', true);
+												  hide('imprCartao', true); trocaTermosAceite(this.value);" id="tpCartaoNovo" class="radio">
+						</td>
+						<td>
+							<label>Novo Cartão</label>
+						</td>
+						<td colspan="2">
+		  				    																		
+						</td>
+					</tr>
+				</tbody></table>
+				<table style="text-align: left; margin: 5px 0px 0px 30px;">
+					<tbody><tr id="linhaImprCartao" style="display: none;">
+						<td><label id="escolhaImprCartao">Tipo:</label></td>
+						<td>
+							<select name="cdImprCartao" onclick="document.getElementById('tpCartaoNovo').checked = true;" onchange="cartaoEscolhido( this.value );" id="imprCartao" style="margin: 0;"><option value="-1" selected="selected">Selecione</option>
+								<option value="2">Cartão Personalizado Empresa</option>
+<option value="4">Cartão Personalizado Usuário</option></select>
+						</td>
+						<td>
+		  				    
+		  				    
+		  				    
+						</td>
+					</tr>
+				</tbody></table>
+				<br>		
+				
+				<div id="tblCartaoPersonalizadoUsuarioExistente" style="display: none">
+				</div>
+		  		<table class="formulario1" width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr style="line-height: 25px;">
+						<td style="padding: 0px 5px 0px 15px; margin: 0px; width: 5px;">
+							<input type="radio" name="tpCartao" value="3" onclick="escolherCartaoPersonalizado( true ); hide('modeloMidia', false); hide('linhaImprCartao', false); hide('imprCartao', false); hide('comboCartoesExistentes', false);" disabled="disabled" id="tpCartaoPersonalizado" class="radio">
+						</td>
+						<td style="width: 200px;">
+							<label>Cartão Personalizado Usuário Existente</label>
+						</td>
+						<td align="left">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<strong><span id="nrCartaoExistente"></span></strong>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span id="stCartaoExistente"></span></td>
+						<td colspan="2">
+						<!-- 
+						<td align="left">
+							
+							<div id="divHash" style="display: none;"> 
+								Senha de ativa��o do cart�o:
+								<input type="text" name="hash" maxlength="10" size="15" value="" id="hash">
+							</div>	
+						</td>
+						-->
+					</td></tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+		  				    																												
+						</td>
+						<td>&nbsp;</td>					
+					</tr>
+					<tr>
+						<td colspan="3" class="instrucao">Só é possível solicitar um novo 
+cartão personalizado usuário, caso não haja nenhum outro cartão com esta
+ personalização associado ao mesmo CPF.</td>
+					</tr>
+				</tbody></table>		  		
+		  	</fieldset>
+			<br>
+
+			<fieldset class="nivel_02">
+	      		<legend>
+					  Compra de Passagem Intermunicipal Rodoviária
+	      		</legend>
+	      		<div>
+					<table class="formulario1 margem_topbot" cellspacing="0" cellpadding="0" border="0">
+						<tbody><tr>
+							<td>
+								<br>
+								<input type="radio" id="desabiliar" name="tpDoli" value="0" checked="checked">&nbsp;&nbsp;Desabilitar
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<br>
+								<input type="radio" id="habilitar" name="tpDoli" value="1">&nbsp;&nbsp;Habilitar
+							</td>						
+						</tr>
+					</tbody></table>
+				</div>
+	      	</fieldset>
+		  	
+		  	<br>
+		  	
+			<fieldset class="nivel_02">
+	      		<legend>
+					<input type="checkbox" name="informarDadosAdicionais" value="sim" onclick="habilitarDadosPessoais( this.checked )" id="dados" style="border: none;">&nbsp;&nbsp;Telefones de Contato
+	      		</legend>
+	      		<div id="box_dados_adicionais" style="display: block;">
+
+					<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+						<tbody><tr>
+							<td class="labels"><label>Telefone</label></td>
+							<td>
+								<input type="text" name="nrDddTel" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField( 'nrDddTel', 'nrTel');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="nrDddTel" class="dia_mes" disabled="disabled">&nbsp;&nbsp;
+								<input type="text" name="nrTel" maxlength="8" size="10" id="nrTel" disabled="disabled">&nbsp;&nbsp;
+							</td>
+							<td class="instrucao">DDD - Telefone, Somente números</td>
+							<td>
+			  				    
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="labels"><label>Celular</label></td>
+							<td>
+								<input type="text" name="nrDddCelular" maxlength="2" onkeyup="removeNonNumberCharacters( this ); jumpToNextField( 'nrDddCelular', 'nrCelular');" onkeypress="return onlyNum(event);" onblur="removeNonNumberCharacters( this );" id="nrDddCelular" class="dia_mes" disabled="disabled">&nbsp;&nbsp;
+								<input type="text" name="nrCelular" maxlength="8" size="10" id="nrCelular" disabled="disabled">&nbsp;&nbsp;
+							</td>
+							<td class="instrucao">DDD - Celular, Somente números</td>
+							<td>
+			  				    
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">&nbsp;</td>
+						</tr>							
+						<tr>
+							<td class="labels"><label>E-mail</label></td>
+							<td colspan="2">
+								<input type="text" name="txEmail" maxlength="60" id="txEmail" class="cem_por_cento" disabled="disabled">								
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td colspan="2">
+			  				    							
+							</td>
+						</tr>						
+					</tbody></table>
+				</div>
+	      	</fieldset>
+		</fieldset>
+      
+      
+		<fieldset class="nivel_01" style="margin-bottom: 0px;">
+	    	<legend>Dados para Carga</legend>
+	       	<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td class="labels"><label>Valor de uso diário</label></td>
+					<td class="labels"><label>R$</label></td>
+					<td>
+						<input type="text" name="vlUsoDiario" maxlength="5" onkeyup="removeNonNumberOrCommaCharacters(this);" onkeypress="return onlyNumAndComma(this, event);" onchange="removeNonNumberOrCommaCharacters(this);" onblur="mascararMoeda(this);" id="vlUsoDiario" class="vlr_cor">
+					</td>
+					<td class="instrucao">Use duas casas decimais. Ex:5,50 ou 5,00</td>
+				</tr>
+				<tr>
+					<td>
+					</td><td colspan="3">
+	  				    											
+					</td>
+				</tr>
+			</tbody></table>
+			<fieldset class="nivel_03">  
+				<legend>Rede da Primeira Carga</legend>
+				<table cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr><td>&nbsp;</td></tr>
+					<tr align="left">						
+						<td class="labels" align="left"><label>Rede *</label>&nbsp;&nbsp;</td>
+						<td align="left">
+							<select name="cdRedeRecarg" id="redeRecarga"><option value="-1" selected="selected">Selecione</option>
+								<option value="1">Ônibus</option>
+<option value="6">Vans</option>
+<option value="3">Trens</option>
+<option value="2">Metrô</option></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td><td>
+		  				    						
+						</td>						
+					</tr>
+				</tbody></table> 
+			</fieldset> 
+			<table class="formulario1 cem_por_cento" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td class="labels" width="120"><label>Outras Informações</label></td>
+					<td width="55%">
+						<input type="text" name="txLivre" maxlength="60" class="cem_por_cento">
+					</td>
+					<td></td>
+				</tr>
+			</tbody></table>
+		</fieldset>
+                  
+       <fieldset id="termoUso" class="nivel_01" style="margin-bottom: 0px; display: none; text-align: -webkit-center;">
+			<legend>Termo de uso</legend>
+			<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td align="center">
+						<iframe id="iframeTermo" style="border-style: groove;" marginheight="2" marginwidth="2" title="termo de uso" scrolling="auto" width="850" height="150" frameborder="1"></iframe>
+					</td>
+				</tr>
+			</tbody></table>
+	
+			<div style="text-align: center;">
+					<input type="checkbox" id="aceito" name="termoUso" value="true" style="border: none;">
+				Declaro que li e aceito os Termos de Uso acima descritos e que todas as informações<br> por mim prestadas no cadastro são verdadeiras.<br><br>
+				
+			</div>
+		</fieldset>
+		<br>
+		<br>
+	          <fieldset id="termoComodato" class="nivel_01" style="margin-bottom: 0px; text-align: -webkit-center;">
+				<legend>Termo de comodato</legend>
+			<table class="formulario1" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td align="center">
+						<iframe id="iframeTermoComodato" style="border-style: groove;" marginheight="2" marginwidth="2" title="termo de comodato" scrolling="auto" src="NovoUsuario_arquivos/termo_comodato_conteudo.html" width="850" height="150" frameborder="1"></iframe>
+					</td>
+				</tr>
+			</tbody></table>
+	
+			<div style="text-align: center;">
+					<input type="checkbox" id="aceitoTermoComodato" name="termoComodato" value="true" style="border: none;">
+				Declaro que li e aceito os Termos de Comodato acima descritos e que todas as informações<br> por mim prestadas no cadastro são verdadeiras.<br><br>
+				
+			</div>
+		</fieldset>
+
+
+		<br>
+		
+		<table class="cem_por_cento" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td>
+					<div class="bl_instrucao clearfix">
+						<p class="instrucao esquerda">
+							* Campos obrigatórios<br>
+							** Campos obrigatórios para cartões do tipo personalizado usuário.
+
+						</p>
+					</div>
+				</td>
+				<td width="107">
+					<a href="#cpfembranco" name="bntEnviar" onclick="incluiUsuario();" class="btn_gravar_master">
+					 <img src="NovoUsuario_arquivos/btn_gravar_master.gif" alt="Gravar">
+					</a> 
+				</td>
+			</tr>
+		</tbody></table>
+	
+<script type="text/javascript" language="JavaScript">
+ 
+  var focusControl = document.forms["incluirUsuarioForm"].elements["nrMatric"];
+
+  if (focusControl != null && focusControl.type != "hidden" && !focusControl.disabled && focusControl.style.display != "none") {
+     focusControl.focus();
+  }
+  // -->
+</script>
+	
+	</a></form></div><a name="cpfembranco">
+    </a><div class="menu_rodape clearfix"><a name="cpfembranco">
+  <h3><span>Usuários</span></h3>
+  </a><ul><a name="cpfembranco">
+    </a><li id="menuRodapeItem01"><a name="cpfembranco"></a><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+    <li id="menuRodapeItem02"><a href="./PesquisarUsuario.html">Pesquisar </a> </li>
+	<li id="menuRodapeItem03">
+		<a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a> 
+	</li>
+	<li id="menuRodapeItem04">
+		<a href="./ImportarUsuarios.html">Importação de Usuários</a>  
+	</li>
+	<li id="menuRodapeItem05">
+		<a href="./GerenciarBU.html">Gerenciar Bilhete Único</a>
+	</li>
+  </ul>
+</div>
+<script language="javascript">
+	if (document.URL.indexOf('AlterarUsuario') != -1) {
+		document.getElementById('menuRodapeItem01').className = 'active';
+	} else if (document.URL.indexOf('pesquisar') != -1) {
+		document.getElementById('menuRodapeItem02').className = 'active';
+	} else if (document.URL.indexOf('alterar') != -1) {
+		document.getElementById('menuRodapeItem03').className = 'active';
+	} else if (document.URL.indexOf('importacao') != -1) {
+		document.getElementById('menuRodapeItem04').className = 'active';
+	}
+</script>
+  </div>
+</div>
+
+<div id="dialogBoxDiv" class="dialogBox" style="display: none;">
+	<div style="width: 100%; z-index: 90; height: 70%">
+		<h1 style="font-size: 12px">
+			O campo CPF é obrigatório para o Bilhete Único.
+			<br>&nbsp;	
+		</h1>		
+	</div>
+	<table style="height: 30%; width: 100%;" border="0">
+		<tbody><tr>
+			<td valign="top" align="center">
+				<div class="botao_acao botao_grande" style="float: inherit">
+					<a href="javascript: hideLightbox(); document.getElementById('formDadosUsuario').submit();">Gravar sem CPF</a>
+				</div>				
+			</td>
+			<td valign="top" align="center">
+		     	<div class="botao_acao botao_grande" style="float: inherit">
+		     		<a href="javascript: hideLightbox();document.getElementById('nrCpf').focus();">Preencher CPF</a>
+		     	</div>
+			</td>			
+		</tr>
+	</tbody></table>
+</div>
+
+
+<div class="version">
+	Versão 2.199.22
+</div>
+<script src="NovoUsuario_arquivos/urchin.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-9733391-2";
+urchinTracker();
+</script>
+
+<!-- SETRANS - BANNERS DE COMUNICACAO -->
+<meta http-equiv="cache-control" content="max-age=0">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+<meta http-equiv="pragma" content="no-cache">
+<div id="dark" style="position:fixed;top:0;left:0;width:100%;height:210%;z-index:10;background:#000;opacity:0.8;filter:alpha(opacity=80); display:none;">
+    &nbsp;
+</div>
+
+<div id="bannerAvisoBUI" style="display: none;" class="banner" onclick="escondeBannerAvisoBUI()">
+    <img style="cursor:pointer;" class="banner" src="NovoUsuario_arquivos/trocaVT_popup_440x650px_v4.png">
+</div>
+
+
+
+<style>
+    .banner{
+        z-index:11;
+        position:fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /*border: 1px solid #699;*/
+        /*-moz-border-radius: 40px;*/
+        /*-webkit-border-radius: 40px;*/
+    }
+</style>
+
+<script language="JavaScript">
+
+    function mostrarAvisoRecadastramentoObrigatorio() {
+        document.getElementById("dark").style.display = "block";
+        document.getElementById("recadastramentoObrigatorio").style.display = "block";
+    }
+
+
+    function exibeAvisoBUE(element) {
+        if (!element || element.checked) {
+            document.getElementById('dark').style.display = '';
+            document.getElementById('bannerAvisoBUI').style.display = '';
+        }
+    }
+
+    function exibeRegrasBUE(element) {
+        if (!element || element.checked) {
+            document.getElementById('dark').style.display = '';
+            document.getElementById('bannerRegrasBUI').style.display = '';
+        }
+    }
+
+    function exibeRegrasBUECadastro(element) {
+        if (!element || element.checked) {
+            document.getElementById('dark').style.display = '';
+            document.getElementById('bannerRegrasBUICadastro').style.display = '';
+        }
+    }
+
+    function escondeBannerAvisoBUI(){
+        document.getElementById('bannerAvisoBUI').style.display = 'none';
+        document.getElementById('dark').style.display = 'none';
+    }
+
+    function escondeBannerRegrasBUI(){
+        document.getElementById('bannerRegrasBUI').style.display = 'none';
+        document.getElementById('dark').style.display = 'none';
+    }
+
+    function escondeBannerBUICadastro(){
+        document.getElementById('bannerRegrasBUICadastro').style.display = 'none';
+        document.getElementById('dark').style.display = 'none';
+    }
+</script>
+
+
+	<script language="javascript">
+	
+	$(function(){
+	    $('#nrCelular').focusout(function(){
+	        var phone, element;
+	        element = $(this);
+	        element.unmask();
+	        phone = element.val().replace(/\D/g, '');
+	        if(phone.length > 8) {
+	            element.mask("99999-999?9");
+	        } else {
+	            element.mask("9999-9999?9");
+	        }
+	    }).trigger('focusout');
+	});
+	
+	$(function(){
+	    $('#nrTel').focusout(function(){
+	        var phone, element;
+	        element = $(this);
+	        element.unmask();
+	        phone = element.val().replace(/\D/g, '');
+            element.mask("9999-9999");
+	    }).trigger('focusout');
+	});
+
+	function hideNmUsuar(nrCpf) {
+		if(nrCpf.value === "" || nrCpf.value === '___________') {
+			if (document.all) {  // para o IE
+				document.getElementById('trNome').style.display = 'block';
+			} else { // para o Firefox
+				document.getElementById('trNome').style.display = 'table-row';
+			}
+		}else{
+			if (document.all) {  // para o IE
+				document.getElementById('trNome').style.display = 'none';
+			} else { // para o Firefox
+				document.getElementById('trNome').style.display = 'none';
+			}
+		}
+	}
+
+	function showCadastroNomeMenor() {
+		var dtNasctoDia = document.getElementById("dtNasctoDia");
+		var dtNasctoMes = document.getElementById("dtNasctoMes");
+		var anoNascto = document.getElementById("dtNasctoAno");
+		var nrCpf = document.getElementById('nrCpf').value;
+
+		if (dtNasctoDia.value != "" && dtNasctoMes.value != "" && anoNascto.value != "") {
+			var isMaior18 = Is18(dtNasctoDia.value + '/' + dtNasctoMes.value + '/' + anoNascto.value);
+
+			if (isMaior18 && nrCpf != "") {
+				if (document.all) {  // para o IE
+					document.getElementById('nome').style.display = 'none';
+				} else { // para o Firefox
+					document.getElementById('nome').style.display = 'none';
+				}
+			} else {
+				if (document.all) {  // para o IE
+					document.getElementById('nome').style.display = 'block';
+				} else { // para o Firefox
+					document.getElementById('nome').style.display = 'table-row';
+				}
+			}
+		}
+
+	}
+
+	function getIdade(data) {
+		var hoje = new Date();
+
+		var nascimento = new Date(convertDateMMDDYYY(data.split("/")));
+
+		//Retorna a diferença entre hoje e a data de nascimento em anos.
+		var ano = hoje.getFullYear() - nascimento.getFullYear();
+
+		//Retorna a diferença de mês do mês de nascimento para o atual.
+		var m = hoje.getMonth() - nascimento.getMonth();
+
+		//Caso ainda não tenha ultrapassado o dia e o mês
+		if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+			ano--;
+		}
+		return ano;
+	}
+
+	function convertDateMMDDYYY(datearray) {
+		return datearray[1] + '-' + datearray[0] + '-' + datearray[2];
+	}
+
+	function Is18(data) {
+		if(getIdade(data) >= 18)
+			return true;
+		else
+			return false;
+	}
+
+</script>
+<script language="javascript" src="NovoUsuario_arquivos/scripts.js"></script>
+<script type="text/javascript" src="NovoUsuario_arquivos/script_usuario_002.js"></script>
+<!-- DWR declarations -->
+<script type="text/javascript" src="NovoUsuario_arquivos/RioCardVT.js"></script>
+<script type="text/javascript" src="NovoUsuario_arquivos/engine.js"></script>
+<script type="text/javascript" src="NovoUsuario_arquivos/util.js"></script>
+
+
+</body></html>

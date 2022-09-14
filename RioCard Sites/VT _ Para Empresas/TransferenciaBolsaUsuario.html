@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR"><head>
+<title>Riocard Mais Vale-Transporte</title>
+	<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+	<!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+	<link href="TransferenciaBolsaUsuario_arquivos/comum_002.css" rel="stylesheet" type="text/css" media="all">
+<link href="TransferenciaBolsaUsuario_arquivos/comum.css" rel="stylesheet" type="text/css" media="all">
+<link href="TransferenciaBolsaUsuario_arquivos/internas.css" rel="stylesheet" type="text/css" media="all">
+<link href="TransferenciaBolsaUsuario_arquivos/componentes.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="TransferenciaBolsaUsuario_arquivos/comum.js"></script>
+	
+	<script type="text/javascript" src="TransferenciaBolsaUsuario_arquivos/scripts.js"></script>
+	<script type="text/javascript" src="TransferenciaBolsaUsuario_arquivos/lightbox.js"></script>
+	<script language="JavaScript" src="TransferenciaBolsaUsuario_arquivos/lightboxAjuda.js"></script>
+<script type="text/javascript">
+	
+		function handleSelectButtons() {
+    		var table = document.getElementById('listTable');
+    		var inputs = table.getElementsByTagName('input');
+
+			var allMarked = true;
+    		for (var i = 0; i < inputs.length; i++)
+    			if ( inputs[i].type == 'checkbox' && inputs[i].checked != true ) 
+    				allMarked = false;
+    		
+    		if ( allMarked ) {
+    			document.getElementById('deselecionarTop').style.display = 'inline';
+    			document.getElementById('selecionarTop').style.display = 'none';
+    			document.getElementById('deselecionarBottom').style.display = 'inline';
+    			document.getElementById('selecionarBottom').style.display = 'none';
+    		} else {
+    			document.getElementById('deselecionarTop').style.display = 'none';
+    			document.getElementById('selecionarTop').style.display = 'inline';
+    			document.getElementById('deselecionarBottom').style.display = 'none';
+    			document.getElementById('selecionarBottom').style.display = 'inline';
+    		}
+    	}
+    
+    	function selecionarTodas() {
+    		var table = document.getElementById('listTable');
+    		if (table == null) return;
+    		var inputs = table.getElementsByTagName('input');
+    		for (var i = 0; i < inputs.length; i++)
+    			if (inputs[i].type == 'checkbox') 
+    				inputs[i].checked = 'checked';
+    				
+    		handleSelectButtons();
+    	}
+    	
+    	function deselecionarTodas() {
+    		var table = document.getElementById('listTable');
+    		if (table == null) return;
+    		var inputs = table.getElementsByTagName('input');
+    		for (var i = 0; i < inputs.length; i++)
+    			if (inputs[i].type == 'checkbox') 
+    				inputs[i].checked = false;
+    		
+    		handleSelectButtons();
+    	}
+	
+		function submit( action ){
+			var form = document.getElementById('form');
+			form.action = action;
+			form.submit();
+		}
+
+
+		function alteraPagina( valor ){
+			
+			var formulario = document.getElementById("form");		
+			var url = document.getElementById(valor);
+			formulario.action = url.href;
+			formulario.submit();
+			return false;
+		}
+		
+		function closePopup(){
+		    document.getElementById('backgroudPopup').style.display = 'none';
+		    document.getElementById('popup').style.display = 'none';
+		  }
+		
+		function openPopup(){
+		  document.getElementById('backgroudPopup').style.display = 'block';
+		  document.getElementById('popup').style.display = 'block';
+		}	
+
+		
+	</script>
+	
+	
+</head>
+<body class="comprador"><div id="overlay" style="display: none; position: absolute; top: 0px; left: 0px; z-index: 90; width: 100%;"></div><div id="lightbox" class="dialogBox" style="display: none; position: absolute; z-index: 100;"></div>
+
+	<div id="backgroudPopup" style="width:100%; height:175%;  position:absolute; background-image: url(/vt2/comum/estilos/overlay.png); display:none; z-index:10; left: 0px; top: 0px;">
+		<div id="popup" style="position: absolute; top: 25%; left: 50%; margin: -75px 0 0 -150px; width: 300px; height: 100px; padding: 20px; border: solid 1px #331; background: #dfe6eb; display: none;">
+			<h1 style="font-size: 14px">Voce esta enviando esse valor para
+				bolsa do comprador. Voce confirma?</h1>
+			<div class="botao_acao botao_medio" style="width: 23%; height: 60px; left: 60px; top: 70%; position: absolute;">
+				<a href="javascript:submit('/vt2/comprador/comprador/BolsaCreditoTransf.do') ;">Confirmar</a>
+			</div>
+			<div style="width: 20%; height: 10px; right: 60px; top: 70%; position: absolute;">
+				<a href="javascript:closePopup();" id="dialogBox_btn_cancelar" style="display: inline;"> <img src="TransferenciaBolsaUsuario_arquivos/cancelar.gif" alt="Cancelar" width="74" height="25">
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+
+<div id="site" class="clearfix">
+  
+	<a name="topo"></a>
+
+
+
+
+  <!-- TagLib daclarations -->
+
+
+
+
+
+
+ 
+
+<style>
+	.dropdown{
+		z-index: 100;
+	}
+	
+</style>
+
+<ul id="menu_principal">		
+	<li class="item01"><a href="./CarregarHome.html" id="menu_home" onmouseover="menuOver('home');showDropDown('none','over','home');" onmouseout="menuOut('home');">Inicio</a></li>
+	<li class="item02"><a href="#" id="menu_comprador" onclick="showDropDown('comprador','click');" onmouseover="menuOver('comprador');showDropDown('comprador','over');" onmouseout="menuOut('comprador');" style="background-position: 0px 32px;">Comprador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item03"><a href="#" id="menu_administrador" onclick="showDropDown('administrador','click');" onmouseover="menuOver('administrador');showDropDown('administrador','over');" onmouseout="menuOut('administrador');">Administrador <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item04"><a href="#" id="menu_usuarios" onclick="showDropDown('usuarios','click');" onmouseover="menuOver('usuarios');showDropDown('usuarios','over');" onmouseout="menuOut('usuarios');">Usuários <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item05"><a href="#" id="menu_cartoes" onclick="showDropDown('cartoes','click');" ,="" onmouseover="menuOver('cartoes');showDropDown('cartoes','over');" onmouseout="menuOut('cartoes');">Cartões <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item06"><a href="#" id="menu_pedidos" onclick="showDropDown('pedidos','click');" onmouseover="menuOver('pedidos');showDropDown('pedidos','over');" onmouseout="menuOut('pedidos');">pedidos <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	<li class="item07"><a href="#" id="menu_relatorios" onclick="showDropDown('relatorios','click');" onmouseover="menuOver('relatorios');showDropDown('relatorios','over');" onmouseout="menuOut('relatorios');" style="background-position: 0px 32px;">relatórios <img src="Riocard%20Mais%20Vale-Transporte_arquivos/setinha_dropdown.gif"></a></li>
+	
+	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');" style="background-position: 0px 32px;">mapa do site</a></li>
+	
+
+	<li class="item09"><a class="sair" href="">Sair</a></li>
+    <li calss="item10" style="margin:-8px 0 0 0;">
+        <a href="#" onclick="abre_chat();return false;">
+            <img src="Riocard%20Mais%20Vale-Transporte_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
+        </a>
+    </li>
+</ul>
+<div class="dropdowns">
+
+    <div class="dropdown" id="dropdown_comprador">
+        <ul>
+            <li><a href="./dadosdocomprador.html" onclick="showDropDown('comprador');">Dados do Comprador</a></li>
+		  <li><a href="./alterarsenha.html" onclick="showDropDown('comprador');">Alterar Senha</a></li> 
+		  <li><a href="./VisualizarTermoComodato.html" onclick="showDropDown('comprador');">Termo de Comodato</a></li>	
+		  <li><a href="./TermoDeUso.html" onclick="showDropDown('comprador');">Termo de Uso</a></li>
+		  <li><a href="./TransferenciaBolsaUsuario.html" onclick="showDropDown('comprador');">Transferência de Bolsa de Crédito</a></li>
+		  
+		  	 
+			 
+		  
+            <li><a href="./MultaDesassociacao.html" onclick="showDropDown('comprador');">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	</div>
+    <div class="dropdown" id="dropdown_administrador"> 
+      <ul>
+      	<li><a href="" onclick="showDropDown('administrador');">Administrar Outro Comprador</a></li>
+        <li><a href="./DefinirAdministrador.html" onclick="showDropDown('administrador');">Definir Administrador para Sua Conta</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_usuarios"> 
+      <ul>
+        <li><a href="./NovoUsuario.html">Incluir Usuário</a></li>
+        <li><a href="./PesquisarUsuario.html">Pesquisar</a></li>
+        <li><a href="./AlterarValorUsoDiario.html">Alterar Valor de Uso Diário</a></li>
+        <li><a href="./ImportarUsuarios.html">Importação de Usuários</a></li>
+        <li><a href="./GerenciarBU.html">Gerenciar Bilhete Único</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" id="dropdown_cartoes">
+      <ul>
+        <li><a href="./ConsultaCartoes.html">Consulta</a></li>
+        <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
+        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
+        <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
+        <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
+      </ul>
+    </div>
+	<div class="dropdown" id="dropdown_pedidos">
+		<ul>
+		 	<li><a href="./IniciaDigitacaoPedido.html">Novo Pedido de VT</a></li>
+		    <li><a href="./GerenciamentoPedidos.html">Gerenciar Pedidos de VT</a></li>
+		 </ul>
+	</div>    	
+    <div class="dropdown" id="dropdown_relatorios">
+      <ul>
+        <li>
+	        <a href="./RelExtratoCompradorSearch.html" onclick="showDropDown('relatorios');">Extrato de Contas do Comprador</a>
+        </li>
+        <li>
+        	<a href="./RelRelacaoCartoesSearch.html" onclick="showDropDown('relatorios');">Relação de Cartões</a>
+        </li>
+        <li>
+	        <a href="./RelUsuariosBolsaCreditoSearch.html" onclick="showDropDown('relatorios');">Usuários com Bolsa de Crédito</a>
+        </li>        
+        <li>
+			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
+        </li>
+        <li>
+        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        </li>
+        	
+      </ul>
+    </div>
+   
+</div>
+
+<form name="preChatCustomForm" id="preChatCustomForm" action="#" target="janela">
+    <input type="hidden" name="tenant" value="crr">
+    <input type="hidden" name="login" value="Visitante">
+</form>
+
+<script type="text/javascript">
+		function abre_chat() {
+	   		var foto = window.open("","janela","width=591,height=453,resizable=yes,toolbar=0,location=0,directories=0,status=no,menubar=0");
+   			setTimeout ("document.preChatCustomForm.submit();",10);
+   		}	
+</script>
+  <div class="conteudo_interna">
+    <div id="titulo_pag" class="titulo_pag">
+      <div class="borda_esq">
+        <div class="borda_dir">
+          <h1>Transferência de Bolsa de Crédito de Usuários para Comprador </h1>
+        </div>
+      </div>
+    </div>
+    
+	
+		
+		
+	  		
+		    
+	<form name="bolsaCreditoForm" id="form" method="post" action="/vt2/comprador/comprador/BolsaCredito.do">
+		<fieldset class="nivel_01 mostrar_pedidos">
+			<legend>Pesquisa</legend>
+	
+			<fieldset class="nivel_02 filtro">
+				<legend>Filtros</legend>
+					<table cellspacing="0" class="formulario1">
+						<tr>
+							<td><label>Campo para Pesquisa</label></td>
+							<td><label>Palavra-Chave</label></td>
+							<td><label>Status</label></td>
+							<td>&nbsp;</td>
+						  </tr>
+						  <tr>
+							<td>
+								  <select name="tipoPesquisa" class="campo_pesquisa"><option value="0" selected="selected">Matr&iacute;cula</option>
+									<option value="1">Nome</option></select>
+							</td>
+							<td>
+								<input type="text" name="pesquisa" value="" class="palavra_chave">
+							</td>
+							<td>
+								<select name="status" class="campo_pesquisa"><option value="">Todos</option>
+									<option value="A">Ativo</option>
+									  <option value="I">Inativo</option></select>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							  <td colspan="2">
+								
+							  </td>
+						</tr>
+					</table>
+				
+				
+			</fieldset>
+			<div class="aviso aviso_marg_dir" style="background: #FFF6D9 !important; border: 2px solid #FFC400 !important;">
+				<h4>IMPORTANTE</h4>
+				<ul>
+					<li>
+						<p align="justify">
+							S&#243; &#233; poss&iacute;vel estornar  valores de cart&otilde;es cancelados ap&oacute;s o pagamento da cobran&#231;a pela n&#227;o devolu&#231;&#227;o dos cart&otilde;es.
+						</p>
+					</li>
+					<li>
+						<p align="justify">
+							Cr&eacute;ditos de cart&otilde;es cancelados levam quatro dias corridos para retornarem ao sistema, contados a partir da confirma&#231;&#227;o do pagamento.
+						</p>
+					</li>
+					<li>
+						<p align="justify">
+							N&atilde;o &eacute;  permitida a transfer&ecirc;ncia da bolsa de cr&eacute;dito de cart&otilde;es cancelados do tipo PERSONALIZADO USU&Aacute;RIO para a bolsa  do comprador.
+								
+						</p>
+					</li>
+					<li>
+						<p align="justify">
+							Cart&otilde;es do tipo PERSONALIZADO USU&Aacute;RIO, solicitados para uma determinada matr&iacute;cula, n&atilde;o poder&#227;o ser alterados para personaliza&#231;&otilde;es AO PORTADOR/EMPRESA.
+							Portanto, fica restrito a transfer&ecirc;ncia somente para a bolsa de cr&eacute;dito do usu&aacute;rio.
+						</p>
+					</li>
+				</ul>
+			</div>
+			<p>
+				<br/>
+				<div>
+					<p class="botao_acao botao_peq btm_right"><a href="javascript: submit('/vt2/comprador/comprador/BolsaCredito.do');">Pesquisar</a></p>
+				</div>
+			</p>
+		</fieldset>
+
+			<table width="100%">
+						
+				
+				
+				<tr align="center">
+					<td>
+						
+						
+						
+						
+						<div style="color: green;" >
+							
+						</div>
+						<table class="paginacao clearfix"><tr><td><a href="#" class="active">1</a></td></tr></table>
+<table cellspacing="0" id="listTable" class="dataset" cellpadding="0">
+<thead>
+<tr>
+<th>Matr&iacute;cula</th>
+<th>Nome</th>
+<th>CPF</th>
+<th>Status</th>
+<th>Saldo</th>
+<th>Selecionar</th></tr></thead>
+<tbody><tr class="empty"><td colspan="6" align=center>Nenhum registro encontrado.</td></tr></tbody></table><table class="paginacao clearfix"><tr><td><a href="#" class="active">1</a></td></tr></table>
+					</td>
+				</tr>				
+									
+				
+			</table>			
+	   </form>
+		
+	
+	   <div class="menu_rodape clearfix">
+		<h3><span>Comprador</span></h3>
+		<ul>
+		  <li id="menuRodapeItem01"><a href="./dadosdocomprador.html">Dados do Comprador</a></li>
+		  <li id="menuRodapeItem02"><a href="/TrocaSenha.html">Alterar Senha</a></li>
+		  <li id="menuRodapeItem04" class="active"><a href="./VisualizarTermoComodato.html">Termo de Comodato</a></li>
+		  <li id="menuRodapeItem08"><a href="./VisualizarTermoDeUso.html">Termo de Uso</a></li>
+		  <li id="menuRodapeItem05"><a href="./TransferenciaBolsaUsuario.html">Transferência de Bolsa de Crédito</a></li>
+			 
+			  
+										 
+			
+			<li id="menuRodapeItem05"><a href="./MultaDesassociacao.html">Serviço Extraordinário de Desassociação</a></li>
+		</ul>
+	  </div>
+	  <script language="javascript">
+		  if (document.URL.indexOf('DadosComprador') != -1) {
+			  document.getElementById('menuRodapeItem01').className = 'active';
+		  } else if (document.URL.indexOf('TrocaSenha') != -1) {
+			  document.getElementById('menuRodapeItem02').className = 'active';
+		  } else if (document.URL.indexOf('Comodato') != -1) {
+			  document.getElementById('menuRodapeItem04').className = 'active';
+		  } else if (document.URL.indexOf('TransferenciaBolsaUsuario') != -1) {
+			  document.getElementById('menuRodapeItem05').className = 'active';
+		  } else if (document.URL.indexOf('Vip') != -1) {
+			  document.getElementById('menuRodapeItem06').className = 'active';
+		  } else if (document.URL.indexOf('VipVisulizarContrato') != -1) {
+			  document.getElementById('menuRodapeItem06').className = 'active';
+		  } else if (document.URL.indexOf('FaturaPesquisaFiltro') != -1) {
+			  document.getElementById('menuRodapeItem07').className = 'active';
+		  }
+		  
+		  
+	  </script>
+		  </div>
+	  </div>
+	  
+	  <div class="version">
+		  Vers�o 2.199.22
+	  </div>
+	  <script src="VisualizarTermoComodato_arquivos/urchin.js" type="text/javascript">
+	  </script>
+	  
+	  <script type="text/javascript">
+	  _uacct = "UA-9733391-2";
+	  urchinTracker();
+	  </script>
+	  
+	  
+	  <script language="javascript" src="VisualizarTermoComodato_arquivos/scripts.js"></script>
+	  <!-- DWR declarations -->
+	  <script type="text/javascript" src="VisualizarTermoComodato_arquivos/RioCardVT.js"></script>
+	  <script type="text/javascript" src="VisualizarTermoComodato_arquivos/engine.js"></script>
+	  <script type="text/javascript" src="VisualizarTermoComodato_arquivos/util.js"></script>
+	  
+	  </body></html>

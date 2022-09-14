@@ -1,0 +1,261 @@
+.tit_pagamento {
+	background:url(../comum/imagens/titulos/bg_titulo_listras.gif) repeat-x left 9px; 
+	margin:20px 0 10px 0; 
+	padding-left:10px;
+	font-size:17px; 
+	color:#16264f; 
+}
+
+.tit_pagamento h2{
+	float:left;
+}
+
+.tit_pagamento span {
+	padding:0px 8px; 
+	background-color:white;
+}
+
+.link_liberacao{
+	float:right;
+	font-size:10px;
+	background:#FFFFFF;
+	padding:0 10px;
+	margin-right:10px;
+}
+
+.info_esq{
+	float:left;
+}
+
+.info_dir{
+	float:right;
+}
+
+h2.titulo{
+	font-size:17px;
+	font-weight:normal;
+}
+
+
+/* =Tabela
+-----------------------------------------------------------------------------*/
+
+table.tabela_pedido{
+	text-align:center;
+}
+
+.tabela_pedido h5, .tabela_pedido tr td.qtde, .tabela_pedido tr td.valor {
+	font-size:13px;
+	font-weight:bold;
+}
+
+.tabela_pedido tr td.valor{
+	color: #a24d45;
+}	
+
+.tabela_pedido tr th.tarifa{
+	font-size:13px;
+}	
+
+.tabela_pedido h5, th.tit p{
+	text-align:left;
+}	
+
+table.tabela_pedido tr td{
+	text-align:center;
+	border-bottom:1px solid #cbd7e6;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+th.qtde{
+	width:50px;
+}
+
+th.valor{
+	width:130px;
+}
+
+td.qtde{
+	width:50px;
+}
+
+td.valor{
+	width:130px;
+}
+
+.tabela_pedido tr td.forma_entrega{
+	font-size:13px;
+	text-align:left;
+	border-right:none;
+}
+
+td.forma_entrega p{
+	float:left;
+	margin-right:10px;
+}
+
+table.tabela_pedido tfoot tr td{
+	border-top:1px solid #cbd7e6;
+	border-bottom:1px solid #cbd7e6;	
+	border-right:2px solid #cbd7e6;	
+	border-left:2px solid #cbd7e6;
+}
+
+.tabela_pedido tfoot tr td .btn_padrao, .tabela_pedido tfoot tr td .valor_total {
+	float:right;
+	margin-right:10px;
+}
+
+.tabela_pedido tfoot tr td .valor_total{
+	padding:3px 0 0 10px;
+}
+
+
+/* =Entrega
+-----------------------------------------------------------------------------*/
+
+fieldset.info_entrega{
+	margin-top:5px;
+}
+
+fieldset.info_entrega legend{
+	font-size:14px;
+}
+
+fieldset.info_entrega .nivel_02 legend{
+	font-size:11px;
+}
+
+.info_entrega .info_esq{
+	padding-bottom:5px;
+}
+
+.info_entrega .info_esq h4{
+	margin-top:5px;
+}
+
+.info_entrega .info_esq h4.com_divisa{
+	background:url(imagens/divisa_pont.gif) repeat-x top left;	
+	padding-top:5px;
+}
+
+.info_entrega .info_esq h4 span{
+	font-size:11px;
+	font-weight:normal;
+	color:#323232;
+}
+
+fieldset.prazo_entrega{
+	padding:0 10px 5px 10px;	
+}
+
+.prazo_entrega h6{
+	font-weight:bold;
+	margin-top:8px;
+}
+
+/* =Liberacao Pedido
+----------------------------------------------------------------------------*/
+
+fieldset.info_liberacao legend{
+	font-size:14px;
+}
+
+fieldset.liberacao legend{
+	font-size:11px;
+}
+
+/* =Liberacao Pedido
+----------------------------------------------------------------------------*/
+fieldset.info_descricao legend{
+	font-size:14px;
+}
+
+
+/* =Bolsa de Crédito
+-----------------------------------------------------------------------------*/
+
+.utilizar_bolsa{
+	margin-bottom:15px;
+	font-weight:bold;
+}
+
+.utilizar_bolsa input{
+	margin-right:5px;
+	border:0;
+}
+
+.utilizar_bolsa .destaque{
+	color:#50ae17;
+}
+
+fieldset.prazo_entrega{
+	margin-top:15px;
+}
+
+fieldset.valores{
+	width:90%;
+}
+
+.valores table{
+	margin:0 0 0 0px;
+	*margin-top:0px;
+}
+
+.valores table td{
+	padding:0px 2px;
+}
+
+h2.titulo strong{
+	color:#50ae17;
+}
+
+div.destaque strong {
+	color:#50ae17;
+}
+
+.dados_bolsa {
+	width: 95%;	
+	margin-bottom: 20px;
+}
+
+.formas_pagamento{
+	width: 95%;
+	margin-bottom: 20px;	
+}
+
+.formas_pagamento table td{
+	padding:5px 2px;
+}
+
+/* =Forma de Pagamento
+-----------------------------------------------------------------------------*/
+
+.forma_pagamento {
+	padding-top: 10px;
+} 
+
+.forma_pagamento fieldset.nivel_01{
+	margin-bottom: 1px;
+} 
+
+.forma_pagamento fieldset legend{
+	background:#FFFFFF;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.forma_pagamento fieldset input{
+	margin-right:5px;
+	border:none;
+}
+
+.forma_pagamento .bt_master{
+	margin-top:1px;
+}
+
+.aguarde{
+	font-size:11px; 
+	color: #990000;
+}

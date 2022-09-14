@@ -1,0 +1,87 @@
+/*-----------------------------------------------------------------------------
+Vale-Transporte - Folha de estilos dos Downloads
+
+autor:     Midia 3 - Robson Waterkemper
+website:   http://www.midia3.com.br/
+-----------------------------------------------------------------------------*/
+#col_principal {
+	position: relative;
+}
+
+.conteudo_pagina {
+	margin-right: 246px;
+	border: 1px solid white;
+	*margin-top: 12px;
+}
+
+.box_destaque {
+	position: absolute;
+	top: 12px;
+	*top: 1px;
+	right: 12px;
+}
+
+.box_destaque h3 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #295d8d;
+	background: url(../downloads/imagens/logo_adobe_reader.gif) no-repeat 48px 0;
+	line-height: 30px;
+	
+}
+
+#col_principal .box_destaque h3 a, box_destaque h3 a:visited {
+	color: #295d8d;
+	text-decoration: none;
+	cursor: pointer;
+	width: 180px;
+	display: block;
+}
+
+.box_destaque h3 a:hover {
+	color: #1b3d5c;
+}
+
+.box_destaque h3 span {
+	font-size: 1px;
+	margin-left: -100000px;
+}
+
+#col_principal .box_destaque p {
+	color: #677fa2;
+}
+
+.download_pdf {
+	background: url(../downloads/imagens/icone_download.png) no-repeat top left;
+}
+
+.download {
+	padding-left: 110px;
+	margin-bottom: 48px;
+}
+
+#col_principal .download h2 {
+	font-size: 14px;
+	color: #125395;
+	font-weight: normal;
+	font-family: "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
+	margin-bottom: 12px;
+}
+
+#col_principal .download .versao_data {
+	color: #2798ac;
+	font-size: 12px;
+	margin-bottom: 6px;
+}
+
+.download .botao {
+	background: url(../downloads/imagens/bt_baixar.gif) no-repeat top left;
+	display: block;
+	width: 120px;
+	height: 25px;
+}
+
+.download .botao span {
+	font-size: 5px;
+	margin-left: -10000px;
+}

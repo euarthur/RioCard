@@ -1,0 +1,12 @@
+/* CSS Document */
+
+.conteudo_interna {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* sobreescreve de comum.css geral do VT -------------------------------------------*/
+
+#titulo_pag h1 {
+	font-size:14px; 
+}

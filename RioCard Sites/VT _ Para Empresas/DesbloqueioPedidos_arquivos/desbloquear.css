@@ -1,0 +1,85 @@
+/* CSS Document */
+
+.botoes {
+	clear: both;
+	margin-bottom: 8px;
+	padding-top: 8px;
+}
+
+.bt_bottom {
+	margin-top: 8px;
+}
+
+#deselecionarTop {
+	display: none;
+}
+
+#deselecionarBottom {
+	display: none;
+}
+
+.sucesso {
+	color: #006600;
+}
+
+h2.tit_nr_pedido {
+	background:url(../comum/imagens/titulos/bg_titulo_listras.gif) repeat-x left 14px;
+	margin-top: 16px;
+	margin-bottom: 10px;
+
+}
+
+h2.titulo span.nr_pedido {
+	font-size: 20px;
+	font-weight: bold;
+	color: #113fb6;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/* --- detalhes ---*/
+
+.data, .qtde {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.voltar { 
+	float: right;
+	background: url(imagens/ico_voltar.gif) no-repeat 0 2px;
+	line-height: 11px; 
+}
+
+.voltar a, .voltar a:visited {
+	padding-left: 13px;
+}
+
+.voltar a:hover {
+	text-decoration: underline;
+}
+
+.pesquisa {
+	clear: both;
+}
+
+.pesquisa table {
+	float: left;
+}
+
+.pesquisa table tr td {
+	padding-right: 8px;
+	padding-bottom: 4px;
+}
+
+.pesquisa table select {
+	width: 120px;
+}
+
+.pesquisa table input {
+	width: 250px;
+}
+
+.pesquisa .btn_ajuda {
+	margin-top: 20px;
+}
