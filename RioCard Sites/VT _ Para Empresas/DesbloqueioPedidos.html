@@ -109,7 +109,7 @@
     		var dtPedido = document.getElementById('dtPedido');
     		var qtdCartoes = document.getElementById('qtdCartoes');
     		
-    		form.action = '/vt2/comprador/cartoes/DesbloqueioCartoes.do';
+    		form.action = '/vt2/comprador/cartoes/DesbloqueioCartoes.html';
     		
     		nrPedido.value = nrPedidoValue;
     		dtPedido.value = dtPedidoValue;
@@ -159,7 +159,7 @@
 	<li class="item08"><a href="./MapaSite.html" id="menu_mapa_do_site" onmouseover="menuOver('mapa_do_site');showDropDown('none','over','mapa_do_site');" onmouseout="menuOut('mapa_do_site');">mapa do site</a></li>
 	
 
-	<li class="item09"><a class="sair" href="https://www.cartaoriocard.com.br/vt2/home/Logout.do">Sair</a></li>
+	<li class="item09"><a class="sair" href="#">Sair</a></li>
     <li calss="item10" style="margin:-8px 0 0 0;">
         <a href="#" onclick="abre_chat();return false;">
             <img src="DesbloqueioPedidos_arquivos/StatusChat.png" name="hcIcon" width="90" height="30" border="0">
@@ -260,7 +260,7 @@
 			
 			<tbody><tr>
 				<td align="center">
-					<form name="desbloqueioPedidoForm" id="form" method="post" action="/vt2/comprador/cartoes/DesbloqueioPedidosSave.do">
+					<form name="desbloqueioPedidoForm" id="form" method="post" action="/vt2/comprador/cartoes/DesbloqueioPedidosSave.html">
 						<input type="hidden" id="todosOsPedidos" name="todosOsPedidos" value="false">
 						<!-- input type="hidden" id="nrPedidos" name="nrPedidos" value="" /-->
 						
@@ -283,7 +283,7 @@
 					<strong style="color:#FF2600;">Seu cartão estará pronto para uso no prazo de 48h após o desbloqueio.</strong><br>
 					</div>
 					
-					<form name="desbloqueioCartaoForm" id="formDetail" method="post" action="/vt2/comprador/cartoes/DesbloqueioCartoes.do">
+					<form name="desbloqueioCartaoForm" id="formDetail" method="post" action="/vt2/comprador/cartoes/DesbloqueioCartoes.html">
 						<input type="hidden" name="nrPedido" value="0" id="nrPedido">
 						<input type="hidden" name="dtPedido" value="" id="dtPedido">
 						<input type="hidden" name="qtdCartoes" value="0" id="qtdCartoes">

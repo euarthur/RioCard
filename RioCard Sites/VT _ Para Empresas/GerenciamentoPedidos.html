@@ -173,7 +173,7 @@ Informamos que o prazo para a efetivação da recarga nos validadores dos
                   
                 <fieldset class="nivel_01 mostrar_pedidos">
                     <legend>Consultar Pedidos</legend>
-                    <form name="filtrarPedidosForm" id="formFiltro" method="post" action="/vt2/comprador/pedidos/GerenciamentoPedidos.do"> <input type="hidden" name="filtrar" value="sim"> <input type="hidden" name="tpFiltro" value="" id="tpFiltro"> <input type="radio" name="periodo" value="1" checked="checked" style="border: none;">
+                    <form name="filtrarPedidosForm" id="formFiltro" method="post" action="/vt2/comprador/pedidos/GerenciamentoPedidos.html"> <input type="hidden" name="filtrar" value="sim"> <input type="hidden" name="tpFiltro" value="" id="tpFiltro"> <input type="radio" name="periodo" value="1" checked="checked" style="border: none;">
                         <label>&nbsp;Dos últimos 90 Dias&nbsp;</label>
                         <br>
                         <input type="radio" name="periodo" value="2" style="border: none;">
@@ -280,19 +280,19 @@ Informamos que o prazo para a efetivação da recarga nos validadores dos
 </div>
 <script language="javascript">
 	var menuRodapeItem01Urls = new Array();
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.html' );
 	
 	var menuRodapeItem03Urls = new Array();
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.html' );
 
 	
 	
@@ -434,7 +434,7 @@ urchinTracker();
         }
 
         function copiarPedido() {
-            window.location.href = "/vt2/comprador/pedidos/IncluiCopiaPedido.do?nrPedido=" + globalNrPedido;
+            window.location.href = "/vt2/comprador/pedidos/IncluiCopiaPedido.html?nrPedido=" + globalNrPedido;
         }
 
         function showDialogCopiarPedido(nrPedido) {

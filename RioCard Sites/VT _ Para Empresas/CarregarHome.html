@@ -122,7 +122,7 @@
       <ul>
         <li><a href="./ConsultaCartoes.html">Consulta</a></li>
         <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
-        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
         <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
         <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
         <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
@@ -149,7 +149,7 @@
 			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
         </li>
         <li>
-        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
         </li>
         	
       </ul>
@@ -1009,7 +1009,7 @@ rápido.</p>
         <div class="btn_padrao">
             <div class="bg_esq">
                 <div class="bg_dir">
-                    <form name="filtrarPedidosForm" id="formPedido" method="post" action="/vt2/comprador/pedidos/GerenciamentoPedidos.do">
+                    <form name="filtrarPedidosForm" id="formPedido" method="post" action="/vt2/comprador/pedidos/GerenciamentoPedidos.html">
                         <input type="hidden" name="filtrar" value="sim">
                         <input type="hidden" name="cdStPedido" value="" id="cdStPedido">
                         <a href="javascript: submitConteudoFormPedido('cdStPedido', '1');">Pedidos Em preparo</a>
@@ -1028,7 +1028,7 @@ rápido.</p>
         <!-- CONSULTA DE PEDIDO ANTERIOR A 90 DIAS - MENOS PARA HOME INICIAL -->
         
             <div class="box_field clearfix">
-                <form name="selecionarPedidoForm" id="formPedidoByNr" method="post" action="/vt2/comprador/pedidos/ConteudoResumirPedido.do">
+                <form name="selecionarPedidoForm" id="formPedidoByNr" method="post" action="/vt2/comprador/pedidos/ConteudoResumirPedido.html">
                     <input type="hidden" name="keyToken" value="0.2156250341710526">
                     <fieldset class="nivel_02">
                         <legend>Consulta de pedido anterior a 90 dias</legend>
@@ -1299,7 +1299,7 @@ rápido.</p>
         <div id="erro_recadastramento" style="display:none">
             <h4 id="msg_erro_recadastramento" class="text-danger"></h4>
         </div>
-        <form id="form-recadastramento" method="post" action="/vt2/comprador/recadastramentoEndereco.do">
+        <form id="form-recadastramento" method="post" action="/vt2/comprador/recadastramentoEndereco.html">
 
             <div class="row mt-2">
                 <div class="col">

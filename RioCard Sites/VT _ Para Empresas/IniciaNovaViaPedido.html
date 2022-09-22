@@ -382,7 +382,7 @@
       <ul>
         <li><a href="./ConsultaCartoes.html">Consulta</a></li>
         <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
-        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
         <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
         <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
         <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
@@ -615,7 +615,7 @@ determinada matrícula, não poderão ser alterados para personalizações AO
 			</ul>
 		</div>
 		
-		<form name="filtrarUsuariosForm" id="formNovaViaPedido" method="post" action="/vt2/comprador/pedidos/FiltraNovaViaPedido.do">
+		<form name="filtrarUsuariosForm" id="formNovaViaPedido" method="post" action="/vt2/comprador/pedidos/FiltraNovaViaPedido.html">
 		<input type="hidden" name="filtrar" value="sim">
 		<br>
     	<fieldset class="nivel_01">
@@ -674,7 +674,7 @@ determinada matrícula, não poderão ser alterados para personalizações AO
       		</div>
     	</div>
     	
-    	<form name="novaViaForm" id="formPaginacao" method="post" action="/vt2/comprador/pedidos/CapturaPaginacaoNovaVia.do">
+    	<form name="novaViaForm" id="formPaginacao" method="post" action="/vt2/comprador/pedidos/CapturaPaginacaoNovaVia.html">
 		<input type="hidden" name="endereco" value="">
 		<input type="hidden" name="incluir" value="">
 		<input type="hidden" name="valorTotalF" value="0" id="valorTotalF">
@@ -684,8 +684,8 @@ determinada matrícula, não poderão ser alterados para personalizações AO
 <table class="dataset" id="usuario" cellspacing="0">
 <thead>
 <tr>
-<th class="sortable"><a href="#" onclick='ordenarLista(this, contexto + "comprador/pedidos/CapturaPaginacaoNovaVia.do");' id="linkTituloMatricula">Matrícula</a></th>
-<th class="sortable order1"><a href="#" onclick='ordenarLista(this, contexto + "comprador/pedidos/CapturaPaginacaoNovaVia.do");' id="linkTituloNome">Nome</a></th>
+<th class="sortable"><a href="#" onclick='ordenarLista(this, contexto + "comprador/pedidos/CapturaPaginacaoNovaVia.html");' id="linkTituloMatricula">Matrícula</a></th>
+<th class="sortable order1"><a href="#" onclick='ordenarLista(this, contexto + "comprador/pedidos/CapturaPaginacaoNovaVia.html");' id="linkTituloNome">Nome</a></th>
 <th>Via</th>
 <th>Escolha o Tipo de Cartão</th>
 <th>Valor de Carga (R$)</th>
@@ -746,19 +746,19 @@ determinada matrícula, não poderão ser alterados para personalizações AO
 </div>
 <script language="javascript">
 	var menuRodapeItem01Urls = new Array();
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.html' );
 	
 	var menuRodapeItem03Urls = new Array();
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.html' );
 
 	
 	

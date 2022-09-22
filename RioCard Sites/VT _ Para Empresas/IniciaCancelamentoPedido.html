@@ -199,7 +199,7 @@
 
         function salvarPedido() {
             var form = document.getElementById("formCancelarPedidoUm");
-            form.action = "/vt2/comprador/cartoes/SalvaCancelamentoPedido.do";
+            form.action = "/vt2/comprador/cartoes/SalvaCancelamentoPedido.html";
             form.submit();
         }
 
@@ -296,7 +296,7 @@
             var f = document.getElementById('formCancelarPedidoUm');
             if (f != null) {
                 var qtd = document.getElementById("qtdCartaoCanc").value;
-                var action = "/vt2/comprador/cartoes/IniciaCancelamentoPedido.do";
+                var action = "/vt2/comprador/cartoes/IniciaCancelamentoPedido.html";
                 f.action = action + '?qtdCartao=' +qtd;
                 f.method = "post";
                 f.submit();
@@ -307,7 +307,7 @@
             var f = document.getElementById('formCancelarPedidoUm');
             if (f != null) {
                 var qtd = 0
-                var action = "/vt2/comprador/cartoes/IncluiCancelamentoPedido.do";
+                var action = "/vt2/comprador/cartoes/IncluiCancelamentoPedido.html";
                 f.action = action + '?qtdCartao=' +qtd;
                 f.method = "post";
                 f.submit();
@@ -574,7 +574,7 @@
             
 
 
-            <form name="cancelamentoPedidoForm" id="formCancelarPedidoUm" method="post" action="/vt2/comprador/cartoes/IncluiCancelamentoPedido.do">
+            <form name="cancelamentoPedidoForm" id="formCancelarPedidoUm" method="post" action="/vt2/comprador/cartoes/IncluiCancelamentoPedido.html">
 
                 <fieldset class="nivel_03 nivel_03_fechado">
                     <legend>Quantidade de Cartões</legend>

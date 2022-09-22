@@ -68,7 +68,7 @@
 
 		var globalNrPedido;
 		function copiarPedido() {
-			window.location.href = "/vt2/comprador/pedidos/IncluiCopiaPedido.do?nrPedido=" + globalNrPedido;			
+			window.location.href = "/vt2/comprador/pedidos/IncluiCopiaPedido.html?nrPedido=" + globalNrPedido;			
 		}
 		
 		function showDialogCopiarPedido( nrPedido ) {
@@ -175,7 +175,7 @@
       <ul>
         <li><a href="./ConsultaCartoes.html">Consulta</a></li>
         <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
-        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
         <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
         <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
         <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
@@ -202,7 +202,7 @@
 			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
         </li>
         <li>
-        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
         </li>
         	
       </ul>
@@ -368,7 +368,7 @@
     
     <fieldset class="nivel_01 mostrar_pedidos">
 	   <legend>Mostrar Pedidos dos últimos 90 Dias</legend>
-	    <form name="filtrarPedidosForm" id="formNovoPedidoUmCopia" method="post" action="/vt2/comprador/pedidos/FiltrarGerenciamentoPedidoCopia.do">
+	    <form name="filtrarPedidosForm" id="formNovoPedidoUmCopia" method="post" action="/vt2/comprador/pedidos/FiltrarGerenciamentoPedidoCopia.html">
 		    	<select name="cdStPedido"><option value="-1" selected="selected">Todos</option>
 		      		<option value="2">Aguardando Pagamento</option>      
 		      		<option value="8">Aguardando Liberação de Carga</option>
@@ -460,7 +460,7 @@
 			
 		</form>
 			
-		<form name="filtrarPedidosForm" id="formPedidoAntigo" method="post" action="/vt2/comprador/pedidos/ConsultarPedidoAntigoParaCopia.do">
+		<form name="filtrarPedidosForm" id="formPedidoAntigo" method="post" action="/vt2/comprador/pedidos/ConsultarPedidoAntigoParaCopia.html">
 			<fieldset class="nivel_02 pedidos_mais_90_dias">
 				<legend>Consulta de Pedido anterior a 90 Dias</legend>
 				<table class="formulario1" cellspacing="0">
@@ -498,7 +498,7 @@
 <thead>
 <tr>
 <th class="sortable sorted order2">
-<a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/GerenciamentoPedidoCopia.do?d-446235-s=0&amp;d-446235-p=1&amp;d-446235-o=2">Pedido</a></th>
+<a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/GerenciamentoPedidoCopia.html?d-446235-s=0&amp;d-446235-p=1&amp;d-446235-o=2">Pedido</a></th>
 <th>Datas</th>
 <th>Valor da Carga</th>
 <th>Status</th>
@@ -528,19 +528,19 @@
 </div>
 <script language="javascript">
 	var menuRodapeItem01Urls = new Array();
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.do' );
-	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.do' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaDigitacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaGeracaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/ImportacaoPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/PedidoBolsaCredito.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/IniciaNovaViaPedido.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidoCopia.html' );
+	menuRodapeItem01Urls.push( '/vt2/comprador/pedidos/SalvarPedido.html' );
 	
 	var menuRodapeItem03Urls = new Array();
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.do' );
-	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.do' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/GerenciamentoPedidos.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/UltimaEtapaPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/VisualizacaoPedido.html' );
+	menuRodapeItem03Urls.push( '/vt2/comprador/pedidos/ReciboPedido.html' );
 
 	
 	

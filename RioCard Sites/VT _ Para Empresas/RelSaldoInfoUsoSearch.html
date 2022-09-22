@@ -28,7 +28,7 @@
     <script type="text/javascript">
 
         function updateCaptcha() {
-            document.getElementById( 'captcha' ).src = '/vt2/home/Imagem.do?t=' + new Date().getTime();
+            document.getElementById( 'captcha' ).src = '/vt2/home/Imagem.html?t=' + new Date().getTime();
         }
 
         function Mascara (formato, event, objeto) {
@@ -86,7 +86,7 @@
                     f.tpFiltroCompraPassagem.value 	= f2.idTpFiltroCompraPassagem.value;
 
                 }else{
-                    f.action = "/vt2/comprador/usuarios/ListarUsuario.do?" + f.idUrl.value;
+                    f.action = "/vt2/comprador/usuarios/ListarUsuario.html?" + f.idUrl.value;
                 }
 
                 f.submit();
@@ -175,7 +175,7 @@
       <ul>
         <li><a href="./ConsultaCartoes.html">Consulta</a></li>
         <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
-        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
         <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
         <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
         <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
@@ -202,7 +202,7 @@
 			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
         </li>
         <li>
-        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
         </li>
         	
       </ul>
@@ -212,7 +212,7 @@
 </div>
 <fieldset class="nivel_01 mostrar_pedidos">
     <legend>Pesquisa</legend>
-    <form name="filtrarSaldoInfoUsoForm" id="formRelSaldoInfoUso" method="post" action="/vt2/comprador/relatorios/RelSaldoInfoUso.do">
+    <form name="filtrarSaldoInfoUsoForm" id="formRelSaldoInfoUso" method="post" action="/vt2/comprador/relatorios/RelSaldoInfoUso.html">
         <table class="formulario1" cellspacing="0" border="0">
             <tbody><tr>
                 <td><label>Número do Cartão:</label></td>
@@ -276,7 +276,7 @@
         <input type="hidden" name="tpFiltroBilheteUnicoListarUsuario" value="" id="idTpFiltroBilheteUnicoListarUsuario">
         <input type="hidden" name="tpFiltroCompraListarUsuarioPassagem" value="" id="idTpFiltroCompraPassagem">
     </form>
-    <form name="listarUsuarioForm" id="formBusca" method="post" action="/vt2/comprador/usuarios/ListarUsuario.do">
+    <form name="listarUsuarioForm" id="formBusca" method="post" action="/vt2/comprador/usuarios/ListarUsuario.html">
         <input type="hidden" name="url" value="" id="idUrl">
         <input type="hidden" name="palavraDe" value="" id="campoPalavraDe">
         <input type="hidden" name="stUsuar" value="" id="campoStatusUsuario">

@@ -122,7 +122,7 @@
       <ul>
         <li><a href="./ConsultaCartoes.html">Consulta</a></li>
         <li><a href="./DesbloqueioPedidos.html">Desbloquear</a></li>
-        <li><a href="./IniciaCancelamentoPedido.do">Cancelar</a></li>
+        <li><a href="./IniciaCancelamentoPedido.html">Cancelar</a></li>
         <li><a href="./RegistroCartoes.html">Registrar Empresarial</a> </li>
         <li><a href="./ConsultaCartoesVtr.html">Consultar Empresarial</a></li>
         <li><a href="./ConsultaGuiasVtr.html">Consultar Guias de Compra</a></li>
@@ -149,7 +149,7 @@
 			<a href="./RelRecargasPendEfetSearch.html" onclick="showDropDown('relatorios');">Relatório de Recargas</a>
         </li>
         <li>
-        	<a href="./RelSaldoInfoUsoSearch.do?v=1" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
+        	<a href="./RelSaldoInfoUsoSearch.html" onclick="showDropDown('relatorios');">Saldo e Informações de Uso</a>
         </li>
         	
       </ul>
@@ -984,12 +984,12 @@ rápido.</p>
             <p>Você não possui nenhum usuário cadastrado, escolha uma das opções abaixo para incluir usuários:</p>
             <div class="btn_padrao_aviso">
                 <div class="btn_dir">
-                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/NovoUsuario.do" class="bg_esq">Incluir Usuários por Digitação</a>
+                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/NovoUsuario.html" class="bg_esq">Incluir Usuários por Digitação</a>
                 </div>
             </div>
             <div class="btn_padrao_aviso">
                 <div class="btn_dir">
-                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/ImportarUsuarios.do" class="bg_esq">Incluir Usuários por importação de arquivo</a>
+                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/ImportarUsuarios.html" class="bg_esq">Incluir Usuários por importação de arquivo</a>
                 </div>
             </div>
             <div class="faixa_esc clearfix">
@@ -1041,7 +1041,7 @@ rápido.</p>
         <!-- CONSULTA DE PEDIDO ANTERIOR A 90 DIAS - MENOS PARA HOME INICIAL -->
         
             <div class="box_field clearfix">
-                <form name="selecionarPedidoForm" id="formPedidoByNr" method="post" action="/vt2/comprador/pedidos/ConteudoResumirPedido.do">
+                <form name="selecionarPedidoForm" id="formPedidoByNr" method="post" action="/vt2/comprador/pedidos/ConteudoResumirPedido.html">
                     <input type="hidden" name="keyToken" value="0.2156250341710526">
                     <fieldset class="nivel_02">
                         <legend>Consulta de pedido anterior a 90 dias</legend>
@@ -1070,14 +1070,14 @@ rápido.</p>
                         <div class="btn_padrao">
                             <div class="bg_esq">
                                 <div class="bg_dir">
-                                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/IniciaGeracaoPedido.do">Por Geração Automática</a>
+                                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/IniciaGeracaoPedido.html">Por Geração Automática</a>
                                 </div>
                             </div>
                         </div>
                         <div class="btn_padrao">
                             <div class="bg_esq">
                                 <div class="bg_dir">
-                                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/IniciaDigitacaoPedido.do">Por Digitação</a>
+                                    <a href="https://www.cartaoriocard.com.br/vt2/comprador/pedidos/IniciaDigitacaoPedido.html">Por Digitação</a>
                                 </div>
                             </div>
                         </div>
@@ -1119,14 +1119,14 @@ rápido.</p>
             <div class="btn_padrao">
                 <div class="bg_esq">
                     <div class="bg_dir">
-                        <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/NovoUsuario.do">Por Digitação</a>
+                        <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/NovoUsuario.html">Por Digitação</a>
                     </div>
                 </div>
             </div>
             <div class="btn_padrao">
                 <div class="bg_esq">
                     <div class="bg_dir">
-                        <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/ImportarUsuarios.do">Por Importação de Arquivo</a>
+                        <a href="https://www.cartaoriocard.com.br/vt2/comprador/usuarios/ImportarUsuarios.html">Por Importação de Arquivo</a>
                     </div>
                 </div>
             </div>
@@ -1312,7 +1312,7 @@ rápido.</p>
         <div id="erro_recadastramento" style="display:none">
             <h4 id="msg_erro_recadastramento" class="text-danger"></h4>
         </div>
-        <form id="form-recadastramento" method="post" action="/vt2/comprador/recadastramentoEndereco.do">
+        <form id="form-recadastramento" method="post" action="/vt2/comprador/recadastramentoEndereco.html">
 
             <div class="row mt-2">
                 <div class="col">
@@ -1809,7 +1809,7 @@ function callbackUpdateLinks( list ) {
 	for ( i = 0; i < list.length; i++ ) {
 		
 		if(list[i].cdFuncl == cdFunclSaldoInfo){
-			list[i].txLinkFuncl = "/comprador/relatorios/RelSaldoInfoUsoSearch.do?v=1";
+			list[i].txLinkFuncl = "/comprador/relatorios/RelSaldoInfoUsoSearch.html?v=1";
 		}
 		
 		var menuPersA = document.getElementById( 'menuPersA' + i );
